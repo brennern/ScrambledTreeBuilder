@@ -1,6 +1,6 @@
 #' Format species data and calculate percent identity and strand randomisation variables as part of the dataframe.
 #'
-#' @param df
+#' @param df A dataframe containing species data.
 #'
 #' @return Formatted dataframe with strand randomisation and percent identities between species calculated.
 #' @export
