@@ -15,3 +15,6 @@ Data.
 \description{
 Get statistics information from .yaml files.
 }
+\examples{
+yamlFileData <- getStats(yamlFileData)
+}
