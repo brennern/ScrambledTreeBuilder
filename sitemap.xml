@@ -16,10 +16,16 @@
     <loc>https://brennern.github.io/ScrambledTreeBuilder/index.html</loc>
   </url>
   <url>
+    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/extractPercentID.html</loc>
+  </url>
+  <url>
     <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/extractStrandRandIDs.html</loc>
   </url>
   <url>
     <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/formatStats.html</loc>
+  </url>
+  <url>
+    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/getStats.html</loc>
   </url>
   <url>
     <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/index.html</loc>
