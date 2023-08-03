@@ -7,8 +7,8 @@
 #'
 #' @examples
 #' DataFrame <- formatStats(yamlFileData)
-formatStats <- function(yamlInput) {
-  df <- do.call(rbind, lapply(yamlInput, getStats)) |> as.data.frame()
+formatStats <- function(x) {
+  df <- do.call(rbind, lapply(x, getStats)) |> as.data.frame()
   df <- df[,colSums(df, na.rm = TRUE) !=0]
   df$species1 <- strsplit(rownames(df), "___") |> lapply(\(.) .[1]) |> unlist()
   df$species2 <- strsplit(rownames(df), "___") |> lapply(\(.) .[2]) |> unlist()
