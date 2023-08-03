@@ -11,7 +11,7 @@
 #' @examples
 #' HClust <- hclust(dist(Matrix), method = "complete")
 #' Dendrogram <- as.dendrogram(HClust)
-#' TD <- as_tibble(as.phylo(Dendrogram))
+#' TD <- tidytree::as_tibble(as.phylo(Dendrogram))
 #' pIDs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractPercentID, TD, Matrix)
 #' TD$percentID <- NA
 #' TD[names(pIDs), "percentID"] <- unname(pIDs)
