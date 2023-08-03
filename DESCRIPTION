@@ -1,5 +1,5 @@
 Package: ScrambledTreeBuilder
-Title: Builds Phylogenetic Trees Showcasing Genome Scrambling in Species.
+Title: Builds Phylogenetic Trees Showcasing Genome Scrambling in Species
 Version: 0.0.0.9000
 Authors@R: 
     person("Noa", "Brenner", , "brennern@hawaii.edu", role = c("aut", "cre"))
