@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' m <- makeMatrix(df, "percent_identity_global", 100, 50)
+#' Matrix <- makeMatrix(DataFrame, "percent_identity_global", 100, 50)
 makeMatrix <- function(df, column, defaultDiagonal = 100, defaultValue = NA) {
   species <- unique(df$species2)
   matrix <- matrix(defaultValue, nrow=length(species), ncol=length(species))

@@ -22,5 +22,5 @@ A matrix containing species names and data for the selected variable.
 Make a matrix from a data frame containing species data.
 }
 \examples{
-m <- makeMatrix(df, "percent_identity_global", 100, 50)
+Matrix <- makeMatrix(DataFrame, "percent_identity_global", 100, 50)
 }

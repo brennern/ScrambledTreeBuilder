@@ -4,7 +4,7 @@
 \alias{formatStats}
 \title{Format species data and calculate percent identity and strand randomisation variables as part of the dataframe.}
 \usage{
-formatStats(df)
+formatStats(yamlInput)
 }
 \arguments{
 \item{df}{A dataframe containing species data.}
@@ -16,5 +16,5 @@ Formatted dataframe with strand randomisation and percent identities between spe
 Format species data and calculate percent identity and strand randomisation variables as part of the dataframe.
 }
 \examples{
-df <- formatStats(df)
+DataFrame <- formatStats(yamlFileData)
 }

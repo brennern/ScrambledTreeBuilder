@@ -22,7 +22,11 @@ Strand randomisation scores to store in a variable.
 Extract Strand Randomisation Indices Between Species.
 }
 \examples{
-sRIs <- unique(td$parent) |> sort() |> purrr::set_names() |> sapply(extractStrandRandIDs, td, m1)
-td$strandRand <- NA
-td[names(sRIs), "strandRand"] <- unname(sRIs)
+HClust <- hclust(dist(m), method = "complete")
+Dendrogram <- as.dendrogram(HClust)
+TD <- as_tibble(as.phylo(dend))
+Matrix2 <- makeMatrix(DataFrame, "index_avg_strandRand", 100, 50)
+sRIs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractStrandRandIDs, TD, Matrix2)
+TD$strandRand <- NA
+TD[names(sRIs), "strandRand"] <- unname(sRIs)
 }

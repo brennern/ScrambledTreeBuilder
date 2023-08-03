@@ -9,9 +9,12 @@
 #' @export
 #'
 #' @examples
-#' pIDs <- unique(td$parent) |> sort() |> purrr::set_names() |> sapply(extractPercentID, td, m)
-#' td$percentID <- NA
-#' td[names(pIDs), "percentID"] <- unname(pIDs)
+#' HClust <- hclust(dist(Matrix), method = "complete")
+#' Dendrogram <- as.dendrogram(HClust)
+#' TD <- as_tibble(as.phylo(Dendrogram))
+#' pIDs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractPercentID, TD, Matrix)
+#' TD$percentID <- NA
+#' TD[names(pIDs), "percentID"] <- unname(pIDs)
 extractPercentID <- function(node, tibble, matrix, fun = mean) {
   children <- child(tibble, node)
   stopifnot(nrow(children) == 2)

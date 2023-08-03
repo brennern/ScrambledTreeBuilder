@@ -6,6 +6,7 @@
 #' @export
 #'
 #' @examples
+#' yamlFileData <- getStats(yamlFileData)
 getStats <- function(file) {
   y <- yaml::read_yaml(file) |> yaml::yaml.load()
   unlist(y)
