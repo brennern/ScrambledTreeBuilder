@@ -14,6 +14,7 @@
 #' pIDs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractPercentID, TD, exMatrix)
 #' TD$percentID <- NA
 #' TD[names(pIDs), "percentID"] <- unname(pIDs)
+#' TD
 extractPercentID <- function(node, tibble, matrix, fun = mean) {
   children <- tidytree::child(tibble, node)
   stopifnot(nrow(children) == 2)
