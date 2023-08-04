@@ -2,19 +2,19 @@
 #'
 #' @param node Node.
 #' @param tibble Tibble data from dendrogram.
-#' @param matrix Matrix created from the makeMatrix function.
-#' @param fun Calculates the mean percent identity between nodes on a tree.
+#' @param matrix Matrix created from [`makeMatrix()`].
+#' @param fun Function to reduce the collected values (default: `mean`).
 #'
 #' @return Percent identity scores to store in a variable.
 #' @export
 #'
 #' @examples
 #' HClust <- hclust(dist(exMatrix), method = "complete")
-#' exDendrogram <- as.dendrogram(HClust)
-#' TD <- tidytree::as_tibble(tidytree::as.phylo(exDendrogram))
+#' TD <- tidytree::as_tibble(tidytree::as.phylo(HClust))
 #' pIDs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractPercentID, TD, exMatrix)
 #' TD$percentID <- NA
 #' TD[names(pIDs), "percentID"] <- unname(pIDs)
+#' TD
 extractPercentID <- function(node, tibble, matrix, fun = mean) {
   children <- tidytree::child(tibble, node)
   stopifnot(nrow(children) == 2)
