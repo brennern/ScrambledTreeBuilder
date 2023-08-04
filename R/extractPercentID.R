@@ -9,10 +9,10 @@
 #' @export
 #'
 #' @examples
-#' HClust <- hclust(dist(Matrix), method = "complete")
-#' Dendrogram <- as.dendrogram(HClust)
-#' TD <- tidytree::as_tibble(tidytree::as.phylo(Dendrogram))
-#' pIDs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractPercentID, TD, Matrix)
+#' HClust <- hclust(dist(exMatrix), method = "complete")
+#' exDendrogram <- as.dendrogram(HClust)
+#' TD <- tidytree::as_tibble(tidytree::as.phylo(exDendrogram))
+#' pIDs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractPercentID, TD, exMatrix)
 #' TD$percentID <- NA
 #' TD[names(pIDs), "percentID"] <- unname(pIDs)
 extractPercentID <- function(node, tibble, matrix, fun = mean) {

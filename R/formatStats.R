@@ -6,7 +6,7 @@
 #' @export
 #'
 #' @examples
-#' DataFrame <- formatStats(yamlFileData)
+#' exDataFrame <- formatStats(yamlFileData)
 formatStats <- function(x) {
   df <- do.call(rbind, lapply(x, getStats)) |> as.data.frame()
   df <- df[,colSums(df, na.rm = TRUE) !=0]

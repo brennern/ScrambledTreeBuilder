@@ -1,8 +1,8 @@
-#' Get statistics information from .yaml files.
+#' Get statistical information from .yaml files.
 #'
 #' @param file .yaml file containing species information.
 #'
-#' @return Data.
+#' @return Unpacked .yaml file data.
 #' @export
 #'
 #' @examples
