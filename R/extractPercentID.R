@@ -25,8 +25,8 @@ extractPercentID <- function(node, tibble, matrix, fun = mean) {
     if(!is.na(tipLabel)) return(tipLabel)
     tidytree::offspring(tibble, node)$label |> Filter(complete.cases, x=_)
   }
-  left_side_species  <- tidytree::tipLabels(left_side_node,  tibble)
-  right_side_species <- tidytree::tipLabels(right_side_node, tibble)
+  left_side_species  <- tipLabels(left_side_node,  tibble)
+  right_side_species <- tipLabels(right_side_node, tibble)
   comparison <- matrix[left_side_species, right_side_species, drop=F]
   percentID <- fun(comparison)
   percentID
