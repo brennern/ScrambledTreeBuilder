@@ -2,7 +2,7 @@
 #'
 #' @param node Node.
 #' @param tibble Tibble data from dendrogram.
-#' @param matrix Matrix created from the makeMatrix function.
+#' @param matrix Matrix created from [`makeMatrix()`].
 #' @param fun Calculates the mean percent identity between nodes on a tree.
 #'
 #' @return Percent identity scores to store in a variable.
