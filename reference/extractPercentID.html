@@ -62,11 +62,11 @@
 
 
 <dt>matrix</dt>
-<dd><p>Matrix created from the makeMatrix function.</p></dd>
+<dd><p>Matrix created from <code><a href="makeMatrix.html">makeMatrix()</a></code>.</p></dd>
 
 
 <dt>fun</dt>
-<dd><p>Calculates the mean percent identity between nodes on a tree.</p></dd>
+<dd><p>Function to reduce the collected values (default: <code>mean</code>).</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -79,12 +79,23 @@
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">HClust</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">exMatrix</span><span class="op">)</span>, method <span class="op">=</span> <span class="st">"complete"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">exDendrogram</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/dendrogram.html" class="external-link">as.dendrogram</a></span><span class="op">(</span><span class="va">HClust</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">TD</span> <span class="op">&lt;-</span> <span class="fu">tidytree</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu">tidytree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/as.phylo.html" class="external-link">as.phylo</a></span><span class="op">(</span><span class="va">exDendrogram</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in UseMethod("as.phylo"):</span> no applicable method for 'as.phylo' applied to an object of class "dendrogram"</span>
+<span class="r-in"><span><span class="va">TD</span> <span class="op">&lt;-</span> <span class="fu">tidytree</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu">tidytree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/as.phylo.html" class="external-link">as.phylo</a></span><span class="op">(</span><span class="va">HClust</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">pIDs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">TD</span><span class="op">$</span><span class="va">parent</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span><span class="va">extractPercentID</span>, <span class="va">TD</span>, <span class="va">exMatrix</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">TD</span><span class="op">$</span><span class="va">percentID</span> <span class="op">&lt;-</span> <span class="cn">NA</span></span></span>
 <span class="r-in"><span><span class="va">TD</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">pIDs</span><span class="op">)</span>, <span class="st">"percentID"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="va">pIDs</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">TD</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tbl_tree abstraction: 7 × 5</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># which can be converted to treedata or phylo </span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># via as.treedata or as.phylo</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   parent  node branch.length label                   percentID</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>      7     1         15.0  Halobacterium_noricense      <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>      6     2         17.9  Halobacterium_salinarum      <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>      5     3         20.1  Salarchaeum_japonicum        <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>      7     4         15.0  Halobacterium_litoreum       <span style="color: #BB0000;">NA</span>  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>      5     5         <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                           72.2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>      5     6          2.19 <span style="color: #BB0000;">NA</span>                           75.3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span>      6     7          2.95 <span style="color: #BB0000;">NA</span>                           78.8</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
