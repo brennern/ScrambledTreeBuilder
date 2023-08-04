@@ -2,8 +2,8 @@
 #'
 #' @param node Node.
 #' @param tibble Tibble data from dendrogram.
-#' @param matrix Matrix created from the makeMatrix function.
-#' @param fun Calculates the mean percent identity between nodes on a tree.
+#' @param matrix Matrix created from [`makeMatrix()`].
+#' @param fun Function to reduce the collected values (default: `mean`).
 #'
 #' @return Percent identity scores to store in a variable.
 #' @export
@@ -14,6 +14,7 @@
 #' pIDs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractPercentID, TD, exMatrix)
 #' TD$percentID <- NA
 #' TD[names(pIDs), "percentID"] <- unname(pIDs)
+#' TD
 extractPercentID <- function(node, tibble, matrix, fun = mean) {
   children <- tidytree::child(tibble, node)
   stopifnot(nrow(children) == 2)
@@ -27,6 +28,5 @@ extractPercentID <- function(node, tibble, matrix, fun = mean) {
   left_side_species  <- tipLabels(left_side_node,  tibble)
   right_side_species <- tipLabels(right_side_node, tibble)
   comparison <- matrix[left_side_species, right_side_species, drop=F]
-  percentID <- fun(comparison)
-  percentID
+  fun(comparison)
 }
