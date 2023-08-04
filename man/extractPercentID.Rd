@@ -11,9 +11,9 @@ extractPercentID(node, tibble, matrix, fun = mean)
 
 \item{tibble}{Tibble data from dendrogram.}
 
-\item{matrix}{Matrix created from the makeMatrix function.}
+\item{matrix}{Matrix created from \code{\link[=makeMatrix]{makeMatrix()}}.}
 
-\item{fun}{Calculates the mean percent identity between nodes on a tree.}
+\item{fun}{Function to reduce the collected values (default: \code{mean}).}
 }
 \value{
 Percent identity scores to store in a variable.
@@ -23,9 +23,9 @@ Extract percent identities between species.
 }
 \examples{
 HClust <- hclust(dist(exMatrix), method = "complete")
-exDendrogram <- as.dendrogram(HClust)
-TD <- tidytree::as_tibble(tidytree::as.phylo(exDendrogram))
+TD <- tidytree::as_tibble(tidytree::as.phylo(HClust))
 pIDs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractPercentID, TD, exMatrix)
 TD$percentID <- NA
 TD[names(pIDs), "percentID"] <- unname(pIDs)
+TD
 }
