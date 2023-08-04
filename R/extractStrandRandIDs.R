@@ -10,8 +10,7 @@
 #'
 #' @examples
 #' HClust <- hclust(dist(exMatrix), method = "complete")
-#' exDendrogram <- as.dendrogram(HClust)
-#' TD <- tidytree::as_tibble(tidytree::as.phylo(exDendrogram))
+#' TD <- tidytree::as_tibble(tidytree::as.phylo(HClust))
 #' exMatrix2 <- makeMatrix(exDataFrame, "index_avg_strandRand", 100, 50)
 #' sRIs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractStrandRandIDs, TD, exMatrix2)
 #' TD$strandRand <- NA

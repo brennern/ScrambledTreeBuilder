@@ -10,8 +10,7 @@
 #'
 #' @examples
 #' HClust <- hclust(dist(exMatrix), method = "complete")
-#' exDendrogram <- as.dendrogram(HClust)
-#' TD <- tidytree::as_tibble(tidytree::as.phylo(exDendrogram))
+#' TD <- tidytree::as_tibble(tidytree::as.phylo(HClust))
 #' pIDs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractPercentID, TD, exMatrix)
 #' TD$percentID <- NA
 #' TD[names(pIDs), "percentID"] <- unname(pIDs)
