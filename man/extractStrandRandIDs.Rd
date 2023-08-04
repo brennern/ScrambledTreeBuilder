@@ -22,11 +22,11 @@ Strand randomisation scores to store in a variable.
 Extract Strand Randomisation Indices Between Species.
 }
 \examples{
-HClust <- hclust(dist(m), method = "complete")
-Dendrogram <- as.dendrogram(HClust)
-TD <- tidytree::as_tibble(tidytree::as.phylo(dend))
-Matrix2 <- makeMatrix(DataFrame, "index_avg_strandRand", 100, 50)
-sRIs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractStrandRandIDs, TD, Matrix2)
+HClust <- hclust(dist(exMatrix), method = "complete")
+exDendrogram <- as.dendrogram(HClust)
+TD <- tidytree::as_tibble(tidytree::as.phylo(exDendrogram))
+exMatrix2 <- makeMatrix(exDataFrame, "index_avg_strandRand", 100, 50)
+sRIs <- unique(TD$parent) |> sort() |> purrr::set_names() |> sapply(extractStrandRandIDs, TD, exMatrix2)
 TD$strandRand <- NA
 TD[names(sRIs), "strandRand"] <- unname(sRIs)
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/getStats.R
 \name{getStats}
 \alias{getStats}
-\title{Get statistics information from .yaml files.}
+\title{Get statistical information from .yaml files.}
 \usage{
 getStats(file)
 }
@@ -10,10 +10,10 @@ getStats(file)
 \item{file}{.yaml file containing species information.}
 }
 \value{
-Data.
+Unpacked .yaml file data.
 }
 \description{
-Get statistics information from .yaml files.
+Get statistical information from .yaml files.
 }
 \examples{
 yamlFileData <- getStats(yamlFileData)
