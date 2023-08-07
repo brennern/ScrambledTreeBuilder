@@ -19,8 +19,8 @@ extractColumnLabel <- function(node, dataframe, column, fun = mean) {
       matrix[i,i] <- defaultDiagonal
     }
     for (i in 1:nrow(df)) {
-      s1 <- df[i, "species1"]
-      s2 <- df[i, "species2"]
+      s1 <- dataframe[i, "species1"]
+      s2 <- dataframe[i, "species2"]
       if(s1 %in% species)
         matrix[s1, s2] <- dataframe[i, column]
     }
