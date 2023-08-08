@@ -11,21 +11,6 @@
 #' @examples
 #' percentID <- extractColumnLabel(exDataFrame, "percent_identity_global")
 extractColumnLabel <- function(node, dataframe, column, fun = mean) {
-  makeMatrix <- function(dataframe, column, defaultDiagonal = 100, defaultValue = NA) {
-    species <- unique(dataframe$species2)
-    matrix <- matrix(defaultValue, nrow=length(species), ncol=length(species))
-    colnames(matrix) <- rownames(matrix) <- species
-    for (i in 1:length(species)) {
-      matrix[i,i] <- defaultDiagonal
-    }
-    for (i in 1:nrow(df)) {
-      s1 <- dataframe[i, "species1"]
-      s2 <- dataframe[i, "species2"]
-      if(s1 %in% species)
-        matrix[s1, s2] <- dataframe[i, column]
-    }
-    matrix
-  }
   HClust <- hclust(dist(matrix), method = "complete")
   Dend <- as.dendrogram(HClust)
   tibble <- as_tibble(as.phylo(Dend))
