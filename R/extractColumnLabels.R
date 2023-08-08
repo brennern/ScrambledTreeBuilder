@@ -14,6 +14,8 @@ extractColumnLabel <- function(node, dataframe, column, fun = mean) {
   Dend <- as.dendrogram(HClust)
   tibble <- as_tibble(as.phylo(Dend))
   children <- child(tibble, node)
+#' Clust <- hclust(dist(exMatrix), method = "complete")
+#' tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
 #' extractColumnLabel(node = 5, tibble, exDataFrame, "percent_identity_global")
   stopifnot(nrow(children) == 2)
   left_side_node  <- children[1, "node", drop = TRUE]
