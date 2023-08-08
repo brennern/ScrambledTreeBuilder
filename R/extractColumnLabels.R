@@ -24,7 +24,7 @@ extractColumnLabel <- function(node, dataframe, column, fun = mean) {
   tipLabels <- function(node, tibble) {
     tipLabel <- tibble[node,"label", drop = TRUE]
     if(!is.na(tipLabel)) return(tipLabel)
-    offspring(tibble, node)$label |> Filter(complete.cases, x=_)
+    tidytree::offspring(tibble, node)$label |> Filter(complete.cases, x=_)
   }
   left_side_species  <- tipLabels(left_side_node,  tibble)
   right_side_species <- tipLabels(right_side_node, tibble)
