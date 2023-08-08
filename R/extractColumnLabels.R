@@ -9,15 +9,12 @@
 #' @export
 #'
 #' @examples
-extractColumnLabel <- function(node, dataframe, column, fun = mean) {
-  HClust <- hclust(dist(matrix), method = "complete")
-  Dend <- as.dendrogram(HClust)
-  tibble <- as_tibble(as.phylo(Dend))
-  children <- child(tibble, node)
 #' Clust <- hclust(dist(exMatrix), method = "complete")
 #' tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
 #' extractColumnLabel(node = 5, tibble, exDataFrame, "percent_identity_global")
+extractColumnLabel <- function(node, tibble, dataframe, column, fun = mean) {
   matrix <- makeMatrix(dataframe, column)
+  children <- tidytree::child(tibble, node)
   stopifnot(nrow(children) == 2)
   left_side_node  <- children[1, "node", drop = TRUE]
   right_side_node <- children[2, "node", drop = TRUE]
