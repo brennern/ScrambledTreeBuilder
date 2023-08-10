@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-#' tibbleWithValue <- makeValueTibble(Tibble, valueMatrix)
+#' makeValueTibble(Tibble, valueMatrix)
 makeValueTibble <- function(tibble, matrix) {
   labels <- unique(tibble$parent) |> sort() |> purrr::set_names() |> sapply(extractValues, tibble, matrix)
   tibble$value <- NA
