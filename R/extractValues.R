@@ -1,6 +1,6 @@
-#' Extract values from a matrix
+#' Extract values from a matrix.
 #'
-#' @param node
+#' @param node Node
 #' @param tibble Tibble data developed from tree.
 #' @param matrix Matrix containing species data.
 #' @param fun Calculates mean, median, etc. between node values to plot on the tree (default fun is mean)
