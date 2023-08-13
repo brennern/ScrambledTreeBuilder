@@ -46,7 +46,7 @@ To build the phylogenetic trees, your data frame will need to be tranformed into
 
 ```{r}
 treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
-valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 100, 50)
+valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
 ```
 
 Then, in order to plot the percent identity and strand randomisation index scores on the tree, you will need to extract the tree data in a tibble and utilize the functions `makeValueTibble()`.
