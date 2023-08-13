@@ -35,9 +35,8 @@ After performing an All Vs. All genome comparison between dozens of species, you
 ```{r}
 library(ScrambledTreeBuilder)
 
-params <- list()
-params$resultsDir <- '/flash/LuscombeU/noa/RPackageData'
-yamlFileData <- list.files(params$resultsDir, pattern = "*.yaml", full.names = TRUE)
+resultsDir <- '/flash/LuscombeU/noa/RPackageData'
+yamlFileData <- list.files(resultsDir, pattern = "*.yaml", full.names = TRUE)
 names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml", rep="")
 
 exDataFrame <- ScrambledTreeBuilder::formatStats(yamlFileData)
