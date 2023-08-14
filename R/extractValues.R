@@ -9,7 +9,6 @@
 #' @export
 #'
 #' @examples
-#'
 #' extractValues(node = 5, Tibble, valueMatrix)
 extractValues <- function(node, tibble, matrix, fun = mean) {
   children <- tidytree::child(tibble, node)
