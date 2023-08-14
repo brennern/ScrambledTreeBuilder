@@ -22,4 +22,5 @@ Imports:
     ggtree,
     phytools,
     tibble,
-    tidytree
+    tidytree,
+    viridis
