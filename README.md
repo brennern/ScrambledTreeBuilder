@@ -56,3 +56,15 @@ HClust <- hclust(dist(treeMatrix), method = "complete")
 Tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
 tibbleWithValue <- makeValueTibble(Tibble, valueMatrix)
 ```
+
+Finally, to visualize your phylogenetic tree, you can utilize the
+`visualizeTree()` function by inputting your tibble data containing your
+desired variable.
+
+``` r
+visualizeTree(tibbleWithValue, tibbleWithValue$value)
+#> Scale for y is already present.
+#> Adding another scale for y, which will replace the existing scale.
+```
+
+<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
