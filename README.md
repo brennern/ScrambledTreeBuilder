@@ -24,38 +24,35 @@ devtools::install_github("brennern/ScrambledTreeBuilder")
 
 After performing an All Vs. All genome comparison between dozens of
 species, you may have .yaml files as the output. In order to convert
-these files into a dataframe in R, you may use the
-`ScrambledTreeBuilder::formatStats()` function. Extract your .yaml files
-from their respective directory and store the information under the
-variable `yamlFiles`.
+these files into a dataframe in R, you may use the `formatStats()`
+function. Extract your .yaml files from their respective directory and
+store the information under the variable `yamlFiles`.
 
 ``` r
 library(ScrambledTreeBuilder)
 
-params <- list()
-params$resultsDir <- '/flash/LuscombeU/noa/RPackageData'
-yamlFileData <- list.files(params$resultsDir, pattern = "*.yaml", full.names = TRUE)
+resultsDir <- '/flash/LuscombeU/noa/RPackageData'
+yamlFileData <- list.files(resultsDir, pattern = "*.yaml", full.names = TRUE)
 names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml", rep="")
 
-exDataFrame <- ScrambledTreeBuilder::formatStats(yamlFileData)
+exDataFrame <- formatStats(yamlFileData)
 ```
 
 To build the phylogenetic trees, your data frame will need to be
-tranformed into a matrix. The function
-`ScrambledTreeBuilder::makeMatrix()` will accomplish this.
+tranformed into a matrix. The function `makeMatrix()` will accomplish
+this.
 
 ``` r
-treeMatrix <- ScrambledTreeBuilder::makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
-valueMatrix <- ScrambledTreeBuilder::makeMatrix(exDataFrame, "index_avg_strandRand", 100, 50)
+treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
+valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
 ```
 
 Then, in order to plot the percent identity and strand randomisation
 index scores on the tree, you will need to extract the tree data in a
-tibble and utilize the functions
-`ScrambledTreeBuilder::makeValueTibble()`.
+tibble and utilize the functions `makeValueTibble()`.
 
 ``` r
 HClust <- hclust(dist(treeMatrix), method = "complete")
 Tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
-tibbleWithValue <- ScrambledTreeBuilder::makeValueTibble(Tibble, valueMatrix)
+tibbleWithValue <- makeValueTibble(Tibble, valueMatrix)
 ```
