@@ -38,7 +38,6 @@ Upon performing an all vs. all genome comparison between six halobacteria specie
 resultsDir <- '/flash/LuscombeU/noa/RPackageData'
 yamlFileData <- list.files(resultsDir, pattern = "*.yaml", full.names = TRUE)
 names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml", rep="")
-yamlFileData
 ```
 
 Next, we can use the 'formatStats()' function to transform the .yaml files into a single dataframe. Having a dataframe containing our species information is important, as this will allow us to extract specific columns/variables and plot them onto our phylogenetic trees later.
