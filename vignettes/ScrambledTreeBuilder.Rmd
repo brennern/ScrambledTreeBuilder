@@ -38,8 +38,38 @@ Upon performing an all vs. all genome comparison between six halobacteria specie
 resultsDir <- '/flash/LuscombeU/noa/RPackageData'
 yamlFileData <- list.files(resultsDir, pattern = "*.yaml", full.names = TRUE)
 names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml", rep="")
+yamlFileData
 ```
 
+
+```{r}
+exDataFrame <- formatStats(yamlFileData)
+exDataFrame
+```
+
+
+
+```{r}
+treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
+treeMatrix
+
+valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
+valueMatrix
+```
+
+
+```{r}
+HClust <- hclust(dist(treeMatrix), method = "complete")
+Tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
+Tibble
+
+tibbleWithValue <- makeValueTibble(Tibble, valueMatrix)
+tibbleWithValue
+```
+
+```{r}
+visualizeTree(tibbleWithValue, tibbleWithValue$value)
+```
 
 
 
