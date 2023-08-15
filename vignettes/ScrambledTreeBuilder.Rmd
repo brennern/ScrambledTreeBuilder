@@ -50,9 +50,8 @@ exDataFrame
 We will need to further process our data by transforming the dataframe into a matrix. We can perform this task with the 'makeMatrix()' function. This function can be quite useful, as you may use it to both create the matrix which you wish to build your tree with and to create the matrix to store species information for a particular variable. For example, we may want to build the tree based on percent identity values, which we store in treeMatrix. Then, we may want to plot strand randomisation index scores on the trees to study genome scrambling, which we store in valueMatrix.
 ```{r}
 treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
-treeMatrix
-
 valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
+treeMatrix
 valueMatrix
 ```
 
