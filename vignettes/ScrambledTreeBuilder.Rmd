@@ -14,6 +14,34 @@ knitr::opts_chunk$set(
 )
 ```
 
+```{r}
+knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_knit$set(verbose = TRUE)
+```
+
+# Introduction
+The ScrambledTreeBuilder package consists of numerous data formatting functions for phylogenetic tree building. 
+
+# Load Package
+Whilst the ScrambledTreeBuilder package contains all necessary functions required to convert data from .yaml files to a data type suitable for phylogenetic trees, loading ggplot2 will allow for greater customization of the final tree products.
+
 ```{r setup}
 library(ScrambledTreeBuilder)
+library(ggplot2)
 ```
+
+# Example Data
+This package utilizes example .yaml files from halobacteria genome comparison data. In regards to genome scrambling, many studies have showcased significant genome rearrangments in such halobacteria species due to dozens of insertion sequence families. Thus, the ScrambledTreeBuilder package will be useful in uncovering relationships amongst such species.
+
+Upon performing an all vs. all genome comparison between six halobacteria species using a Nextflow2 pipeline, we have multiple .yaml files stored in a directory called '~/RPackageData'. We will load this data into RStudio with the variable name 'yamlFileData'.
+```{r}
+resultsDir <- '/flash/LuscombeU/noa/RPackageData'
+yamlFileData <- list.files(resultsDir, pattern = "*.yaml", full.names = TRUE)
+names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml", rep="")
+```
+
+
+
+
+
+
