@@ -7,7 +7,7 @@
 #'
 #' @examples
 #' exDataFrame <- formatStats(yamlFileData)
-formatStats <- function(x) {
+formatStats <- function(df) {
   df <- do.call(rbind, lapply(x, getStats)) |> as.data.frame()
   df <- df[,colSums(df, na.rm = TRUE) !=0]
   df$species1 <- strsplit(rownames(df), "___") |> lapply(\(.) .[1]) |> unlist()

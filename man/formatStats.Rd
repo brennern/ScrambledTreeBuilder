@@ -4,7 +4,7 @@
 \alias{formatStats}
 \title{Format species data and calculate percent identity and strand randomisation variables as part of the dataframe.}
 \usage{
-formatStats(x)
+formatStats(df)
 }
 \arguments{
 \item{df}{A dataframe containing species data.}
