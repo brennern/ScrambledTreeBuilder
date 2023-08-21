@@ -23,5 +23,6 @@ makeMatrix <- function(df, column, defaultDiagonal = 100, defaultValue = NA) {
     if(species1 %in% species)
       matrix[species1, species2] <- df[i, column]
   }
+  attr(matrix, "builtWith") <- column
   matrix
 }
