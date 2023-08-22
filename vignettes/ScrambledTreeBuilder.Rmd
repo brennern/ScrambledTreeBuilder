@@ -35,9 +35,9 @@ This package utilizes example .yaml files from halobacteria genome comparison da
 
 Upon performing an all vs. all genome comparison between six halobacteria species using the Nextflow [genome pairwise alignment pipeline](https://github.com/oist/plessy_pairwiseGenomeComparison) and an [input file script](https://github.com/brennern/GenomeScrambling/blob/main/scripts/makeGBreaksInputFile.sh) for [GenomicBreaks](https://github.com/oist/GenomicBreaks), we have multiple .yaml files stored in a directory called '~/RPackageData'. We will load this data into RStudio with the variable name 'yamlFileData'.
 ```{r}
-resultsDir <- '/flash/LuscombeU/noa/RPackageData'
-yamlFileData <- list.files(resultsDir, pattern = "*.yaml", full.names = TRUE)
-names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml", rep="")
+resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
+names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 ```
 
 Next, we can use the 'formatStats()' function to transform the .yaml files into a single dataframe. Having a dataframe containing our species information is important, as this will allow us to extract specific columns/variables and plot them onto our phylogenetic trees later.
