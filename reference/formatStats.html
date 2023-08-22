@@ -51,13 +51,15 @@
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">formatStats</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">formatStats</span><span class="op">(</span><span class="va">files</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>df</dt>
-<dd><p>A dataframe containing species data.</p></dd>
+    <dl><dt>files</dt>
+<dd><p>A named character vector of paths to YAML files.  The names will
+become the row names of the output data frame. Compressed files are\
+accepted.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -69,9 +71,77 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">exDataFrame</span> <span class="op">&lt;-</span> <span class="fu">formatStats</span><span class="op">(</span><span class="va">yamlFileData</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>cannot open file '/flash/LuscombeU/noa/RPackageData/Halobacterium_litoreum___Halobacterium_noricense.yaml': No such file or directory</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in file(file, "rt", encoding = fileEncoding):</span> cannot open the connection</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">resultsDir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/PairwiseComparisons"</span>, package <span class="op">=</span> <span class="st">"ScrambledTreeBuilder"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">yamlFileData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">resultsDir</span>, pattern <span class="op">=</span> <span class="st">"*.yaml.bz2"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">yamlFileData</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="va">yamlFileData</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/basename.html" class="external-link">basename</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">sub</a></span><span class="op">(</span>pat <span class="op">=</span> <span class="st">".yaml.bz2"</span>, rep<span class="op">=</span><span class="st">""</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">exDataFrame</span> <span class="op">&lt;-</span> <span class="fu">formatStats</span><span class="op">(</span><span class="va">yamlFileData</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">exDataFrame</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>,<span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">]</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                             aligned_length_Min</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_noricense                            62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_salinarum                           100</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_mediterranei_ATCC_33500                  92</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_volcanii_DS2                             72</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Salarchaeum_japonicum                              66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_litoreum                            66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_salinarum                           76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_mediterranei_ATCC_33500                 60</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_volcanii_DS2                            79</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Salarchaeum_japonicum                             77</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                             aligned_length_Q1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_noricense                       717.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_salinarum                       778.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_mediterranei_ATCC_33500             546.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_volcanii_DS2                        585.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Salarchaeum_japonicum                         674.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_litoreum                       718.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_salinarum                      731.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_mediterranei_ATCC_33500            557.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_volcanii_DS2                       577.75</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Salarchaeum_japonicum                        684.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                             aligned_length_Median</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_noricense                           1409.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_salinarum                           1459.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_mediterranei_ATCC_33500                  949.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_volcanii_DS2                             994.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Salarchaeum_japonicum                             1260.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_litoreum                           1422.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_salinarum                          1349.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_mediterranei_ATCC_33500                 963.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_volcanii_DS2                            998.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Salarchaeum_japonicum                            1235.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                             aligned_length_Mean</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_noricense                       2177.722</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_salinarum                       2248.691</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_mediterranei_ATCC_33500             1185.227</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_volcanii_DS2                        1296.762</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Salarchaeum_japonicum                         1813.424</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_litoreum                       2211.831</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_salinarum                      2089.673</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_mediterranei_ATCC_33500            1213.886</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_volcanii_DS2                       1309.893</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Salarchaeum_japonicum                        1781.424</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                             aligned_length_Q3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_noricense                      2926.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_salinarum                      3053.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_mediterranei_ATCC_33500            1506.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_volcanii_DS2                       1649.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Salarchaeum_japonicum                        2315.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_litoreum                      2988.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_salinarum                     2668.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_mediterranei_ATCC_33500           1521.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_volcanii_DS2                      1640.25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Salarchaeum_japonicum                       2238.50</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                                                             aligned_length_Max</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_noricense                         18125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Halobacterium_salinarum                         18237</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_mediterranei_ATCC_33500               14391</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Haloferax_volcanii_DS2                          14440</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum___Salarchaeum_japonicum                           20211</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_litoreum                         18125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Halobacterium_salinarum                        20473</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_mediterranei_ATCC_33500              14665</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Haloferax_volcanii_DS2                         13872</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense___Salarchaeum_japonicum                          18158</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
