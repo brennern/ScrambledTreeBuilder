@@ -1,14 +1,20 @@
 #' Format species data and calculate percent identity and strand randomisation variables as part of the dataframe.
 #'
-#' @param df A dataframe containing species data.
+#' @param files A named character vector of paths to YAML files.  The names will
+#'        become the row names of the output data frame. Compressed files are\
+#'        accepted.
 #'
 #' @return Formatted dataframe with strand randomisation and percent identities between species calculated.
 #' @export
 #'
 #' @examples
+#' resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+#' yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
+#' names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 #' exDataFrame <- formatStats(yamlFileData)
 formatStats <- function(df) {
   df <- do.call(rbind, lapply(x, getStats)) |> as.data.frame()
+#' exDataFrame[1:10,1:6]
   df <- df[,colSums(df, na.rm = TRUE) !=0]
   df$species1 <- strsplit(rownames(df), "___") |> lapply(\(.) .[1]) |> unlist()
   df$species2 <- strsplit(rownames(df), "___") |> lapply(\(.) .[2]) |> unlist()

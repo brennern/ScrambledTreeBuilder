@@ -16,5 +16,7 @@ Unpacked .yaml file data.
 Get statistical information from .yaml files.
 }
 \examples{
-yamlFileData <- getStats(yamlFileData)
+resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
+getStats(yamlFileData[1])
 }
