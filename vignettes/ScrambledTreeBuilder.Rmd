@@ -45,7 +45,6 @@ Next, we can use the 'formatStats()' function to transform the .yaml files into 
 
 ```{r}
 exDataFrame <- formatStats(yamlFileData)
-exDataFrame
 ```
 
 We will need to further process our data by transforming the dataframe into a matrix. We can perform this task with the 'makeMatrix()' function. This function can be quite useful, as you may use it to both create the matrix which you wish to build your tree with and to create the matrix to store species information for a particular variable. For example, we may want to build the tree based on percent identity values, which we store in 'treeMatrix'. Then, we may want to plot strand randomisation index scores on the trees to study genome scrambling, which we store in 'valueMatrix'.
@@ -74,6 +73,10 @@ Finally, we can use the 'tibbleWithValue' dataset to build the tree. In our case
 
 ```{r}
 visualizeTree(tibbleWithValue, tibbleWithValue$value)
+
+Tree + 
+  ggplot2::ggtitle(paste("Tree built with", valuesToBuildTheTree, "and labelled with", valuesToPlaceOnLabels)) + 
+  viridis::scale_color_viridis(name = valuesToPlaceOnLabels)
 ```
 
 
