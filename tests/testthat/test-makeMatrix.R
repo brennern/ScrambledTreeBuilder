@@ -1,3 +1,3 @@
 test_that("output is a matrix", {
-  expect_type(matrix, "matrix")
+  expect_snapshot_output(is.matrix(matrix))
 })

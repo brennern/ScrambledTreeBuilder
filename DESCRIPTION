@@ -19,11 +19,8 @@ Depends:
     R (>= 2.10)
 LazyData: true
 Imports: 
-    ape,
-    dendextend,
     ggtree,
-    phytools,
-    tibble,
     tidytree,
-    viridis
+    purrr,
+    yaml
 VignetteBuilder: knitr
