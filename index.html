@@ -100,38 +100,6 @@
 <p>Finally, to visualize your phylogenetic tree, you can utilize the <code><a href="reference/visualizeTree.html">visualizeTree()</a></code> function by inputting your tibble data containing your desired variable.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithValue</span>, <span class="va">tibbleWithValue</span><span class="op">$</span><span class="va">value</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Registered S3 methods overwritten by 'treeio':</span></span>
-<span><span class="co">#&gt;   method              from    </span></span>
-<span><span class="co">#&gt;   MRCA.phylo          tidytree</span></span>
-<span><span class="co">#&gt;   MRCA.treedata       tidytree</span></span>
-<span><span class="co">#&gt;   Nnode.treedata      tidytree</span></span>
-<span><span class="co">#&gt;   Ntip.treedata       tidytree</span></span>
-<span><span class="co">#&gt;   ancestor.phylo      tidytree</span></span>
-<span><span class="co">#&gt;   ancestor.treedata   tidytree</span></span>
-<span><span class="co">#&gt;   child.phylo         tidytree</span></span>
-<span><span class="co">#&gt;   child.treedata      tidytree</span></span>
-<span><span class="co">#&gt;   full_join.phylo     tidytree</span></span>
-<span><span class="co">#&gt;   full_join.treedata  tidytree</span></span>
-<span><span class="co">#&gt;   groupClade.phylo    tidytree</span></span>
-<span><span class="co">#&gt;   groupClade.treedata tidytree</span></span>
-<span><span class="co">#&gt;   groupOTU.phylo      tidytree</span></span>
-<span><span class="co">#&gt;   groupOTU.treedata   tidytree</span></span>
-<span><span class="co">#&gt;   inner_join.phylo    tidytree</span></span>
-<span><span class="co">#&gt;   inner_join.treedata tidytree</span></span>
-<span><span class="co">#&gt;   is.rooted.treedata  tidytree</span></span>
-<span><span class="co">#&gt;   nodeid.phylo        tidytree</span></span>
-<span><span class="co">#&gt;   nodeid.treedata     tidytree</span></span>
-<span><span class="co">#&gt;   nodelab.phylo       tidytree</span></span>
-<span><span class="co">#&gt;   nodelab.treedata    tidytree</span></span>
-<span><span class="co">#&gt;   offspring.phylo     tidytree</span></span>
-<span><span class="co">#&gt;   offspring.treedata  tidytree</span></span>
-<span><span class="co">#&gt;   parent.phylo        tidytree</span></span>
-<span><span class="co">#&gt;   parent.treedata     tidytree</span></span>
-<span><span class="co">#&gt;   root.treedata       tidytree</span></span>
-<span><span class="co">#&gt;   rootnode.phylo      tidytree</span></span>
-<span><span class="co">#&gt;   sibling.phylo       tidytree</span></span>
-<span><span class="co">#&gt; Scale for y is already present.</span></span>
-<span><span class="co">#&gt; Adding another scale for y, which will replace the existing scale.</span></span>
 <span></span>
 <span><span class="va">Tree</span> <span class="op">+</span> </span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Tree built with"</span>, <span class="va">valuesToBuildTheTree</span>, <span class="st">"and labelled with"</span>, <span class="va">valuesToPlaceOnLabels</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
