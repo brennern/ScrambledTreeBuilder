@@ -4,10 +4,12 @@
 \alias{formatStats}
 \title{Format species data and calculate percent identity and strand randomisation variables as part of the dataframe.}
 \usage{
-formatStats(df)
+formatStats(files)
 }
 \arguments{
-\item{df}{A dataframe containing species data.}
+\item{files}{A named character vector of paths to YAML files.  The names will
+become the row names of the output data frame. Compressed files are\
+accepted.}
 }
 \value{
 Formatted dataframe with strand randomisation and percent identities between species calculated.
@@ -16,5 +18,9 @@ Formatted dataframe with strand randomisation and percent identities between spe
 Format species data and calculate percent identity and strand randomisation variables as part of the dataframe.
 }
 \examples{
+resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
+names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 exDataFrame <- formatStats(yamlFileData)
+exDataFrame[1:10,1:6]
 }

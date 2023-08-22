@@ -6,7 +6,9 @@
 #' @export
 #'
 #' @examples
-#' yamlFileData <- getStats(yamlFileData)
+#' resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+#' yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
+#' getStats(yamlFileData[1])
 getStats <- function(file) {
   y <- yaml::read_yaml(file) |> yaml::yaml.load()
   unlist(y)
