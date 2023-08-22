@@ -12,9 +12,9 @@
 #' yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
 #' names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 #' exDataFrame <- formatStats(yamlFileData)
-formatStats <- function(df) {
-  df <- do.call(rbind, lapply(x, getStats)) |> as.data.frame()
 #' exDataFrame[1:10,1:6]
+formatStats <- function(files) {
+  df <- do.call(rbind, lapply(files, getStats)) |> as.data.frame()
   df <- df[,colSums(df, na.rm = TRUE) !=0]
   df$species1 <- strsplit(rownames(df), "___") |> lapply(\(.) .[1]) |> unlist()
   df$species2 <- strsplit(rownames(df), "___") |> lapply(\(.) .[2]) |> unlist()
