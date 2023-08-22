@@ -22,5 +22,5 @@ Values to store in a variable (percent identity, strand randomisation index, etc
 Extract values from a matrix.
 }
 \examples{
-extractValues(node = 5, Tibble, valueMatrix)
+unique(Tibble$parent) |> sort() |> purrr::set_names() |> sapply(extractValues, Tibble, valueMatrix)
 }

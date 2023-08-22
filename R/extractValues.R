@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' extractValues(node = 5, Tibble, valueMatrix)
+#' unique(Tibble$parent) |> sort() |> purrr::set_names() |> sapply(extractValues, Tibble, valueMatrix)
 extractValues <- function(node, tibble, matrix, fun = mean) {
   children <- tidytree::child(tibble, node)
   stopifnot(nrow(children) == 2)
