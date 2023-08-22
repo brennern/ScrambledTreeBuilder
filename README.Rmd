@@ -35,9 +35,9 @@ After performing an All Vs. All genome comparison between dozens of species, you
 ```{r}
 library(ScrambledTreeBuilder)
 
-resultsDir <- '/flash/LuscombeU/noa/RPackageData'
-yamlFileData <- list.files(resultsDir, pattern = "*.yaml", full.names = TRUE)
-names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml", rep="")
+resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
+names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 
 exDataFrame <- formatStats(yamlFileData)
 ```
@@ -45,8 +45,10 @@ exDataFrame <- formatStats(yamlFileData)
 To build the phylogenetic trees, your data frame will need to be tranformed into a matrix. The function `makeMatrix()` will accomplish this.
 
 ```{r}
-treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
-valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
+valuesToBuildTheTree <- "percent_identity_global"
+treeMatrix <- makeMatrix(exDataFrame, valuesToBuildTheTree, 100, 50)
+valuesToPlaceOnLabels <- "index_avg_strandRand"
+valueMatrix <- makeMatrix(exDataFrame, valuesToPlaceOnLabels, 1, 0.5)
 ```
 
 Then, in order to plot the percent identity and strand randomisation index scores on the tree, you will need to extract the tree data in a tibble and utilize the functions `makeValueTibble()`.
@@ -60,5 +62,9 @@ tibbleWithValue <- makeValueTibble(Tibble, valueMatrix)
 Finally, to visualize your phylogenetic tree, you can utilize the `visualizeTree()` function by inputting your tibble data containing your desired variable.
 
 ```{r}
-visualizeTree(tibbleWithValue, tibbleWithValue$value)
+Tree <- visualizeTree(tibbleWithValue, tibbleWithValue$value)
+
+Tree + 
+  ggplot2::ggtitle(paste("Tree built with", valuesToBuildTheTree, "and labelled with", valuesToPlaceOnLabels)) + 
+  viridis::scale_color_viridis(name = valuesToPlaceOnLabels)
 ```

@@ -31,9 +31,9 @@ store the information under the variable `yamlFiles`.
 ``` r
 library(ScrambledTreeBuilder)
 
-resultsDir <- '/flash/LuscombeU/noa/RPackageData'
-yamlFileData <- list.files(resultsDir, pattern = "*.yaml", full.names = TRUE)
-names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml", rep="")
+resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
+names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 
 exDataFrame <- formatStats(yamlFileData)
 ```
@@ -43,8 +43,10 @@ tranformed into a matrix. The function `makeMatrix()` will accomplish
 this.
 
 ``` r
-treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
-valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
+valuesToBuildTheTree <- "percent_identity_global"
+treeMatrix <- makeMatrix(exDataFrame, valuesToBuildTheTree, 100, 50)
+valuesToPlaceOnLabels <- "index_avg_strandRand"
+valueMatrix <- makeMatrix(exDataFrame, valuesToPlaceOnLabels, 1, 0.5)
 ```
 
 Then, in order to plot the percent identity and strand randomisation
@@ -62,9 +64,43 @@ Finally, to visualize your phylogenetic tree, you can utilize the
 desired variable.
 
 ``` r
-visualizeTree(tibbleWithValue, tibbleWithValue$value)
+Tree <- visualizeTree(tibbleWithValue, tibbleWithValue$value)
+#> Registered S3 methods overwritten by 'treeio':
+#>   method              from    
+#>   MRCA.phylo          tidytree
+#>   MRCA.treedata       tidytree
+#>   Nnode.treedata      tidytree
+#>   Ntip.treedata       tidytree
+#>   ancestor.phylo      tidytree
+#>   ancestor.treedata   tidytree
+#>   child.phylo         tidytree
+#>   child.treedata      tidytree
+#>   full_join.phylo     tidytree
+#>   full_join.treedata  tidytree
+#>   groupClade.phylo    tidytree
+#>   groupClade.treedata tidytree
+#>   groupOTU.phylo      tidytree
+#>   groupOTU.treedata   tidytree
+#>   inner_join.phylo    tidytree
+#>   inner_join.treedata tidytree
+#>   is.rooted.treedata  tidytree
+#>   nodeid.phylo        tidytree
+#>   nodeid.treedata     tidytree
+#>   nodelab.phylo       tidytree
+#>   nodelab.treedata    tidytree
+#>   offspring.phylo     tidytree
+#>   offspring.treedata  tidytree
+#>   parent.phylo        tidytree
+#>   parent.treedata     tidytree
+#>   root.treedata       tidytree
+#>   rootnode.phylo      tidytree
+#>   sibling.phylo       tidytree
 #> Scale for y is already present.
 #> Adding another scale for y, which will replace the existing scale.
+
+Tree + 
+  ggplot2::ggtitle(paste("Tree built with", valuesToBuildTheTree, "and labelled with", valuesToPlaceOnLabels)) + 
+  viridis::scale_color_viridis(name = valuesToPlaceOnLabels)
 ```
 
 <img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
