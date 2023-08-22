@@ -14019,7 +14019,8 @@ identity values, which we store in ‘treeMatrix’. Then, we may want to
 plot strand randomisation index scores on the trees to study genome
 scrambling, which we store in ‘valueMatrix’.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">treeMatrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"percent_identity_global"</span>, <span class="fl">100</span>, <span class="fl">50</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">valuesToBuildTheTree</span> <span class="op">&lt;-</span> <span class="st">"percent_identity_global"</span></span>
+<span><span class="va">treeMatrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"percent_identity_global"</span>, <span class="fl">100</span>, <span class="fl">50</span><span class="op">)</span></span>
 <span><span class="va">treeMatrix</span></span>
 <span><span class="co">#&gt;                                   Halobacterium_noricense</span></span>
 <span><span class="co">#&gt; Halobacterium_noricense                         100.00000</span></span>
@@ -14058,6 +14059,7 @@ scrambling, which we store in ‘valueMatrix’.</p>
 <span><span class="co">#&gt; Halobacterium_litoreum                         100.00000</span></span>
 <span><span class="co">#&gt; attr(,"builtWith")</span></span>
 <span><span class="co">#&gt; [1] "percent_identity_global"</span></span>
+<span><span class="va">valuesToPlaceOnLabels</span> <span class="op">&lt;-</span> <span class="st">"index_avg_strandRand"</span></span>
 <span><span class="va">valueMatrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"index_avg_strandRand"</span>, <span class="fl">1</span>, <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="va">valueMatrix</span></span>
 <span><span class="co">#&gt;                                   Halobacterium_noricense</span></span>
