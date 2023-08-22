@@ -34,6 +34,7 @@ library(ggplot2)
 This package utilizes example .yaml files from halobacteria genome comparison data. In regards to genome scrambling, many studies have showcased significant genome rearrangments in such halobacteria species due to dozens of insertion sequence families. Thus, the ScrambledTreeBuilder package will be useful in uncovering relationships amongst such species.
 
 Upon performing an all vs. all genome comparison between six halobacteria species using the Nextflow [genome pairwise alignment pipeline](https://github.com/oist/plessy_pairwiseGenomeComparison) and an [input file script](https://github.com/brennern/GenomeScrambling/blob/main/scripts/makeGBreaksInputFile.sh) for [GenomicBreaks](https://github.com/oist/GenomicBreaks), we have multiple .yaml files stored in a directory called '~/RPackageData'. We will load this data into RStudio with the variable name 'yamlFileData'.
+
 ```{r}
 resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
 yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
@@ -41,20 +42,25 @@ names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep=
 ```
 
 Next, we can use the 'formatStats()' function to transform the .yaml files into a single dataframe. Having a dataframe containing our species information is important, as this will allow us to extract specific columns/variables and plot them onto our phylogenetic trees later.
+
 ```{r}
 exDataFrame <- formatStats(yamlFileData)
 exDataFrame
 ```
 
 We will need to further process our data by transforming the dataframe into a matrix. We can perform this task with the 'makeMatrix()' function. This function can be quite useful, as you may use it to both create the matrix which you wish to build your tree with and to create the matrix to store species information for a particular variable. For example, we may want to build the tree based on percent identity values, which we store in 'treeMatrix'. Then, we may want to plot strand randomisation index scores on the trees to study genome scrambling, which we store in 'valueMatrix'.
+
 ```{r}
+valuesToBuildTheTree <- "percent_identity_global"
 treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
 treeMatrix
+valuesToPlaceOnLabels <- "index_avg_strandRand"
 valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
 valueMatrix
 ```
 
 Using the 'treeMatrix', we will create an hclust object and use this to produce a tibble dataset. Transforming into a tibble dataset is necessary as this will allow us to add the variable from our 'valueMatrix' onto the tree with correct label placement on each node without changing the structure of the tree. Once we have the tibble dataset, we can utilize the 'makeValueTibble()' function to add the value from our 'valueMatrix' to the tibble data.
+
 ```{r}
 HClust <- hclust(dist(treeMatrix), method = "complete")
 Tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
@@ -65,6 +71,7 @@ tibbleWithValue
 ```
 
 Finally, we can use the 'tibbleWithValue' dataset to build the tree. In our case, we will generate a tree built based on percent identity values with strand randomisation scores labeled on all nodes.
+
 ```{r}
 visualizeTree(tibbleWithValue, tibbleWithValue$value)
 ```
