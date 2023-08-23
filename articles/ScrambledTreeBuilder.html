@@ -169,8 +169,9 @@ scrambling, which we store in ‘valueMatrix’.</p>
 <span><span class="co">#&gt; Salarchaeum_japonicum                           72.77139</span></span>
 <span><span class="co">#&gt; Halobacterium_litoreum                         100.00000</span></span>
 <span><span class="co">#&gt; attr(,"builtWith")</span></span>
-<span><span class="co">#&gt; [1] "percent_identity_global"</span></span>
-<span><span class="va">valuesToPlaceOnLabels</span> <span class="op">&lt;-</span> <span class="st">"index_avg_strandRand"</span></span>
+<span><span class="co">#&gt; [1] "percent_identity_global"</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">valuesToPlaceOnLabels</span> <span class="op">&lt;-</span> <span class="st">"index_avg_strandRand"</span></span>
 <span><span class="va">valueMatrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"index_avg_strandRand"</span>, <span class="fl">1</span>, <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="va">valueMatrix</span></span>
 <span><span class="co">#&gt;                                   Halobacterium_noricense</span></span>
@@ -217,7 +218,7 @@ necessary as this will allow us to add the variable from our
 without changing the structure of the tree. Once we have the tibble
 dataset, we can utilize the ‘makeValueTibble()’ function to add the
 value from our ‘valueMatrix’ to the tibble data.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">HClust</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/hclust.html" class="external-link">hclust</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/dist.html" class="external-link">dist</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span>, method <span class="op">=</span> <span class="st">"complete"</span><span class="op">)</span></span>
 <span><span class="va">Tibble</span> <span class="op">&lt;-</span> <span class="fu">tidytree</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu">tidytree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ape/man/as.phylo.html" class="external-link">as.phylo</a></span><span class="op">(</span><span class="va">HClust</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">Tibble</span></span>
@@ -259,7 +260,7 @@ value from our ‘valueMatrix’ to the tibble data.</p>
 <p>Finally, we can use the ‘tibbleWithValue’ dataset to build the tree.
 In our case, we will generate a tree built based on percent identity
 values with strand randomisation scores labeled on all nodes.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithValue</span>, <span class="va">tibbleWithValue</span><span class="op">$</span><span class="va">value</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Registered S3 methods overwritten by 'treeio':</span></span>
 <span><span class="co">#&gt;   method              from    </span></span>
@@ -297,7 +298,7 @@ values with strand randomisation scores labeled on all nodes.</p>
 <span><span class="va">Tree</span> <span class="op">+</span> </span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Tree built with"</span>, <span class="va">valuesToBuildTheTree</span>, <span class="st">"and labelled with"</span>, <span class="va">valuesToPlaceOnLabels</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html" class="external-link">scale_color_viridis</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">valuesToPlaceOnLabels</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-7-1.png" width="700"></p>
+<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-8-1.png" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
