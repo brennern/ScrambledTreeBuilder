@@ -53,6 +53,8 @@ We will need to further process our data by transforming the dataframe into a ma
 valuesToBuildTheTree <- "percent_identity_global"
 treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
 treeMatrix
+```
+```{r}
 valuesToPlaceOnLabels <- "index_avg_strandRand"
 valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
 valueMatrix

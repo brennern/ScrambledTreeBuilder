@@ -12,15 +12,6 @@
   ..$ : chr [1:6] "Halobacterium_noricense" "Halobacterium_salinarum" "Haloferax_mediterranei_ATCC_33500" "Haloferax_volcanii_DS2" ...
  - attr(*, "builtWith")= chr "index_avg_strandRand"
 }
-\details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-}
-\source{
-%%  ~~ reference to a publication or URL from which the data were obtained ~~
-}
-\references{
-%%  ~~ possibly secondary sources and usages ~~
-}
 \examples{
 data(valueMatrix)
 ## maybe str(valueMatrix) ; plot(valueMatrix) ...

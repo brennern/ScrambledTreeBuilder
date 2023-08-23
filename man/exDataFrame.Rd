@@ -457,15 +457,8 @@
     \item{\code{percent_identity_global}}{a numeric vector}
   }
 }
-\details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-}
-\source{
-%%  ~~ reference to a publication or URL from which the data were obtained ~~
-}
-\references{
-%%  ~~ possibly secondary sources and usages ~~
-}
+\details{Dataframe containing a wide variety of genome comparison calculations. Calculations ending with "..._bestpair" are meant to be utilized for bacteria, archaea, and other species with many plasmid, minichromosomes, etc. The bestpair calculation compares the two largest chromosomes of each species rather than the entire genome.}
+\source{Data comes from Nextflow pairwise alignment pipeline.}
 \examples{
 data(exDataFrame)
 ## maybe str(exDataFrame) ; plot(exDataFrame) ...

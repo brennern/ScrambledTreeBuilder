@@ -22,5 +22,7 @@ Imports:
     ggtree,
     tidytree,
     purrr,
-    yaml
+    yaml,
+    viridis,
+    ggplot2
 VignetteBuilder: knitr

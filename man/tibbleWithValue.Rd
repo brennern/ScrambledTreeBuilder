@@ -14,15 +14,7 @@
     \item{\code{value}}{a numeric vector}
   }
 }
-\details{
-%%  ~~ If necessary, more details than the __description__ above ~~
-}
-\source{
-%%  ~~ reference to a publication or URL from which the data were obtained ~~
-}
-\references{
-%%  ~~ possibly secondary sources and usages ~~
-}
+\details{This tibble dataset is the output from the makeValueTibble.R. This tibble will then be plotted using visualizeTree.R.}
 \examples{
 data(tibbleWithValue)
 ## maybe str(tibbleWithValue) ; plot(tibbleWithValue) ...
