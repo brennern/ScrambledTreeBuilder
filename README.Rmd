@@ -24,7 +24,7 @@ The goal of ScrambledTreeBuilder is to allow users to conveniently produce phylo
 
 You can install the development version of ScrambledTreeBuilder from [GitHub](https://github.com/) with:
       
-``` r
+``` {r}
 # install.packages("devtools")
 devtools::install_github("brennern/ScrambledTreeBuilder")
 ```

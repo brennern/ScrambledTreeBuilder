@@ -18,6 +18,113 @@ You can install the development version of ScrambledTreeBuilder from
 ``` r
 # install.packages("devtools")
 devtools::install_github("brennern/ScrambledTreeBuilder")
+#> Downloading GitHub repo brennern/ScrambledTreeBuilder@HEAD
+#> labeling    (0.4.2 -> 0.4.3) [CRAN]
+#> gtable      (0.3.3 -> 0.3.4) [CRAN]
+#> yulab.utils (0.0.7 -> 0.0.8) [CRAN]
+#> Skipping 1 packages not available: ggtree
+#> Installing 3 packages: labeling, gtable, yulab.utils
+#> Installing packages into '/tmp/RtmpXZQHyL/temp_libpathf56d85c88a32a'
+#> (as 'lib' is unspecified)
+#> ── R CMD build ─────────────────────────────────────────────────────────────────
+#> * checking for file ‘/tmp/RtmpDOqxwb/remotesfad1a2200649c/brennern-ScrambledTreeBuilder-2b8ba80/DESCRIPTION’ ... OK
+#> * preparing ‘ScrambledTreeBuilder’:
+#> * checking DESCRIPTION meta-information ... OK
+#> * checking for LF line-endings in source and make files and shell scripts
+#> * checking for empty or unneeded directories
+#> * building ‘ScrambledTreeBuilder_0.0.0.9000.tar.gz’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_litoreum___Halobacterium_noricense.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_litoreum___Halobacterium_salinarum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_litoreum___Haloferax_mediterranei_ATCC_33500.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_litoreum___Haloferax_volcanii_DS2.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_litoreum___Salarchaeum_japonicum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_noricense___Halobacterium_litoreum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_noricense___Halobacterium_salinarum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_noricense___Haloferax_mediterranei_ATCC_33500.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_noricense___Haloferax_volcanii_DS2.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_noricense___Salarchaeum_japonicum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_salinarum___Halobacterium_litoreum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_salinarum___Halobacterium_noricense.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_salinarum___Haloferax_mediterranei_ATCC_33500.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_salinarum___Haloferax_volcanii_DS2.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_salinarum___Salarchaeum_japonicum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_mediterranei_ATCC_33500___Halobacterium_litoreum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_mediterranei_ATCC_33500___Halobacterium_noricense.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_mediterranei_ATCC_33500___Halobacterium_salinarum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_mediterranei_ATCC_33500___Haloferax_volcanii_DS2.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_mediterranei_ATCC_33500___Salarchaeum_japonicum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_volcanii_DS2___Halobacterium_litoreum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_volcanii_DS2___Halobacterium_noricense.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_volcanii_DS2___Halobacterium_salinarum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_volcanii_DS2___Haloferax_mediterranei_ATCC_33500.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_volcanii_DS2___Salarchaeum_japonicum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Halobacterium_litoreum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Halobacterium_noricense.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Halobacterium_salinarum.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Haloferax_mediterranei_ATCC_33500.yaml.bz2’
+#> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
+#>   storing paths of more than 100 bytes is not portable:
+#>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Haloferax_volcanii_DS2.yaml.bz2’
+#> Installing package into '/tmp/RtmpXZQHyL/temp_libpathf56d85c88a32a'
+#> (as 'lib' is unspecified)
 ```
 
 ## Usage
@@ -65,10 +172,44 @@ desired variable.
 
 ``` r
 Tree <- visualizeTree(tibbleWithValue, tibbleWithValue$value)
+#> Registered S3 methods overwritten by 'treeio':
+#>   method              from    
+#>   MRCA.phylo          tidytree
+#>   MRCA.treedata       tidytree
+#>   Nnode.treedata      tidytree
+#>   Ntip.treedata       tidytree
+#>   ancestor.phylo      tidytree
+#>   ancestor.treedata   tidytree
+#>   child.phylo         tidytree
+#>   child.treedata      tidytree
+#>   full_join.phylo     tidytree
+#>   full_join.treedata  tidytree
+#>   groupClade.phylo    tidytree
+#>   groupClade.treedata tidytree
+#>   groupOTU.phylo      tidytree
+#>   groupOTU.treedata   tidytree
+#>   inner_join.phylo    tidytree
+#>   inner_join.treedata tidytree
+#>   is.rooted.treedata  tidytree
+#>   nodeid.phylo        tidytree
+#>   nodeid.treedata     tidytree
+#>   nodelab.phylo       tidytree
+#>   nodelab.treedata    tidytree
+#>   offspring.phylo     tidytree
+#>   offspring.treedata  tidytree
+#>   parent.phylo        tidytree
+#>   parent.treedata     tidytree
+#>   root.treedata       tidytree
+#>   rootnode.phylo      tidytree
+#>   sibling.phylo       tidytree
+#> Scale for y is already present.
+#> Adding another scale for y, which will replace the existing scale.
 
 Tree + 
   ggplot2::ggtitle(paste("Tree built with", valuesToBuildTheTree, "and labelled with", valuesToPlaceOnLabels)) + 
-  viridis::scale_color_viridis(name = valuesToPlaceOnLabels)
+  viridis::scale_color_viridis(name = valuesToPlaceOnLabels)+
+  ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
+  ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />

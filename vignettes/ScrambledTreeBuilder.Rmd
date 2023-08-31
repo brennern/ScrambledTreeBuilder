@@ -26,6 +26,7 @@ The ScrambledTreeBuilder package consists of numerous data formatting functions 
 Whilst the ScrambledTreeBuilder package contains all necessary functions required to convert data from .yaml files to a data type suitable for phylogenetic trees, loading ggplot2 will allow for greater customization of the final tree products.
 
 ```{r setup}
+devtools::install_github("brennern/ScrambledTreeBuilder") 
 library(ScrambledTreeBuilder)
 library(ggplot2)
 ```
@@ -79,7 +80,9 @@ Tree <- visualizeTree(tibbleWithValue, tibbleWithValue$value)
 
 Tree + 
   ggplot2::ggtitle(paste("Tree built with", valuesToBuildTheTree, "and labelled with", valuesToPlaceOnLabels)) + 
-  viridis::scale_color_viridis(name = valuesToPlaceOnLabels)
+  viridis::scale_color_viridis(name = valuesToPlaceOnLabels)+
+  geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
+  geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
 ```
 
 
