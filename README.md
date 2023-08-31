@@ -24,10 +24,10 @@ devtools::install_github("brennern/ScrambledTreeBuilder")
 #> yulab.utils (0.0.7 -> 0.0.8) [CRAN]
 #> Skipping 1 packages not available: ggtree
 #> Installing 3 packages: labeling, gtable, yulab.utils
-#> Installing packages into '/tmp/RtmpXZQHyL/temp_libpathf56d85c88a32a'
+#> Installing packages into '/tmp/Rtmp3DMa1V/temp_libpathfb8ff534bcfb6'
 #> (as 'lib' is unspecified)
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#> * checking for file ‘/tmp/RtmpDOqxwb/remotesfad1a2200649c/brennern-ScrambledTreeBuilder-2b8ba80/DESCRIPTION’ ... OK
+#> * checking for file ‘/tmp/RtmpIcCELQ/remotesfbb022c45d51b/brennern-ScrambledTreeBuilder-2b8ba80/DESCRIPTION’ ... OK
 #> * preparing ‘ScrambledTreeBuilder’:
 #> * checking DESCRIPTION meta-information ... OK
 #> * checking for LF line-endings in source and make files and shell scripts
@@ -123,7 +123,7 @@ devtools::install_github("brennern/ScrambledTreeBuilder")
 #> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
 #>   storing paths of more than 100 bytes is not portable:
 #>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Haloferax_volcanii_DS2.yaml.bz2’
-#> Installing package into '/tmp/RtmpXZQHyL/temp_libpathf56d85c88a32a'
+#> Installing package into '/tmp/Rtmp3DMa1V/temp_libpathfb8ff534bcfb6'
 #> (as 'lib' is unspecified)
 ```
 
