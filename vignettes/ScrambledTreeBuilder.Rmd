@@ -26,7 +26,7 @@ The ScrambledTreeBuilder package consists of numerous data formatting functions 
 Whilst the ScrambledTreeBuilder package contains all necessary functions required to convert data from .yaml files to a data type suitable for phylogenetic trees, loading ggplot2 will allow for greater customization of the final tree products.
 
 ```{r setup}
-devtools::install_github("brennern/ScrambledTreeBuilder") 
+devtools::install_github("brennern/ScrambledTreeBuilder") |> suppressPackageStartupMessages()
 library(ScrambledTreeBuilder)
 library(ggplot2)
 ```
