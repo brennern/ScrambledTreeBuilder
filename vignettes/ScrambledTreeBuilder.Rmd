@@ -80,9 +80,9 @@ Tree <- visualizeTree(tibbleWithValue, tibbleWithValue$value)
 
 Tree + 
   ggplot2::ggtitle(paste("Tree built with", valuesToBuildTheTree, "and labelled with", valuesToPlaceOnLabels)) + 
-  viridis::scale_color_viridis(name = valuesToPlaceOnLabels)+
-  geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
-  geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
+  viridis::scale_color_viridis(name = valuesToPlaceOnLabels) +
+  ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
+  ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
 ```
 
 

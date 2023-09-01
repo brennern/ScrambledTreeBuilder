@@ -24,5 +24,6 @@ Imports:
     purrr,
     yaml,
     viridis,
-    ggplot2
+    ggplot2,
+    devtools
 VignetteBuilder: knitr
