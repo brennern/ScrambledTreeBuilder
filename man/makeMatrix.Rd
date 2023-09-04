@@ -4,10 +4,10 @@
 \alias{makeMatrix}
 \title{Make a matrix from a data frame containing species data.}
 \usage{
-makeMatrix(df, column, defaultDiagonal = 100, defaultValue = NA)
+makeMatrix(DF, column, defaultDiagonal = 100, defaultValue = NA)
 }
 \arguments{
-\item{df}{Data frame containing species information.}
+\item{DF}{Data frame containing species information.}
 
 \item{column}{The variable from the data frame you want to extract species data from.}
 

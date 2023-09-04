@@ -4,10 +4,10 @@
 \alias{visualizeTree}
 \title{Create a phylogenetic tree using tibble data.}
 \usage{
-visualizeTree(tibble, value)
+visualizeTree(your_tibble, value)
 }
 \arguments{
-\item{tibble}{Tibble data containing species genome information.}
+\item{your_tibble}{Tibble data containing species genome information.}
 }
 \value{
 A phylogenetic tree showcasing phylogeny of species and additional calculated values.
@@ -16,5 +16,5 @@ A phylogenetic tree showcasing phylogeny of species and additional calculated va
 Create a phylogenetic tree using tibble data.
 }
 \examples{
-Tree <- visualizeTree(tibbleWithValue)
+Tree <- visualizeTree(your_tibble = tibbleWithValue)
 }
