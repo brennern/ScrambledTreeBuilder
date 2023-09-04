@@ -14,12 +14,12 @@
 #' exDataFrame <- formatStats(yamlFileData)
 #' exDataFrame[1:10,1:6]
 formatStats <- function(files) {
-  df <- do.call(rbind, lapply(files, getStats)) |> as.data.frame()
-  df <- df[,colSums(df, na.rm = TRUE) !=0]
-  df$species1 <- strsplit(rownames(df), "___") |> lapply(\(.) .[1]) |> unlist()
-  df$species2 <- strsplit(rownames(df), "___") |> lapply(\(.) .[2]) |> unlist()
-  df <- df[df$species1 != df$species2,]
-  df$index_avg_strandRand <- (df$index_strandRand_target_bestpair + df$index_strandRand_query_bestpair) / 2
-  df$percent_identity_global <- df$aligned_matches_bestpair_Total / df$aligned_length_bestpair_Total * 100
-  df
+  DF <- do.call(rbind, lapply(files, getStats)) |> as.data.frame()
+  DF <- DF[,colSums(DF, na.rm = TRUE) !=0]
+  DF$species1 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[1]) |> unlist()
+  DF$species2 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[2]) |> unlist()
+  DF <- DF[DF$species1 != DF$species2,]
+  DF$index_avg_strandRand <- (DF$index_strandRand_target_bestpair + DF$index_strandRand_query_bestpair) / 2
+  DF$percent_identity_global <- DF$aligned_matches_bestpair_Total / DF$aligned_length_bestpair_Total * 100
+  DF
 }
