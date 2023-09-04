@@ -167,9 +167,7 @@ scrambling, which we store in ‘valueMatrix’.</p>
 <span><span class="co">#&gt; Haloferax_mediterranei_ATCC_33500               68.49688</span></span>
 <span><span class="co">#&gt; Haloferax_volcanii_DS2                          70.22052</span></span>
 <span><span class="co">#&gt; Salarchaeum_japonicum                           72.77139</span></span>
-<span><span class="co">#&gt; Halobacterium_litoreum                         100.00000</span></span>
-<span><span class="co">#&gt; attr(,"builtWith")</span></span>
-<span><span class="co">#&gt; [1] "percent_identity_global"</span></span></code></pre></div>
+<span><span class="co">#&gt; Halobacterium_litoreum                         100.00000</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">valuesToPlaceOnLabels</span> <span class="op">&lt;-</span> <span class="st">"index_avg_strandRand"</span></span>
 <span><span class="va">valueMatrix</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"index_avg_strandRand"</span>, <span class="fl">1</span>, <span class="fl">0.5</span><span class="op">)</span></span>
@@ -208,9 +206,7 @@ scrambling, which we store in ‘valueMatrix’.</p>
 <span><span class="co">#&gt; Haloferax_mediterranei_ATCC_33500             0.08857840</span></span>
 <span><span class="co">#&gt; Haloferax_volcanii_DS2                        0.04606195</span></span>
 <span><span class="co">#&gt; Salarchaeum_japonicum                         0.18109200</span></span>
-<span><span class="co">#&gt; Halobacterium_litoreum                        1.00000000</span></span>
-<span><span class="co">#&gt; attr(,"builtWith")</span></span>
-<span><span class="co">#&gt; [1] "index_avg_strandRand"</span></span></code></pre></div>
+<span><span class="co">#&gt; Halobacterium_litoreum                        1.00000000</span></span></code></pre></div>
 <p>Using the ‘treeMatrix’, we will create an hclust object and use this
 to produce a tibble dataset. Transforming into a tibble dataset is
 necessary as this will allow us to add the variable from our
