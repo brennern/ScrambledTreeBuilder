@@ -25,7 +25,7 @@ makeMultiValueTibble <- function(your_tibble, DF, colsToSelect = c("index_avg_st
   })
   names(value_matrices) <- colsToSelect
   value_tibbles <- lapply(1:n_cols, function(x) {
-    y <- makeValueTibble(your_tibble = your_tibble, matrix = value_matrices[[x]], fun = fun)
+    y <- makeValueTibble(your_tibble = your_tibble, your_matrix = value_matrices[[x]], fun = fun)
     # colnames(y)[5] <- colsToSelect[x]
     y$value
   })
