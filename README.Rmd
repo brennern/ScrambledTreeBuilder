@@ -42,7 +42,7 @@ names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep=
 exDataFrame <- formatStats(yamlFileData)
 ```
 
-To build the phylogenetic trees, your data frame will need to be tranformed into a matrix. The function `makeMatrix()` will accomplish this.
+To build the phylogenetic trees, your data frame will need to be transformed into a matrix. The function `makeMatrix()` will accomplish this.
 
 ```{r}
 valuesToBuildTheTree <- "percent_identity_global"
@@ -57,16 +57,27 @@ Then, in order to plot the percent identity and strand randomisation index score
 HClust <- hclust(dist(treeMatrix), method = "complete")
 Tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
 tibbleWithValue <- makeValueTibble(Tibble, valueMatrix)
+tibbleWithMultipleValues <- makeMultiValueTibble(Tibble, exDataFrame, colsToSelect = c("index_avg_strandRand", "percent_identity_global"))
 ```
 
 Finally, to visualize your phylogenetic tree, you can utilize the `visualizeTree()` function by inputting your tibble data containing your desired variable.
 
 ```{r}
-Tree <- visualizeTree(tibbleWithValue, tibbleWithValue$value)
+SingleValueTree <- visualizeTree(tibbleWithValue, tibbleWithValue$value)
 
-Tree + 
+SingleValueTree + 
   ggplot2::ggtitle(paste("Tree built with", valuesToBuildTheTree, "and labelled with", valuesToPlaceOnLabels)) + 
-  viridis::scale_color_viridis(name = valuesToPlaceOnLabels)+
+  viridis::scale_color_viridis(name = valuesToPlaceOnLabels) +
   ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
   ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
+```
+```{r}
+MultiValueTree <- visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$index_avg_strandRand, ynudge = 0.35)
+
+MultiValueTree +
+  ggplot2::ggtitle("Tree labeled with strand randomisation index and percent identity (built with percent identity)") +
+  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
+  ggnewscale::new_scale_colour() +
+  ggtree::geom_label(ggtree::aes(label=round(percent_identity_global, digits = 3), color = percent_identity_global), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.35) +
+  viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
 ```
