@@ -253,11 +253,41 @@ value from our ‘valueMatrix’ to the tibble data.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      7     9          4.62 <span style="color: #BB0000;">NA</span>                                 0.121 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          2.19 <span style="color: #BB0000;">NA</span>                                 0.387 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          2.98 <span style="color: #BB0000;">NA</span>                                 0.397</span></span></code></pre></div>
-<p>Finally, we can use the ‘tibbleWithValue’ dataset to build the tree.
-In our case, we will generate a tree built based on percent identity
-values with strand randomisation scores labeled on all nodes.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">Tree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithValue</span>, <span class="va">tibbleWithValue</span><span class="op">$</span><span class="va">value</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">tibbleWithMultipleValues</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeMultiValueTibble.html">makeMultiValueTibble</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="va">exDataFrame</span>, colsToSelect <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"index_avg_strandRand"</span>, <span class="st">"percent_identity_global"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">tibbleWithMultipleValues</span></span>
+<span><span class="co">#&gt;    parent node branch.length                             label</span></span>
+<span><span class="co">#&gt; 1      11    1     14.976889           Halobacterium_noricense</span></span>
+<span><span class="co">#&gt; 2      10    2     17.960459           Halobacterium_salinarum</span></span>
+<span><span class="co">#&gt; 3       8    3     13.679394 Haloferax_mediterranei_ATCC_33500</span></span>
+<span><span class="co">#&gt; 4       8    4     13.679394            Haloferax_volcanii_DS2</span></span>
+<span><span class="co">#&gt; 5       9    5     20.149796             Salarchaeum_japonicum</span></span>
+<span><span class="co">#&gt; 6      11    6     14.976889            Halobacterium_litoreum</span></span>
+<span><span class="co">#&gt; 7       7    7            NA                              &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 8       7    8     11.085590                              &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 9       7    9      4.615188                              &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 10      9   10      2.189337                              &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 11     10   11      2.983570                              &lt;NA&gt;</span></span>
+<span><span class="co">#&gt;    index_avg_strandRand percent_identity_global</span></span>
+<span><span class="co">#&gt; 1                    NA                      NA</span></span>
+<span><span class="co">#&gt; 2                    NA                      NA</span></span>
+<span><span class="co">#&gt; 3                    NA                      NA</span></span>
+<span><span class="co">#&gt; 4                    NA                      NA</span></span>
+<span><span class="co">#&gt; 5                    NA                      NA</span></span>
+<span><span class="co">#&gt; 6                    NA                      NA</span></span>
+<span><span class="co">#&gt; 7            0.06655309                68.63516</span></span>
+<span><span class="co">#&gt; 8            0.33675900                80.80996</span></span>
+<span><span class="co">#&gt; 9            0.12072017                72.17803</span></span>
+<span><span class="co">#&gt; 10           0.38749185                75.31829</span></span>
+<span><span class="co">#&gt; 11           0.39714395                78.80471</span></span></code></pre></div>
+<p>Finally, we can use the ‘tibbleWithValue’ and
+‘tibbleWithMultipleValues’ dataset to build the tree. In our case, we
+will generate a tree built based on percent identity values with strand
+randomisation scores labeled on all nodes using ‘tibbleWithValue’.
+‘tibbleWithMultipleValues’ will allow us to plot both strand
+randomisation index scores and percent identity scores on the tree.</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">SingleValueTree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithValue</span>, <span class="va">tibbleWithValue</span><span class="op">$</span><span class="va">value</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Registered S3 methods overwritten by 'treeio':</span></span>
 <span><span class="co">#&gt;   method              from    </span></span>
 <span><span class="co">#&gt;   MRCA.phylo          tidytree</span></span>
@@ -291,12 +321,24 @@ values with strand randomisation scores labeled on all nodes.</p>
 <span><span class="co">#&gt; Scale for <span style="color: #00BB00;">y</span> is already present.</span></span>
 <span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">y</span>, which will replace the existing scale.</span></span>
 <span></span>
-<span><span class="va">Tree</span> <span class="op">+</span> </span>
+<span><span class="va">SingleValueTree</span> <span class="op">+</span> </span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Tree built with"</span>, <span class="va">valuesToBuildTheTree</span>, <span class="st">"and labelled with"</span>, <span class="va">valuesToPlaceOnLabels</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html" class="external-link">scale_color_viridis</a></span><span class="op">(</span>name <span class="op">=</span> <span class="va">valuesToPlaceOnLabels</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggtree/man/geom-hilight.html" class="external-link">geom_hilight</a></span><span class="op">(</span>node <span class="op">=</span> <span class="fl">8</span>, fill <span class="op">=</span> <span class="st">"lightblue1"</span>, alpha <span class="op">=</span> <span class="fl">.2</span>, type <span class="op">=</span> <span class="st">"gradient"</span>, gradient.direction <span class="op">=</span> <span class="st">'tr'</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/ggtree/man/geom-hilight.html" class="external-link">geom_hilight</a></span><span class="op">(</span>node <span class="op">=</span> <span class="fl">9</span>, fill <span class="op">=</span> <span class="st">"pink"</span>, alpha <span class="op">=</span> <span class="fl">.2</span>, type <span class="op">=</span> <span class="st">"gradient"</span>, gradient.direction <span class="op">=</span> <span class="st">'tr'</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-9-1.png" width="700"></p>
+<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-10-1.png" width="700"></p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">MultiValueTree</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="va">tibbleWithMultipleValues</span><span class="op">$</span><span class="va">index_avg_strandRand</span>, ynudge <span class="op">=</span> <span class="fl">0.35</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Scale for <span style="color: #00BB00;">y</span> is already present.</span></span>
+<span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">y</span>, which will replace the existing scale.</span></span>
+<span></span>
+<span><span class="va">MultiValueTree</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Tree labeled with strand randomisation index and percent identity (built with percent identity)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html" class="external-link">scale_color_viridis</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Strand Randomisation Index"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggnewscale</span><span class="fu">::</span><span class="fu"><a href="https://eliocamp.github.io/ggnewscale/reference/new_scale.html" class="external-link">new_scale_colour</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span><span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">percent_identity_global</span>, digits <span class="op">=</span> <span class="fl">3</span><span class="op">)</span>, color <span class="op">=</span> <span class="va">percent_identity_global</span><span class="op">)</span>, label.size <span class="op">=</span> <span class="fl">0.25</span>, size <span class="op">=</span> <span class="fl">3</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, label.padding <span class="op">=</span> <span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">0.15</span>, <span class="st">"lines"</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="op">-</span><span class="fl">0.35</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html" class="external-link">scale_color_viridis</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"magma"</span>, name <span class="op">=</span> <span class="st">"Percent Identity"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
