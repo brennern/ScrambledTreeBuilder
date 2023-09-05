@@ -11,10 +11,10 @@
 #' yamlToTibble(yamlFileData)
 yamlToTibble <- function(yamlfiles, valueToBuildTheTree = "percent_identity_global", valueToPlaceOnLabels = "index_avg_strandRand") {
   DF <- formatStats(yamlfiles)
-  tree_matrix <- makeMatrix(exDataFrame, valueToBuildTheTree, 100, 50)
-  value_matrix <- makeMatrix(exDataFrame, valueToPlaceOnLabels, 1, 0.5)
-  HClust <- hclust(dist(treeMatrix), method = "complete")
+  tree_matrix <- makeMatrix(DF, valueToBuildTheTree, 100, 50)
+  value_matrix <- makeMatrix(DF, valueToPlaceOnLabels, 1, 0.5)
+  HClust <- hclust(dist(tree_matrix), method = "complete")
   the_tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
-  the_tibbleWithValue <- makeValueTibble(Tibble, valueMatrix)
+  the_tibbleWithValue <- makeValueTibble(the_tibble, value_matrix)
   the_tibbleWithValue
 }
