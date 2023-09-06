@@ -8,9 +8,9 @@
 #'
 #' @examples
 #' makeValueTibble(Tibble, valueMatrix)
-makeValueTibble <- function(your_tibble, your_matrix, fun = mean) {
+makeValueTibble <- function(your_tibble, your_matrix, fun = mean, colname = "value") {
   labels <- unique(your_tibble$parent) |> sort() |> purrr::set_names() |> sapply(extractValues, your_tibble, your_matrix, fun)
-  your_tibble$value <- NA
-  your_tibble[names(labels), "value"] <- unname(labels)
+  your_tibble[, colname] <- NA
+  your_tibble[names(labels), colname] <- unname(labels)
   your_tibble
 }

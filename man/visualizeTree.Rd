@@ -4,7 +4,15 @@
 \alias{visualizeTree}
 \title{Create a phylogenetic tree using tibble data.}
 \usage{
-visualizeTree(your_tibble, value)
+visualizeTree(
+  your_tibble,
+  value,
+  valueround = 2,
+  outerlabelsize = 0.25,
+  innerlabelsize = 3,
+  ynudge = 0,
+  xnudge = 0
+)
 }
 \arguments{
 \item{your_tibble}{Tibble data containing species genome information.}

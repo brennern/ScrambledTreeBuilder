@@ -4,7 +4,7 @@
 \alias{makeValueTibble}
 \title{Make new tibble dataset with added value column from a matrix}
 \usage{
-makeValueTibble(your_tibble, your_matrix, fun = mean)
+makeValueTibble(your_tibble, your_matrix, fun = mean, colname = "value")
 }
 \arguments{
 \item{your_tibble}{Original tibble dataset to add value column to.}
