@@ -25,8 +25,7 @@ devtools::install_github("brennern/ScrambledTreeBuilder")
 After performing an All Vs. All genome comparison between dozens of
 species, you may have .yaml files as the output. In order to convert
 these files into a dataframe in R, you may use the `formatStats()`
-function. Extract your .yaml files from their respective directory and
-store the information under the variable `yamlFiles`.
+function. Extract your .yaml files from their respective directory and store the information under the variable `yamlFiles`.
 
 ``` r
 library(ScrambledTreeBuilder)
@@ -56,8 +55,8 @@ tibble and utilize the functions `makeValueTibble()`.
 ``` r
 HClust <- hclust(dist(treeMatrix), method = "complete")
 Tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
-tibbleWithValue <- makeValueTibble(Tibble, valueMatrix)
-tibbleWithMultipleValues <- makeMultiValueTibble(Tibble, exDataFrame, colsToSelect = c("index_avg_strandRand", "percent_identity_global"))
+tibbleWithValue <- makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index")
+tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname = "Percent_Identity")
 ```
 
 Finally, to visualize your phylogenetic tree, you can utilize the
@@ -65,11 +64,11 @@ Finally, to visualize your phylogenetic tree, you can utilize the
 desired variable.
 
 ``` r
-SingleValueTree <- visualizeTree(tibbleWithValue, tibbleWithValue$value)
+SingleValueTree <- visualizeTree(tibbleWithValue, tibbleWithValue$Strand_Randomisation_Index)
 
-SingleValueTree + 
-  ggplot2::ggtitle(paste("Tree built with", valuesToBuildTheTree, "and labelled with", valuesToPlaceOnLabels)) + 
-  viridis::scale_color_viridis(name = valuesToPlaceOnLabels) +
+SingleValueTree +
+  ggplot2::ggtitle(paste("Tree built with Percent Identity and labelled with Strand Randomisation Index scores")) + 
+  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
   ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
   ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
 ```
@@ -77,15 +76,15 @@ SingleValueTree +
 <img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 ``` r
-MultiValueTree <- visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$index_avg_strandRand, ynudge = 0.35)
+MultiValueTree <- visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index, ynudge = 0.2)
 #> Scale for y is already present.
 #> Adding another scale for y, which will replace the existing scale.
 
 MultiValueTree +
-  ggplot2::ggtitle("Tree labeled with strand randomisation index and percent identity (built with percent identity)") +
+  ggplot2::ggtitle("Tree labeled with Strand Randomisation Index and Percent Identity (built with Percent Identity)") +
   viridis::scale_color_viridis(name = "Strand Randomisation Index") +
   ggnewscale::new_scale_colour() +
-  ggtree::geom_label(ggtree::aes(label=round(percent_identity_global, digits = 3), color = percent_identity_global), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.35) +
+  ggtree::geom_label(ggtree::aes(label=round(Percent_Identity, digits = 3), color = Percent_Identity), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.2) +
   viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
 ```
 
