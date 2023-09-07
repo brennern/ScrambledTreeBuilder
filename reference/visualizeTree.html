@@ -67,6 +67,30 @@
     <dl><dt>your_tibble</dt>
 <dd><p>Tibble data containing species genome information.</p></dd>
 
+
+<dt>value</dt>
+<dd><p>Tibble value to label on internal nodes of the tree.</p></dd>
+
+
+<dt>valueround</dt>
+<dd><p>Number of integers to round value.</p></dd>
+
+
+<dt>outerlabelsize</dt>
+<dd><p>Size of label border.</p></dd>
+
+
+<dt>innerlabelsize</dt>
+<dd><p>Overall size of label.</p></dd>
+
+
+<dt>ynudge</dt>
+<dd><p>Adjust vertical position of labels.</p></dd>
+
+
+<dt>xnudge</dt>
+<dd><p>Adjust horizontal position of labels.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -77,7 +101,7 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">Tree</span> <span class="op">&lt;-</span> <span class="fu">visualizeTree</span><span class="op">(</span>your_tibble <span class="op">=</span> <span class="va">tibbleWithValue</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">Tree</span> <span class="op">&lt;-</span> <span class="fu">visualizeTree</span><span class="op">(</span>your_tibble <span class="op">=</span> <span class="va">tibbleWithValue</span>, value <span class="op">=</span> <span class="va">tibbleWithValue</span><span class="op">$</span><span class="va">Strand_Randomisation_Index</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Scale for <span style="color: #00BB00;">y</span> is already present.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Adding another scale for <span style="color: #00BB00;">y</span>, which will replace the existing scale.</span>
 </code></pre></div>
