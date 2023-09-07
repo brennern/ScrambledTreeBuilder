@@ -11,9 +11,9 @@ makeMatrix(DF, column, defaultDiagonal = 100, defaultValue = NA)
 
 \item{column}{The variable from the data frame you want to extract species data from.}
 
-\item{defaultDiagonal}{defaultDiagonal}
+\item{defaultDiagonal}{Maximum possible value of variable.}
 
-\item{defaultValue}{defaultValue}
+\item{defaultValue}{Minimum possible value of variable.}
 }
 \value{
 A matrix containing species names and data for the selected variable.

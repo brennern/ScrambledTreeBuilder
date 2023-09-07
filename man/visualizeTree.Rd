@@ -16,6 +16,18 @@ visualizeTree(
 }
 \arguments{
 \item{your_tibble}{Tibble data containing species genome information.}
+
+\item{value}{Tibble value to label on internal nodes of the tree.}
+
+\item{valueround}{Number of integers to round value.}
+
+\item{outerlabelsize}{Size of label border.}
+
+\item{innerlabelsize}{Overall size of label.}
+
+\item{ynudge}{Adjust vertical position of labels.}
+
+\item{xnudge}{Adjust horizontal position of labels.}
 }
 \value{
 A phylogenetic tree showcasing phylogeny of species and additional calculated values.
@@ -24,5 +36,5 @@ A phylogenetic tree showcasing phylogeny of species and additional calculated va
 Create a phylogenetic tree using tibble data.
 }
 \examples{
-Tree <- visualizeTree(your_tibble = tibbleWithValue)
+Tree <- visualizeTree(your_tibble = tibbleWithValue, value = tibbleWithValue$Strand_Randomisation_Index)
 }

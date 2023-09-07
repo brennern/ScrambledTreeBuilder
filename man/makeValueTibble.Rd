@@ -10,6 +10,10 @@ makeValueTibble(your_tibble, your_matrix, fun = mean, colname = "value")
 \item{your_tibble}{Original tibble dataset to add value column to.}
 
 \item{your_matrix}{Matrix containing values to add to tibble.}
+
+\item{fun}{Default set to mean.}
+
+\item{colname}{New column name for value being added to tibble (defaut set to "value").}
 }
 \value{
 New tibble with values added.
@@ -18,5 +22,5 @@ New tibble with values added.
 Make new tibble dataset with added value column from a matrix
 }
 \examples{
-makeValueTibble(Tibble, valueMatrix)
+makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index")
 }

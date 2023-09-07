@@ -76,7 +76,7 @@ tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname
 tibbleWithMultipleValues
 ```
 
-Finally, we can use the 'tibbleWithValue' and 'tibbleWithMultipleValues' dataset to build the tree. In our case, we will generate a tree built based on percent identity values with strand randomisation scores labeled on all nodes using 'tibbleWithValue'. 'tibbleWithMultipleValues' will allow us to plot both strand randomisation index scores and percent identity scores on the tree.
+Finally, we can use the 'tibbleWithValue' and 'tibbleWithMultipleValues' datasets to build the tree. In our case, we will generate a tree built based on percent identity values with strand randomisation scores labeled on all nodes using 'tibbleWithValue'. 'tibbleWithMultipleValues' will allow us to plot both strand randomisation index scores and percent identity scores on the tree.
 
 ```{r}
 SingleValueTree <- visualizeTree(tibbleWithValue, tibbleWithValue$Strand_Randomisation_Index)
@@ -97,8 +97,4 @@ MultiValueTree +
   ggtree::geom_label(ggtree::aes(label=round(Percent_Identity, digits = 3), color = Percent_Identity), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.2) +
   viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
 ```
-
-
-
-
 

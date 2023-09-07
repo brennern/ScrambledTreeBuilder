@@ -2,8 +2,8 @@
 #'
 #' @param DF Data frame containing species information.
 #' @param column The variable from the data frame you want to extract species data from.
-#' @param defaultDiagonal defaultDiagonal
-#' @param defaultValue defaultValue
+#' @param defaultDiagonal Maximum possible value of variable.
+#' @param defaultValue Minimum possible value of variable.
 #'
 #' @return A matrix containing species names and data for the selected variable.
 #' @export
