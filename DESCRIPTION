@@ -3,7 +3,7 @@ Title: Builds Phylogenetic Trees Showcasing Genome Scrambling in Species
 Version: 0.0.0.9000
 Authors@R: 
     person("Noa", "Brenner", , "brennern@hawaii.edu", role = c("aut", "cre"))
-    person("Charles", "Plessy", , "charles.plessy@oist.jp", role = c("aut"))
+    person("Charles", "Plessy", , "charles.plessy@oist.jp", role = "aut")
 Description: Formats data from .yaml files, calculates information for each internal tree node, and plots phylogenetic trees.
 License: MIT + file LICENSE
 Encoding: UTF-8
