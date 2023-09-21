@@ -22,7 +22,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    <nav class="navbar fixed-top navbar-dark navbar-expand-lg bg-dark"><div class="container">
     
     <a class="navbar-brand me-2" href="index.html">ScrambledTreeBuilder</a>
 
@@ -72,14 +72,131 @@
 <p>You can install the development version of ScrambledTreeBuilder from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"brennern/ScrambledTreeBuilder"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"brennern/ScrambledTreeBuilder"</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; labeling    (0.4.2   -&gt; 0.4.3  ) [CRAN]</span></span>
+<span><span class="co">#&gt; gtable      (0.3.3   -&gt; 0.3.4  ) [CRAN]</span></span>
+<span><span class="co">#&gt; xml2        (1.3.4   -&gt; 1.3.5  ) [CRAN]</span></span>
+<span><span class="co">#&gt; curl        (5.0.1   -&gt; 5.0.2  ) [CRAN]</span></span>
+<span><span class="co">#&gt; xfun        (0.39    -&gt; 0.40   ) [CRAN]</span></span>
+<span><span class="co">#&gt; knitr       (1.43    -&gt; 1.44   ) [CRAN]</span></span>
+<span><span class="co">#&gt; tinytex     (0.45    -&gt; 0.46   ) [CRAN]</span></span>
+<span><span class="co">#&gt; fontawesome (0.5.1   -&gt; 0.5.2  ) [CRAN]</span></span>
+<span><span class="co">#&gt; bslib       (0.5.0   -&gt; 0.5.1  ) [CRAN]</span></span>
+<span><span class="co">#&gt; rmarkdown   (2.23    -&gt; 2.24   ) [CRAN]</span></span>
+<span><span class="co">#&gt; htmltools   (0.5.5   -&gt; 0.5.6  ) [CRAN]</span></span>
+<span><span class="co">#&gt; askpass     (1.1     -&gt; 1.2.0  ) [CRAN]</span></span>
+<span><span class="co">#&gt; httr        (1.4.6   -&gt; 1.4.7  ) [CRAN]</span></span>
+<span><span class="co">#&gt; promises    (1.2.0.1 -&gt; 1.2.1  ) [CRAN]</span></span>
+<span><span class="co">#&gt; shiny       (1.7.4   -&gt; 1.7.5  ) [CRAN]</span></span>
+<span><span class="co">#&gt; credentials (1.3.2   -&gt; 2.0.1  ) [CRAN]</span></span>
+<span><span class="co">#&gt; gert        (1.9.2   -&gt; 1.9.3  ) [CRAN]</span></span>
+<span><span class="co">#&gt; dplyr       (1.1.2   -&gt; 1.1.3  ) [CRAN]</span></span>
+<span><span class="co">#&gt; remotes     (2.4.2   -&gt; 2.4.2.1) [CRAN]</span></span>
+<span><span class="co">#&gt; yulab.utils (0.0.7   -&gt; 0.0.9  ) [CRAN]</span></span>
+<span><span class="co">#&gt; ── R CMD build ─────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; * checking for file ‘/tmp/Rtmp5rdntX/remotesb71a2e7d0dea/brennern-ScrambledTreeBuilder-936984e/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">#&gt; * preparing ‘ScrambledTreeBuilder’:</span></span>
+<span><span class="co">#&gt; * checking DESCRIPTION meta-information ... OK</span></span>
+<span><span class="co">#&gt; * checking for LF line-endings in source and make files and shell scripts</span></span>
+<span><span class="co">#&gt; * checking for empty or unneeded directories</span></span>
+<span><span class="co">#&gt; * building ‘ScrambledTreeBuilder_0.0.0.9000.tar.gz’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_litoreum___Halobacterium_noricense.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_litoreum___Halobacterium_salinarum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_litoreum___Haloferax_mediterranei_ATCC_33500.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_litoreum___Haloferax_volcanii_DS2.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_litoreum___Salarchaeum_japonicum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_noricense___Halobacterium_litoreum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_noricense___Halobacterium_salinarum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_noricense___Haloferax_mediterranei_ATCC_33500.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_noricense___Haloferax_volcanii_DS2.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_noricense___Salarchaeum_japonicum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_salinarum___Halobacterium_litoreum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_salinarum___Halobacterium_noricense.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_salinarum___Haloferax_mediterranei_ATCC_33500.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_salinarum___Haloferax_volcanii_DS2.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Halobacterium_salinarum___Salarchaeum_japonicum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_mediterranei_ATCC_33500___Halobacterium_litoreum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_mediterranei_ATCC_33500___Halobacterium_noricense.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_mediterranei_ATCC_33500___Halobacterium_salinarum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_mediterranei_ATCC_33500___Haloferax_volcanii_DS2.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_mediterranei_ATCC_33500___Salarchaeum_japonicum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_volcanii_DS2___Halobacterium_litoreum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_volcanii_DS2___Halobacterium_noricense.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_volcanii_DS2___Halobacterium_salinarum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_volcanii_DS2___Haloferax_mediterranei_ATCC_33500.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Haloferax_volcanii_DS2___Salarchaeum_japonicum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Halobacterium_litoreum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Halobacterium_noricense.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Halobacterium_salinarum.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Haloferax_mediterranei_ATCC_33500.yaml.bz2’</span></span>
+<span><span class="co">#&gt; Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :</span></span>
+<span><span class="co">#&gt;   storing paths of more than 100 bytes is not portable:</span></span>
+<span><span class="co">#&gt;   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Haloferax_volcanii_DS2.yaml.bz2’</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>After performing an All Vs. All genome comparison between dozens of species, you may have .yaml files as the output. In order to convert these files into a dataframe in R, you may use the <code><a href="reference/formatStats.html">formatStats()</a></code> function. Extract your .yaml files from their respective directory and store the information under the variable <code>yamlFiles</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/brennern/ScrambledTreeBuilder" class="external-link">ScrambledTreeBuilder</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/brennern/ScrambledTreeBuilder" class="external-link">ScrambledTreeBuilder</a></span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">resultsDir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/PairwiseComparisons"</span>, package <span class="op">=</span> <span class="st">"ScrambledTreeBuilder"</span><span class="op">)</span></span>
 <span><span class="va">yamlFileData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">resultsDir</span>, pattern <span class="op">=</span> <span class="st">"*.yaml.bz2"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -101,6 +218,38 @@
 <p>Finally, to visualize your phylogenetic tree, you can utilize the <code><a href="reference/visualizeTree.html">visualizeTree()</a></code> function by inputting your tibble data containing your desired variable.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">SingleValueTree</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithValue</span>, <span class="va">tibbleWithValue</span><span class="op">$</span><span class="va">Strand_Randomisation_Index</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Registered S3 methods overwritten by 'treeio':</span></span>
+<span><span class="co">#&gt;   method              from    </span></span>
+<span><span class="co">#&gt;   MRCA.phylo          tidytree</span></span>
+<span><span class="co">#&gt;   MRCA.treedata       tidytree</span></span>
+<span><span class="co">#&gt;   Nnode.treedata      tidytree</span></span>
+<span><span class="co">#&gt;   Ntip.treedata       tidytree</span></span>
+<span><span class="co">#&gt;   ancestor.phylo      tidytree</span></span>
+<span><span class="co">#&gt;   ancestor.treedata   tidytree</span></span>
+<span><span class="co">#&gt;   child.phylo         tidytree</span></span>
+<span><span class="co">#&gt;   child.treedata      tidytree</span></span>
+<span><span class="co">#&gt;   full_join.phylo     tidytree</span></span>
+<span><span class="co">#&gt;   full_join.treedata  tidytree</span></span>
+<span><span class="co">#&gt;   groupClade.phylo    tidytree</span></span>
+<span><span class="co">#&gt;   groupClade.treedata tidytree</span></span>
+<span><span class="co">#&gt;   groupOTU.phylo      tidytree</span></span>
+<span><span class="co">#&gt;   groupOTU.treedata   tidytree</span></span>
+<span><span class="co">#&gt;   inner_join.phylo    tidytree</span></span>
+<span><span class="co">#&gt;   inner_join.treedata tidytree</span></span>
+<span><span class="co">#&gt;   is.rooted.treedata  tidytree</span></span>
+<span><span class="co">#&gt;   nodeid.phylo        tidytree</span></span>
+<span><span class="co">#&gt;   nodeid.treedata     tidytree</span></span>
+<span><span class="co">#&gt;   nodelab.phylo       tidytree</span></span>
+<span><span class="co">#&gt;   nodelab.treedata    tidytree</span></span>
+<span><span class="co">#&gt;   offspring.phylo     tidytree</span></span>
+<span><span class="co">#&gt;   offspring.treedata  tidytree</span></span>
+<span><span class="co">#&gt;   parent.phylo        tidytree</span></span>
+<span><span class="co">#&gt;   parent.treedata     tidytree</span></span>
+<span><span class="co">#&gt;   root.treedata       tidytree</span></span>
+<span><span class="co">#&gt;   rootnode.phylo      tidytree</span></span>
+<span><span class="co">#&gt;   sibling.phylo       tidytree</span></span>
+<span><span class="co">#&gt; Scale for y is already present.</span></span>
+<span><span class="co">#&gt; Adding another scale for y, which will replace the existing scale.</span></span>
 <span></span>
 <span><span class="va">SingleValueTree</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Tree built with Percent Identity and labelled with Strand Randomisation Index scores"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
