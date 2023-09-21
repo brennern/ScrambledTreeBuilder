@@ -17,8 +17,7 @@ You can install the development version of ScrambledTreeBuilder from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("brennern/ScrambledTreeBuilder")
-#> Downloading GitHub repo brennern/ScrambledTreeBuilder@HEAD
+devtools::install_github("brennern/ScrambledTreeBuilder") |> suppressMessages()
 #> labeling    (0.4.2   -> 0.4.3  ) [CRAN]
 #> gtable      (0.3.3   -> 0.3.4  ) [CRAN]
 #> xml2        (1.3.4   -> 1.3.5  ) [CRAN]
@@ -39,12 +38,8 @@ devtools::install_github("brennern/ScrambledTreeBuilder")
 #> dplyr       (1.1.2   -> 1.1.3  ) [CRAN]
 #> remotes     (2.4.2   -> 2.4.2.1) [CRAN]
 #> yulab.utils (0.0.7   -> 0.0.9  ) [CRAN]
-#> Skipping 1 packages not available: ggtree
-#> Installing 20 packages: labeling, gtable, xml2, curl, xfun, knitr, tinytex, fontawesome, bslib, rmarkdown, htmltools, askpass, httr, promises, shiny, credentials, gert, dplyr, remotes, yulab.utils
-#> Installing packages into '/tmp/RtmpzIR2uD/temp_libpath69c995e51cb84'
-#> (as 'lib' is unspecified)
 #> ── R CMD build ─────────────────────────────────────────────────────────────────
-#> * checking for file ‘/tmp/RtmpaRPH33/remotes9db0c221f9128/brennern-ScrambledTreeBuilder-936984e/DESCRIPTION’ ... OK
+#> * checking for file ‘/tmp/Rtmp5rdntX/remotesb71a2e7d0dea/brennern-ScrambledTreeBuilder-936984e/DESCRIPTION’ ... OK
 #> * preparing ‘ScrambledTreeBuilder’:
 #> * checking DESCRIPTION meta-information ... OK
 #> * checking for LF line-endings in source and make files and shell scripts
@@ -140,8 +135,6 @@ devtools::install_github("brennern/ScrambledTreeBuilder")
 #> Warning in utils::tar(filepath, pkgname, compression = compression, compression_level = 9L,  :
 #>   storing paths of more than 100 bytes is not portable:
 #>   ‘ScrambledTreeBuilder/inst/extdata/PairwiseComparisons/Salarchaeum_japonicum___Haloferax_volcanii_DS2.yaml.bz2’
-#> Installing package into '/tmp/RtmpzIR2uD/temp_libpath69c995e51cb84'
-#> (as 'lib' is unspecified)
 ```
 
 ## Usage
