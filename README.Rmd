@@ -33,7 +33,7 @@ devtools::install_github("brennern/ScrambledTreeBuilder")
 After performing an All Vs. All genome comparison between dozens of species, you may have .yaml files as the output. In order to convert these files into a dataframe in R, you may use the `formatStats()` function. Extract your .yaml files from their respective directory and store the information under the variable `yamlFiles`.
 
 ```{r}
-library(ScrambledTreeBuilder)
+library(ScrambledTreeBuilder) |> suppressPackageStartupMessages()
 
 resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
 yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
