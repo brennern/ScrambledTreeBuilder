@@ -274,12 +274,14 @@ value from our ‘valueMatrix’ to the tibble data.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>                         0.382              75.4</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span>                         0.393              78.7</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​Strand_Randomisation_Index</span></span></span></code></pre></div>
-<p>Finally, we can use the ‘tibbleWithValue’ and
-‘tibbleWithMultipleValues’ datasets to build the tree. In our case, we
-will generate a tree built based on percent identity values with strand
-randomisation scores labeled on all nodes using ‘tibbleWithValue’.
-‘tibbleWithMultipleValues’ will allow us to plot both strand
-randomisation index scores and percent identity scores on the tree.</p>
+<div class="section level3">
+<h3 id="plot-trees">Plot trees<a class="anchor" aria-label="anchor" href="#plot-trees"></a>
+</h3>
+<p>Let’s use the <code>tibbleWithMultipleValues</code> object to plot
+trees. In our case, we have generated a tree built based on 100 minus
+percent identity values as a distance, and computed average strand
+randomisation scores for all the nodes. We can plot these values as
+labels on the tree.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="va">tibbleWithMultipleValues</span><span class="op">$</span><span class="va">Strand_Randomisation_Index</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Tree built with Percent Identity and labelled with Strand Randomisation Index scores"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -298,6 +300,41 @@ randomisation index scores and percent identity scores on the tree.</p>
 <span><span class="co">#&gt; Scale for <span style="color: #00BB00;">y</span> is already present.</span></span>
 <span><span class="co">#&gt; Adding another scale for <span style="color: #00BB00;">y</span>, which will replace the existing scale.</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+</div>
+<div class="section level3">
+<h3 id="plot-node-and-leaf-values">Plot node and leaf values<a class="anchor" aria-label="anchor" href="#plot-node-and-leaf-values"></a>
+</h3>
+<p>We can also plot leaf and node values in a standard scatterplot.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">exDataFrame</span><span class="op">$</span><span class="va">percent_identity_global</span>, <span class="va">exDataFrame</span><span class="op">$</span><span class="va">index_avg_strandRand</span>, col <span class="op">=</span> <span class="st">'grey'</span>, xlab <span class="op">=</span> <span class="st">"Percent identity"</span>, ylab<span class="op">=</span><span class="st">"Strand randomisation index"</span>, main <span class="op">=</span> <span class="st">"Leaf values are in grey and node values in red"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span><span class="op">$</span><span class="va">Percent_Identity</span>, <span class="va">tibbleWithMultipleValues</span><span class="op">$</span><span class="va">Strand_Randomisation_Index</span>, col <span class="op">=</span> <span class="st">'red'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">plotTwoBranches</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tree</span>, <span class="va">node</span>, <span class="va">X</span>, <span class="va">Y</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">children</span> <span class="op">&lt;-</span> <span class="fu">tidytree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tidytree/man/child.html" class="external-link">child</a></span>   <span class="op">(</span><span class="va">tree</span>, <span class="va">node</span><span class="op">)</span></span>
+<span>  <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">children</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">parent</span>   <span class="op">&lt;-</span> <span class="fu">tidytree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tidytree/man/parent.html" class="external-link">parent</a></span><span class="op">(</span><span class="va">tree</span>, <span class="va">children</span><span class="op">$</span><span class="va">node</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">parent</span><span class="op">[</span>, <span class="va">X</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span>, <span class="va">children</span><span class="op">[</span>, <span class="va">X</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">parent</span><span class="op">[</span>, <span class="va">Y</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span>, <span class="va">children</span><span class="op">[</span>, <span class="va">Y</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>    <span class="va">...</span></span>
+<span>  <span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">parent</span><span class="op">[</span>, <span class="va">X</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span>, <span class="va">children</span><span class="op">[</span>, <span class="va">X</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">parent</span><span class="op">[</span>, <span class="va">Y</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span>, <span class="va">children</span><span class="op">[</span>, <span class="va">Y</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,</span>
+<span>    <span class="va">...</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">plotAllBranches</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tree</span>, <span class="va">X</span>, <span class="va">Y</span>, <span class="va">...</span> <span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">tree</span><span class="op">$</span><span class="va">parent</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span>\<span class="op">(</span><span class="va">node</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu">plotTwoBranches</span><span class="op">(</span><span class="va">tree</span>, <span class="va">node</span>, <span class="va">X</span>, <span class="va">Y</span>, <span class="va">...</span><span class="op">)</span></span>
+<span>  <span class="op">}</span><span class="op">)</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu">plotAllBranches</span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="st">"Percent_Identity"</span>, <span class="st">"Strand_Randomisation_Index"</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
