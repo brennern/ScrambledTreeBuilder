@@ -4,10 +4,30 @@
 \alias{visualizeTree}
 \title{Create a phylogenetic tree using tibble data.}
 \usage{
-visualizeTree(tibble, value)
+visualizeTree(
+  your_tibble,
+  value,
+  valueround = 2,
+  outerlabelsize = 0.25,
+  innerlabelsize = 3,
+  ynudge = 0,
+  xnudge = 0
+)
 }
 \arguments{
-\item{tibble}{Tibble data containing species genome information.}
+\item{your_tibble}{Tibble data containing species genome information.}
+
+\item{value}{Tibble value to label on internal nodes of the tree.}
+
+\item{valueround}{Number of integers to round value.}
+
+\item{outerlabelsize}{Size of label border.}
+
+\item{innerlabelsize}{Overall size of label.}
+
+\item{ynudge}{Adjust vertical position of labels.}
+
+\item{xnudge}{Adjust horizontal position of labels.}
 }
 \value{
 A phylogenetic tree showcasing phylogeny of species and additional calculated values.
@@ -16,5 +36,5 @@ A phylogenetic tree showcasing phylogeny of species and additional calculated va
 Create a phylogenetic tree using tibble data.
 }
 \examples{
-Tree <- visualizeTree(tibbleWithValue)
+Tree <- visualizeTree(your_tibble = tibbleWithValue, value = tibbleWithValue$Strand_Randomisation_Index)
 }

@@ -17,7 +17,7 @@ You can install the development version of ScrambledTreeBuilder from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("brennern/ScrambledTreeBuilder")
+devtools::install_github("brennern/ScrambledTreeBuilder") |> suppressMessages()
 ```
 
 ## Usage
@@ -29,22 +29,24 @@ function. Extract your .yaml files from their respective directory and
 store the information under the variable `yamlFiles`.
 
 ``` r
-library(ScrambledTreeBuilder)
+library(ScrambledTreeBuilder) |> suppressPackageStartupMessages()
 
-resultsDir <- '/flash/LuscombeU/noa/RPackageData'
-yamlFileData <- list.files(resultsDir, pattern = "*.yaml", full.names = TRUE)
-names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml", rep="")
+resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
+names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 
 exDataFrame <- formatStats(yamlFileData)
 ```
 
 To build the phylogenetic trees, your data frame will need to be
-tranformed into a matrix. The function `makeMatrix()` will accomplish
+transformed into a matrix. The function `makeMatrix()` will accomplish
 this.
 
 ``` r
-treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
-valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
+valuesToBuildTheTree <- "percent_identity_global"
+treeMatrix <- makeMatrix(exDataFrame, valuesToBuildTheTree, 100, 50)
+valuesToPlaceOnLabels <- "index_avg_strandRand"
+valueMatrix <- makeMatrix(exDataFrame, valuesToPlaceOnLabels, 1, 0.5)
 ```
 
 Then, in order to plot the percent identity and strand randomisation
@@ -54,7 +56,8 @@ tibble and utilize the functions `makeValueTibble()`.
 ``` r
 HClust <- hclust(dist(treeMatrix), method = "complete")
 Tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
-tibbleWithValue <- makeValueTibble(Tibble, valueMatrix)
+tibbleWithValue <- makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index")
+tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname = "Percent_Identity")
 ```
 
 Finally, to visualize your phylogenetic tree, you can utilize the
@@ -62,9 +65,28 @@ Finally, to visualize your phylogenetic tree, you can utilize the
 desired variable.
 
 ``` r
-visualizeTree(tibbleWithValue, tibbleWithValue$value)
-#> Scale for y is already present.
-#> Adding another scale for y, which will replace the existing scale.
+SingleValueTree <- visualizeTree(tibbleWithValue, tibbleWithValue$Strand_Randomisation_Index)
+
+SingleValueTree +
+  ggplot2::ggtitle(paste("Tree built with Percent Identity and labelled with Strand Randomisation Index scores")) + 
+  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
+  ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
+  ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
 ```
 
-<img src="man/figures/README-unnamed-chunk-5-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+
+``` r
+MultiValueTree <- visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index, ynudge = 0.2)
+#> Scale for y is already present.
+#> Adding another scale for y, which will replace the existing scale.
+
+MultiValueTree +
+  ggplot2::ggtitle("Tree labeled with Strand Randomisation Index and Percent Identity (built with Percent Identity)") +
+  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
+  ggnewscale::new_scale_colour() +
+  ggtree::geom_label(ggtree::aes(label=round(Percent_Identity, digits = 3), color = Percent_Identity), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.2) +
+  viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
+```
+
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />

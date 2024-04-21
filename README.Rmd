@@ -24,29 +24,31 @@ The goal of ScrambledTreeBuilder is to allow users to conveniently produce phylo
 
 You can install the development version of ScrambledTreeBuilder from [GitHub](https://github.com/) with:
       
-``` r
+``` {r}
 # install.packages("devtools")
-devtools::install_github("brennern/ScrambledTreeBuilder")
+devtools::install_github("brennern/ScrambledTreeBuilder") |> suppressMessages()
 ```
 
 ## Usage
 After performing an All Vs. All genome comparison between dozens of species, you may have .yaml files as the output. In order to convert these files into a dataframe in R, you may use the `formatStats()` function. Extract your .yaml files from their respective directory and store the information under the variable `yamlFiles`.
 
 ```{r}
-library(ScrambledTreeBuilder)
+library(ScrambledTreeBuilder) |> suppressPackageStartupMessages()
 
-resultsDir <- '/flash/LuscombeU/noa/RPackageData'
-yamlFileData <- list.files(resultsDir, pattern = "*.yaml", full.names = TRUE)
-names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml", rep="")
+resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
+names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 
 exDataFrame <- formatStats(yamlFileData)
 ```
 
-To build the phylogenetic trees, your data frame will need to be tranformed into a matrix. The function `makeMatrix()` will accomplish this.
+To build the phylogenetic trees, your data frame will need to be transformed into a matrix. The function `makeMatrix()` will accomplish this.
 
 ```{r}
-treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
-valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
+valuesToBuildTheTree <- "percent_identity_global"
+treeMatrix <- makeMatrix(exDataFrame, valuesToBuildTheTree, 100, 50)
+valuesToPlaceOnLabels <- "index_avg_strandRand"
+valueMatrix <- makeMatrix(exDataFrame, valuesToPlaceOnLabels, 1, 0.5)
 ```
 
 Then, in order to plot the percent identity and strand randomisation index scores on the tree, you will need to extract the tree data in a tibble and utilize the functions `makeValueTibble()`.
@@ -54,11 +56,28 @@ Then, in order to plot the percent identity and strand randomisation index score
 ```{r}
 HClust <- hclust(dist(treeMatrix), method = "complete")
 Tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
-tibbleWithValue <- makeValueTibble(Tibble, valueMatrix)
+tibbleWithValue <- makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index")
+tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname = "Percent_Identity")
 ```
 
 Finally, to visualize your phylogenetic tree, you can utilize the `visualizeTree()` function by inputting your tibble data containing your desired variable.
 
 ```{r}
-visualizeTree(tibbleWithValue, tibbleWithValue$value)
+SingleValueTree <- visualizeTree(tibbleWithValue, tibbleWithValue$Strand_Randomisation_Index)
+
+SingleValueTree +
+  ggplot2::ggtitle(paste("Tree built with Percent Identity and labelled with Strand Randomisation Index scores")) + 
+  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
+  ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
+  ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
+```
+```{r}
+MultiValueTree <- visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index, ynudge = 0.2)
+
+MultiValueTree +
+  ggplot2::ggtitle("Tree labeled with Strand Randomisation Index and Percent Identity (built with Percent Identity)") +
+  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
+  ggnewscale::new_scale_colour() +
+  ggtree::geom_label(ggtree::aes(label=round(Percent_Identity, digits = 3), color = Percent_Identity), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.2) +
+  viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
 ```

@@ -1,3 +1,3 @@
 test_that("output is dataframe", {
-  expect_output_file(is.data.frame(df) = TRUE)
+  expect_snapshot_output(is.data.frame(df))
 })

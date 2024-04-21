@@ -1,28 +1,28 @@
 #' Make a matrix from a data frame containing species data.
 #'
-#' @param df Data frame containing species information.
+#' @param DF Data frame containing species information.
 #' @param column The variable from the data frame you want to extract species data from.
-#' @param defaultDiagonal defaultDiagonal
-#' @param defaultValue defaultValue
+#' @param defaultDiagonal Maximum possible value of variable.
+#' @param defaultValue Minimum possible value of variable.
 #'
 #' @return A matrix containing species names and data for the selected variable.
 #' @export
 #'
 #' @examples
 #' makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
-makeMatrix <- function(df, column, defaultDiagonal = 100, defaultValue = NA) {
-  species <- unique(df$species2)
-  matrix <- matrix(defaultValue, nrow=length(species), ncol=length(species))
-  colnames(matrix) <- rownames(matrix) <- species
-  for (i in 1:length(species)) {
-    matrix[i,i] <- defaultDiagonal
+makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA) {
+  all_species <- unique(DF$species2)
+  your_matrix <- matrix(defaultValue, nrow=length(all_species), ncol=length(all_species))
+  colnames(your_matrix) <- rownames(your_matrix) <- all_species
+  for (i in 1:length(all_species)) {
+    your_matrix[i,i] <- defaultDiagonal
   }
-  for (i in 1:nrow(df)) {
-    species1 <- df[i, "species1"]
-    species2 <- df[i, "species2"]
-    if(species1 %in% species)
-      matrix[species1, species2] <- df[i, column]
+  for (i in 1:nrow(DF)) {
+    species1 <- DF[i, "species1"]
+    species2 <- DF[i, "species2"]
+    if(species1 %in% all_species)
+      your_matrix[species1, species2] <- DF[i, column]
   }
   attr(matrix, "builtWith") <- column
-  matrix
+  your_matrix
 }

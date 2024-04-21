@@ -2,7 +2,8 @@ Package: ScrambledTreeBuilder
 Title: Builds Phylogenetic Trees Showcasing Genome Scrambling in Species
 Version: 0.0.0.9000
 Authors@R: 
-    person("Noa", "Brenner", , "brennern@hawaii.edu", role = c("aut", "cre"))
+    person("Noa", "Brenner", , "brennern@hawaii.edu", role = c("aut", "cre"),
+    person("Charles", "Plessy", , "charles.plessy@oist.jp", role = "aut"))
 Description: Formats data from .yaml files, calculates information for each internal tree node, and plots phylogenetic trees.
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -19,11 +20,12 @@ Depends:
     R (>= 2.10)
 LazyData: true
 Imports: 
-    ape,
-    dendextend,
     ggtree,
-    phytools,
-    tibble,
     tidytree,
-    viridis
+    purrr,
+    yaml,
+    viridis,
+    ggplot2,
+    devtools,
+    ggnewscale
 VignetteBuilder: knitr
