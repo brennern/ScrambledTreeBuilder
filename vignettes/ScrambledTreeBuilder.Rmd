@@ -81,7 +81,12 @@ tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname
 tibbleWithMultipleValues
 ```
 
-Finally, we can use the 'tibbleWithValue' and 'tibbleWithMultipleValues' datasets to build the tree. In our case, we will generate a tree built based on percent identity values with strand randomisation scores labeled on all nodes using 'tibbleWithValue'. 'tibbleWithMultipleValues' will allow us to plot both strand randomisation index scores and percent identity scores on the tree.
+## Plot trees
+
+Let's use the `tibbleWithMultipleValues` object to plot trees.  In our case, we
+have generated a tree built based on 100 minus percent identity values as a
+distance, and computed average strand randomisation scores for all the nodes.
+We can plot these values as labels on the tree.
 
 ```{r}
 visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index) +
@@ -99,3 +104,36 @@ visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomis
   viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
 ```
 
+## Plot node and leaf values
+
+We can also plot leaf and node values in a standard scatterplot.
+
+```{r}
+plot(exDataFrame$percent_identity_global, exDataFrame$index_avg_strandRand, col = 'grey', xlab = "Percent identity", ylab="Strand randomisation index", main = "Leaf values are in grey and node values in red")
+points(tibbleWithMultipleValues$Percent_Identity, tibbleWithMultipleValues$Strand_Randomisation_Index, col = 'red')
+
+plotTwoBranches <- function(tree, node, X, Y, ...) {
+  children <- tidytree::child   (tree, node)
+  if(nrow(children) != 2) return(invisible())
+  parent   <- tidytree::parent(tree, children$node[1])
+  lines(
+    c(parent[, X, drop=T], children[, X, drop=T][1]),
+    c(parent[, Y, drop=T], children[, Y, drop=T][1]),
+    ...
+  )
+  lines(
+    c(parent[, X, drop=T], children[, X, drop=T][2]),
+    c(parent[, Y, drop=T], children[, Y, drop=T][2]),
+    ...
+  )
+}
+
+plotAllBranches <- function(tree, X, Y, ... ) {
+  unique(tree$parent) |> sort() |> sapply(\(node) {
+    plotTwoBranches(tree, node, X, Y, ...)
+  })
+  return(invisible())
+}
+
+plotAllBranches(tibbleWithMultipleValues, "Percent_Identity", "Strand_Randomisation_Index", col = "red")
+```
