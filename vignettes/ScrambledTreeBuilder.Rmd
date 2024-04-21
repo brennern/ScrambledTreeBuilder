@@ -56,6 +56,7 @@ valuesToBuildTheTree <- "percent_identity_global"
 treeMatrix <- makeMatrix(exDataFrame, valuesToBuildTheTree, 100, 50)
 treeMatrix
 ```
+
 ```{r}
 valuesToPlaceOnLabels <- "index_avg_strandRand"
 valueMatrix <- makeMatrix(exDataFrame, valuesToPlaceOnLabels, 1, 0.5)
@@ -65,14 +66,16 @@ valueMatrix
 Using the 'treeMatrix', we will create an hclust object and use this to produce a tibble dataset. Transforming into a tibble dataset is necessary as this will allow us to add the variable from our 'valueMatrix' onto the tree with correct label placement on each node without changing the structure of the tree. Once we have the tibble dataset, we can utilize the 'makeValueTibble()' function to add the value from our 'valueMatrix' to the tibble data.
 
 ```{r}
-HClust <- hclust(dist(treeMatrix), method = "complete")
-Tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
+# Let's average the target-query and query-target replicate pairs.
+Tibble <- makeTidyTree(100 - (treeMatrix/2 + t(treeMatrix)/2))
 Tibble
 ```
+
 ```{r}
 tibbleWithValue <- makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index")
 tibbleWithValue
 ```
+
 ``` {r}
 tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname = "Percent_Identity")
 tibbleWithMultipleValues
@@ -81,20 +84,16 @@ tibbleWithMultipleValues
 Finally, we can use the 'tibbleWithValue' and 'tibbleWithMultipleValues' datasets to build the tree. In our case, we will generate a tree built based on percent identity values with strand randomisation scores labeled on all nodes using 'tibbleWithValue'. 'tibbleWithMultipleValues' will allow us to plot both strand randomisation index scores and percent identity scores on the tree.
 
 ```{r}
-SingleValueTree <- visualizeTree(tibbleWithValue, tibbleWithValue$Strand_Randomisation_Index)
-
-SingleValueTree +
+visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index) +
   ggplot2::ggtitle(paste("Tree built with Percent Identity and labelled with Strand Randomisation Index scores")) + 
-  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
-  ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
-  ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
+  ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .4, type = "gradient", gradient.direction = 'tr') +
+  ggtree::geom_hilight(node = 9, fill = "pink", alpha = .4, type = "gradient", gradient.direction = 'tr')
 ```
-```{r}
-MultiValueTree <- visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index, ynudge = 0.2)
 
-MultiValueTree +
+```{r}
+visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index, ynudge = 0.2) +
   ggplot2::ggtitle("Tree labeled with Strand Randomisation Index and Percent Identity (built with Percent Identity)") +
-  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
+  ggplot2::scale_color_viridis_c(name = "Strand Randomisation Index", option = "cividis") +
   ggnewscale::new_scale_colour() +
   ggtree::geom_label(ggtree::aes(label=round(Percent_Identity, digits = 3), color = Percent_Identity), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.2) +
   viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
