@@ -19,7 +19,9 @@ formatStats <- function(files) {
   DF$species1 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[1]) |> unlist()
   DF$species2 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[2]) |> unlist()
   DF <- DF[DF$species1 != DF$species2,]
-  DF$index_avg_strandRand <- (DF$index_strandRand_target_bestpair + DF$index_strandRand_query_bestpair) / 2
-  DF$percent_identity_global <- DF$aligned_matches_bestpair_Total / DF$aligned_length_bestpair_Total * 100
+  DF$index_avg_strandRand             <- ( DF$index_strandRand_target          + DF$index_strandRand_query          ) /   2
+  DF$index_avg_strandRand_bestpair    <- ( DF$index_strandRand_target_bestpair + DF$index_strandRand_query_bestpair ) /   2
+  DF$percent_identity_global          <-   DF$aligned_matches_Total            / DF$aligned_length_Total              * 100
+  DF$percent_identity_global_bestpair <-   DF$aligned_matches_bestpair_Total   / DF$aligned_length_bestpair_Total     * 100
   DF
 }
