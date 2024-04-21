@@ -104,6 +104,13 @@ visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomis
   viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
 ```
 
+Of course, if you spotted an interesting sub-tree, you can plot the node IDs
+to easily extract it for further analysis.
+
+```{r}
+visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$node)
+```
+
 ## Plot node and leaf values
 
 We can also plot leaf and node values in a standard scatterplot.
