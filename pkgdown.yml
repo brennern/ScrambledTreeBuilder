@@ -1,10 +1,9 @@
 pandoc: 3.1.11
-pkgdown: 2.0.9
+pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   ScrambledTreeBuilder: ScrambledTreeBuilder.html
-last_built: 2024-04-21T06:20Z
+last_built: 2024-11-12T08:05Z
 urls:
   reference: https://brennern.github.io/ScrambledTreeBuilder/reference
   article: https://brennern.github.io/ScrambledTreeBuilder/articles
-

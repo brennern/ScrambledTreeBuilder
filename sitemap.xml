@@ -1,66 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/404.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/articles/ScrambledTreeBuilder.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/index.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/HClust.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/Tibble.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/exDataFrame.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/extractValues.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/formatStats.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/getStats.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/makeMatrix.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/makeTidyTree.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/makeValueTibble.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/tibbleWithValue.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/treeMatrix.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/valueMatrix.html</loc>
-  </url>
-  <url>
-    <loc>https://brennern.github.io/ScrambledTreeBuilder/reference/visualizeTree.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/404.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/LICENSE-text.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/LICENSE.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/articles/ScrambledTreeBuilder.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/articles/index.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/authors.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/index.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/HClust.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/Tibble.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/exDataFrame.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/extractValues.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/formatStats.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/getStats.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/index.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/makeMatrix.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/makeTidyTree.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/makeValueTibble.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/tibbleWithValue.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/treeMatrix.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/valueMatrix.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/visualizeTree.html</loc></url>
 </urlset>
+
