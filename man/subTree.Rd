@@ -4,12 +4,12 @@
 \alias{subTree}
 \title{Extract a subtree}
 \usage{
-subTree(tree_tibble, node_id)
+subTree(tree_tibble, node)
 }
 \arguments{
-\item{node_id}{The ID number of the node to base the subtree.}
-
 \item{name}{description}
+
+\item{node_id}{The ID number of the node to base the subtree.}
 }
 \value{
 A subtree represented by a tibble created by the tidytree package.
@@ -18,6 +18,7 @@ A subtree represented by a tibble created by the tidytree package.
 Takes a tibble representing a tree, and extract a subtree at a given node.
 }
 \examples{
-subTree(tibbleWithValue, 9)
+(subtree <- subTree(tibbleWithValue, 9))
+visualizeTree(subtree, subtree$node.orig)
 
 }
