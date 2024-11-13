@@ -1,6 +1,6 @@
 Package: ScrambledTreeBuilder
 Title: Builds Phylogenetic Trees Showcasing Genome Scrambling in Species
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: 
     person("Noa", "Brenner", , "brennern@hawaii.edu", role = c("aut", "cre"),
     person("Charles", "Plessy", , "charles.plessy@oist.jp", role = "aut"))
@@ -8,7 +8,7 @@ Description: Formats data from .yaml files, calculates information for each inte
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2
 Suggests: 
     knitr,
     rmarkdown,
