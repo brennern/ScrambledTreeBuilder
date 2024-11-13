@@ -1,13 +1,16 @@
 #' Extract a subtree
 #'
-#' Takes a tibble representing a tree, and extract a subtree at a given node.
+#' Takes a tibble representing a tree, and extracts a subtree at a given node.
 #'
-#' @param name description
-#' @param node_id The ID number of the node to base the subtree.
+#' @param name A tree in the `tbl_tree` class of the _tidytree_ package.
+#' @param node The ID number of the node to base the subtree.
 #'
 #' @importFrom tidytree as_tibble as.treedata tree_subset
 #'
-#' @return A subtree represented by a tibble created by the tidytree package.
+#' @return A subtree represented in the `tbl_tree` class of the _tidytree_
+#' package.  This tibble has an extra `node.orig` column providing the old node
+#' IDs, because the node IDs in the object are renamed during the extraction
+#' of the subtree.
 #'
 #' @examples
 #' (subtree <- subTree(tibbleWithValue, 9))

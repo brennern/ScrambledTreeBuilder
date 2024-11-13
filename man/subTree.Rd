@@ -7,15 +7,18 @@
 subTree(tree_tibble, node)
 }
 \arguments{
-\item{name}{description}
+\item{node}{The ID number of the node to base the subtree.}
 
-\item{node_id}{The ID number of the node to base the subtree.}
+\item{name}{A tree in the \code{tbl_tree} class of the \emph{tidytree} package.}
 }
 \value{
-A subtree represented by a tibble created by the tidytree package.
+A subtree represented in the \code{tbl_tree} class of the \emph{tidytree}
+package.  This tibble has an extra \code{node.orig} column providing the old node
+IDs, because the node IDs in the object are renamed during the extraction
+of the subtree.
 }
 \description{
-Takes a tibble representing a tree, and extract a subtree at a given node.
+Takes a tibble representing a tree, and extracts a subtree at a given node.
 }
 \examples{
 (subtree <- subTree(tibbleWithValue, 9))
