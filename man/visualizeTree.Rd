@@ -6,7 +6,7 @@
 \usage{
 visualizeTree(
   your_tibble,
-  value,
+  value = your_tibble$node,
   valueround = 2,
   outerlabelsize = 0.25,
   innerlabelsize = 3,
@@ -36,5 +36,6 @@ A phylogenetic tree showcasing phylogeny of species and additional calculated va
 Create a phylogenetic tree using tibble data.
 }
 \examples{
-Tree <- visualizeTree(your_tibble = tibbleWithValue, value = tibbleWithValue$Strand_Randomisation_Index)
+visualizeTree(tibbleWithValue)
+visualizeTree(tibbleWithValue, value = tibbleWithValue$Strand_Randomisation_Index)
 }

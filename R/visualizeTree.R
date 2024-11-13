@@ -12,8 +12,9 @@
 #' @export
 #'
 #' @examples
-#' Tree <- visualizeTree(your_tibble = tibbleWithValue, value = tibbleWithValue$Strand_Randomisation_Index)
-visualizeTree <- function(your_tibble, value, valueround = 2, outerlabelsize = 0.25, innerlabelsize = 3, ynudge = 0, xnudge = 0) {
+#' visualizeTree(tibbleWithValue)
+#' visualizeTree(tibbleWithValue, value = tibbleWithValue$Strand_Randomisation_Index)
+visualizeTree <- function(your_tibble, value=your_tibble$node, valueround = 2, outerlabelsize = 0.25, innerlabelsize = 3, ynudge = 0, xnudge = 0) {
   ggtree::ggtree(tidytree::as.treedata(your_tibble)) +
   ggtree::geom_tiplab(as_ylab=TRUE) +
   ggtree::geom_label(ggtree::aes(label=round(value, digits = valueround), color = value), label.size = outerlabelsize,
