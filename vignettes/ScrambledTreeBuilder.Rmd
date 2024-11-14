@@ -108,7 +108,14 @@ Of course, if you spotted an interesting sub-tree, you can plot the node IDs
 to easily extract it for further analysis.
 
 ```{r}
-visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$node)
+visualizeTree(tibbleWithMultipleValues)
+```
+
+The `subTree` function can conveniently be used with R's pipe operator to cut
+a sub-tree at a chosen node.
+
+```{r}
+visualizeTree(tibbleWithMultipleValues |> subTree(node = 9), "Percent_Identity")
 ```
 
 ## Plot node and leaf values
