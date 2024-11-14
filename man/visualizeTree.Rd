@@ -6,7 +6,7 @@
 \usage{
 visualizeTree(
   your_tibble,
-  value = your_tibble$node,
+  value = "node",
   valueround = 2,
   outerlabelsize = 0.25,
   innerlabelsize = 3,
@@ -17,7 +17,8 @@ visualizeTree(
 \arguments{
 \item{your_tibble}{Tibble data containing species genome information.}
 
-\item{value}{Tibble value to label on internal nodes of the tree.}
+\item{value}{Tibble value to label on internal nodes of the tree, or name
+of a column in the tree object.}
 
 \item{valueround}{Number of integers to round value.}
 
@@ -38,4 +39,5 @@ Create a phylogenetic tree using tibble data.
 \examples{
 visualizeTree(tibbleWithValue)
 visualizeTree(tibbleWithValue, value = tibbleWithValue$Strand_Randomisation_Index)
+visualizeTree(tibbleWithValue, "Strand_Randomisation_Index")
 }
