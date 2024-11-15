@@ -22,10 +22,16 @@ knitr::opts_knit$set(verbose = TRUE)
 ```
 
 # Introduction
-The ScrambledTreeBuilder package consists of numerous data formatting functions for phylogenetic tree building. 
+
+The _ScrambledTreeBuilder_ package consists of numerous data formatting
+functions for phylogenetic tree building in the context of the (still internal)
+[Scrambling in the Tree of Life](https://github.com/oist/LuscombeU_ScramblingInTheTreeOfLife)
+project.
 
 # Load Package
-Whilst the ScrambledTreeBuilder package contains all necessary functions required to convert data from .yaml files to a data type suitable for phylogenetic trees, loading ggplot2 will allow for greater customization of the final tree products.
+
+The _ScrambledTreeBuilder_ package ouptuts plots in _ggplot2_ format but you
+need to load the _ggplot2_ package to further customize them.
 
 ```{r setup}
 library(ScrambledTreeBuilder)
@@ -33,52 +39,81 @@ library(ggplot2)
 ```
 
 # Example Data
-This package utilizes example .yaml files from halobacteria genome comparison data. In regards to genome scrambling, many studies have showcased significant genome rearrangments in such halobacteria species due to dozens of insertion sequence families. Thus, the ScrambledTreeBuilder package will be useful in uncovering relationships amongst such species.
 
-Upon performing an all vs. all genome comparison between six halobacteria species using the Nextflow [genome pairwise alignment pipeline](https://github.com/oist/plessy_pairwiseGenomeComparison) and an [input file script](https://github.com/brennern/GenomeScrambling/blob/main/scripts/makeGBreaksInputFile.sh) for [GenomicBreaks](https://github.com/oist/GenomicBreaks), we have multiple .yaml files stored in a directory called 'extdata/PairwiseComparisons'. We will load this data into RStudio with the variable name 'yamlFileData'.
+This package utilizes example `.yaml` files containing summary statistics of
+halobacteria genome comparison data. In regards to genome scrambling, many
+studies have showcased significant genome rearrangments in such halobacteria
+species due to dozens of insertion sequence families.
+
+The YAML summary files are produced by performing an all vs. all genome
+comparison between six halobacteria species using the Nextflow
+[genome pairwise alignment pipeline](https://github.com/oist/plessy_pairwiseGenomeComparison)
+and an [input file script](https://github.com/brennern/GenomeScrambling/blob/main/scripts/makeGBreaksInputFile.sh)
+for [GenomicBreaks](https://github.com/oist/GenomicBreaks).  They are stored in
+a directory called 'extdata/PairwiseComparisons'.  Here we prepare an object
+called 'yamlFileData' that contains the path to the files.  The file names are
+constructed by taking the name of one species taken as reference, adding a
+separator (`___`), and then the name of one species being compared to the
+reference.
 
 ```{r}
 resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
 yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
 names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
+head(names(yamlFileData))
 ```
 
-Next, we can use the 'formatStats()' function to transform the .yaml files into a single dataframe. Having a dataframe containing our species information is important, as this will allow us to extract specific columns/variables and plot them onto our phylogenetic trees later.
+Next, we use the 'formatStats()' function to load the YAML files into a
+single dataframe where each line is a pair of species and each column is
+a statistic or a metadata about that species comparison.
 
 ```{r}
 exDataFrame <- formatStats(yamlFileData)
 ```
 
-We will need to further process our data by transforming the dataframe into a matrix. We can perform this task with the 'makeMatrix()' function. This function can be quite useful, as you may use it to both create the matrix which you wish to build your tree with and to create the matrix to store species information for a particular variable. For example, we may want to build the tree based on percent identity values, which we store in 'treeMatrix'. Then, we may want to plot strand randomisation index scores on the trees to study genome scrambling, which we store in 'valueMatrix'.
+Then, for statistics of interest, we build square matrices where rows and
+columns indicate one species, and the cells at each intersection contain the
+value for that pair.
+
+We perform this task with the 'makeMatrix()' function.  It provide defaults for
+missing values and self-comparisons.
 
 ```{r}
-valuesToBuildTheTree <- "percent_identity_global"
-treeMatrix <- makeMatrix(exDataFrame, valuesToBuildTheTree, 100, 50)
-treeMatrix
+# Average nucleotide identity.  We will use it to cluster a tree.
+(treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50))
 ```
 
 ```{r}
-valuesToPlaceOnLabels <- "index_avg_strandRand"
-valueMatrix <- makeMatrix(exDataFrame, valuesToPlaceOnLabels, 1, 0.5)
-valueMatrix
+# Strand randomisation index.
+(valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5))
 ```
 
-Using the 'treeMatrix', we will create an hclust object and use this to produce a tibble dataset. Transforming into a tibble dataset is necessary as this will allow us to add the variable from our 'valueMatrix' onto the tree with correct label placement on each node without changing the structure of the tree. Once we have the tibble dataset, we can utilize the 'makeValueTibble()' function to add the value from our 'valueMatrix' to the tibble data.
+We cluster the average nucleotide identity matrix (`treeMatrix`) to produce
+a tree in _tibble_ format, using the `makeTidyTree()` funciton. Then we add
+other statistics, here the strand randomisation index and the average nucleotide
+identity, to this object using the `makeValueTibble` function.
 
 ```{r}
 # Let's average the target-query and query-target replicate pairs.
-Tibble <- makeTidyTree(100 - (treeMatrix/2 + t(treeMatrix)/2))
-Tibble
+(Tibble <- makeTidyTree(100 - (treeMatrix/2 + t(treeMatrix)/2)))
 ```
 
 ```{r}
-tibbleWithValue <- makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index")
-tibbleWithValue
+(tibbleWithValue <- makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index"))
 ```
 
-``` {r}
-tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname = "Percent_Identity")
-tibbleWithMultipleValues
+```{r}
+(tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname = "Percent_Identity"))
+```
+
+We made multiple tables to show the step-by-step process, but typically one
+would just keep the last table.  This can be done with pipes.
+
+```{r}
+makeTidyTree(100 - (treeMatrix/2 + t(treeMatrix)/2)) |>
+  makeValueTibble(valueMatrix, colname = "Strand_Randomisation_Index") |>
+  makeValueTibble(treeMatrix, colname = "Percent_Identity")
+# Same result
 ```
 
 ## Plot trees
