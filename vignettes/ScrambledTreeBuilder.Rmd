@@ -153,6 +153,11 @@ a sub-tree at a chosen node.
 visualizeTree(tibbleWithMultipleValues |> subTree(node = 9), "Percent_Identity")
 ```
 
+```{r}
+subMatrix(Tibble, valueMatrix, 9, simpl=TRUE)
+```
+
+
 ## Plot node and leaf values
 
 We can also plot leaf and node values in a standard scatterplot.
