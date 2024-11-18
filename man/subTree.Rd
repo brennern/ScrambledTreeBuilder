@@ -7,9 +7,9 @@
 subTree(tree_tibble, node)
 }
 \arguments{
-\item{node}{The ID number of the node to base the subtree.}
+\item{tree_tibble}{A tree in the \code{tbl_tree} class of the \emph{tidytree} package.}
 
-\item{name}{A tree in the \code{tbl_tree} class of the \emph{tidytree} package.}
+\item{node}{The ID number of the node to base the subtree.}
 }
 \value{
 A subtree represented in the \code{tbl_tree} class of the \emph{tidytree}
