@@ -13,13 +13,11 @@ genome scrambling.
 
 ## Installation
 
-You can install the development version of ScrambledTreeBuilder from
-[GitHub](https://github.com/) with:
+Install the development version of ScrambledTreeBuilder from
+[GitHub](https://github.com/brennern/ScrambledTreeBuilder/) with:
 
-``` r
-# install.packages("devtools")
-devtools::install_github("brennern/ScrambledTreeBuilder", repos=BiocManager::repositories()) |> suppressMessages()
-```
+    # install.packages("devtools")
+    devtools::install_github("brennern/ScrambledTreeBuilder", repos=BiocManager::repositories()) |> suppressMessages()
 
 ## Usage
 
@@ -75,7 +73,7 @@ SingleValueTree +
   ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
 ```
 
-<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
+<img src="man/figures/README-SingleValueTree-1.png" width="100%" />
 
 ``` r
 MultiValueTree <- visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index, ynudge = 0.2)
@@ -90,4 +88,4 @@ MultiValueTree +
   viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-MultiValueTree-1.png" width="100%" />

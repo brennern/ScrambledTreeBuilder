@@ -62,7 +62,7 @@ tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname
 
 Finally, to visualize your phylogenetic tree, you can utilize the `visualizeTree()` function by inputting your tibble data containing your desired variable.
 
-```{r}
+```{r SingleValueTree}
 SingleValueTree <- visualizeTree(tibbleWithValue, tibbleWithValue$Strand_Randomisation_Index)
 
 SingleValueTree +
@@ -71,7 +71,8 @@ SingleValueTree +
   ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
   ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
 ```
-```{r}
+
+```{r MultiValueTree}
 MultiValueTree <- visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index, ynudge = 0.2)
 
 MultiValueTree +
