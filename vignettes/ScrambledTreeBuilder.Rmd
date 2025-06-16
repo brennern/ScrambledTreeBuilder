@@ -50,14 +50,14 @@ comparison between six halobacteria species using the Nextflow
 [genome pairwise alignment pipeline](https://github.com/oist/plessy_pairwiseGenomeComparison)
 and an [input file script](https://github.com/brennern/GenomeScrambling/blob/main/scripts/makeGBreaksInputFile.sh)
 for [GenomicBreaks](https://github.com/oist/GenomicBreaks).  They are stored in
-a directory called 'extdata/PairwiseComparisons'.  Here we prepare an object
+a directory called 'extdata/yaml'.  Here we prepare an object
 called 'yamlFileData' that contains the path to the files.  The file names are
 constructed by taking the name of one species taken as reference, adding a
 separator (`___`), and then the name of one species being compared to the
 reference.
 
 ```{r}
-resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+resultsDir <- system.file("extdata/yaml", package = "ScrambledTreeBuilder")
 yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
 names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 head(names(yamlFileData))

@@ -18,7 +18,7 @@ Formatted dataframe with strand randomisation and percent identities between spe
 Format species data and calculate percent identity and strand randomisation variables as part of the dataframe.
 }
 \examples{
-resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+resultsDir <- system.file("extdata/yaml", package = "ScrambledTreeBuilder")
 yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
 names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 exDataFrame <- formatStats(yamlFileData)

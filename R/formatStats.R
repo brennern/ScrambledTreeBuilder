@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#' resultsDir <- system.file("extdata/PairwiseComparisons", package = "ScrambledTreeBuilder")
+#' resultsDir <- system.file("extdata/yaml", package = "ScrambledTreeBuilder")
 #' yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
 #' names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
 #' exDataFrame <- formatStats(yamlFileData)
