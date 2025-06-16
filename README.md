@@ -7,13 +7,12 @@
 
 <!-- badges: end -->
 
-The goal of ScrambledTreeBuilder is to allow users to conveniently
-produce phylogenetic trees between species with the purpose of studying
-genome scrambling.
+Produce, plot and use phylogenetic trees to study genome scrambling.
 
 ## Installation
 
-Install the development version of ScrambledTreeBuilder from
+As of today there is no release. Install the development version of
+*ScrambledTreeBuilder* from
 [GitHub](https://github.com/brennern/ScrambledTreeBuilder/) with:
 
     # install.packages("devtools")
@@ -21,71 +20,24 @@ Install the development version of ScrambledTreeBuilder from
 
 ## Usage
 
-After performing an All Vs. All genome comparison between dozens of
-species, you may have .yaml files as the output. In order to convert
-these files into a dataframe in R, you may use the `formatStats()`
-function. Extract your .yaml files from their respective directory and
-store the information under the variable `yamlFiles`.
+The input of *ScrambledTreeBuilder* is YAML files produced by the
+[oist/plessy_nf_GenomicBreaks](https://github.com/oist/plessy_nf_GenomicBreaks)
+pipeline from all-versus-all pairwise genome alignments computed with
+the (nf-core/pairgenomealign)\[<https://nf-co.re/pairgenomealign>\]
+pipeline. This package includes a few YAML files in its example data,
+and example objects derived from these files to compute and plot trees.
+Here is an example of tree produced by *ScrambledTreeBuilder*. See the
+[Get started](articles/ScrambledTreeBuilder.html) vignette for details.
 
 ``` r
-library(ScrambledTreeBuilder) |> suppressPackageStartupMessages()
-
-resultsDir <- system.file("extdata/yaml", package = "ScrambledTreeBuilder")
-yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
-names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
-
-exDataFrame <- formatStats(yamlFileData)
-```
-
-To build the phylogenetic trees, your data frame will need to be
-transformed into a matrix. The function `makeMatrix()` will accomplish
-this.
-
-``` r
-valuesToBuildTheTree <- "percent_identity_global"
-treeMatrix <- makeMatrix(exDataFrame, valuesToBuildTheTree, 100, 50)
-valuesToPlaceOnLabels <- "index_avg_strandRand"
-valueMatrix <- makeMatrix(exDataFrame, valuesToPlaceOnLabels, 1, 0.5)
-```
-
-Then, in order to plot the percent identity and strand randomisation
-index scores on the tree, you will need to extract the tree data in a
-tibble and utilize the functions `makeValueTibble()`.
-
-``` r
-HClust <- hclust(dist(treeMatrix), method = "complete")
-Tibble <- tidytree::as_tibble(tidytree::as.phylo(HClust))
-tibbleWithValue <- makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index")
-tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname = "Percent_Identity")
-```
-
-Finally, to visualize your phylogenetic tree, you can utilize the
-`visualizeTree()` function by inputting your tibble data containing your
-desired variable.
-
-``` r
-SingleValueTree <- visualizeTree(tibbleWithValue, tibbleWithValue$Strand_Randomisation_Index)
-
-SingleValueTree +
+library(ScrambledTreeBuilder)
+visualizeTree(tibbleWithValue, tibbleWithValue$Strand_Randomisation_Index) +
   ggplot2::ggtitle(paste("Tree built with Percent Identity and labelled with Strand Randomisation Index scores")) + 
   viridis::scale_color_viridis(name = "Strand Randomisation Index") +
   ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
   ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
+#> Scale for y is already present.
+#> Adding another scale for y, which will replace the existing scale.
 ```
 
 <img src="man/figures/README-SingleValueTree-1.png" width="100%" />
-
-``` r
-MultiValueTree <- visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index, ynudge = 0.2)
-#> Scale for y is already present.
-#> Adding another scale for y, which will replace the existing scale.
-
-MultiValueTree +
-  ggplot2::ggtitle("Tree labeled with Strand Randomisation Index and Percent Identity (built with Percent Identity)") +
-  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
-  ggnewscale::new_scale_colour() +
-  ggtree::geom_label(ggtree::aes(label=round(Percent_Identity, digits = 3), color = Percent_Identity), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.2) +
-  viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
-```
-
-<img src="man/figures/README-MultiValueTree-1.png" width="100%" />
