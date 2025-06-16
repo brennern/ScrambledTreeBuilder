@@ -22,9 +22,9 @@ The goal of ScrambledTreeBuilder is to allow users to conveniently produce phylo
 
 ## Installation
 
-You can install the development version of ScrambledTreeBuilder from [GitHub](https://github.com/) with:
+Install the development version of ScrambledTreeBuilder from [GitHub](https://github.com/brennern/ScrambledTreeBuilder/) with:
       
-``` {r}
+```
 # install.packages("devtools")
 devtools::install_github("brennern/ScrambledTreeBuilder", repos=BiocManager::repositories()) |> suppressMessages()
 ```

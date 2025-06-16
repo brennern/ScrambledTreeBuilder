@@ -26,6 +26,5 @@ Imports:
     yaml,
     viridis,
     ggplot2,
-    devtools,
     ggnewscale
 VignetteBuilder: knitr
