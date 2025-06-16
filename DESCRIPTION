@@ -12,7 +12,10 @@ RoxygenNote: 7.3.2
 Suggests: 
     knitr,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    viridis,
+    ggplot2,
+    ggnewscale
 Config/testthat/edition: 3
 URL: https://github.com/brennern/ScrambledTreeBuilder, https://brennern.github.io/ScrambledTreeBuilder/
 BugReports: https://github.com/brennern/ScrambledTreeBuilder/issues
@@ -23,8 +26,5 @@ Imports:
     ggtree,
     tidytree,
     purrr,
-    yaml,
-    viridis,
-    ggplot2,
-    ggnewscale
+    yaml
 VignetteBuilder: knitr
