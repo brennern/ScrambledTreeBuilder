@@ -4,6 +4,7 @@
 # ScrambledTreeBuilder
 
 <!-- badges: start -->
+
 <!-- badges: end -->
 
 The goal of ScrambledTreeBuilder is to allow users to conveniently
@@ -17,7 +18,7 @@ You can install the development version of ScrambledTreeBuilder from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("brennern/ScrambledTreeBuilder") |> suppressMessages()
+devtools::install_github("brennern/ScrambledTreeBuilder", repos=BiocManager::repositories()) |> suppressMessages()
 ```
 
 ## Usage
