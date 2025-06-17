@@ -2,7 +2,7 @@
 % Please edit documentation in R/visualizeTree.R
 \name{visualizeTree}
 \alias{visualizeTree}
-\title{Create a phylogenetic tree using tibble data.}
+\title{Plot a phylogenetic tree and its node data}
 \usage{
 visualizeTree(
   your_tibble,
@@ -15,7 +15,8 @@ visualizeTree(
 )
 }
 \arguments{
-\item{your_tibble}{Tibble data containing species genome information.}
+\item{your_tibble}{A \code{tbl_tree} object produced by the \code{\link{makeTidyTree}} or
+\code{\link{makeValueTibble}} functions.}
 
 \item{value}{Tibble value to label on internal nodes of the tree, or name
 of a column in the tree object.}
@@ -26,15 +27,15 @@ of a column in the tree object.}
 
 \item{innerlabelsize}{Overall size of label.}
 
-\item{ynudge}{Adjust vertical position of labels.}
-
-\item{xnudge}{Adjust horizontal position of labels.}
+\item{xnudge, ynudge}{Adjust horizontal or vertical position of labels
+(useful when plotting multiple labels).}
 }
 \value{
-A phylogenetic tree showcasing phylogeny of species and additional calculated values.
+A phylogenetic tree showcasing phylogeny of species, additional node
+values, or just node IDs.  No legend is show when displaying node IDs.
 }
 \description{
-Create a phylogenetic tree using tibble data.
+Plot a phylogenetic tree and its node data
 }
 \examples{
 visualizeTree(tibbleWithValue)
