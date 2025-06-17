@@ -24,9 +24,12 @@ visualizeTree <- function(your_tibble, value="node", valueround = 2, outerlabels
   if (length(value) == 1 && value == "node") noLegend <- TRUE
   if (length(value) == 1 && is.character(value))
     value <- your_tibble[ , value, drop = TRUE]
-  gg <- ggtree::ggtree(tidytree::as.treedata(your_tibble)) +
-        ggtree::geom_tiplab(as_ylab=TRUE) +
-        ggtree::geom_label(ggtree::aes(label=round(value, digits = valueround), color = value), label.size = outerlabelsize,
+  # Build step by step for better use of suppressMessages
+  gg <- ggtree::ggtree(tidytree::as.treedata(your_tibble))
+  suppressMessages(
+    gg <- gg + ggtree::geom_tiplab(as_ylab=TRUE)
+  ) # Scale for y is already present.
+  gg <- gg + ggtree::geom_label(ggtree::aes(label=round(value, digits = valueround), color = value), label.size = outerlabelsize,
                            size = innerlabelsize, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"),
                            nudge_y = ynudge, nudge_x = xnudge)
   if (noLegend) {
