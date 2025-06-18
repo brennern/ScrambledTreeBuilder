@@ -6,10 +6,10 @@
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/articles/index.html</loc></url>
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/authors.html</loc></url>
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/index.html</loc></url>
-<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/HClust.html</loc></url>
-<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/Tibble.html</loc></url>
-<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/exDataFrame.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/FocalCladeList.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/Haloarchaea.html</loc></url>
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/extractValues.html</loc></url>
+<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/focalClade.html</loc></url>
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/formatStats.html</loc></url>
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/getStats.html</loc></url>
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/index.html</loc></url>
@@ -18,9 +18,6 @@
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/makeValueTibble.html</loc></url>
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/subMatrix.html</loc></url>
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/subTree.html</loc></url>
-<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/tibbleWithValue.html</loc></url>
-<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/treeMatrix.html</loc></url>
-<url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/valueMatrix.html</loc></url>
 <url><loc>https://brennern.github.io/ScrambledTreeBuilder/reference/visualizeTree.html</loc></url>
 </urlset>
 

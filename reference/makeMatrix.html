@@ -69,42 +69,28 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">makeMatrix</span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"percent_identity_global"</span>, <span class="fl">100</span>, <span class="fl">50</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                   Halobacterium_noricense</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense                         100.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum                          74.74168</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_mediterranei_ATCC_33500                66.51318</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_volcanii_DS2                           69.96063</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                            71.94129</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum                           78.87231</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                   Halobacterium_salinarum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense                          74.72164</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum                         100.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_mediterranei_ATCC_33500                67.06152</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_volcanii_DS2                           68.47755</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                            71.82141</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum                           75.78684</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                   Haloferax_mediterranei_ATCC_33500</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense                                    68.55420</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum                                    67.06788</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_mediterranei_ATCC_33500                         100.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_volcanii_DS2                                     80.98460</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                                      68.70265</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum                                     68.88111</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                   Haloferax_volcanii_DS2 Salarchaeum_japonicum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense                         69.98252              72.22600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum                         68.48654              71.57797</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_mediterranei_ATCC_33500               80.80996              68.50482</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_volcanii_DS2                         100.00000              69.84616</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                           69.87968             100.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum                          70.25591              72.76736</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                                   Halobacterium_litoreum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense                         78.80471</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum                         75.89491</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_mediterranei_ATCC_33500               68.49688</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_volcanii_DS2                          70.22052</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                           72.77139</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum                         100.00000</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">makeMatrix</span><span class="op">(</span><span class="va">Halo_DF</span>, <span class="st">"percent_identity_global"</span>, <span class="fl">100</span>, <span class="fl">50</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         Halobacterium_noricense Halobacterium_salinarum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense               100.00000                74.94623</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum                74.94759               100.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_mediterranei                 66.42841                66.97889</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_volcanii                     69.93183                68.48311</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                  72.11068                71.80855</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum                 78.81199                75.75208</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         Haloferax_mediterranei Haloferax_volcanii</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense               68.45333           69.96147</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum               67.00552           68.48878</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_mediterranei               100.00000           80.22559</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_volcanii                    80.39441          100.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                 68.65929           69.82446</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum                68.72077           70.16293</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                         Salarchaeum_japonicum Halobacterium_litoreum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense              72.42201               78.73936</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum              71.55815               75.84298</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_mediterranei               68.41933               68.27405</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Haloferax_volcanii                   69.79642               70.11358</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum               100.00000               72.75352</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum               72.74950              100.00000</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
