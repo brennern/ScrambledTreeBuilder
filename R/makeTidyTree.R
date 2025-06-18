@@ -8,6 +8,8 @@
 #'
 #' @return A `tbl_tree` object
 #'
+#' @importFrom stats hclust as.dist
+#'
 #' @export
 
 makeTidyTree <- function(distMat) {
@@ -16,3 +18,5 @@ makeTidyTree <- function(distMat) {
   HClust <- hclust(as.dist(distMat), method = "average")
   tidytree::as_tibble(tidytree::as.phylo(HClust))
 }
+
+ScrambledTree <- new_S3_class("tbl_tree")

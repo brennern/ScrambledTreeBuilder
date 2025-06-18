@@ -4,12 +4,15 @@
 \alias{subTree}
 \title{Extract a subtree}
 \usage{
-subTree(tree_tibble, node)
+subTree(tree_tibble, node, ...)
 }
 \arguments{
 \item{tree_tibble}{A tree in the \code{tbl_tree} class of the \emph{tidytree} package.}
 
-\item{node}{The ID number of the node to base the subtree.}
+\item{node}{The ID number of the node to base the subtree, or a \code{FocalClade}
+object.}
+
+\item{...}{Other arguments (currently ignored)}
 }
 \value{
 A subtree represented in the \code{tbl_tree} class of the \emph{tidytree}
@@ -18,10 +21,11 @@ IDs, because the node IDs in the object are renamed during the extraction
 of the subtree.
 }
 \description{
-Takes a tibble representing a tree, and extracts a subtree at a given node.
+Takes a \code{tbl_tree} object representing a tree, and extracts a subtree at a
+given node.
 }
 \examples{
-(subtree <- subTree(tibbleWithValue, 9))
+(subtree <- subTree(Halo_Tree, 9))
 visualizeTree(subtree, subtree$node.orig)
 
 }

@@ -16,11 +16,12 @@ extractValues(node, your_tibble, your_matrix, fun = mean)
 \item{fun}{Calculates mean, median, etc. between node values to plot on the tree (default fun is mean)}
 }
 \value{
-Values to store in a variable (percent identity, strand randomisation index, etc.)
+Values to store in a variable (percent difference, scrambling index, etc.)
 }
 \description{
 Extract values from a matrix.
 }
 \examples{
-unique(Tibble$parent) |> sort() |> purrr::set_names() |> sapply(extractValues, Tibble, valueMatrix)
+unique(Halo_Tree$parent) |> sort() |>
+  purrr::set_names() |> sapply(extractValues, Halo_Tree, Halo_PercentDiff)
 }

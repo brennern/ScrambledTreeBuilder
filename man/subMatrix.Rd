@@ -24,8 +24,8 @@ that are labels in a tree, subset that matrix to the species that are
 present in the subtree starting at a given node.
 }
 \examples{
-subMatrix(tibbleWithValue, valueMatrix, simpl = TRUE)
-subMatrix(tibbleWithValue, valueMatrix, 9)
-subTree(tibbleWithValue, 9) |> subMatrix(valueMatrix)
+subMatrix(Halo_Tree, Halo_PercentDiff, simpl = TRUE)
+subMatrix(Halo_Tree, Halo_PercentDiff, 9)
+subTree(Halo_Tree, 9) |> subMatrix(Halo_PercentDiff)
 
 }

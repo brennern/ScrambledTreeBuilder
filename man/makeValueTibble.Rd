@@ -22,5 +22,5 @@ New tibble with values added.
 Make new tibble dataset with added value column from a matrix
 }
 \examples{
-makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index")
+makeValueTibble(Halo_Tree, Halo_PercentDiff, colname = "Strand_Randomisation_Index")
 }

@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
+#' makeMatrix(Halo_DF, "percent_identity_global", 100, 50)
 makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA) {
   all_species <- unique(DF$species2)
   your_matrix <- matrix(defaultValue, nrow=length(all_species), ncol=length(all_species))

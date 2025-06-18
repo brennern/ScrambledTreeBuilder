@@ -38,7 +38,7 @@ values, or just node IDs.  No legend is show when displaying node IDs.
 Plot a phylogenetic tree and its node data
 }
 \examples{
-visualizeTree(tibbleWithValue)
-visualizeTree(tibbleWithValue, value = tibbleWithValue$Strand_Randomisation_Index)
-visualizeTree(tibbleWithValue, "Strand_Randomisation_Index")
+visualizeTree(Halo_Tree)
+visualizeTree(Halo_Tree, value = Halo_Tree$Scrambling_index)
+visualizeTree(Halo_Tree, "Scrambling_index") # same
 }

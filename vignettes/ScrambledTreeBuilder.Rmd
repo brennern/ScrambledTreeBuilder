@@ -30,7 +30,7 @@ project.
 
 # Load Package
 
-The _ScrambledTreeBuilder_ package ouptuts plots in _ggplot2_ format but you
+The _ScrambledTreeBuilder_ package outputs plots in _ggplot2_ format but you
 need to load the _ggplot2_ package to further customize them.
 
 ```{r setup}
@@ -40,102 +40,146 @@ library(ggplot2)
 
 # Example Data
 
-This package utilizes example `.yaml` files containing summary statistics of
+This package utilizes example YAML files containing summary statistics of
 halobacteria genome comparison data. In regards to genome scrambling, many
-studies have showcased significant genome rearrangments in such halobacteria
+studies have showcased significant genome rearrangements in such halobacteria
 species due to dozens of insertion sequence families.
 
 The YAML summary files are produced by performing an all vs. all genome
-comparison between six halobacteria species using the Nextflow
-[genome pairwise alignment pipeline](https://github.com/oist/plessy_pairwiseGenomeComparison)
-and an [input file script](https://github.com/brennern/GenomeScrambling/blob/main/scripts/makeGBreaksInputFile.sh)
-for [GenomicBreaks](https://github.com/oist/GenomicBreaks).  They are stored in
-a directory called 'extdata/yaml'.  Here we prepare an object
-called 'yamlFileData' that contains the path to the files.  The file names are
-constructed by taking the name of one species taken as reference, adding a
-separator (`___`), and then the name of one species being compared to the
-reference.
+comparison between six halobacteria species using the 
+[nf-core pairwise genome alignment pipeline](https://nf-co.re/pairgenomealign/)
+and an [post-processing pipeline](https://github.com/oist/plessy_nf_GenomicBreaks)
+running functions from the [GenomicBreaks](https://github.com/oist/GenomicBreaks)
+package to extract statistics on alignment length and the extent of genome scrambling.
+Examples YAML files are stored in `extdata/yaml`.  Each file represent one
+pairwise alignment, and the file names conveys the identifiers of the _target_
+and _query_ genomes (here species names) separed with three underscores (`___`).
+
+Here we prepare an object called 'yamlFileData' that contains the path to the files.
 
 ```{r}
 resultsDir <- system.file("extdata/yaml", package = "ScrambledTreeBuilder")
 yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
 names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
-head(names(yamlFileData))
+yamlFileData[1]
 ```
 
-Next, we use the 'formatStats()' function to load the YAML files into a
+Next, we use the `formatStats()` function to load the YAML files into a
 single dataframe where each line is a pair of species and each column is
 a statistic or a metadata about that species comparison.
 
 ```{r}
 exDataFrame <- formatStats(yamlFileData)
+ncol(exDataFrame)
+colnames(exDataFrame) |> head()
+colnames(exDataFrame) |> grep(pat = "_Mean", value = TRUE) |> head()
+colnames(exDataFrame) |> tail()
 ```
 
-Then, for statistics of interest, we build square matrices where rows and
-columns indicate one species, and the cells at each intersection contain the
-value for that pair.
+This data frame has a large number of columns, providing summary statistics
+on various aspects of the alignments.  For statistics of interest, we build
+square matrices where rows and columns indicate one species, and the cells at
+each intersection contain the value for that pair.
 
-We perform this task with the 'makeMatrix()' function.  It provide defaults for
-missing values and self-comparisons.
+We perform this task with the `makeMatrix()` function.  It provide defaults for
+missing values and self-comparisons.  In this vignette, let's focus on the
+percent nucleotide difference and the scrambling index.
 
 ```{r}
 # Average nucleotide identity.  We will use it to cluster a tree.
-(treeMatrix <- makeMatrix(exDataFrame, "percent_identity_global", 100, 50))
+treeMatrix <- 100 - makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
+round(treeMatrix)
 ```
 
 ```{r}
-# Strand randomisation index.
-(valueMatrix <- makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5))
+# Scrambling index
+valueMatrix <- 1 - makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
+round(valueMatrix, 2)
 ```
 
-We cluster the average nucleotide identity matrix (`treeMatrix`) to produce
-a tree in _tibble_ format, using the `makeTidyTree()` funciton. Then we add
-other statistics, here the strand randomisation index and the average nucleotide
-identity, to this object using the `makeValueTibble` function.
+We cluster the percent nucleotide difference matrix (`treeMatrix`) to produce
+a tree in _tibble_ format, using the `makeTidyTree()` function.
 
 ```{r}
 # Let's average the target-query and query-target replicate pairs.
-(Tibble <- makeTidyTree(100 - (treeMatrix/2 + t(treeMatrix)/2)))
+(Tibble <- makeTidyTree((treeMatrix/2 + t(treeMatrix)/2)))
+```
+
+```{r Tree_with_node_IDs}
+visualizeTree(Tibble)
+```
+
+The node IDs can be used to manipulate the tree, for instance subsetting with
+the `subtree()` function.
+
+```{r subTree_with_node_IDs}
+visualizeTree(Tibble |> subTree(9))
+```
+
+Clades of interest can be tracked and highlighted by `FocalClade` objects.
+For robustness against changes in the input data or clustering approach, it
+is recommented to define a clade by the most recent common ancestor from a
+pair of species.  The `subTree()` function can take `FocalClade` objects
+instead of node IDs as input.
+
+```{r focalClade}
+(Halobacterium <- focalClade(Tibble, "Halobacterium_noricense", "Halobacterium_salinarum", "blue", "Halobacterium genus"))
+Halobacterium@genomeIDs
+Halobacterium@nodeID
+subTree(Tibble, Halobacterium)
+```
+
+The focal clade objects can be added to plots to highlight the clades in the
+selected colors.
+
+```{r focalCladeList}
+Haloferax <- focalClade(Tibble, "Haloferax_mediterranei", "Haloferax_volcanii", "green3", "Haloferax genus")
+(clades <- FocalCladeList(Halobacterium, Haloferax))
+visualizeTree(Tibble) + clades
+```
+
+To plot more data on the tree, we add other statistics to the tree object, here
+the scrambling index and the percent nucleotide difference, using the
+`makeValueTibble()` function.  This operation reduces a pairwise matrix to the
+tree, by averaging all the pairs sharing the same most recent common ancestor,
+represented by an internal node in the tree.
+
+```{r}
+(tibbleWithValues <- makeValueTibble(Tibble, valueMatrix, colname = "Scrambling_index"))
 ```
 
 ```{r}
-(tibbleWithValue <- makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index"))
-```
-
-```{r}
-(tibbleWithMultipleValues <- makeValueTibble(tibbleWithValue, treeMatrix, colname = "Percent_Identity"))
+(tibbleWithMultipleValues <- makeValueTibble(tibbleWithValues, treeMatrix, colname = "Percent_difference"))
 ```
 
 We made multiple tables to show the step-by-step process, but typically one
 would just keep the last table.  This can be done with pipes.
 
 ```{r}
-makeTidyTree(100 - (treeMatrix/2 + t(treeMatrix)/2)) |>
-  makeValueTibble(valueMatrix, colname = "Strand_Randomisation_Index") |>
-  makeValueTibble(treeMatrix, colname = "Percent_Identity")
+makeTidyTree((treeMatrix/2 + t(treeMatrix)/2)) |>
+  makeValueTibble(valueMatrix, colname = "Scrambling_index") |>
+  makeValueTibble(treeMatrix,  colname = "Percent_difference")
 # Same result
 ```
 
-## Plot trees
+## Plot trees with values
 
 Let's use the `tibbleWithMultipleValues` object to plot trees.  In our case, we
-have generated a tree built based on 100 minus percent identity values as a
-distance, and computed average strand randomisation scores for all the nodes.
+have generated a tree built based on nucleotide percent difference values as a
+distance, and computed average scrambling index for all the nodes.
 We can plot these values as labels on the tree.
 
 ```{r}
-visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index) +
-  ggplot2::ggtitle(paste("Tree built with Percent Identity and labelled with Strand Randomisation Index scores")) + 
-  ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .4, type = "gradient", gradient.direction = 'tr') +
-  ggtree::geom_hilight(node = 9, fill = "pink", alpha = .4, type = "gradient", gradient.direction = 'tr')
+visualizeTree(tibbleWithMultipleValues, "Scrambling_index") +
+  ggplot2::ggtitle(paste("Tree built with Percent difference and labelled with Scrambling Index")) + clades
 ```
 
 ```{r}
-visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Strand_Randomisation_Index, ynudge = 0.2) +
-  ggplot2::ggtitle("Tree labeled with Strand Randomisation Index and Percent Identity (built with Percent Identity)") +
-  ggplot2::scale_color_viridis_c(name = "Strand Randomisation Index", option = "cividis") +
+visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Scrambling_index, ynudge = 0.2) +
+  ggplot2::ggtitle("Tree labeled with Scrambling Index and Percent Difference (built with Percent Difference)") +
+  ggplot2::scale_color_viridis_c(name = "Scrambling index", option = "cividis") +
   ggnewscale::new_scale_colour() +
-  ggtree::geom_label(ggtree::aes(label=round(Percent_Identity, digits = 3), color = Percent_Identity), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.2) +
+  ggtree::geom_label(ggtree::aes(label=round(Percent_difference), color = Percent_difference), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.2) +
   viridis::scale_color_viridis(option = "magma", name = "Percent Identity")
 ```
 
@@ -150,7 +194,7 @@ The `subTree` function can conveniently be used with R's pipe operator to cut
 a sub-tree at a chosen node.
 
 ```{r}
-visualizeTree(tibbleWithMultipleValues |> subTree(node = 9), "Percent_Identity")
+visualizeTree(tibbleWithMultipleValues |> subTree(node = 9), "Percent_difference")
 ```
 
 ```{r}
@@ -163,8 +207,8 @@ subMatrix(Tibble, valueMatrix, 9, simpl=TRUE)
 We can also plot leaf and node values in a standard scatterplot.
 
 ```{r}
-plot(exDataFrame$percent_identity_global, exDataFrame$index_avg_strandRand, col = 'grey', xlab = "Percent identity", ylab="Strand randomisation index", main = "Leaf values are in grey and node values in red")
-points(tibbleWithMultipleValues$Percent_Identity, tibbleWithMultipleValues$Strand_Randomisation_Index, col = 'red')
+plot(100 - exDataFrame$percent_identity_global, 1 - exDataFrame$index_avg_strandRand, col = 'grey', xlab = "Percent difference", ylab="Strand randomisation index", main = "Leaf values are in grey and node values in red")
+points(tibbleWithMultipleValues$Percent_difference, tibbleWithMultipleValues$Scrambling_index, col = 'red')
 
 plotTwoBranches <- function(tree, node, X, Y, ...) {
   children <- tidytree::child   (tree, node)
@@ -189,5 +233,5 @@ plotAllBranches <- function(tree, X, Y, ... ) {
   return(invisible())
 }
 
-plotAllBranches(tibbleWithMultipleValues, "Percent_Identity", "Strand_Randomisation_Index", col = "red")
+plotAllBranches(tibbleWithMultipleValues, "Percent_difference", "Scrambling_index", col = "red")
 ```

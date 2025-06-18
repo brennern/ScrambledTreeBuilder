@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-#' makeValueTibble(Tibble, valueMatrix, colname = "Strand_Randomisation_Index")
+#' makeValueTibble(Halo_Tree, Halo_PercentDiff, colname = "Strand_Randomisation_Index")
 makeValueTibble <- function(your_tibble, your_matrix, fun = mean, colname = "value") {
   labels <- unique(your_tibble$parent) |> sort() |> purrr::set_names() |> sapply(extractValues, your_tibble, your_matrix, fun)
   your_tibble[, colname] <- NA

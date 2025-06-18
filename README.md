@@ -31,7 +31,7 @@ Here is an example of tree produced by *ScrambledTreeBuilder*. See the
 
 ``` r
 library(ScrambledTreeBuilder)
-visualizeTree(tibbleWithValue, tibbleWithValue$Strand_Randomisation_Index) +
+visualizeTree(Halo_Tree, Halo_Tree$Strand_Randomisation_Index) +
   ggplot2::ggtitle(paste("Tree built with Percent Identity and labelled with Strand Randomisation Index scores")) + 
   viridis::scale_color_viridis(name = "Strand Randomisation Index") +
   ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +

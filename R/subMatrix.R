@@ -12,11 +12,12 @@
 #' @return A subset of the `m` matrix.
 #'
 #' @examples
-#' subMatrix(tibbleWithValue, valueMatrix, simpl = TRUE)
-#' subMatrix(tibbleWithValue, valueMatrix, 9)
-#' subTree(tibbleWithValue, 9) |> subMatrix(valueMatrix)
+#' subMatrix(Halo_Tree, Halo_PercentDiff, simpl = TRUE)
+#' subMatrix(Halo_Tree, Halo_PercentDiff, 9)
+#' subTree(Halo_Tree, 9) |> subMatrix(Halo_PercentDiff)
 #'
 #' @export
+
 subMatrix <- function(tree_tibble, m, node = NA, simplify.names = FALSE) {
   if (! is.na(node)) tree_tibble <- subTree(tree_tibble, node)
   specNames <- tree_tibble$label |> unique() |> purrr::discard(is.na)
