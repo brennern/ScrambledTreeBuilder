@@ -1,9 +1,7 @@
 ## code to prepare `Haloarchaea` data objects goes here
 
 Halo_DF <- system.file("extdata/yaml", package = "ScrambledTreeBuilder") |>
-  list.files(pattern = "*.yaml.bz2", full.names = TRUE) |>
-  purrr::set_names(~ .x |> basename()  |> sub(pat = ".yaml.bz2", rep="")) |>
-  formatStats()
+  resultFiles() |>  formatStats()
 usethis::use_data(Halo_DF, overwrite = TRUE)
 
 Halo_PercentDiff <- 100 - makeMatrix(Halo_DF, "percent_identity_global", 100, 50)

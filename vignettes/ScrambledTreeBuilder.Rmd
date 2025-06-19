@@ -58,9 +58,8 @@ and _query_ genomes (here species names) separed with three underscores (`___`).
 Here we prepare an object called 'yamlFileData' that contains the path to the files.
 
 ```{r}
-resultsDir <- system.file("extdata/yaml", package = "ScrambledTreeBuilder")
-yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
-names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
+yamlFileData <- system.file("extdata/yaml", package = "ScrambledTreeBuilder") |>
+  resultFiles()
 yamlFileData[1]
 ```
 

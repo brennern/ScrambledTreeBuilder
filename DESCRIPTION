@@ -42,6 +42,7 @@ Collate:
     'getStats.R'
     'makeMatrix.R'
     'makeValueTibble.R'
+    'resultFiles.R'
     'subMatrix.R'
     'visualizeTree.R'
     'zzz.R'
