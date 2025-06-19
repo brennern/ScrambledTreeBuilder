@@ -2,25 +2,41 @@
 % Please edit documentation in R/formatStats.R
 \name{formatStats}
 \alias{formatStats}
-\title{Format species data and calculate percent identity and strand randomisation variables as part of the dataframe.}
+\title{Consolidate YAML reports in one data frame}
 \usage{
 formatStats(files)
 }
 \arguments{
 \item{files}{A named character vector of paths to YAML files.  The names will
-become the row names of the output data frame. Compressed files are\
+become the row names of the output data frame. Compressed files are
 accepted.}
 }
 \value{
-Formatted dataframe with strand randomisation and percent identities between species calculated.
+Formatted \code{data.frame} with alignment statistics such as alignment
+length, strand randomisation index or percent identity.
 }
 \description{
-Format species data and calculate percent identity and strand randomisation variables as part of the dataframe.
+Read YAML files, one per pair of genomes, and consolidate the information in
+one data frame where each row is one pair and each column is one statistic.
+}
+\details{
+The format of the YAML files changed over time and this function has some
+commands that aim at supporting legacy formats, converting column names,
+etc.
 }
 \examples{
-resultsDir <- system.file("extdata/yaml", package = "ScrambledTreeBuilder")
-yamlFileData <- list.files(resultsDir, pattern = "*.yaml.bz2", full.names = TRUE)
-names(yamlFileData) <- yamlFileData |> basename() |> sub(pat = ".yaml.bz2", rep="")
+yamlFileData <-
+  system.file("extdata/yaml", package = "ScrambledTreeBuilder") |> resultFiles()
 exDataFrame <- formatStats(yamlFileData)
 exDataFrame[1:10,1:6]
 }
+\seealso{
+Other Data load functions: 
+\code{\link{resultFiles}()}
+}
+\author{
+Noah Brenner
+
+Charles Plessy
+}
+\concept{Data load functions}
