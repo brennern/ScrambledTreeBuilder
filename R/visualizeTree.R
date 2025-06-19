@@ -12,7 +12,13 @@
 #'
 #' @return A phylogenetic tree showcasing phylogeny of species, additional node
 #' values, or just node IDs.  No legend is show when displaying node IDs.
+#'
 #' @export
+#'
+#' @author Noah Brenner
+#' @author Charles Plessy
+#'
+#' @family Focal clade functions
 #'
 #' @examples
 #' visualizeTree(Halo_Tree)

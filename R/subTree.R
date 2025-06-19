@@ -22,6 +22,9 @@ NULL
 #' (subtree <- subTree(Halo_Tree, 9))
 #' visualizeTree(subtree, subtree$node.orig)
 #'
+#' @author Charles Plessy
+#' @family Focal clade functions
+#'
 #' @export
 
 subTree <- new_generic("subTree", c("tree_tibble", "node"))

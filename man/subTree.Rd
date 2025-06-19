@@ -29,3 +29,12 @@ given node.
 visualizeTree(subtree, subtree$node.orig)
 
 }
+\seealso{
+Other Focal clade functions: 
+\code{\link{focalClade}()},
+\code{\link{visualizeTree}()}
+}
+\author{
+Charles Plessy
+}
+\concept{Focal clade functions}

@@ -42,3 +42,14 @@ visualizeTree(Halo_Tree)
 visualizeTree(Halo_Tree, value = Halo_Tree$Scrambling_index)
 visualizeTree(Halo_Tree, "Scrambling_index") # same
 }
+\seealso{
+Other Focal clade functions: 
+\code{\link{focalClade}()},
+\code{\link{subTree}()}
+}
+\author{
+Noah Brenner
+
+Charles Plessy
+}
+\concept{Focal clade functions}

@@ -28,3 +28,9 @@ Clades of interest to be plotted in color
 (clades <- FocalCladeList(Halobacterium, Haloferax))
 visualizeTree(Halo_Tree) + clades
 }
+\seealso{
+Other Focal clade functions: 
+\code{\link{subTree}()},
+\code{\link{visualizeTree}()}
+}
+\concept{Focal clade functions}

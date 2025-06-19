@@ -43,6 +43,8 @@ method(print, FocalCladeList) <- function(x, ...) {
 #'
 #' @importFrom treeio MRCA
 #'
+#' @family Focal clade functions
+#'
 #' @export
 #'
 #' @examples
