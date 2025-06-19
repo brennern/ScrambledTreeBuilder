@@ -35,9 +35,8 @@ The input of _ScrambledTreeBuilder_ is YAML files produced by the [oist/plessy_n
 
 ```{r SingleValueTree}
 library(ScrambledTreeBuilder)
-visualizeTree(Halo_Tree, Halo_Tree$Strand_Randomisation_Index) +
-  ggplot2::ggtitle(paste("Tree built with Percent Identity and labelled with Strand Randomisation Index scores")) + 
-  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
-  ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
-  ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
+visualizeTree(Halo_Tree, "Scrambling_index") +
+  Halo_FocalClades +
+  ggplot2::ggtitle(paste("Tree built with Percent difference and labelled with Scrambling index")) + 
+  viridis::scale_color_viridis(name = "Scambling index")
 ```

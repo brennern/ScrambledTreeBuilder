@@ -31,13 +31,11 @@ Here is an example of tree produced by *ScrambledTreeBuilder*. See the
 
 ``` r
 library(ScrambledTreeBuilder)
-visualizeTree(Halo_Tree, Halo_Tree$Strand_Randomisation_Index) +
-  ggplot2::ggtitle(paste("Tree built with Percent Identity and labelled with Strand Randomisation Index scores")) + 
-  viridis::scale_color_viridis(name = "Strand Randomisation Index") +
-  ggtree::geom_hilight(node = 8, fill = "lightblue1", alpha = .2, type = "gradient", gradient.direction = 'tr') +
-  ggtree::geom_hilight(node = 9, fill = "pink", alpha = .2, type = "gradient", gradient.direction = 'tr')
-#> Scale for y is already present.
-#> Adding another scale for y, which will replace the existing scale.
+#> Loading required package: S7
+visualizeTree(Halo_Tree, "Scrambling_index") +
+  Halo_FocalClades +
+  ggplot2::ggtitle(paste("Tree built with Percent difference and labelled with Scrambling index")) + 
+  viridis::scale_color_viridis(name = "Scambling index")
 ```
 
 <img src="man/figures/README-SingleValueTree-1.png" width="100%" />
