@@ -25,3 +25,9 @@ Extract values from a matrix.
 unique(Halo_Tree$parent) |> sort() |>
   purrr::set_names() |> sapply(extractValues, Halo_Tree, Halo_PercentDiff)
 }
+\seealso{
+Other Functions for trees: 
+\code{\link{childSpecies}()},
+\code{\link{recordAncestor}()}
+}
+\concept{Functions for trees}
