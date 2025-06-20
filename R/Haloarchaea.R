@@ -21,6 +21,7 @@
 #' @aliases Halo_DF Halo_PercentDiff Halo_FocalClades Halo_Tree
 #'
 #' @family Structural variants
+#' @family Lazy-loaded data
 #'
 #' @examples
 #' Halo_DF

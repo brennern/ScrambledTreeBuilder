@@ -31,7 +31,12 @@ Halo_Tree
 Halo_FocalClades
 
 }
+\seealso{
+Other Lazy-loaded data: 
+\code{\link{oikData}}
+}
 \author{
 Charles Plessy
 }
+\concept{Lazy-loaded data}
 \concept{Structural variants}
