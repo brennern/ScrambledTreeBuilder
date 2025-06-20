@@ -16,7 +16,6 @@ labelOrder <- new_generic("labelOrder", "tree")
 
 method(labelOrder, ConvenientTblTree) <- function (tree) {
   treeTips <- tidytree::as_tibble(tree)[tree$isTip,]
-  treeTips <- treeTips[order(treeTips$label),]        # Is this one really needed?
   order(treeTips$y, decreasing = TRUE)
 }
 
