@@ -60,902 +60,230 @@
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">resultsDir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"extdata/yaml"</span>, package <span class="op">=</span> <span class="st">"ScrambledTreeBuilder"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">yamlFileData</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span><span class="va">resultsDir</span>, pattern <span class="op">=</span> <span class="st">"*.yaml.bz2"</span>, full.names <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">getStats</span><span class="op">(</span><span class="va">yamlFileData</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        aligned_length_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         aligned_length_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.175000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     aligned_length_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.409000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       aligned_length_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.177722e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         aligned_length_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.926500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        aligned_length_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.812500e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        aligned_length_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.602071e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      aligned_length_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.785732e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                          aligned_length_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         aligned_score_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.420000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                          aligned_score_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.643500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      aligned_score_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.905500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        aligned_score_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.899644e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                          aligned_score_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.701250e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         aligned_score_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.811300e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         aligned_score_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.350195e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       aligned_score_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.837708e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                           aligned_score_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       aligned_matches_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.500000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        aligned_matches_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.537500e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_matches_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.130500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      aligned_matches_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.716306e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        aligned_matches_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.311250e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       aligned_matches_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.513100e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       aligned_matches_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.695254e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     aligned_matches_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.407371e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         aligned_matches_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_mismatches_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     aligned_mismatches_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.420000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 aligned_mismatches_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.635000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   aligned_mismatches_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.944085e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     aligned_mismatches_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.242500e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_mismatches_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.913000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_mismatches_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.979011e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  aligned_mismatches_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.234150e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      aligned_mismatches_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   aligned_gaps_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              0.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_gaps_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              0.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_gaps_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.100000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  aligned_gaps_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.966220e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_gaps_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.700000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   aligned_gaps_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.930000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   aligned_gaps_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.305361e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 aligned_gaps_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.252300e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     aligned_gaps_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_gaps_query_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              0.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     aligned_gaps_query_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              0.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 aligned_gaps_query_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   aligned_gaps_query_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.734512e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     aligned_gaps_query_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.800000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_gaps_query_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.270000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_gaps_query_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.337613e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  aligned_gaps_query_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.242300e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      aligned_gaps_query_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      matching_aligned_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.763293e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       matching_aligned_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.527853e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   matching_aligned_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.918828e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     matching_aligned_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.812704e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       matching_aligned_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.235560e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      matching_aligned_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.418605e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      matching_aligned_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.865756e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    matching_aligned_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.406417e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        matching_aligned_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       matching_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.853659e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        matching_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.667055e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    matching_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.029087e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      matching_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.932612e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        matching_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.330848e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       matching_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.418605e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       matching_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.980250e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     matching_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.504742e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         matching_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        matching_query_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.853659e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         matching_query_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.634382e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     matching_query_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.992700e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       matching_query_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.907539e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         matching_query_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.296295e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        matching_query_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.418605e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        matching_query_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.953733e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      matching_query_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.484182e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                          matching_query_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   mismatching_aligned_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.813954e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    mismatching_aligned_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.543644e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                mismatching_aligned_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.812141e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  mismatching_aligned_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.912067e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    mismatching_aligned_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.139492e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   mismatching_aligned_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.927959e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   mismatching_aligned_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.075907e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 mismatching_aligned_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.567895e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     mismatching_aligned_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    mismatching_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.813954e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     mismatching_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.571515e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 mismatching_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.849935e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   mismatching_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.942023e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     mismatching_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.183473e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    mismatching_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.989547e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    mismatching_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.106898e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  mismatching_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.592459e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      mismatching_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     mismatching_query_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.813954e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      mismatching_query_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.558840e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  mismatching_query_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.832280e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    mismatching_query_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.937048e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      mismatching_query_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.180056e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     mismatching_query_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.989547e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     mismatching_query_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.104138e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   mismatching_query_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.588379e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       mismatching_query_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  aligned_width_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   aligned_width_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.127500e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_width_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.372000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 aligned_width_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.138060e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   aligned_width_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.868250e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  aligned_width_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.806200e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  aligned_width_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.513377e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_width_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.753209e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_width_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   aligned_width_query_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_width_query_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.137500e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_width_query_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.396000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  aligned_width_query_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.150377e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    aligned_width_query_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.886250e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   aligned_width_query_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.796200e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   aligned_width_query_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.543958e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 aligned_width_query_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.763309e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     aligned_width_query_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.200000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    chain_width_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     chain_width_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.280000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 chain_width_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.263000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   chain_width_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.087052e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     chain_width_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.332500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    chain_width_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.991400e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    chain_width_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.086142e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  chain_width_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.182812e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      chain_width_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.080000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     chain_width_query_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      chain_width_query_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.332500e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  chain_width_query_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.078000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    chain_width_query_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.916279e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      chain_width_query_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.109500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     chain_width_query_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.022700e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     chain_width_query_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.109225e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   chain_width_query_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.130214e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       chain_width_query_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.080000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                collinear_width_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.900000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 collinear_width_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.125000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             collinear_width_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.668000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               collinear_width_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.395406e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 collinear_width_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.242000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                collinear_width_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.806200e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                collinear_width_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.685756e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              collinear_width_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.568991e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  collinear_width_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.550000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 isolated_width_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  isolated_width_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.210000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              isolated_width_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.710000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                isolated_width_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.116473e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  isolated_width_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.322000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 isolated_width_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.219100e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 isolated_width_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.045219e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               isolated_width_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.842180e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   isolated_width_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.650000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   bridge_width_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    bridge_width_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.090000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                bridge_width_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.155000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  bridge_width_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.605500e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    bridge_width_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.093500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   bridge_width_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.099500e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   bridge_width_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.818691e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 bridge_width_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.302750e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                     bridge_width_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.000000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               breakpoint_width_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                breakpoint_width_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.700000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            breakpoint_width_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.620000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              breakpoint_width_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.671927e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                breakpoint_width_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.556250e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               breakpoint_width_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.545500e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               breakpoint_width_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.871944e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             breakpoint_width_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.015780e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 breakpoint_width_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.000000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 inverted_width_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.549000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  inverted_width_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.433500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              inverted_width_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.318000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                inverted_width_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.318000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  inverted_width_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.202500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 inverted_width_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.087000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 inverted_width_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.906447e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               inverted_width_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.063600e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   inverted_width_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             translocated_width_target_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.550000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              translocated_width_target_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.825750e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          translocated_width_target_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.171500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            translocated_width_target_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.163458e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              translocated_width_target_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.616575e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             translocated_width_target_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.308600e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             translocated_width_target_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.279738e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           translocated_width_target_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.678820e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               translocated_width_target_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.600000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 guessed_target_length_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  guessed_target_length_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              guessed_target_length_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                guessed_target_length_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  guessed_target_length_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 guessed_target_length_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 guessed_target_length_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               guessed_target_length_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   guessed_target_length_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  guessed_query_length_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.686400e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   guessed_query_length_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.999100e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               guessed_query_length_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.631180e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 guessed_query_length_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.631180e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   guessed_query_length_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.262450e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  guessed_query_length_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.893720e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  guessed_query_length_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.608391e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                guessed_query_length_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.262360e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    guessed_query_length_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                      index_synteny_target </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.892226e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       index_synteny_query </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  index_correlation_target </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                             -6.036899e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   index_correlation_query </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                             -6.055977e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 index_GOCvicinity4_target </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.310513e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  index_GOCvicinity4_query </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.156863e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   index_strandRand_target </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.939730e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    index_strandRand_query </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.951871e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_length_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_length_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.510000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_length_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.427000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              aligned_length_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.199990e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_length_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.984000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_length_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.812500e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_length_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.620614e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             aligned_length_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.766592e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 aligned_length_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_score_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.420000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 aligned_score_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.680500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             aligned_score_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.935000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_score_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.973237e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 aligned_score_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.767000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_score_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.811300e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_score_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.355149e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              aligned_score_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.796509e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                  aligned_score_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              aligned_matches_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.500000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_matches_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.680000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_matches_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.145000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             aligned_matches_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.735183e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_matches_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.337500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              aligned_matches_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.513100e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              aligned_matches_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.709876e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_matches_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.393352e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_matches_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_mismatches_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_mismatches_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.460000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        aligned_mismatches_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.640000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_mismatches_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.970635e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_mismatches_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.325000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_mismatches_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.913000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_mismatches_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.001108e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_mismatches_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.188420e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             aligned_mismatches_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_gaps_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              0.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_gaps_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              0.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       aligned_gaps_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.100000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_gaps_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.019676e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_gaps_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.700000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_gaps_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.930000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_gaps_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.310060e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        aligned_gaps_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.227800e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_gaps_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_gaps_query_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              0.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_gaps_query_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              0.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        aligned_gaps_query_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_gaps_query_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.754670e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_gaps_query_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.800000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_gaps_query_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.270000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_gaps_query_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.380380e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_gaps_query_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.212000e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             aligned_gaps_query_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             matching_aligned_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.763293e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              matching_aligned_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.535440e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          matching_aligned_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.923664e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            matching_aligned_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.825679e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              matching_aligned_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.243074e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             matching_aligned_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.418605e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             matching_aligned_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.876937e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           matching_aligned_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.284020e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               matching_aligned_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              matching_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.853659e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               matching_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.682993e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           matching_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.034529e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             matching_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.946569e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               matching_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.334542e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              matching_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.418605e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              matching_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.992431e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            matching_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.381095e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                matching_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               matching_query_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.853659e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                matching_query_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.646771e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            matching_query_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.000000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              matching_query_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.920362e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                matching_query_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.298615e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               matching_query_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.418605e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               matching_query_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.964851e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             matching_query_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.360050e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 matching_query_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          mismatching_aligned_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.813954e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           mismatching_aligned_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.534276e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       mismatching_aligned_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.796875e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         mismatching_aligned_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.898626e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           mismatching_aligned_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.127366e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          mismatching_aligned_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.927959e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          mismatching_aligned_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.056816e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        mismatching_aligned_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.524596e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            mismatching_aligned_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           mismatching_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.813954e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            mismatching_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.568827e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        mismatching_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.839465e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          mismatching_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.928617e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            mismatching_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.157459e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           mismatching_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.989547e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           mismatching_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.087947e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         mismatching_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.548680e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             mismatching_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            mismatching_query_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.813954e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             mismatching_query_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.554984e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         mismatching_query_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.823204e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           mismatching_query_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.923332e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             mismatching_query_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.148290e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            mismatching_query_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.989547e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            mismatching_query_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.084618e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          mismatching_query_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.544435e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              mismatching_query_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_width_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_width_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.355000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      aligned_width_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.404000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        aligned_width_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.159793e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_width_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.899500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_width_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.806200e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_width_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.531509e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       aligned_width_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.734314e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_width_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_width_query_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_width_query_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.450000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       aligned_width_query_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.412000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_width_query_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.172443e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_width_query_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.949000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_width_query_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.796200e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_width_query_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.562002e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        aligned_width_query_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.744472e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_width_query_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.030000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           chain_width_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            chain_width_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.580000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        chain_width_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.531000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          chain_width_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.566315e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            chain_width_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.013400e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           chain_width_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.991400e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           chain_width_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.147708e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         chain_width_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.186665e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             chain_width_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.890000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            chain_width_query_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             chain_width_query_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.650000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         chain_width_query_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.465000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           chain_width_query_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.328014e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             chain_width_query_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.852000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            chain_width_query_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.022700e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            chain_width_query_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.161077e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          chain_width_query_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.117796e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              chain_width_query_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.890000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       collinear_width_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.900000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        collinear_width_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.145000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    collinear_width_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.671000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      collinear_width_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.406338e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        collinear_width_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.248500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       collinear_width_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.806200e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       collinear_width_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.690705e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     collinear_width_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.566526e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         collinear_width_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.510000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        isolated_width_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.200000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         isolated_width_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.142500e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     isolated_width_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.715000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       isolated_width_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.103868e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         isolated_width_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.322250e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        isolated_width_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.219100e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        isolated_width_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.045207e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      isolated_width_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.677880e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          isolated_width_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.520000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          bridge_width_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           bridge_width_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.100000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       bridge_width_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.205000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         bridge_width_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.010976e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           bridge_width_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.129000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          bridge_width_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.532600e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          bridge_width_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.254973e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        bridge_width_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.523510e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>            bridge_width_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.020000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      breakpoint_width_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       breakpoint_width_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.875000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   breakpoint_width_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.860000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     breakpoint_width_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.752975e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       breakpoint_width_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.592000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      breakpoint_width_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.545500e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      breakpoint_width_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              9.613247e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    breakpoint_width_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.943390e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        breakpoint_width_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.820000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        inverted_width_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.549000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         inverted_width_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.433500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     inverted_width_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.318000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       inverted_width_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.318000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         inverted_width_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.202500e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        inverted_width_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.087000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        inverted_width_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              5.906447e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      inverted_width_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.063600e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          inverted_width_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    translocated_width_target_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.600000e+02 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     translocated_width_target_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.878000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> translocated_width_target_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.816000e+03 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   translocated_width_target_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.317841e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     translocated_width_target_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.906000e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    translocated_width_target_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              4.308600e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    translocated_width_target_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.377436e+04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  translocated_width_target_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              8.038830e+05 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      translocated_width_target_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              6.100000e+01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        guessed_target_length_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         guessed_target_length_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     guessed_target_length_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       guessed_target_length_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         guessed_target_length_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        guessed_target_length_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        guessed_target_length_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      guessed_target_length_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.697406e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          guessed_target_length_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         guessed_query_length_bestpair_Min </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.893720e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          guessed_query_length_bestpair_Q1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.893720e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      guessed_query_length_bestpair_Median </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.893720e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        guessed_query_length_bestpair_Mean </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.893720e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          guessed_query_length_bestpair_Q3 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.893720e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         guessed_query_length_bestpair_Max </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.893720e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         guessed_query_length_bestpair_L50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.893720e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       guessed_query_length_bestpair_Total </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              2.893720e+06 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           guessed_query_length_bestpair_N </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             index_synteny_target_bestpair </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>              index_synteny_query_bestpair </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              1.000000e+00 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         index_correlation_target_bestpair </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                             -6.036899e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          index_correlation_query_bestpair </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                             -6.034801e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        index_GOCvicinity4_target_bestpair </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.415730e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         index_GOCvicinity4_query_bestpair </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              7.340824e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          index_strandRand_target_bestpair </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.994363e-01 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           index_strandRand_query_bestpair </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              3.982729e-01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_length_Min                aligned_length_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     6.200000e+01                     7.175000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_length_Median              aligned_length_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.409000e+03                     2.177722e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_length_Q3               aligned_length_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.926500e+03                     1.812500e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_length_L50             aligned_length_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     4.602071e+03                     1.785732e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 aligned_length_N                aligned_score_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     8.200000e+02                     2.420000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 aligned_score_Q1             aligned_score_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.643500e+03                     3.905500e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_score_Mean                 aligned_score_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.899644e+03                     7.701250e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_score_Max                aligned_score_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.811300e+04                     1.350195e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              aligned_score_Total                  aligned_score_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     4.837708e+06                     8.200000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              aligned_matches_Min               aligned_matches_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.500000e+01                     5.537500e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_matches_Median             aligned_matches_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.130500e+03                     1.716306e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               aligned_matches_Q3              aligned_matches_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.311250e+03                     1.513100e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              aligned_matches_L50            aligned_matches_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.695254e+03                     1.407371e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                aligned_matches_N           aligned_mismatches_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     8.200000e+02                     5.000000e+00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_mismatches_Q1        aligned_mismatches_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.420000e+02                     2.635000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_mismatches_Mean            aligned_mismatches_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.944085e+02                     5.242500e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_mismatches_Max           aligned_mismatches_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.913000e+03                     7.979011e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_mismatches_Total             aligned_mismatches_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.234150e+05                     8.200000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_gaps_target_Min           aligned_gaps_target_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     0.000000e+00                     0.000000e+00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       aligned_gaps_target_Median         aligned_gaps_target_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.100000e+01                     3.966220e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_gaps_target_Q3          aligned_gaps_target_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.700000e+01                     3.930000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_gaps_target_L50        aligned_gaps_target_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.305361e+02                     3.252300e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_gaps_target_N           aligned_gaps_query_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     8.200000e+02                     0.000000e+00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            aligned_gaps_query_Q1        aligned_gaps_query_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     0.000000e+00                     8.000000e+00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_gaps_query_Mean            aligned_gaps_query_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.734512e+01                     3.800000e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_gaps_query_Max           aligned_gaps_query_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.270000e+02                     9.337613e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_gaps_query_Total             aligned_gaps_query_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.242300e+04                     8.200000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             matching_aligned_Min              matching_aligned_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.763293e+01                     7.527853e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          matching_aligned_Median            matching_aligned_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     7.918828e+01                     7.812704e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              matching_aligned_Q3             matching_aligned_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     8.235560e+01                     9.418605e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             matching_aligned_L50           matching_aligned_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     7.865756e+01                     6.406417e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               matching_aligned_N              matching_target_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     8.200000e+02                     5.853659e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               matching_target_Q1           matching_target_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     7.667055e+01                     8.029087e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             matching_target_Mean               matching_target_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     7.932612e+01                     8.330848e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>              matching_target_Max              matching_target_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     9.418605e+01                     7.980250e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            matching_target_Total                matching_target_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     6.504742e+04                     8.200000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               matching_query_Min                matching_query_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.853659e+01                     7.634382e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            matching_query_Median              matching_query_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     7.992700e+01                     7.907539e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                matching_query_Q3               matching_query_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     8.296295e+01                     9.418605e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               matching_query_L50             matching_query_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     7.953733e+01                     6.484182e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 matching_query_N          mismatching_aligned_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     8.200000e+02                     5.813954e+00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           mismatching_aligned_Q1       mismatching_aligned_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.543644e+01                     1.812141e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         mismatching_aligned_Mean           mismatching_aligned_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.912067e+01                     2.139492e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          mismatching_aligned_Max          mismatching_aligned_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.927959e+01                     2.075907e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        mismatching_aligned_Total            mismatching_aligned_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.567895e+04                     8.200000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           mismatching_target_Min            mismatching_target_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.813954e+00                     1.571515e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        mismatching_target_Median          mismatching_target_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.849935e+01                     1.942023e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            mismatching_target_Q3           mismatching_target_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.183473e+01                     3.989547e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           mismatching_target_L50         mismatching_target_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.106898e+01                     1.592459e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             mismatching_target_N            mismatching_query_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     8.200000e+02                     5.813954e+00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             mismatching_query_Q1         mismatching_query_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.558840e+01                     1.832280e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           mismatching_query_Mean             mismatching_query_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.937048e+01                     2.180056e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            mismatching_query_Max            mismatching_query_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.989547e+01                     2.104138e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          mismatching_query_Total              mismatching_query_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.588379e+04                     8.200000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_width_target_Min          aligned_width_target_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     6.200000e+01                     7.127500e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      aligned_width_target_Median        aligned_width_target_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.372000e+03                     2.138060e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_width_target_Q3         aligned_width_target_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.868250e+03                     1.806200e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_width_target_L50       aligned_width_target_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     4.513377e+03                     1.753209e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_width_target_N          aligned_width_query_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     8.200000e+02                     6.200000e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           aligned_width_query_Q1       aligned_width_query_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     7.137500e+02                     1.396000e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         aligned_width_query_Mean           aligned_width_query_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.150377e+03                     2.886250e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          aligned_width_query_Max          aligned_width_query_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.796200e+04                     4.543958e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        aligned_width_query_Total            aligned_width_query_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.763309e+06                     8.200000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           chain_width_target_Min            chain_width_target_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     6.200000e+01                     6.280000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        chain_width_target_Median          chain_width_target_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.263000e+03                     7.087052e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            chain_width_target_Q3           chain_width_target_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     9.332500e+03                     4.991400e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           chain_width_target_L50         chain_width_target_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.086142e+04                     2.182812e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             chain_width_target_N            chain_width_query_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.080000e+02                     6.200000e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             chain_width_query_Q1         chain_width_query_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     6.332500e+02                     2.078000e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           chain_width_query_Mean             chain_width_query_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     6.916279e+03                     9.109500e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            chain_width_query_Max            chain_width_query_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     6.022700e+04                     2.109225e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          chain_width_query_Total              chain_width_query_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.130214e+06                     3.080000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       collinear_width_target_Min        collinear_width_target_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     7.900000e+01                     9.125000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    collinear_width_target_Median      collinear_width_target_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.668000e+03                     2.395406e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        collinear_width_target_Q3       collinear_width_target_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.242000e+03                     1.806200e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       collinear_width_target_L50     collinear_width_target_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     4.685756e+03                     1.568991e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         collinear_width_target_N        isolated_width_target_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     6.550000e+02                     6.200000e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         isolated_width_target_Q1     isolated_width_target_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.210000e+02                     6.710000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       isolated_width_target_Mean         isolated_width_target_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.116473e+03                     1.322000e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        isolated_width_target_Max        isolated_width_target_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.219100e+04                     3.045219e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      isolated_width_target_Total          isolated_width_target_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.842180e+05                     1.650000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          bridge_width_target_Min           bridge_width_target_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.000000e+00                     1.090000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       bridge_width_target_Median         bridge_width_target_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     4.155000e+02                     8.605500e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           bridge_width_target_Q3          bridge_width_target_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.093500e+03                     1.099500e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          bridge_width_target_L50        bridge_width_target_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.818691e+03                     4.302750e+05 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>            bridge_width_target_N      breakpoint_width_target_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.000000e+02                     1.000000e+00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       breakpoint_width_target_Q1   breakpoint_width_target_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     8.700000e+01                     3.620000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     breakpoint_width_target_Mean       breakpoint_width_target_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.671927e+03                     1.556250e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      breakpoint_width_target_Max      breakpoint_width_target_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.545500e+04                     8.871944e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    breakpoint_width_target_Total        breakpoint_width_target_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.015780e+05                     3.000000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        inverted_width_target_Min         inverted_width_target_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.549000e+03                     4.433500e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     inverted_width_target_Median       inverted_width_target_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.318000e+03                     5.318000e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         inverted_width_target_Q3        inverted_width_target_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     6.202500e+03                     7.087000e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        inverted_width_target_L50      inverted_width_target_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     5.906447e+03                     1.063600e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          inverted_width_target_N    translocated_width_target_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.000000e+00                     4.550000e+02 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     translocated_width_target_Q1 translocated_width_target_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.825750e+03                     7.171500e+03 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   translocated_width_target_Mean     translocated_width_target_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.163458e+04                     1.616575e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    translocated_width_target_Max    translocated_width_target_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     4.308600e+04                     2.279738e+04 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  translocated_width_target_Total      translocated_width_target_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     7.678820e+05                     6.600000e+01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        guessed_target_length_Min         guessed_target_length_Q1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.697406e+06                     2.697406e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     guessed_target_length_Median       guessed_target_length_Mean </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.697406e+06                     2.697406e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         guessed_target_length_Q3        guessed_target_length_Max </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.697406e+06                     2.697406e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        guessed_target_length_L50      guessed_target_length_Total </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.697406e+06                     2.697406e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          guessed_target_length_N         guessed_query_length_Min </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.000000e+00                     3.686400e+05 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          guessed_query_length_Q1      guessed_query_length_Median </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     9.999100e+05                     1.631180e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        guessed_query_length_Mean          guessed_query_length_Q3 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     1.631180e+06                     2.262450e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         guessed_query_length_Max         guessed_query_length_L50 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     2.893720e+06                     2.608391e+06 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       guessed_query_length_Total           guessed_query_length_N </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.262360e+06                     2.000000e+00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             index_synteny_target              index_synteny_query </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     9.892226e-01                     1.000000e+00 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         index_correlation_target          index_correlation_query </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                    -6.036899e-01                    -6.055977e-01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        index_GOCvicinity4_target         index_GOCvicinity4_query </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     7.310513e-01                     7.156863e-01 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          index_strandRand_target           index_strandRand_query </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                     3.939730e-01                     3.951871e-01 </span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
