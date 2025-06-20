@@ -135,7 +135,7 @@ provide defaults for missing values and self-comparisons. In this
 vignette, let’s focus on the percent nucleotide difference and the
 scrambling index.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Average nucleotide identity.  We will use it to cluster a tree.</span></span>
+<code class="sourceCode R"><span><span class="co"># Percent nucleotide difference  We will use it to cluster a tree.</span></span>
 <span><span class="va">treeMatrix</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"percent_identity_global"</span>, <span class="fl">100</span>, <span class="fl">50</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span></span>
 <span><span class="co">#&gt;                         Halobacterium_noricense Halobacterium_salinarum</span></span>
@@ -246,7 +246,7 @@ in the selected colors.</p>
 <span><span class="op">(</span><span class="va">clades</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/FocalCladeList.html">FocalCladeList</a></span><span class="op">(</span><span class="va">Halobacterium</span>, <span class="va">Haloferax</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Halobacterium genus, node ID: 10, number of genomes: 3</span></span>
 <span><span class="co">#&gt; Haloferax genus, node ID: 8, number of genomes: 2</span></span>
-<span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">Tibble</span><span class="op">)</span> <span class="op">+</span> <span class="va">clades</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">Tibble</span><span class="op">)</span> <span class="op">+</span> <span class="va">clades</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Focal clade highlight"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/focalCladeList-1.png" width="700"></p>
 <p>To plot more data on the tree, we add other statistics to the tree
 object, here the scrambling index and the percent nucleotide difference,
@@ -325,25 +325,25 @@ tree.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="st">"Scrambling_index"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Tree built with Percent difference and labelled with Scrambling Index"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="va">clades</span></span></code></pre></div>
-<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-11-1.png" width="700"></p>
+<p><img src="ScrambledTreeBuilder_files/figure-html/tree_with_SI-1.png" width="700"></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="va">tibbleWithMultipleValues</span><span class="op">$</span><span class="va">Scrambling_index</span>, ynudge <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Tree labeled with Scrambling Index and Percent Difference (built with Percent Difference)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Tree labeled with Scrambling Index and Percent Difference"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_color_viridis_c</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Scrambling index"</span>, option <span class="op">=</span> <span class="st">"cividis"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggnewscale</span><span class="fu">::</span><span class="fu"><a href="https://eliocamp.github.io/ggnewscale/reference/new_scale.html" class="external-link">new_scale_colour</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span><span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">Percent_difference</span><span class="op">)</span>, color <span class="op">=</span> <span class="va">Percent_difference</span><span class="op">)</span>, label.size <span class="op">=</span> <span class="fl">0.25</span>, size <span class="op">=</span> <span class="fl">3</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, label.padding <span class="op">=</span> <span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">0.15</span>, <span class="st">"lines"</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html" class="external-link">scale_color_viridis</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"magma"</span>, name <span class="op">=</span> <span class="st">"Percent Identity"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-12-1.png" width="700"></p>
+<p><img src="ScrambledTreeBuilder_files/figure-html/two_value_plot-1.png" width="700"></p>
 <p>Of course, if you spotted an interesting sub-tree, you can plot the
 node IDs to easily extract it for further analysis.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-13-1.png" width="700"></p>
+<p><img src="ScrambledTreeBuilder_files/figure-html/tree_with_node_IDs_again-1.png" width="700"></p>
 <p>The <code>subTree</code> function can conveniently be used with R’s
 pipe operator to cut a sub-tree at a chosen node.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/subTree.html">subTree</a></span><span class="op">(</span>node <span class="op">=</span> <span class="fl">9</span><span class="op">)</span>, <span class="st">"Percent_difference"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-14-1.png" width="700"></p>
+<p><img src="ScrambledTreeBuilder_files/figure-html/subTree_node_9-1.png" width="700"></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/subMatrix.html">subMatrix</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="va">valueMatrix</span>, <span class="fl">9</span>, simpl<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             H_noricense H_salinarum S_japonicum H_litoreum</span></span>
@@ -384,7 +384,7 @@ pipe operator to cut a sub-tree at a chosen node.</p>
 <span><span class="op">}</span></span>
 <span></span>
 <span><span class="fu">plotAllBranches</span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="st">"Percent_difference"</span>, <span class="st">"Scrambling_index"</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-16-1.png" width="700"></p>
+<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
