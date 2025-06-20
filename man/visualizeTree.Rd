@@ -44,6 +44,7 @@ visualizeTree(Halo_Tree, "Scrambling_index") # same
 }
 \seealso{
 Other Focal clade functions: 
+\code{\link{eog}()},
 \code{\link{focalClade}()},
 \code{\link{subTree}()}
 }

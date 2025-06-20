@@ -2,6 +2,7 @@
 
 export(FocalCladeList)
 export(childSpecies)
+export(eog)
 export(extractValues)
 export(focalClade)
 export(formatStats)

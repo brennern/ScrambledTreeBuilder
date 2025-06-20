@@ -38,6 +38,7 @@ Collate:
     'FocalClade.R'
     'Haloarchaea.R'
     'childSpecies.R'
+    'eog.R'
     'extractValues.R'
     'formatStats.R'
     'getStats.R'

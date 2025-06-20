@@ -30,6 +30,7 @@ visualizeTree(Halo_Tree) + clades
 }
 \seealso{
 Other Focal clade functions: 
+\code{\link{eog}()},
 \code{\link{subTree}()},
 \code{\link{visualizeTree}()}
 }
