@@ -18,5 +18,5 @@ usethis::use_data(Halo_DF, overwrite = TRUE)
 
 Halo_bacterium   <- focalClade(Halo_Tree, "Halobacterium_noricense", "Halobacterium_salinarum", "blue",   "Halobacterium genus")
 Halo_ferax       <- focalClade(Halo_Tree, "Haloferax_mediterranei",  "Haloferax_volcanii",      "green3", "Haloferax genus")
-Halo_FocalClades <- FocalCladeList(Halobacterium = Halo_bacterium, Halofera = Halo_ferax)
+Halo_FocalClades <- FocalCladeList(Halobacterium = Halo_bacterium, Haloferax = Halo_ferax)
 usethis::use_data(Halo_FocalClades, overwrite = TRUE)
