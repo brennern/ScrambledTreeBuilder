@@ -1,3 +1,5 @@
+#' Pairwise comparison matrix
+#'
 #' Make a matrix from a data frame containing species data.
 #'
 #' @param DF Data frame containing species information.
@@ -5,12 +7,31 @@
 #' @param defaultDiagonal Maximum possible value of variable.
 #' @param defaultValue Minimum possible value of variable.
 #'
-#' @return A matrix containing species names and data for the selected variable.
+#' @return A square `matrix` where rows and columns are sample identifiers and
+#' values are statistics for the pairs of samples.  In addition it has an
+#' attribute "builtWith" that records the value of `column`.
+#'
+#' @author Noa Brenner
+#' @author Charles Plessy
+#'
+#' @importFrom stats as.formula xtabs
 #' @export
 #'
 #' @examples
 #' makeMatrix(Halo_DF, "percent_identity_global", 100, 50)
+
 makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA) {
+  m <- xtabs(
+    data = DF,
+    as.formula(paste(column, "~ species1 + species2"))
+  ) |> as.matrix()
+  diag(m) <- defaultDiagonal
+  m[is.na(m)] <- defaultValue
+  attr(m, "builtWith") <- column
+  m
+}
+
+makeMatrix.old <- function(DF, column, defaultDiagonal = 100, defaultValue = NA) {
   all_species <- unique(DF$species2)
   your_matrix <- matrix(defaultValue, nrow=length(all_species), ncol=length(all_species))
   colnames(your_matrix) <- rownames(your_matrix) <- all_species

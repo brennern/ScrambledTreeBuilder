@@ -2,7 +2,7 @@
 % Please edit documentation in R/makeMatrix.R
 \name{makeMatrix}
 \alias{makeMatrix}
-\title{Make a matrix from a data frame containing species data.}
+\title{Pairwise comparison matrix}
 \usage{
 makeMatrix(DF, column, defaultDiagonal = 100, defaultValue = NA)
 }
@@ -16,11 +16,18 @@ makeMatrix(DF, column, defaultDiagonal = 100, defaultValue = NA)
 \item{defaultValue}{Minimum possible value of variable.}
 }
 \value{
-A matrix containing species names and data for the selected variable.
+A square \code{matrix} where rows and columns are sample identifiers and
+values are statistics for the pairs of samples.  In addition it has an
+attribute "builtWith" that records the value of \code{column}.
 }
 \description{
 Make a matrix from a data frame containing species data.
 }
 \examples{
 makeMatrix(Halo_DF, "percent_identity_global", 100, 50)
+}
+\author{
+Noa Brenner
+
+Charles Plessy
 }
