@@ -76,42 +76,48 @@ present in the subtree starting at a given node.</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">subMatrix</span><span class="op">(</span><span class="va">Halo_Tree</span>, <span class="va">Halo_PercentDiff</span>, simpl <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                H_noricense H_salinarum H_mediterranei H_volcanii S_japonicum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> H_noricense        0.00000    25.05377       31.54667   30.03853    27.57799</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> H_salinarum       25.05241     0.00000       32.99448   31.51122    28.44185</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> H_mediterranei    33.57159    33.02111        0.00000   19.77441    31.58067</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> H_volcanii        30.06817    31.51689       19.60559    0.00000    30.20358</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> S_japonicum       27.88932    28.19145       31.34071   30.17554     0.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> H_litoreum        21.18801    24.24792       31.27923   29.83707    27.25050</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                H_litoreum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> H_noricense      21.26064</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> H_salinarum      24.15702</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> H_mediterranei   31.72595</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> H_volcanii       29.88642</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> S_japonicum      27.24648</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> H_litoreum        0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 species2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> species1         H_litoreum H_noricense H_salinarum H_mediterranei H_volcanii</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   H_litoreum        0.00000    21.18801    24.24792       31.27923   29.83707</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   H_noricense      21.26064     0.00000    25.05377       31.54667   30.03853</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   H_salinarum      24.15702    25.05241     0.00000       32.99448   31.51122</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   H_mediterranei   31.72595    33.57159    33.02111        0.00000   19.77441</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   H_volcanii       29.88642    30.06817    31.51689       19.60559    0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   S_japonicum      27.24648    27.88932    28.19145       31.34071   30.17554</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                 species2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> species1         S_japonicum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   H_litoreum        27.25050</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   H_noricense       27.57799</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   H_salinarum       28.44185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   H_mediterranei    31.58067</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   H_volcanii        30.20358</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   S_japonicum        0.00000</span>
 <span class="r-in"><span><span class="fu">subMatrix</span><span class="op">(</span><span class="va">Halo_Tree</span>, <span class="va">Halo_PercentDiff</span>, <span class="fl">9</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         Halobacterium_noricense Halobacterium_salinarum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense                 0.00000                25.05377</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum                25.05241                 0.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                  27.88932                28.19145</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum                 21.18801                24.24792</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         Salarchaeum_japonicum Halobacterium_litoreum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense              27.57799               21.26064</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum              28.44185               24.15702</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                 0.00000               27.24648</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum               27.25050                0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          species2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> species1                  Halobacterium_litoreum Halobacterium_noricense</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_litoreum                 0.00000                21.18801</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_noricense               21.26064                 0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_salinarum               24.15702                25.05241</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Salarchaeum_japonicum                 27.24648                27.88932</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          species2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> species1                  Halobacterium_salinarum Salarchaeum_japonicum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_litoreum                 24.24792              27.25050</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_noricense                25.05377              27.57799</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_salinarum                 0.00000              28.44185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Salarchaeum_japonicum                  28.19145               0.00000</span>
 <span class="r-in"><span><span class="fu"><a href="subTree.html">subTree</a></span><span class="op">(</span><span class="va">Halo_Tree</span>, <span class="fl">9</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu">subMatrix</span><span class="op">(</span><span class="va">Halo_PercentDiff</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         Halobacterium_noricense Halobacterium_salinarum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense                 0.00000                25.05377</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum                25.05241                 0.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                  27.88932                28.19145</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum                 21.18801                24.24792</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         Salarchaeum_japonicum Halobacterium_litoreum</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_noricense              27.57799               21.26064</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_salinarum              28.44185               24.15702</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Salarchaeum_japonicum                 0.00000               27.24648</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Halobacterium_litoreum               27.25050                0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          species2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> species1                  Halobacterium_litoreum Halobacterium_noricense</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_litoreum                 0.00000                21.18801</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_noricense               21.26064                 0.00000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_salinarum               24.15702                25.05241</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Salarchaeum_japonicum                 27.24648                27.88932</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                          species2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> species1                  Halobacterium_salinarum Salarchaeum_japonicum</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_litoreum                 24.24792              27.25050</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_noricense                25.05377              27.57799</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Halobacterium_salinarum                 0.00000              28.44185</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Salarchaeum_japonicum                  28.19145               0.00000</span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

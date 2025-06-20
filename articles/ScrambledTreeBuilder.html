@@ -138,74 +138,82 @@ scrambling index.</p>
 <code class="sourceCode R"><span><span class="co"># Percent nucleotide difference  We will use it to cluster a tree.</span></span>
 <span><span class="va">treeMatrix</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"percent_identity_global"</span>, <span class="fl">100</span>, <span class="fl">50</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                         Halobacterium_noricense Halobacterium_salinarum</span></span>
-<span><span class="co">#&gt; Halobacterium_noricense                       0                      25</span></span>
-<span><span class="co">#&gt; Halobacterium_salinarum                      25                       0</span></span>
-<span><span class="co">#&gt; Haloferax_mediterranei                       34                      33</span></span>
-<span><span class="co">#&gt; Haloferax_volcanii                           30                      32</span></span>
-<span><span class="co">#&gt; Salarchaeum_japonicum                        28                      28</span></span>
-<span><span class="co">#&gt; Halobacterium_litoreum                       21                      24</span></span>
-<span><span class="co">#&gt;                         Haloferax_mediterranei Haloferax_volcanii</span></span>
-<span><span class="co">#&gt; Halobacterium_noricense                     32                 30</span></span>
-<span><span class="co">#&gt; Halobacterium_salinarum                     33                 32</span></span>
-<span><span class="co">#&gt; Haloferax_mediterranei                       0                 20</span></span>
-<span><span class="co">#&gt; Haloferax_volcanii                          20                  0</span></span>
-<span><span class="co">#&gt; Salarchaeum_japonicum                       31                 30</span></span>
-<span><span class="co">#&gt; Halobacterium_litoreum                      31                 30</span></span>
-<span><span class="co">#&gt;                         Salarchaeum_japonicum Halobacterium_litoreum</span></span>
-<span><span class="co">#&gt; Halobacterium_noricense                    28                     21</span></span>
-<span><span class="co">#&gt; Halobacterium_salinarum                    28                     24</span></span>
-<span><span class="co">#&gt; Haloferax_mediterranei                     32                     32</span></span>
-<span><span class="co">#&gt; Haloferax_volcanii                         30                     30</span></span>
-<span><span class="co">#&gt; Salarchaeum_japonicum                       0                     27</span></span>
-<span><span class="co">#&gt; Halobacterium_litoreum                     27                      0</span></span></code></pre></div>
+<span><span class="co">#&gt;                          species2</span></span>
+<span><span class="co">#&gt; species1                  Halobacterium_litoreum Halobacterium_noricense</span></span>
+<span><span class="co">#&gt;   Halobacterium_litoreum                       0                      21</span></span>
+<span><span class="co">#&gt;   Halobacterium_noricense                     21                       0</span></span>
+<span><span class="co">#&gt;   Halobacterium_salinarum                     24                      25</span></span>
+<span><span class="co">#&gt;   Haloferax_mediterranei                      32                      34</span></span>
+<span><span class="co">#&gt;   Haloferax_volcanii                          30                      30</span></span>
+<span><span class="co">#&gt;   Salarchaeum_japonicum                       27                      28</span></span>
+<span><span class="co">#&gt;                          species2</span></span>
+<span><span class="co">#&gt; species1                  Halobacterium_salinarum Haloferax_mediterranei</span></span>
+<span><span class="co">#&gt;   Halobacterium_litoreum                       24                     31</span></span>
+<span><span class="co">#&gt;   Halobacterium_noricense                      25                     32</span></span>
+<span><span class="co">#&gt;   Halobacterium_salinarum                       0                     33</span></span>
+<span><span class="co">#&gt;   Haloferax_mediterranei                       33                      0</span></span>
+<span><span class="co">#&gt;   Haloferax_volcanii                           32                     20</span></span>
+<span><span class="co">#&gt;   Salarchaeum_japonicum                        28                     31</span></span>
+<span><span class="co">#&gt;                          species2</span></span>
+<span><span class="co">#&gt; species1                  Haloferax_volcanii Salarchaeum_japonicum</span></span>
+<span><span class="co">#&gt;   Halobacterium_litoreum                  30                    27</span></span>
+<span><span class="co">#&gt;   Halobacterium_noricense                 30                    28</span></span>
+<span><span class="co">#&gt;   Halobacterium_salinarum                 32                    28</span></span>
+<span><span class="co">#&gt;   Haloferax_mediterranei                  20                    32</span></span>
+<span><span class="co">#&gt;   Haloferax_volcanii                       0                    30</span></span>
+<span><span class="co">#&gt;   Salarchaeum_japonicum                   30                     0</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scrambling index</span></span>
 <span><span class="va">valueMatrix</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"index_avg_strandRand"</span>, <span class="fl">1</span>, <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">valueMatrix</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                         Halobacterium_noricense Halobacterium_salinarum</span></span>
-<span><span class="co">#&gt; Halobacterium_noricense                    0.00                    0.77</span></span>
-<span><span class="co">#&gt; Halobacterium_salinarum                    0.77                    0.00</span></span>
-<span><span class="co">#&gt; Haloferax_mediterranei                     0.93                    0.93</span></span>
-<span><span class="co">#&gt; Haloferax_volcanii                         0.95                    0.87</span></span>
-<span><span class="co">#&gt; Salarchaeum_japonicum                      0.87                    0.92</span></span>
-<span><span class="co">#&gt; Halobacterium_litoreum                     0.61                    0.47</span></span>
-<span><span class="co">#&gt;                         Haloferax_mediterranei Haloferax_volcanii</span></span>
-<span><span class="co">#&gt; Halobacterium_noricense                   0.93               0.95</span></span>
-<span><span class="co">#&gt; Halobacterium_salinarum                   0.93               0.88</span></span>
-<span><span class="co">#&gt; Haloferax_mediterranei                    0.00               0.68</span></span>
-<span><span class="co">#&gt; Haloferax_volcanii                        0.68               0.00</span></span>
-<span><span class="co">#&gt; Salarchaeum_japonicum                     0.89               0.99</span></span>
-<span><span class="co">#&gt; Halobacterium_litoreum                    0.92               0.94</span></span>
-<span><span class="co">#&gt;                         Salarchaeum_japonicum Halobacterium_litoreum</span></span>
-<span><span class="co">#&gt; Halobacterium_noricense                  0.87                   0.61</span></span>
-<span><span class="co">#&gt; Halobacterium_salinarum                  0.92                   0.47</span></span>
-<span><span class="co">#&gt; Haloferax_mediterranei                   0.89                   0.92</span></span>
-<span><span class="co">#&gt; Haloferax_volcanii                       0.99                   0.94</span></span>
-<span><span class="co">#&gt; Salarchaeum_japonicum                    0.00                   0.82</span></span>
-<span><span class="co">#&gt; Halobacterium_litoreum                   0.81                   0.00</span></span></code></pre></div>
+<span><span class="co">#&gt;                          species2</span></span>
+<span><span class="co">#&gt; species1                  Halobacterium_litoreum Halobacterium_noricense</span></span>
+<span><span class="co">#&gt;   Halobacterium_litoreum                    0.00                    0.61</span></span>
+<span><span class="co">#&gt;   Halobacterium_noricense                   0.61                    0.00</span></span>
+<span><span class="co">#&gt;   Halobacterium_salinarum                   0.47                    0.77</span></span>
+<span><span class="co">#&gt;   Haloferax_mediterranei                    0.92                    0.93</span></span>
+<span><span class="co">#&gt;   Haloferax_volcanii                        0.94                    0.95</span></span>
+<span><span class="co">#&gt;   Salarchaeum_japonicum                     0.82                    0.87</span></span>
+<span><span class="co">#&gt;                          species2</span></span>
+<span><span class="co">#&gt; species1                  Halobacterium_salinarum Haloferax_mediterranei</span></span>
+<span><span class="co">#&gt;   Halobacterium_litoreum                     0.47                   0.92</span></span>
+<span><span class="co">#&gt;   Halobacterium_noricense                    0.77                   0.93</span></span>
+<span><span class="co">#&gt;   Halobacterium_salinarum                    0.00                   0.93</span></span>
+<span><span class="co">#&gt;   Haloferax_mediterranei                     0.93                   0.00</span></span>
+<span><span class="co">#&gt;   Haloferax_volcanii                         0.87                   0.68</span></span>
+<span><span class="co">#&gt;   Salarchaeum_japonicum                      0.92                   0.89</span></span>
+<span><span class="co">#&gt;                          species2</span></span>
+<span><span class="co">#&gt; species1                  Haloferax_volcanii Salarchaeum_japonicum</span></span>
+<span><span class="co">#&gt;   Halobacterium_litoreum                0.94                  0.81</span></span>
+<span><span class="co">#&gt;   Halobacterium_noricense               0.95                  0.87</span></span>
+<span><span class="co">#&gt;   Halobacterium_salinarum               0.88                  0.92</span></span>
+<span><span class="co">#&gt;   Haloferax_mediterranei                0.68                  0.89</span></span>
+<span><span class="co">#&gt;   Haloferax_volcanii                    0.00                  0.99</span></span>
+<span><span class="co">#&gt;   Salarchaeum_japonicum                 0.99                  0.00</span></span></code></pre></div>
 <p>We cluster the percent nucleotide difference matrix
 (<code>treeMatrix</code>) to produce a tree in <em>tibble</em> format,
 using the <code><a href="../reference/makeTidyTree.html">makeTidyTree()</a></code> function.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Let's average the target-query and query-target replicate pairs.</span></span>
 <span><span class="op">(</span><span class="va">Tibble</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeTidyTree.html">makeTidyTree</a></span><span class="op">(</span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">/</span><span class="fl">2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 4</span></span></span>
+<span><span class="co">#&gt; Warning in makeTidyTree((treeMatrix/2 + t(treeMatrix)/2)): Input matrix is not</span></span>
+<span><span class="co">#&gt; symmetric!</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 6</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># which can be converted to treedata or phylo </span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # via as.treedata or as.phylo</span></span></span>
-<span><span class="co">#&gt;    parent  node branch.length label                  </span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     11     1         10.6  Halobacterium_noricense</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     10     2         12.3  Halobacterium_salinarum</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      8     3          9.85 Haloferax_mediterranei </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      8     4          9.85 Haloferax_volcanii     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      9     5         13.9  Salarchaeum_japonicum  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     11     6         10.6  Halobacterium_litoreum </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      7     7         <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      7     8          5.79 <span style="color: #BB0000;">NA</span>                     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      7     9          1.75 <span style="color: #BB0000;">NA</span>                     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>                     </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span></span></span></code></pre></div>
+<span><span class="co">#&gt;    parent  node branch.length label                   isTip     y</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     11     1         10.6  Halobacterium_litoreum  TRUE   5   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     11     2         10.6  Halobacterium_noricense TRUE   6   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     10     3         12.3  Halobacterium_salinarum TRUE   4   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      8     4          9.85 Haloferax_mediterranei  TRUE   1   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      8     5          9.85 Haloferax_volcanii      TRUE   2   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      9     6         13.9  Salarchaeum_japonicum   TRUE   3   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      7     7         <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                      FALSE  2.69</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      7     8          5.79 <span style="color: #BB0000;">NA</span>                      FALSE  1.5 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      7     9          1.75 <span style="color: #BB0000;">NA</span>                      FALSE  3.88</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>                      FALSE  4.75</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span>                      FALSE  5.5</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">Tibble</span><span class="op">)</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/Tree_with_node_IDs-1.png" width="700"></p>
@@ -224,8 +232,8 @@ instead of node IDs as input.</p>
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">Halobacterium</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/focalClade.html">focalClade</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="st">"Halobacterium_noricense"</span>, <span class="st">"Halobacterium_salinarum"</span>, <span class="st">"blue"</span>, <span class="st">"Halobacterium genus"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Halobacterium genus, node ID: 10, number of genomes: 3</span></span>
 <span><span class="va">Halobacterium</span><span class="op">@</span><span class="va">genomeIDs</span></span>
-<span><span class="co">#&gt; [1] "Halobacterium_noricense" "Halobacterium_salinarum"</span></span>
-<span><span class="co">#&gt; [3] "Halobacterium_litoreum"</span></span>
+<span><span class="co">#&gt; [1] "Halobacterium_litoreum"  "Halobacterium_noricense"</span></span>
+<span><span class="co">#&gt; [3] "Halobacterium_salinarum"</span></span>
 <span><span class="va">Halobacterium</span><span class="op">@</span><span class="va">nodeID</span></span>
 <span><span class="co">#&gt; [1] 10</span></span>
 <span><span class="fu"><a href="../reference/subTree.html">subTree</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="va">Halobacterium</span><span class="op">)</span></span>
@@ -234,9 +242,9 @@ instead of node IDs as input.</p>
 <span><span class="co"><span style="color: #949494;">#&gt; # via as.treedata or as.phylo</span></span></span>
 <span><span class="co">#&gt;   parent  node branch.length label                   group node.orig</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      5     1         10.6  Halobacterium_noricense 1             1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      4     2         12.3  Halobacterium_salinarum 1             2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>      5     3         10.6  Halobacterium_litoreum  1             6</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      5     1         10.6  Halobacterium_litoreum  1             1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span>      5     2         10.6  Halobacterium_noricense 1             2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span>      4     3         12.3  Halobacterium_salinarum 1             3</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span>      4     4          3.32 <span style="color: #BB0000;">NA</span>                      1            10</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span>      4     5          1.70 <span style="color: #BB0000;">NA</span>                      1            11</span></span></code></pre></div>
 <p>The focal clade objects can be added to plots to highlight the clades
@@ -256,40 +264,41 @@ sharing the same most recent common ancestor, represented by an internal
 node in the tree.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">tibbleWithValues</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="va">valueMatrix</span>, colname <span class="op">=</span> <span class="st">"Scrambling_index"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 5</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 7</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># which can be converted to treedata or phylo </span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # via as.treedata or as.phylo</span></span></span>
-<span><span class="co">#&gt;    parent  node branch.length label                   Scrambling_index</span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     11     1         10.6  Halobacterium_noricense           <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     10     2         12.3  Halobacterium_salinarum           <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      8     3          9.85 Haloferax_mediterranei            <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      8     4          9.85 Haloferax_volcanii                <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      9     5         13.9  Salarchaeum_japonicum             <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     11     6         10.6  Halobacterium_litoreum            <span style="color: #BB0000;">NA</span>    </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      7     7         <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                                 0.926</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      7     8          5.79 <span style="color: #BB0000;">NA</span>                                 0.683</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      7     9          1.75 <span style="color: #BB0000;">NA</span>                                 0.869</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>                                 0.618</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span>                                 0.607</span></span></code></pre></div>
+<span><span class="co">#&gt;    parent  node branch.length label                 isTip     y Scrambling_index</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     11     1         10.6  Halobacterium_litore… TRUE   5              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     11     2         10.6  Halobacterium_norice… TRUE   6              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     10     3         12.3  Halobacterium_salina… TRUE   4              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      8     4          9.85 Haloferax_mediterran… TRUE   1              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      8     5          9.85 Haloferax_volcanii    TRUE   2              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      9     6         13.9  Salarchaeum_japonicum TRUE   3              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      7     7         <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                    FALSE  2.69            0.926</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      7     8          5.79 <span style="color: #BB0000;">NA</span>                    FALSE  1.5             0.683</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      7     9          1.75 <span style="color: #BB0000;">NA</span>                    FALSE  3.88            0.869</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>                    FALSE  4.75            0.618</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span>                    FALSE  5.5             0.605</span></span></code></pre></div>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">tibbleWithValues</span>, <span class="va">treeMatrix</span>, colname <span class="op">=</span> <span class="st">"Percent_difference"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 6</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 8</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># which can be converted to treedata or phylo </span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # via as.treedata or as.phylo</span></span></span>
-<span><span class="co">#&gt;    parent  node branch.length label          Scrambling_index Percent_difference</span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     11     1         10.6  Halobacterium…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     10     2         12.3  Halobacterium…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      8     3          9.85 Haloferax_med…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      8     4          9.85 Haloferax_vol…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      9     5         13.9  Salarchaeum_j…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     11     6         10.6  Halobacterium…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      7     7         <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                        0.926               31.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      7     8          5.79 <span style="color: #BB0000;">NA</span>                        0.683               19.8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      7     9          1.75 <span style="color: #BB0000;">NA</span>                        0.869               27.8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>                        0.618               24.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span>                        0.607               21.3</span></span></code></pre></div>
+<span><span class="co">#&gt;    parent  node branch.length label                 isTip     y Scrambling_index</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     11     1         10.6  Halobacterium_litore… TRUE   5              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     11     2         10.6  Halobacterium_norice… TRUE   6              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     10     3         12.3  Halobacterium_salina… TRUE   4              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      8     4          9.85 Haloferax_mediterran… TRUE   1              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      8     5          9.85 Haloferax_volcanii    TRUE   2              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      9     6         13.9  Salarchaeum_japonicum TRUE   3              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      7     7         <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                    FALSE  2.69            0.926</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      7     8          5.79 <span style="color: #BB0000;">NA</span>                    FALSE  1.5             0.683</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      7     9          1.75 <span style="color: #BB0000;">NA</span>                    FALSE  3.88            0.869</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>                    FALSE  4.75            0.618</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span>                    FALSE  5.5             0.605</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: Percent_difference &lt;dbl&gt;</span></span></span></code></pre></div>
 <p>We made multiple tables to show the step-by-step process, but
 typically one would just keep the last table. This can be done with
 pipes.</p>
@@ -297,22 +306,25 @@ pipes.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/makeTidyTree.html">makeTidyTree</a></span><span class="op">(</span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">/</span><span class="fl">2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">valueMatrix</span>, colname <span class="op">=</span> <span class="st">"Scrambling_index"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">treeMatrix</span>,  colname <span class="op">=</span> <span class="st">"Percent_difference"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 6</span></span></span>
+<span><span class="co">#&gt; Warning in makeTidyTree((treeMatrix/2 + t(treeMatrix)/2)): Input matrix is not</span></span>
+<span><span class="co">#&gt; symmetric!</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 8</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># which can be converted to treedata or phylo </span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # via as.treedata or as.phylo</span></span></span>
-<span><span class="co">#&gt;    parent  node branch.length label          Scrambling_index Percent_difference</span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     11     1         10.6  Halobacterium…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     10     2         12.3  Halobacterium…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      8     3          9.85 Haloferax_med…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      8     4          9.85 Haloferax_vol…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      9     5         13.9  Salarchaeum_j…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     11     6         10.6  Halobacterium…           <span style="color: #BB0000;">NA</span>                   <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      7     7         <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                        0.926               31.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      7     8          5.79 <span style="color: #BB0000;">NA</span>                        0.683               19.8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      7     9          1.75 <span style="color: #BB0000;">NA</span>                        0.869               27.8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>                        0.618               24.6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span>                        0.607               21.3</span></span>
+<span><span class="co">#&gt;    parent  node branch.length label                 isTip     y Scrambling_index</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;lgl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     11     1         10.6  Halobacterium_litore… TRUE   5              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     11     2         10.6  Halobacterium_norice… TRUE   6              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     10     3         12.3  Halobacterium_salina… TRUE   4              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      8     4          9.85 Haloferax_mediterran… TRUE   1              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      8     5          9.85 Haloferax_volcanii    TRUE   2              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      9     6         13.9  Salarchaeum_japonicum TRUE   3              <span style="color: #BB0000;">NA</span>    </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      7     7         <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>                    FALSE  2.69            0.926</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      7     8          5.79 <span style="color: #BB0000;">NA</span>                    FALSE  1.5             0.683</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      7     9          1.75 <span style="color: #BB0000;">NA</span>                    FALSE  3.88            0.869</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>                    FALSE  4.75            0.618</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span>                    FALSE  5.5             0.605</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: Percent_difference &lt;dbl&gt;</span></span></span>
 <span><span class="co"># Same result</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="plot-trees-with-values">Plot trees with values<a class="anchor" aria-label="anchor" href="#plot-trees-with-values"></a>
@@ -346,11 +358,12 @@ pipe operator to cut a sub-tree at a chosen node.</p>
 <p><img src="ScrambledTreeBuilder_files/figure-html/subTree_node_9-1.png" width="700"></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/subMatrix.html">subMatrix</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="va">valueMatrix</span>, <span class="fl">9</span>, simpl<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;             H_noricense H_salinarum S_japonicum H_litoreum</span></span>
-<span><span class="co">#&gt; H_noricense   0.0000000   0.7667464   0.8669942  0.6073435</span></span>
-<span><span class="co">#&gt; H_salinarum   0.7676303   0.0000000   0.9210253  0.4677172</span></span>
-<span><span class="co">#&gt; S_japonicum   0.8669109   0.9218979   0.0000000  0.8192124</span></span>
-<span><span class="co">#&gt; H_litoreum    0.6054199   0.4662469   0.8119173  0.0000000</span></span></code></pre></div>
+<span><span class="co">#&gt;              species2</span></span>
+<span><span class="co">#&gt; species1      H_litoreum H_noricense H_salinarum S_japonicum</span></span>
+<span><span class="co">#&gt;   H_litoreum   0.0000000   0.6054199   0.4662469   0.8119173</span></span>
+<span><span class="co">#&gt;   H_noricense  0.6073435   0.0000000   0.7667464   0.8669942</span></span>
+<span><span class="co">#&gt;   H_salinarum  0.4677172   0.7676303   0.0000000   0.9210253</span></span>
+<span><span class="co">#&gt;   S_japonicum  0.8192124   0.8669109   0.9218979   0.0000000</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="plot-node-and-leaf-values">Plot node and leaf values<a class="anchor" aria-label="anchor" href="#plot-node-and-leaf-values"></a>
