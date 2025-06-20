@@ -1,5 +1,7 @@
 #' @include FocalClade.R
+#' @include ConvenientTblTree.R
 NULL
+
 #'
 #' Run `eog` on a plot for a clade
 #'
@@ -23,9 +25,9 @@ NULL
 #'
 #' @export
 
-eog <- new_generic("subTree", dispatch_args = c("tree", "node"), function (tree, node, target=NULL) S7_dispatch())
+eog <- new_generic("eog", dispatch_args = c("tree", "node"), function (tree, node, target=NULL) S7_dispatch())
 
-method(eog, list(ScrambledTree, class_numeric)) <- function(tree, node, target=NULL) {
+method(eog, list(ConvenientTblTree, class_numeric)) <- function(tree, node, target=NULL) {
   # Collect IDs belonging to that clade.
     IDs  <- as.vector(subTree(tree, node)$label |> na.omit())
   # Create a brace expansion with these IDs.
@@ -44,5 +46,5 @@ method(eog, list(ScrambledTree, class_numeric)) <- function(tree, node, target=N
   paste0("eog results_",brace_exp,"/alignment/",brace_exp,"___",brace_exp2,".o2o_plt.png")
 }
 
-method(eog, list(ScrambledTree, FocalClade)) <- function(tree, node, target=NULL)
+method(eog, list(ConvenientTblTree, FocalClade)) <- function(tree, node, target=NULL)
   eog(tree = tree, node = node@nodeID, target = target)

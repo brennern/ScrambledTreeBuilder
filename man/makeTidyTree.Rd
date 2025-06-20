@@ -17,3 +17,7 @@ Given a distance matrix, computes a cladogram with the \code{\link[stats:hclust]
 function, and returns it as a \code{\link[tibble:tibble]{tibble::tibble}} formatted for the \code{tidytree}
 package.
 }
+\examples{
+makeTidyTree((Halo_PercentDiff/2 + t(Halo_PercentDiff)/2))
+
+}

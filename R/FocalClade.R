@@ -1,4 +1,5 @@
 #' @include subTree.R
+#' @include ConvenientTblTree.R
 
 FocalClade <- S7::new_class("FocalClade", properties = list(
   nodeID      = class_numeric,
@@ -34,8 +35,7 @@ method(print, FocalCladeList) <- function(x, ...) {
 #'
 #' Clades of interest to be plotted in color
 #'
-#' @param Tibble A `tbl_tree` object produced by the [`makeTidyTree`] or
-#'        [`makeValueTibble`] functions.
+#' @param Tibble A [`ConvenientTblTree`] object.
 #' @param left,right Leaf labels whose most common recent ancestor will define
 #'        the clade
 #' @param color Color of the clade in plots
@@ -68,7 +68,7 @@ focalClade <- function(Tibble, left, right, color, displayName) {
   )
 }
 
-method(subTree, list(ScrambledTree, FocalClade)) <- function(tree_tibble, node)
+method(subTree, list(ConvenientTblTree, FocalClade)) <- function(tree_tibble, node)
   subTree(tree_tibble, node@nodeID)
 
 PlottedTree <- new_S3_class("ggtree")

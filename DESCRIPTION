@@ -33,7 +33,7 @@ Imports:
     yaml
 VignetteBuilder: knitr
 Collate: 
-    'makeTidyTree.R'
+    'ConvenientTblTree.R'
     'subTree.R'
     'FocalClade.R'
     'Haloarchaea.R'
@@ -43,6 +43,7 @@ Collate:
     'formatStats.R'
     'getStats.R'
     'makeMatrix.R'
+    'makeTidyTree.R'
     'makeValueTibble.R'
     'oikData.R'
     'recordAncestor.R'

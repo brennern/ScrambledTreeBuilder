@@ -7,8 +7,7 @@
 focalClade(Tibble, left, right, color, displayName)
 }
 \arguments{
-\item{Tibble}{A \code{tbl_tree} object produced by the \code{\link{makeTidyTree}} or
-\code{\link{makeValueTibble}} functions.}
+\item{Tibble}{A \code{\link{ConvenientTblTree}} object.}
 
 \item{left, right}{Leaf labels whose most common recent ancestor will define
 the clade}

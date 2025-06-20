@@ -1,6 +1,6 @@
 #' Children species of an ancestor
 #'
-#' @param tree A tree created with the `makeTidyTree()` function.
+#' @param tree A [`ConvenientTblTree`] object.
 #' @param node An internal node in that tree.
 #'
 #' @returns A list of the label names on the left and right branch of the tree.

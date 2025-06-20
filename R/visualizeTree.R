@@ -1,7 +1,6 @@
 #' Plot a phylogenetic tree and its node data
 #'
-#' @param your_tibble A `tbl_tree` object produced by the [`makeTidyTree`] or
-#'        [`makeValueTibble`] functions.
+#' @param your_tibble A [`ConvenientTblTree`] object.
 #' @param value Tibble value to label on internal nodes of the tree, or name
 #'        of a column in the tree object.
 #' @param valueround Number of integers to round value.

@@ -7,7 +7,7 @@
 childSpecies(tree, node)
 }
 \arguments{
-\item{tree}{A tree created with the \code{makeTidyTree()} function.}
+\item{tree}{A \code{\link{ConvenientTblTree}} object.}
 
 \item{node}{An internal node in that tree.}
 }
