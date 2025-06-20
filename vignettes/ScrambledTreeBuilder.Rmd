@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r}
+```{r knitr_setup}
 knitr::opts_chunk$set(cache = TRUE)
 knitr::opts_knit$set(verbose = TRUE)
 ```
@@ -33,7 +33,7 @@ project.
 The _ScrambledTreeBuilder_ package outputs plots in _ggplot2_ format but you
 need to load the _ggplot2_ package to further customize them.
 
-```{r setup}
+```{r R_setup}
 library(ScrambledTreeBuilder)
 library(ggplot2)
 ```
@@ -57,7 +57,7 @@ and _query_ genomes (here species names) separed with three underscores (`___`).
 
 Here we prepare an object called 'yamlFileData' that contains the path to the files.
 
-```{r}
+```{r list_data_files}
 yamlFileData <- system.file("extdata/yaml", package = "ScrambledTreeBuilder") |>
   resultFiles()
 yamlFileData[1]
@@ -67,7 +67,7 @@ Next, we use the `formatStats()` function to load the YAML files into a
 single dataframe where each line is a pair of species and each column is
 a statistic or a metadata about that species comparison.
 
-```{r}
+```{r results_DF}
 exDataFrame <- formatStats(yamlFileData)
 ncol(exDataFrame)
 colnames(exDataFrame) |> head()
@@ -84,13 +84,13 @@ We perform this task with the `makeMatrix()` function.  It provide defaults for
 missing values and self-comparisons.  In this vignette, let's focus on the
 percent nucleotide difference and the scrambling index.
 
-```{r}
-# Average nucleotide identity.  We will use it to cluster a tree.
+```{r distance_matrix }
+# Percent nucleotide difference  We will use it to cluster a tree.
 treeMatrix <- 100 - makeMatrix(exDataFrame, "percent_identity_global", 100, 50)
 round(treeMatrix)
 ```
 
-```{r}
+```{r scrambling_index_matrix}
 # Scrambling index
 valueMatrix <- 1 - makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
 round(valueMatrix, 2)
@@ -99,7 +99,7 @@ round(valueMatrix, 2)
 We cluster the percent nucleotide difference matrix (`treeMatrix`) to produce
 a tree in _tibble_ format, using the `makeTidyTree()` function.
 
-```{r}
+```{r tree}
 # Let's average the target-query and query-target replicate pairs.
 (Tibble <- makeTidyTree((treeMatrix/2 + t(treeMatrix)/2)))
 ```
@@ -134,7 +134,7 @@ selected colors.
 ```{r focalCladeList}
 Haloferax <- focalClade(Tibble, "Haloferax_mediterranei", "Haloferax_volcanii", "green3", "Haloferax genus")
 (clades <- FocalCladeList(Halobacterium, Haloferax))
-visualizeTree(Tibble) + clades
+visualizeTree(Tibble) + clades + ggtitle("Focal clade highlight")
 ```
 
 To plot more data on the tree, we add other statistics to the tree object, here
@@ -143,18 +143,18 @@ the scrambling index and the percent nucleotide difference, using the
 tree, by averaging all the pairs sharing the same most recent common ancestor,
 represented by an internal node in the tree.
 
-```{r}
+```{r add_SI_to_tree}
 (tibbleWithValues <- makeValueTibble(Tibble, valueMatrix, colname = "Scrambling_index"))
 ```
 
-```{r}
+```{r add_distance_to_tree}
 (tibbleWithMultipleValues <- makeValueTibble(tibbleWithValues, treeMatrix, colname = "Percent_difference"))
 ```
 
 We made multiple tables to show the step-by-step process, but typically one
 would just keep the last table.  This can be done with pipes.
 
-```{r}
+```{r create_tree_with_pipes}
 makeTidyTree((treeMatrix/2 + t(treeMatrix)/2)) |>
   makeValueTibble(valueMatrix, colname = "Scrambling_index") |>
   makeValueTibble(treeMatrix,  colname = "Percent_difference")
@@ -168,14 +168,14 @@ have generated a tree built based on nucleotide percent difference values as a
 distance, and computed average scrambling index for all the nodes.
 We can plot these values as labels on the tree.
 
-```{r}
+```{r tree_with_SI}
 visualizeTree(tibbleWithMultipleValues, "Scrambling_index") +
   ggplot2::ggtitle(paste("Tree built with Percent difference and labelled with Scrambling Index")) + clades
 ```
 
-```{r}
+```{r two_value_plot}
 visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Scrambling_index, ynudge = 0.2) +
-  ggplot2::ggtitle("Tree labeled with Scrambling Index and Percent Difference (built with Percent Difference)") +
+  ggplot2::ggtitle("Tree labeled with Scrambling Index and Percent Difference") +
   ggplot2::scale_color_viridis_c(name = "Scrambling index", option = "cividis") +
   ggnewscale::new_scale_colour() +
   ggtree::geom_label(ggtree::aes(label=round(Percent_difference), color = Percent_difference), label.size = 0.25, size = 3, na.rm = TRUE, label.padding = ggtree::unit(0.15, "lines"), nudge_y = -0.2) +
@@ -185,18 +185,18 @@ visualizeTree(tibbleWithMultipleValues, tibbleWithMultipleValues$Scrambling_inde
 Of course, if you spotted an interesting sub-tree, you can plot the node IDs
 to easily extract it for further analysis.
 
-```{r}
+```{r tree_with_node_IDs_again}
 visualizeTree(tibbleWithMultipleValues)
 ```
 
 The `subTree` function can conveniently be used with R's pipe operator to cut
 a sub-tree at a chosen node.
 
-```{r}
+```{r subTree_node_9}
 visualizeTree(tibbleWithMultipleValues |> subTree(node = 9), "Percent_difference")
 ```
 
-```{r}
+```{r sub_matrix_node_9}
 subMatrix(Tibble, valueMatrix, 9, simpl=TRUE)
 ```
 
