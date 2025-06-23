@@ -196,8 +196,6 @@ using the <code><a href="../reference/makeTidyTree.html">makeTidyTree()</a></cod
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Let's average the target-query and query-target replicate pairs.</span></span>
 <span><span class="op">(</span><span class="va">Tibble</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeTidyTree.html">makeTidyTree</a></span><span class="op">(</span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">/</span><span class="fl">2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in makeTidyTree((treeMatrix/2 + t(treeMatrix)/2)): Input matrix is not</span></span>
-<span><span class="co">#&gt; symmetric!</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 6</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># which can be converted to treedata or phylo </span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # via as.treedata or as.phylo</span></span></span>
@@ -306,8 +304,6 @@ pipes.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/makeTidyTree.html">makeTidyTree</a></span><span class="op">(</span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">/</span><span class="fl">2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">valueMatrix</span>, colname <span class="op">=</span> <span class="st">"Scrambling_index"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">treeMatrix</span>,  colname <span class="op">=</span> <span class="st">"Percent_difference"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in makeTidyTree((treeMatrix/2 + t(treeMatrix)/2)): Input matrix is not</span></span>
-<span><span class="co">#&gt; symmetric!</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 8</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># which can be converted to treedata or phylo </span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # via as.treedata or as.phylo</span></span></span>
