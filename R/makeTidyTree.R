@@ -19,7 +19,7 @@ NULL
 #' @export
 
 makeTidyTree <- function(distMat) {
-  if (! identical(distMat, t(distMat)))
+  if (! all(distMat == t(distMat)))
     warning("Input matrix is not symmetric!")
   HClust <- hclust(as.dist(distMat), method = "average")
   tree <- tidytree::as_tibble(tidytree::as.phylo(HClust))
