@@ -43,7 +43,7 @@ method(eog, list(ConvenientTblTree, class_numeric)) <- function(tree, node, targ
     }
   }
   # Call eog with a path with brace expansions matching pairwise plots for the clade.
-  paste0("eog results_",brace_exp,"/alignment/",brace_exp,"___",brace_exp2,".o2o_plt.png")
+  paste0("eog results_",brace_exp,"/alignment/*___",brace_exp2,".o2o_plt.png")
 }
 
 method(eog, list(ConvenientTblTree, FocalClade)) <- function(tree, node, target=NULL)
