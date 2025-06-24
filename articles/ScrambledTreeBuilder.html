@@ -138,58 +138,52 @@ scrambling index.</p>
 <code class="sourceCode R"><span><span class="co"># Percent nucleotide difference  We will use it to cluster a tree.</span></span>
 <span><span class="va">treeMatrix</span> <span class="op">&lt;-</span> <span class="fl">100</span> <span class="op">-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"percent_identity_global"</span>, <span class="fl">100</span>, <span class="fl">50</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                          species2</span></span>
-<span><span class="co">#&gt; species1                  Halobacterium_litoreum Halobacterium_noricense</span></span>
-<span><span class="co">#&gt;   Halobacterium_litoreum                       0                      21</span></span>
-<span><span class="co">#&gt;   Halobacterium_noricense                     21                       0</span></span>
-<span><span class="co">#&gt;   Halobacterium_salinarum                     24                      25</span></span>
-<span><span class="co">#&gt;   Haloferax_mediterranei                      32                      34</span></span>
-<span><span class="co">#&gt;   Haloferax_volcanii                          30                      30</span></span>
-<span><span class="co">#&gt;   Salarchaeum_japonicum                       27                      28</span></span>
-<span><span class="co">#&gt;                          species2</span></span>
-<span><span class="co">#&gt; species1                  Halobacterium_salinarum Haloferax_mediterranei</span></span>
-<span><span class="co">#&gt;   Halobacterium_litoreum                       24                     31</span></span>
-<span><span class="co">#&gt;   Halobacterium_noricense                      25                     32</span></span>
-<span><span class="co">#&gt;   Halobacterium_salinarum                       0                     33</span></span>
-<span><span class="co">#&gt;   Haloferax_mediterranei                       33                      0</span></span>
-<span><span class="co">#&gt;   Haloferax_volcanii                           32                     20</span></span>
-<span><span class="co">#&gt;   Salarchaeum_japonicum                        28                     31</span></span>
-<span><span class="co">#&gt;                          species2</span></span>
-<span><span class="co">#&gt; species1                  Haloferax_volcanii Salarchaeum_japonicum</span></span>
-<span><span class="co">#&gt;   Halobacterium_litoreum                  30                    27</span></span>
-<span><span class="co">#&gt;   Halobacterium_noricense                 30                    28</span></span>
-<span><span class="co">#&gt;   Halobacterium_salinarum                 32                    28</span></span>
-<span><span class="co">#&gt;   Haloferax_mediterranei                  20                    32</span></span>
-<span><span class="co">#&gt;   Haloferax_volcanii                       0                    30</span></span>
-<span><span class="co">#&gt;   Salarchaeum_japonicum                   30                     0</span></span></code></pre></div>
+<span><span class="co">#&gt;                         Halobacterium_litoreum Halobacterium_noricense</span></span>
+<span><span class="co">#&gt; Halobacterium_litoreum                       0                      21</span></span>
+<span><span class="co">#&gt; Halobacterium_noricense                     21                       0</span></span>
+<span><span class="co">#&gt; Halobacterium_salinarum                     24                      25</span></span>
+<span><span class="co">#&gt; Haloferax_mediterranei                      32                      34</span></span>
+<span><span class="co">#&gt; Haloferax_volcanii                          30                      30</span></span>
+<span><span class="co">#&gt; Salarchaeum_japonicum                       27                      28</span></span>
+<span><span class="co">#&gt;                         Halobacterium_salinarum Haloferax_mediterranei</span></span>
+<span><span class="co">#&gt; Halobacterium_litoreum                       24                     31</span></span>
+<span><span class="co">#&gt; Halobacterium_noricense                      25                     32</span></span>
+<span><span class="co">#&gt; Halobacterium_salinarum                       0                     33</span></span>
+<span><span class="co">#&gt; Haloferax_mediterranei                       33                      0</span></span>
+<span><span class="co">#&gt; Haloferax_volcanii                           32                     20</span></span>
+<span><span class="co">#&gt; Salarchaeum_japonicum                        28                     31</span></span>
+<span><span class="co">#&gt;                         Haloferax_volcanii Salarchaeum_japonicum</span></span>
+<span><span class="co">#&gt; Halobacterium_litoreum                  30                    27</span></span>
+<span><span class="co">#&gt; Halobacterium_noricense                 30                    28</span></span>
+<span><span class="co">#&gt; Halobacterium_salinarum                 32                    28</span></span>
+<span><span class="co">#&gt; Haloferax_mediterranei                  20                    32</span></span>
+<span><span class="co">#&gt; Haloferax_volcanii                       0                    30</span></span>
+<span><span class="co">#&gt; Salarchaeum_japonicum                   30                     0</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scrambling index</span></span>
 <span><span class="va">valueMatrix</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"index_avg_strandRand"</span>, <span class="fl">1</span>, <span class="fl">0.5</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">valueMatrix</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt;                          species2</span></span>
-<span><span class="co">#&gt; species1                  Halobacterium_litoreum Halobacterium_noricense</span></span>
-<span><span class="co">#&gt;   Halobacterium_litoreum                    0.00                    0.61</span></span>
-<span><span class="co">#&gt;   Halobacterium_noricense                   0.61                    0.00</span></span>
-<span><span class="co">#&gt;   Halobacterium_salinarum                   0.47                    0.77</span></span>
-<span><span class="co">#&gt;   Haloferax_mediterranei                    0.92                    0.93</span></span>
-<span><span class="co">#&gt;   Haloferax_volcanii                        0.94                    0.95</span></span>
-<span><span class="co">#&gt;   Salarchaeum_japonicum                     0.82                    0.87</span></span>
-<span><span class="co">#&gt;                          species2</span></span>
-<span><span class="co">#&gt; species1                  Halobacterium_salinarum Haloferax_mediterranei</span></span>
-<span><span class="co">#&gt;   Halobacterium_litoreum                     0.47                   0.92</span></span>
-<span><span class="co">#&gt;   Halobacterium_noricense                    0.77                   0.93</span></span>
-<span><span class="co">#&gt;   Halobacterium_salinarum                    0.00                   0.93</span></span>
-<span><span class="co">#&gt;   Haloferax_mediterranei                     0.93                   0.00</span></span>
-<span><span class="co">#&gt;   Haloferax_volcanii                         0.87                   0.68</span></span>
-<span><span class="co">#&gt;   Salarchaeum_japonicum                      0.92                   0.89</span></span>
-<span><span class="co">#&gt;                          species2</span></span>
-<span><span class="co">#&gt; species1                  Haloferax_volcanii Salarchaeum_japonicum</span></span>
-<span><span class="co">#&gt;   Halobacterium_litoreum                0.94                  0.81</span></span>
-<span><span class="co">#&gt;   Halobacterium_noricense               0.95                  0.87</span></span>
-<span><span class="co">#&gt;   Halobacterium_salinarum               0.88                  0.92</span></span>
-<span><span class="co">#&gt;   Haloferax_mediterranei                0.68                  0.89</span></span>
-<span><span class="co">#&gt;   Haloferax_volcanii                    0.00                  0.99</span></span>
-<span><span class="co">#&gt;   Salarchaeum_japonicum                 0.99                  0.00</span></span></code></pre></div>
+<span><span class="co">#&gt;                         Halobacterium_litoreum Halobacterium_noricense</span></span>
+<span><span class="co">#&gt; Halobacterium_litoreum                    0.00                    0.61</span></span>
+<span><span class="co">#&gt; Halobacterium_noricense                   0.61                    0.00</span></span>
+<span><span class="co">#&gt; Halobacterium_salinarum                   0.47                    0.77</span></span>
+<span><span class="co">#&gt; Haloferax_mediterranei                    0.92                    0.93</span></span>
+<span><span class="co">#&gt; Haloferax_volcanii                        0.94                    0.95</span></span>
+<span><span class="co">#&gt; Salarchaeum_japonicum                     0.82                    0.87</span></span>
+<span><span class="co">#&gt;                         Halobacterium_salinarum Haloferax_mediterranei</span></span>
+<span><span class="co">#&gt; Halobacterium_litoreum                     0.47                   0.92</span></span>
+<span><span class="co">#&gt; Halobacterium_noricense                    0.77                   0.93</span></span>
+<span><span class="co">#&gt; Halobacterium_salinarum                    0.00                   0.93</span></span>
+<span><span class="co">#&gt; Haloferax_mediterranei                     0.93                   0.00</span></span>
+<span><span class="co">#&gt; Haloferax_volcanii                         0.87                   0.68</span></span>
+<span><span class="co">#&gt; Salarchaeum_japonicum                      0.92                   0.89</span></span>
+<span><span class="co">#&gt;                         Haloferax_volcanii Salarchaeum_japonicum</span></span>
+<span><span class="co">#&gt; Halobacterium_litoreum                0.94                  0.81</span></span>
+<span><span class="co">#&gt; Halobacterium_noricense               0.95                  0.87</span></span>
+<span><span class="co">#&gt; Halobacterium_salinarum               0.88                  0.92</span></span>
+<span><span class="co">#&gt; Haloferax_mediterranei                0.68                  0.89</span></span>
+<span><span class="co">#&gt; Haloferax_volcanii                    0.00                  0.99</span></span>
+<span><span class="co">#&gt; Salarchaeum_japonicum                 0.99                  0.00</span></span></code></pre></div>
 <p>We cluster the percent nucleotide difference matrix
 (<code>treeMatrix</code>) to produce a tree in <em>tibble</em> format,
 using the <code><a href="../reference/makeTidyTree.html">makeTidyTree()</a></code> function.</p>
@@ -354,12 +348,11 @@ pipe operator to cut a sub-tree at a chosen node.</p>
 <p><img src="ScrambledTreeBuilder_files/figure-html/subTree_node_9-1.png" width="700"></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/subMatrix.html">subMatrix</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="va">valueMatrix</span>, <span class="fl">9</span>, simpl<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt;              species2</span></span>
-<span><span class="co">#&gt; species1      H_litoreum H_noricense H_salinarum S_japonicum</span></span>
-<span><span class="co">#&gt;   H_litoreum   0.0000000   0.6054199   0.4662469   0.8119173</span></span>
-<span><span class="co">#&gt;   H_noricense  0.6073435   0.0000000   0.7667464   0.8669942</span></span>
-<span><span class="co">#&gt;   H_salinarum  0.4677172   0.7676303   0.0000000   0.9210253</span></span>
-<span><span class="co">#&gt;   S_japonicum  0.8192124   0.8669109   0.9218979   0.0000000</span></span></code></pre></div>
+<span><span class="co">#&gt;             H_litoreum H_noricense H_salinarum S_japonicum</span></span>
+<span><span class="co">#&gt; H_litoreum   0.0000000   0.6054199   0.4662469   0.8119173</span></span>
+<span><span class="co">#&gt; H_noricense  0.6073435   0.0000000   0.7667464   0.8669942</span></span>
+<span><span class="co">#&gt; H_salinarum  0.4677172   0.7676303   0.0000000   0.9210253</span></span>
+<span><span class="co">#&gt; S_japonicum  0.8192124   0.8669109   0.9218979   0.0000000</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="plot-node-and-leaf-values">Plot node and leaf values<a class="anchor" aria-label="anchor" href="#plot-node-and-leaf-values"></a>
