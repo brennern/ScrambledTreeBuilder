@@ -49,5 +49,8 @@ formatStats <- function(files) {
     DF$percent_identity_local  <- DF$aligned_matches_Total / (DF$aligned_matches_Total + DF$aligned_mismatches_Total) * 100
     DF$percent_identity_global <- DF$aligned_matches_Total / (DF$aligned_matches_Total + DF$aligned_gaps_target_Total + DF$aligned_gaps_query_Total + DF$aligned_mismatches_Total) * 100
   }
+  DF$percent_difference_local  <- 100 - DF$percent_identity_local
+  DF$percent_difference_global <- 100 - DF$percent_identity_global
+  DF$index_avg_strandDiscord   <-   1 - DF$index_avg_strandRand
   DF
 }
