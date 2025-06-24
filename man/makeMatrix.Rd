@@ -7,9 +7,9 @@
 makeMatrix(DF, column, defaultDiagonal = 100, defaultValue = NA)
 }
 \arguments{
-\item{DF}{Data frame containing species information.}
+\item{DF}{Data frame containing species information, produced with \code{\link[=formatStats]{formatStats()}}}
 
-\item{column}{The variable from the data frame you want to extract species data from.}
+\item{column}{The variable from the data frame to extract species data from.}
 
 \item{defaultDiagonal}{Maximum possible value of variable.}
 
@@ -24,7 +24,10 @@ attribute "builtWith" that records the value of \code{column}.
 Make a matrix from a data frame containing species data.
 }
 \examples{
-makeMatrix(Halo_DF, "percent_identity_global", 100, 50)
+makeMatrix(Halo_DF, "percent_difference_global", 100, 50)
+
+# Missing values get NA by default unless specified in the 4th argument.
+makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100)
 }
 \author{
 Noa Brenner

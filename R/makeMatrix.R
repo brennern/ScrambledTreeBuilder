@@ -2,8 +2,8 @@
 #'
 #' Make a matrix from a data frame containing species data.
 #'
-#' @param DF Data frame containing species information.
-#' @param column The variable from the data frame you want to extract species data from.
+#' @param DF Data frame containing species information, produced with [`formatStats()`]
+#' @param column The variable from the data frame to extract species data from.
 #' @param defaultDiagonal Maximum possible value of variable.
 #' @param defaultValue Minimum possible value of variable.
 #'
@@ -14,20 +14,31 @@
 #' @author Noa Brenner
 #' @author Charles Plessy
 #'
-#' @importFrom stats as.formula xtabs
 #' @export
 #'
 #' @examples
-#' makeMatrix(Halo_DF, "percent_identity_global", 100, 50)
+#' makeMatrix(Halo_DF, "percent_difference_global", 100, 50)
+#'
+#' # Missing values get NA by default unless specified in the 4th argument.
+#' makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100)
 
 makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA) {
-  m <- xtabs(
-    data = DF,
-    as.formula(paste(column, "~ species1 + species2"))
-  ) |> as.matrix()
-  diag(m) <- defaultDiagonal
-  m[is.na(m)] <- defaultValue
-  attr(m, "builtWith") <- column
+  all_species <- sort(unique(DF$species2))
+  # Empty matrix
+  m <- matrix(defaultValue, nrow=length(all_species), ncol=length(all_species))
+  colnames(m) <- rownames(m) <- all_species
+  # Diagonal values (may be absent from DF)
+  for (i in 1:nrow(m)) {
+    m[i,i] <- defaultDiagonal
+  }
+  # Other values (will be defaultValue if absent from DF)
+  for (i in 1:nrow(DF)) {
+    species1 <- DF[i, "species1"]
+    species2 <- DF[i, "species2"]
+    if(species1 %in% all_species) # Allow for sample removal
+      m[species1, species2] <- DF[i, column]
+  }
+  attr(matrix, "builtWith") <- column
   m
 }
 
