@@ -77,9 +77,8 @@ in the Tree of Life</a> project.</p>
 <em>ggplot2</em> format but you need to load the <em>ggplot2</em>
 package to further customize them.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/brennern/ScrambledTreeBuilder" class="external-link">ScrambledTreeBuilder</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; Loading required package: S7</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/brennern/ScrambledTreeBuilder" class="external-link">ScrambledTreeBuilder</a></span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span>              <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressPackageStartupMessages</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example-data">Example Data<a class="anchor" aria-label="anchor" href="#example-data"></a>
@@ -113,7 +112,7 @@ comparison.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">exDataFrame</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/formatStats.html">formatStats</a></span><span class="op">(</span><span class="va">yamlFileData</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">ncol</a></span><span class="op">(</span><span class="va">exDataFrame</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] 232</span></span>
+<span><span class="co">#&gt; [1] 234</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">exDataFrame</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "aligned_length_Min"    "aligned_length_Q1"     "aligned_length_Median"</span></span>
 <span><span class="co">#&gt; [4] "aligned_length_Mean"   "aligned_length_Q3"     "aligned_length_Max"</span></span>
@@ -122,9 +121,9 @@ comparison.</p>
 <span><span class="co">#&gt; [3] "aligned_matches_Mean"     "aligned_mismatches_Mean" </span></span>
 <span><span class="co">#&gt; [5] "aligned_gaps_target_Mean" "aligned_gaps_query_Mean"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">exDataFrame</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">tail</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; [1] "avg_chr_num"               "percent_identity_local"   </span></span>
-<span><span class="co">#&gt; [3] "percent_identity_global"   "percent_difference_local" </span></span>
-<span><span class="co">#&gt; [5] "percent_difference_global" "index_avg_strandDiscord"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "percent_identity_global"   "percent_difference_local" </span></span>
+<span><span class="co">#&gt; [3] "percent_difference_global" "index_avg_strandDiscord"  </span></span>
+<span><span class="co">#&gt; [5] "percent_aligned"           "lab"</span></span></code></pre></div>
 <p>This data frame has a large number of columns, providing summary
 statistics on various aspects of the alignments. For statistics of
 interest, we build square matrices where rows and columns indicate one
