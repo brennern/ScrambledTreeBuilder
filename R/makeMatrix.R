@@ -6,6 +6,7 @@
 #' @param column The variable from the data frame to extract species data from.
 #' @param defaultDiagonal Maximum possible value of variable.
 #' @param defaultValue Minimum possible value of variable.
+#' @param impute Logical. If TRUE, applies missForest to fill in missing values.
 #'
 #' @return A square `matrix` where rows and columns are sample identifiers and
 #' values are statistics for the pairs of samples.  In addition it has an
@@ -13,6 +14,7 @@
 #'
 #' @author Noa Brenner
 #' @author Charles Plessy
+#' @author Anika Mittal
 #'
 #' @export
 #'
@@ -22,24 +24,41 @@
 #' # Missing values get NA by default unless specified in the 4th argument.
 #' makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100)
 
-makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA) {
+makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, impute = FALSE) {
   all_species <- sort(unique(DF$species2))
-  # Empty matrix
-  m <- matrix(defaultValue, nrow=length(all_species), ncol=length(all_species))
+  m <- matrix(defaultValue, nrow = length(all_species), ncol = length(all_species))
   colnames(m) <- rownames(m) <- all_species
-  # Diagonal values (may be absent from DF)
   for (i in 1:nrow(m)) {
-    m[i,i] <- defaultDiagonal
+    m[i, i] <- defaultDiagonal
   }
-  # Other values (will be defaultValue if absent from DF)
   for (i in 1:nrow(DF)) {
     species1 <- DF[i, "species1"]
     species2 <- DF[i, "species2"]
-    if(species1 %in% all_species) # Allow for sample removal
+    if (species1 %in% all_species) {
       m[species1, species2] <- DF[i, column]
+    }
   }
-  attr(matrix, "builtWith") <- column
-  m
+  
+  fillSymmetricNA <- function(mat) {
+    na_pos <- which(is.na(mat) & !is.na(t(mat)), arr.ind = TRUE)
+    mat[na_pos] <- t(mat)[na_pos]
+    mat
+  }
+  
+  m <- fillSymmetricNA(m)
+  
+  # Optional: Impute missing values using missForest
+  if (impute) {
+    if (!requireNamespace("missForest", quietly = TRUE)) {
+      stop("Package 'missForest' is required for imputation. Please install it.")
+    }
+    suppressMessages({
+      m <- as.matrix(missForest::missForest(as.data.frame(m))$ximp)
+    })
+  }
+  
+  attr(m, "builtWith") <- column
+  return(m)
 }
 
 makeMatrix.old <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, impute = FALSE, ...) {
