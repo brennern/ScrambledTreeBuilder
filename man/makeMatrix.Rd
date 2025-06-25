@@ -36,6 +36,8 @@ makeMatrix(Halo_DF, "percent_difference_global", 100, 50)
 
 # Missing values get NA by default unless specified in the 4th argument.
 makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100)
+
+makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100, impute=TRUE)
 }
 \author{
 Noa Brenner

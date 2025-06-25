@@ -23,6 +23,8 @@
 #'
 #' # Missing values get NA by default unless specified in the 4th argument.
 #' makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100)
+#'
+#' makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100, impute=TRUE)
 
 makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, impute = FALSE) {
   all_species <- sort(unique(DF$species2))
@@ -38,15 +40,15 @@ makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, imp
       m[species1, species2] <- DF[i, column]
     }
   }
-  
+
   fillSymmetricNA <- function(mat) {
     na_pos <- which(is.na(mat) & !is.na(t(mat)), arr.ind = TRUE)
     mat[na_pos] <- t(mat)[na_pos]
     mat
   }
-  
+
   m <- fillSymmetricNA(m)
-  
+
   # Optional: Impute missing values using missForest
   if (impute) {
     if (!requireNamespace("missForest", quietly = TRUE)) {
@@ -56,7 +58,7 @@ makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, imp
       m <- as.matrix(missForest::missForest(as.data.frame(m))$ximp)
     })
   }
-  
+
   attr(m, "builtWith") <- column
   return(m)
 }
