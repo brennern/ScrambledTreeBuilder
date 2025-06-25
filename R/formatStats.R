@@ -12,7 +12,9 @@
 #'        accepted.
 #'
 #' @return Formatted `data.frame` with alignment statistics such as alignment
-#' length, strand randomisation index or percent identity.
+#' length, strand randomisation index or percent identity. Its `lab` column
+#' contains a 2-line text item to allow some plots to display the `species1` and
+#' `species2` identifiers in a way that is easily centered on the data point.
 #'
 #' @author Noah Brenner
 #' @author Charles Plessy
@@ -52,5 +54,11 @@ formatStats <- function(files) {
   DF$percent_difference_local  <- 100 - DF$percent_identity_local
   DF$percent_difference_global <- 100 - DF$percent_identity_global
   DF$index_avg_strandDiscord   <-   1 - DF$index_avg_strandRand
+
+  DF$percent_aligned <- 100* round(digits = 3, DF$aligned_length_Total / DF$guessed_target_length_Total)
+
+  DF$lab <- ifelse( DF$species1 > DF$species2,
+                    paste(DF$species1, DF$species2, sep = "\n"),
+                    paste(DF$species2, DF$species1, sep = "\n"))
   DF
 }

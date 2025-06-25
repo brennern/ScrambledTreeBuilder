@@ -13,7 +13,9 @@ accepted.}
 }
 \value{
 Formatted \code{data.frame} with alignment statistics such as alignment
-length, strand randomisation index or percent identity.
+length, strand randomisation index or percent identity. Its \code{lab} column
+contains a 2-line text item to allow some plots to display the \code{species1} and
+\code{species2} identifiers in a way that is easily centered on the data point.
 }
 \description{
 Read YAML files, one per pair of genomes, and consolidate the information in
