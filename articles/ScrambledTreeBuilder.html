@@ -157,7 +157,9 @@ scrambling index.</p>
 <span><span class="co">#&gt; Halobacterium_salinarum                 32                    28</span></span>
 <span><span class="co">#&gt; Haloferax_mediterranei                  20                    32</span></span>
 <span><span class="co">#&gt; Haloferax_volcanii                       0                    30</span></span>
-<span><span class="co">#&gt; Salarchaeum_japonicum                   30                     0</span></span></code></pre></div>
+<span><span class="co">#&gt; Salarchaeum_japonicum                   30                     0</span></span>
+<span><span class="co">#&gt; attr(,"builtWith")</span></span>
+<span><span class="co">#&gt; [1] "percent_identity_global"</span></span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scrambling index</span></span>
 <span><span class="va">valueMatrix</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">-</span> <span class="fu"><a href="../reference/makeMatrix.html">makeMatrix</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="st">"index_avg_strandRand"</span>, <span class="fl">1</span>, <span class="fl">0.5</span><span class="op">)</span></span>
@@ -182,7 +184,9 @@ scrambling index.</p>
 <span><span class="co">#&gt; Halobacterium_salinarum               0.88                  0.92</span></span>
 <span><span class="co">#&gt; Haloferax_mediterranei                0.68                  0.89</span></span>
 <span><span class="co">#&gt; Haloferax_volcanii                    0.00                  0.99</span></span>
-<span><span class="co">#&gt; Salarchaeum_japonicum                 0.99                  0.00</span></span></code></pre></div>
+<span><span class="co">#&gt; Salarchaeum_japonicum                 0.99                  0.00</span></span>
+<span><span class="co">#&gt; attr(,"builtWith")</span></span>
+<span><span class="co">#&gt; [1] "index_avg_strandRand"</span></span></code></pre></div>
 <p>We cluster the percent nucleotide difference matrix
 (<code>treeMatrix</code>) to produce a tree in <em>tibble</em> format,
 using the <code><a href="../reference/makeTidyTree.html">makeTidyTree()</a></code> function.</p>
