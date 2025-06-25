@@ -40,6 +40,7 @@ Collate:
     'FocalClade.R'
     'Haloarchaea.R'
     'MRCAs.R'
+    'averageResults.R'
     'childSpecies.R'
     'eog.R'
     'extractValues.R'
