@@ -53,36 +53,3 @@ makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, imp
   attr(m, "builtWith") <- column
   return(m)
 }
-
-makeMatrix.old <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, impute = FALSE, ...) {
-  all_species <- unique(DF$species2)
-  your_matrix <- matrix(defaultValue, nrow=length(all_species), ncol=length(all_species))
-  colnames(your_matrix) <- rownames(your_matrix) <- all_species
-  for (i in 1:length(all_species)) {
-    your_matrix[i,i] <- defaultDiagonal
-  }
-  for (i in 1:nrow(DF)) {
-    species1 <- DF[i, "species1"]
-    species2 <- DF[i, "species2"]
-    if(species1 %in% all_species)
-      your_matrix[species1, species2] <- DF[i, column]
-  }
-  m <- your_matrix
-  fillSymmetricNA <- function(mat) {
-    na_pos <- which(is.na(mat) & !is.na(t(mat)), arr.ind = TRUE)
-    mat[na_pos] <- t(mat)[na_pos]
-    mat
-  }
-  m <- fillSymmetricNA(m)
-  #   # Optional: Impute missing values using missForest
-  if (impute) {
-    if (!requireNamespace("missForest", quietly = TRUE)) {
-      stop("Package 'missForest' is required for imputation. Please install it.")
-    }
-    suppressMessages({
-      m <- as.matrix(missForest::missForest(as.data.frame(m), ...)$ximp)
-    })
-  }
-  attr(m, "builtWith") <- column
-  return(m)
-}
