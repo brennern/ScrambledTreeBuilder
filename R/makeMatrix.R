@@ -46,7 +46,7 @@ makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, imp
     }
     m <- fillSymmetricNA(m)
     suppressMessages({
-      m <- as.matrix(missForest::missForest(as.data.frame(m))$ximp)
+      m <- missForest::missForest(m)$ximp
     })
   }
 
