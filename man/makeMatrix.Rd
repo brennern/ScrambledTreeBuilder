@@ -4,7 +4,13 @@
 \alias{makeMatrix}
 \title{Pairwise comparison matrix}
 \usage{
-makeMatrix(DF, column, defaultDiagonal = 100, defaultValue = NA)
+makeMatrix(
+  DF,
+  column,
+  defaultDiagonal = 100,
+  defaultValue = NA,
+  impute = FALSE
+)
 }
 \arguments{
 \item{DF}{Data frame containing species information, produced with \code{\link[=formatStats]{formatStats()}}}
@@ -14,6 +20,8 @@ makeMatrix(DF, column, defaultDiagonal = 100, defaultValue = NA)
 \item{defaultDiagonal}{Maximum possible value of variable.}
 
 \item{defaultValue}{Minimum possible value of variable.}
+
+\item{impute}{Logical. If TRUE, applies missForest to fill in missing values.}
 }
 \value{
 A square \code{matrix} where rows and columns are sample identifiers and
@@ -33,4 +41,6 @@ makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100)
 Noa Brenner
 
 Charles Plessy
+
+Anika Mittal
 }
