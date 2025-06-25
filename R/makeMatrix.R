@@ -39,13 +39,12 @@ makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, imp
     mat
   }
 
-  m <- fillSymmetricNA(m)
-
   # Optional: Impute missing values using missForest
   if (impute) {
     if (!requireNamespace("missForest", quietly = TRUE)) {
       stop("Package 'missForest' is required for imputation. Please install it.")
     }
+    m <- fillSymmetricNA(m)
     suppressMessages({
       m <- as.matrix(missForest::missForest(as.data.frame(m))$ximp)
     })
