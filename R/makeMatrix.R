@@ -40,7 +40,7 @@ makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, imp
   }
 
   # Optional: Impute missing values using missForest
-  if (impute) {
+  if (! isFALSE(impute)) {
     if (!requireNamespace("missForest", quietly = TRUE)) {
       stop("Package 'missForest' is required for imputation. Please install it.")
     }
