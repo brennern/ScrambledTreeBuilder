@@ -30,16 +30,8 @@ makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, imp
   all_species <- sort(unique(DF$species2))
   m <- matrix(defaultValue, nrow = length(all_species), ncol = length(all_species))
   colnames(m) <- rownames(m) <- all_species
-  for (i in 1:nrow(m)) {
-    m[i, i] <- defaultDiagonal
-  }
-  for (i in 1:nrow(DF)) {
-    species1 <- DF[i, "species1"]
-    species2 <- DF[i, "species2"]
-    if (species1 %in% all_species) {
-      m[species1, species2] <- DF[i, column]
-    }
-  }
+  diag(m) <- defaultDiagonal
+  m[cbind(DF$species1, DF$species2)] <- DF[[column]]
 
   fillSymmetricNA <- function(mat) {
     na_pos <- which(is.na(mat) & !is.na(t(mat)), arr.ind = TRUE)
