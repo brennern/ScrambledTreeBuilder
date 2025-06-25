@@ -49,6 +49,8 @@ MRCAs <- function(results, clades = NULL, dim1 = "percent_difference_local", dim
 #'
 #' @author Charles Plessy
 #'
+#' @family Plotting functions
+#'
 #' @importFrom ggplot2 aes ggplot geom_errorbar geom_errorbarh geom_point labs
 #' @importFrom ggplot2 scale_color_manual scale_x_continuous scale_y_continuous theme_minimal
 #' @importFrom rlang .data

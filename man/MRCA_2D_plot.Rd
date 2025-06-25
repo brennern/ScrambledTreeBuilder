@@ -20,6 +20,12 @@ MRCA_2D_plot(tb, errorbars = FALSE, xlim = 40, ylim = 1)
 MRCAs(Halo_DF, Halo_FocalClades) |> MRCA_2D_plot() +
   ggplot2::labs(x="nucl. diff", y="scrambling")
 }
+\seealso{
+Other Plotting functions: 
+\code{\link{ellipsePlot}()},
+\code{\link{visualizeTree}()}
+}
 \author{
 Charles Plessy
 }
+\concept{Plotting functions}

@@ -28,6 +28,7 @@ LazyData: true
 Imports: 
     dplyr,
     ggplot2,
+    ggforce,
     ggtree,
     rlang,
     tidytree,
@@ -43,6 +44,7 @@ Collate:
     'MRCAs.R'
     'averageResults.R'
     'childSpecies.R'
+    'ellipsePlot.R'
     'eog.R'
     'extractValues.R'
     'formatStats.R'
