@@ -27,6 +27,8 @@ averageResults <- function(df)
         mean,
         na.rm = TRUE
       ),
-      MRCA = unique(.data$MRCA),
+      MRCA       = unique(.data$MRCA),
+      focalClade = unique(.data$focalClade),
+      focalColor = unique(.data$focalColor),
       .groups = "drop"
   )

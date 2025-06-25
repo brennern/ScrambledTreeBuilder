@@ -27,6 +27,8 @@ eog(Halo_Tree, Halo_FocalClades$Haloferax)
 \seealso{
 Other Focal clade functions: 
 \code{\link{focalClade}()},
+\code{\link{recordAncestor}()},
+\code{\link{recordClades}()},
 \code{\link{subTree}()},
 \code{\link{visualizeTree}()}
 }

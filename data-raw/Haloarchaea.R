@@ -14,6 +14,7 @@ Halo_Tree <- makeTidyTree((Halo_PercentDiff/2 + t(Halo_PercentDiff)/2)) |>
 usethis::use_data(Halo_Tree, overwrite = TRUE)
 
 Halo_DF <- recordAncestor(Halo_DF, Halo_Tree)
+Halo_DF <- recordClades  (Halo_DF, Halo_FocalClades)
 usethis::use_data(Halo_DF, overwrite = TRUE)
 
 Halo_bacterium   <- focalClade(Halo_Tree, "Halobacterium_noricense", "Halobacterium_salinarum", "blue",   "Halobacterium genus")

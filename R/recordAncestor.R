@@ -9,6 +9,7 @@
 #' @returns The `df` data frame with a new `MRCA` column.
 #'
 #' @family Functions for trees
+#' @family Focal clade functions
 #'
 #' @author Noa Brenner
 #' @author Charles Plessy
@@ -34,5 +35,35 @@ recordAncestor <- function (df, tree) {
   m <- match(rownames(df), x$speciesPair)
   df$MRCA <- x$Var1[m]
   df$MRCA[is.na(df$MRCA)] <- 0
+  df
+}
+
+#' Record clade metadata in results table
+#'
+#' Add new `focalClade` and `focalColor` columns to a results table, for use
+#' in some plots.
+#'
+#' @note As MRCA information is needed; the function will run [`recordAncestor()`]
+#' when it did not find it.
+#'
+#' @param df A results data frame created with the `extractValues()` function.
+#' @param clades A [`FocalCladeList`] object.
+#'
+#' @family Focal clade functions
+#'
+#' @author Charles Plessy
+#'
+#' @export
+#'
+#' @examples
+#' recordClades(Halo_DF, Halo_FocalClades)
+
+recordClades <- function(df, clades) {
+  if (is.null(df$MRCA))
+    df <- recordAncestor(df, clades)
+  for (n in seq_along(clades)) {
+    df[df$MRCA %in% clades[[n]]@nodeList, "focalClade"] <- clades[[n]]@displayName
+    df[df$MRCA %in% clades[[n]]@nodeList, "focalColor"] <- clades[[n]]@color
+  }
   df
 }

@@ -26,10 +26,18 @@ recordAncestor(Halo_DF, Halo_Tree)$MRCA
 Other Functions for trees: 
 \code{\link{childSpecies}()},
 \code{\link{extractValues}()}
+
+Other Focal clade functions: 
+\code{\link{eog}()},
+\code{\link{focalClade}()},
+\code{\link{recordClades}()},
+\code{\link{subTree}()},
+\code{\link{visualizeTree}()}
 }
 \author{
 Noa Brenner
 
 Charles Plessy
 }
+\concept{Focal clade functions}
 \concept{Functions for trees}

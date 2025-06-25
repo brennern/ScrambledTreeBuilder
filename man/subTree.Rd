@@ -33,6 +33,8 @@ visualizeTree(subtree, subtree$node.orig)
 Other Focal clade functions: 
 \code{\link{eog}()},
 \code{\link{focalClade}()},
+\code{\link{recordAncestor}()},
+\code{\link{recordClades}()},
 \code{\link{visualizeTree}()}
 }
 \author{
