@@ -41,4 +41,6 @@ makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100)
 Noa Brenner
 
 Charles Plessy
+
+Anika Mittal
 }

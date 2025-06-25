@@ -14,6 +14,7 @@
 #'
 #' @author Noa Brenner
 #' @author Charles Plessy
+#' @author Anika Mittal
 #'
 #' @export
 #'
