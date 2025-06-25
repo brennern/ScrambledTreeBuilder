@@ -19,13 +19,13 @@
 
 MRCAs <- function(results, clades = NULL, dim1 = "percent_difference_local", dim2 = "index_avg_strandDiscord", center = mean, dispersion = sd) {
   tb <- results |>
-    group_by(MRCA) |>
+    group_by(.data$MRCA) |>
     summarize(
       x    = center(     !!sym(dim1), na.rm = TRUE),   # Central tendency for x
       y    = center(     !!sym(dim2), na.rm = TRUE),   # Central tendency for y
       xerr = dispersion( !!sym(dim1), na.rm = TRUE),   # Dispersion for x
       yerr = dispersion( !!sym(dim2), na.rm = TRUE),   # Dispersion for y
-      n = length(MRCA)
+      n = length(.data$MRCA)
     ) |>
     ungroup()
   tb$clade <- "Other"
