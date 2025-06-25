@@ -34,8 +34,8 @@ The _ScrambledTreeBuilder_ package outputs plots in _ggplot2_ format but you
 need to load the _ggplot2_ package to further customize them.
 
 ```{r R_setup}
-library(ScrambledTreeBuilder)
-library(ggplot2)
+library(ScrambledTreeBuilder) |> suppressPackageStartupMessages()
+library(ggplot2)              |> suppressPackageStartupMessages()
 ```
 
 # Example Data
