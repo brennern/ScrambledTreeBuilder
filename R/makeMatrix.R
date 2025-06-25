@@ -7,6 +7,7 @@
 #' @param defaultDiagonal Maximum possible value of variable.
 #' @param defaultValue Minimum possible value of variable.
 #' @param impute Logical. If TRUE, applies missForest to fill in missing values.
+#' @param ... Other arguments passed to the imputing function.
 #'
 #' @return A square `matrix` where rows and columns are sample identifiers and
 #' values are statistics for the pairs of samples.  In addition it has an
@@ -26,7 +27,7 @@
 #'
 #' makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100, impute=TRUE)
 
-makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, impute = FALSE) {
+makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, impute = FALSE, ...) {
   all_species <- sort(unique(DF$species2))
   m <- matrix(defaultValue, nrow = length(all_species), ncol = length(all_species))
   colnames(m) <- rownames(m) <- all_species
@@ -46,7 +47,7 @@ makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, imp
     }
     m <- fillSymmetricNA(m)
     suppressMessages({
-      m <- missForest::missForest(m)$ximp
+      m <- missForest::missForest(m, ...)$ximp
     })
   }
 

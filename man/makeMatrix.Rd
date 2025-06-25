@@ -9,7 +9,8 @@ makeMatrix(
   column,
   defaultDiagonal = 100,
   defaultValue = NA,
-  impute = FALSE
+  impute = FALSE,
+  ...
 )
 }
 \arguments{
@@ -22,6 +23,8 @@ makeMatrix(
 \item{defaultValue}{Minimum possible value of variable.}
 
 \item{impute}{Logical. If TRUE, applies missForest to fill in missing values.}
+
+\item{...}{Other arguments passed to the imputing function.}
 }
 \value{
 A square \code{matrix} where rows and columns are sample identifiers and
