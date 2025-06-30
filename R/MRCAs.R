@@ -58,8 +58,13 @@ MRCAs <- function(results, clades = NULL, dim1 = "percent_difference_local", dim
 #' @export
 #'
 #' @examples
-#' MRCAs(Halo_DF, Halo_FocalClades) |> MRCA_2D_plot() +
-#'   ggplot2::labs(x="nucl. diff", y="scrambling")
+#' (p <- MRCAs(Halo_DF, Halo_FocalClades) |> MRCA_2D_plot() +
+#'   ggplot2::labs(x="nucl. diff", y="scrambling"))
+#' p + ggplot2::geom_point(
+#'   data=Halo_DF,
+#'   ggplot2::aes(x = percent_difference_local,
+#'                y = index_avg_strandDiscord,
+#'                color = focalClade))
 
 MRCA_2D_plot <- function(tb, errorbars = FALSE, xlim = 40, ylim = 1) {
   p <- ggplot(tb, aes(x = .data$x, y = .data$y, col = .data$clade)) +
