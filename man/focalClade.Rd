@@ -2,6 +2,7 @@
 % Please edit documentation in R/FocalClade.R
 \name{focalClade}
 \alias{focalClade}
+\alias{FocalClade}
 \title{Focal clades}
 \usage{
 focalClade(Tibble, left, right, color, displayName)
@@ -32,7 +33,11 @@ Other Focal clade functions:
 \code{\link{eog}()},
 \code{\link{recordAncestor}()},
 \code{\link{recordClades}()},
+\code{\link{subMatrix}()},
 \code{\link{subTree}()},
 \code{\link{visualizeTree}()}
+}
+\author{
+Charles Plessy
 }
 \concept{Focal clade functions}

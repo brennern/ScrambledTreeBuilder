@@ -24,7 +24,8 @@ childSpecies(Halo_Tree, 7)
 \seealso{
 Other Functions for trees: 
 \code{\link{extractValues}()},
-\code{\link{recordAncestor}()}
+\code{\link{recordAncestor}()},
+\code{\link{subMatrix}()}
 }
 \author{
 Noa Brenner

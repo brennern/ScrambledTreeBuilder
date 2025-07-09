@@ -28,6 +28,7 @@ unique(Halo_Tree$parent) |> sort() |>
 \seealso{
 Other Functions for trees: 
 \code{\link{childSpecies}()},
-\code{\link{recordAncestor}()}
+\code{\link{recordAncestor}()},
+\code{\link{subMatrix}()}
 }
 \concept{Functions for trees}

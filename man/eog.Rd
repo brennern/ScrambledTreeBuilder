@@ -29,6 +29,7 @@ Other Focal clade functions:
 \code{\link{focalClade}()},
 \code{\link{recordAncestor}()},
 \code{\link{recordClades}()},
+\code{\link{subMatrix}()},
 \code{\link{subTree}()},
 \code{\link{visualizeTree}()}
 }
