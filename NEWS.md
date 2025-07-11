@@ -1,3 +1,7 @@
+# ScrambledTreeBuilder 1.0.2
+
+* Make `formatStats()` more robust when computing `percent_aligned`
+
 # ScrambledTreeBuilder 1.0.1
 
 * Fix error messages in `subMatrix()` and document that it also works with
