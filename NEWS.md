@@ -1,3 +1,8 @@
+# ScrambledTreeBuilder 1.1.0
+
+* Add `oikData` `2025_02_25` that uses the experimental windowed scrambling
+  index.
+
 # ScrambledTreeBuilder 1.0.2
 
 * Make `formatStats()` more robust when computing `percent_aligned`
