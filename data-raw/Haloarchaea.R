@@ -3,7 +3,7 @@
 Halo_DF <- system.file("extdata/yaml", package = "ScrambledTreeBuilder") |>
   resultFiles() |>  formatStats()
 
-Halo_PercentDiff <- makeMatrix(Halo_DF, "percent_difference_global", 100)
+Halo_PercentDiff <- makeMatrix(Halo_DF, "percent_difference_global", 0)
 usethis::use_data(Halo_PercentDiff, overwrite = TRUE)
 
 Halo_ScramblIdx <- makeMatrix(Halo_DF, "index_avg_strandDiscord", 1)
