@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r knitr_setup}
-knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(cache = FALSE)
 knitr::opts_knit$set(verbose = TRUE)
 ```
 
