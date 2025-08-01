@@ -40,5 +40,6 @@ Other Data load functions:
 Noah Brenner
 
 Charles Plessy
+author Anika Mittal
 }
 \concept{Data load functions}
