@@ -1,3 +1,7 @@
+# ScrambledTreeBuilder dev
+
+* Fix diagonal values in `Halo_PercentDiff`.
+
 # ScrambledTreeBuilder 1.1.0
 
 * Add `oikData` `2025_02_25` that uses the experimental windowed scrambling
