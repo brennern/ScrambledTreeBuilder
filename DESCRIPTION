@@ -44,6 +44,7 @@ Collate:
     'FocalClade.R'
     'Haloarchaea.R'
     'MRCAs.R'
+    'Remove_outliers.R'
     'averageResults.R'
     'childSpecies.R'
     'ellipsePlot.R'
