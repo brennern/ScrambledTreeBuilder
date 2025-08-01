@@ -25,12 +25,14 @@ recordAncestor(Halo_DF, Halo_Tree)$MRCA
 \seealso{
 Other Functions for trees: 
 \code{\link{childSpecies}()},
-\code{\link{extractValues}()}
+\code{\link{extractValues}()},
+\code{\link{subMatrix}()}
 
 Other Focal clade functions: 
 \code{\link{eog}()},
 \code{\link{focalClade}()},
 \code{\link{recordClades}()},
+\code{\link{subMatrix}()},
 \code{\link{subTree}()},
 \code{\link{visualizeTree}()}
 }

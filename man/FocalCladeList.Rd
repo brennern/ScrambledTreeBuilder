@@ -13,3 +13,6 @@ FocalCladeList(...)
 Class wrapping the base \code{list} class and containing \code{FocalClade} objects.
 Used for highlighting clades in tree plots.
 }
+\author{
+Charles Plessy
+}

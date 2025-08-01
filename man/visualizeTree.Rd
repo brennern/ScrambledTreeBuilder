@@ -47,7 +47,12 @@ Other Focal clade functions:
 \code{\link{focalClade}()},
 \code{\link{recordAncestor}()},
 \code{\link{recordClades}()},
+\code{\link{subMatrix}()},
 \code{\link{subTree}()}
+
+Other Plotting functions: 
+\code{\link{MRCA_2D_plot}()},
+\code{\link{ellipsePlot}()}
 }
 \author{
 Noah Brenner
@@ -55,3 +60,4 @@ Noah Brenner
 Charles Plessy
 }
 \concept{Focal clade functions}
+\concept{Plotting functions}

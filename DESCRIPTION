@@ -1,10 +1,11 @@
 Package: ScrambledTreeBuilder
 Title: Builds Phylogenetic Trees Showcasing Genome Scrambling in Species
-Version: 0.0.0.9001
+Version: 1.1.0
 Authors@R: 
     c(
         person("Noa",     "Brenner", email = "brennern@hawaii.edu",    role = c("aut", "cre")),
-        person("Charles", "Plessy",  email = "charles.plessy@oist.jp", role = c("aut")      )
+        person("Charles", "Plessy",  email = "charles.plessy@oist.jp", role = c("aut")      ),
+        person("Anika",   "Mittal",  email = "anika.mittal@oist.jp",   role = c("aut")      )
     )
 Description: Formats data from .yaml files, calculates information for each internal tree node, and plots phylogenetic trees.
 License: MIT + file LICENSE
@@ -13,6 +14,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Suggests: 
     knitr,
+    missForest,
     rmarkdown,
     testthat (>= 3.0.0),
     viridis,
@@ -28,6 +30,7 @@ LazyData: true
 Imports: 
     dplyr,
     ggplot2,
+    ggforce,
     ggtree,
     rlang,
     tidytree,
@@ -44,6 +47,7 @@ Collate:
     'Remove_outliers.R'
     'averageResults.R'
     'childSpecies.R'
+    'ellipsePlot.R'
     'eog.R'
     'extractValues.R'
     'formatStats.R'

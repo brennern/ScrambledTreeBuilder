@@ -18,6 +18,7 @@
 #' @author Charles Plessy
 #'
 #' @family Focal clade functions
+#' @family Plotting functions
 #'
 #' @examples
 #' visualizeTree(Halo_Tree)

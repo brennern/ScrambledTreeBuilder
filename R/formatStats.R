@@ -57,7 +57,7 @@ formatStats <- function(files) {
   DF$percent_difference_global <- 100 - DF$percent_identity_global
   DF$index_avg_strandDiscord   <-   1 - DF$index_avg_strandRand
 
-  DF$percent_aligned <- 100* round(digits = 3, DF$aligned_length_Total / DF$guessed_target_length_Total)
+  DF$percent_aligned <- 100* round(digits = 3, DF$aligned_width_target_Total / DF$guessed_target_length_Total)
 
   DF$lab <- ifelse( DF$species1 > DF$species2,
                     paste(DF$species1, DF$species2, sep = "\n"),

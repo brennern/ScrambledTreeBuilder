@@ -17,9 +17,20 @@ MRCA_2D_plot(tb, errorbars = FALSE, xlim = 40, ylim = 1)
 2D plot of the statistics extracted for each MRCA.
 }
 \examples{
-MRCAs(Halo_DF, Halo_FocalClades) |> MRCA_2D_plot() +
-  ggplot2::labs(x="nucl. diff", y="scrambling")
+(p <- MRCAs(Halo_DF, Halo_FocalClades) |> MRCA_2D_plot() +
+  ggplot2::labs(x="nucl. diff", y="scrambling"))
+p + ggplot2::geom_point(
+  data=Halo_DF,
+  ggplot2::aes(x = percent_difference_local,
+               y = index_avg_strandDiscord,
+               color = focalClade))
+}
+\seealso{
+Other Plotting functions: 
+\code{\link{ellipsePlot}()},
+\code{\link{visualizeTree}()}
 }
 \author{
 Charles Plessy
 }
+\concept{Plotting functions}

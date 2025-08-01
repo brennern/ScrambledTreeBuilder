@@ -9,7 +9,8 @@ makeMatrix(
   column,
   defaultDiagonal = 100,
   defaultValue = NA,
-  impute = FALSE
+  impute = c("no", "average", "missForest", "missForest2"),
+  ...
 )
 }
 \arguments{
@@ -21,7 +22,9 @@ makeMatrix(
 
 \item{defaultValue}{Minimum possible value of variable.}
 
-\item{impute}{Logical. If TRUE, applies missForest to fill in missing values.}
+\item{impute}{Method to impute missing value. Defaults to \code{no}.}
+
+\item{...}{Other arguments passed to the imputing function.}
 }
 \value{
 A square \code{matrix} where rows and columns are sample identifiers and
@@ -31,11 +34,35 @@ attribute "builtWith" that records the value of \code{column}.
 \description{
 Make a matrix from a data frame containing species data.
 }
+\note{
+In case of missing values, the following options are available.
+\itemize{
+\item Leave them missing (\code{NA}). This is the default.
+\item Give them a fixed value defined by the \code{devaultValue} option.
+\item Impute them from the replicate (when \emph{target} and \emph{query} roles are
+exchanged) if available (\code{impute=average}), else give them the default
+value.
+\item Impute them from the replicate, and then with random forests
+(\code{impute=missForest}).  Hide the diagonal values (which are extreme)
+when (\code{impute=missForest2}).
+}
+}
 \examples{
-makeMatrix(Halo_DF, "percent_difference_global", 100, 50)
+df <- Halo_DF
+makeMatrix(df, "percent_difference_global", 0, 50)
 
 # Missing values get NA by default unless specified in the 4th argument.
-makeMatrix(Halo_DF |> tail(-1), "percent_difference_global", 100)
+df["Salarchaeum_japonicum___Haloferax_volcanii", "percent_difference_global"] <- NA
+
+makeMatrix(df, "percent_difference_global", 0)
+makeMatrix(df, "percent_difference_global", 0, impute = "average")
+
+# NA value imputation with missForest use random numbers
+set.seed(1664)
+df["Haloferax_volcanii___Salarchaeum_japonicum", "percent_difference_global"] <- NA
+makeMatrix(df, "percent_difference_global", 0, impute =    "average")
+makeMatrix(df, "percent_difference_global", 0, impute = "missForest")
+makeMatrix(df, "percent_difference_global", 0, impute = "missForest2")
 }
 \author{
 Noa Brenner

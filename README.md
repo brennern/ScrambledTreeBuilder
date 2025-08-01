@@ -16,7 +16,7 @@ As of today there is no release. Install the development version of
 [GitHub](https://github.com/brennern/ScrambledTreeBuilder/) with:
 
     # install.packages("devtools")
-    devtools::install_github("brennern/ScrambledTreeBuilder", repos=BiocManager::repositories()) |> suppressMessages()
+    remotes::install_github("brennern/ScrambledTreeBuilder", repos=BiocManager::repositories())
 
 ## Usage
 

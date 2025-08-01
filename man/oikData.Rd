@@ -20,6 +20,8 @@ by a beta version of the \url{https://nf-co.re/pairgenomealign} pipeline.
 \itemize{
 \item \verb{2025_02_17} 6 distances using the \code{RY128} seed.
 \item \verb{2025_02_25} 10 distances using the \code{RY4} seed.
+\item \verb{2025_02_25} 10 distances (5 windows per sequence feature) using the
+\code{MAM8} seed and the \code{2.1~beta} pipeline.
 }
 }
 \examples{

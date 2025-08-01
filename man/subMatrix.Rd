@@ -4,14 +4,16 @@
 \alias{subMatrix}
 \title{Subset a matrix with a subtree}
 \usage{
-subMatrix(tree_tibble, m, node = NA, simplify.names = FALSE)
+subMatrix(tree, m, clade = NULL, simplify.names = FALSE)
 }
 \arguments{
-\item{tree_tibble}{A tree in the \code{tbl_tree} class of the \emph{tidytree} package.}
+\item{tree}{A \code{\link{ConvenientTblTree}} object.}
 
 \item{m}{A matrix, typically the output of \code{\link[=makeMatrix]{makeMatrix()}}.}
 
-\item{node}{The ID number of the node to base the subtree.}
+\item{clade}{A \code{\link{FocalClade}} object or the ID number of the node to base the
+subtree.  The default is \code{NULL} in case the input tree is already a
+subtree (see examples).}
 
 \item{simplify.names}{Reduce the genus name to a single letter.}
 }
@@ -24,8 +26,35 @@ that are labels in a tree, subset that matrix to the species that are
 present in the subtree starting at a given node.
 }
 \examples{
-subMatrix(Halo_Tree, Halo_PercentDiff, simpl = TRUE)
+# Subset with a node
 subMatrix(Halo_Tree, Halo_PercentDiff, 9)
+
+# Subset with a focal clade
+subMatrix(Halo_Tree, Halo_PercentDiff, Halo_FocalClades$Halobacterium)
+
+# Simplify names for more compact display
+subMatrix(Halo_Tree, Halo_PercentDiff, simplify.names = TRUE)
+
+# Pipe a subsetted tree directly to the function
 subTree(Halo_Tree, 9) |> subMatrix(Halo_PercentDiff)
 
 }
+\seealso{
+Other Functions for trees: 
+\code{\link{childSpecies}()},
+\code{\link{extractValues}()},
+\code{\link{recordAncestor}()}
+
+Other Focal clade functions: 
+\code{\link{eog}()},
+\code{\link{focalClade}()},
+\code{\link{recordAncestor}()},
+\code{\link{recordClades}()},
+\code{\link{subTree}()},
+\code{\link{visualizeTree}()}
+}
+\author{
+Charles Plessy
+}
+\concept{Focal clade functions}
+\concept{Functions for trees}

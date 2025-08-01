@@ -27,6 +27,7 @@ Other Focal clade functions:
 \code{\link{eog}()},
 \code{\link{focalClade}()},
 \code{\link{recordAncestor}()},
+\code{\link{subMatrix}()},
 \code{\link{subTree}()},
 \code{\link{visualizeTree}()}
 }

@@ -20,6 +20,8 @@ method(print, FocalClade) <- function(x, ...) {
 #'
 #' @param ... List elements passed to the constructor.
 #'
+#' @author Charles Plessy
+#'
 #' @import S7
 #'
 #' @export
@@ -44,6 +46,10 @@ method(print, FocalCladeList) <- function(x, ...) {
 #' @importFrom treeio MRCA
 #'
 #' @family Focal clade functions
+#'
+#' @author Charles Plessy
+#'
+#' @aliases FocalClade
 #'
 #' @export
 #'
