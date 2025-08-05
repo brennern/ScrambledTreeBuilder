@@ -31,7 +31,7 @@ This function removes outliers (pairs with high identity but low total aligned g
 }
 \examples{
 
-remove_outliers(results, "percent_identity_local", "normalized_alignment_length", 90, 10)
+remove_outliers(results, "percent_identity_local", "percent_aligned", 90, 10)
 }
 \author{
 Anika Mittal

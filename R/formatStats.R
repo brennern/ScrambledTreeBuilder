@@ -18,7 +18,7 @@
 #'
 #' @author Noah Brenner
 #' @author Charles Plessy
-#' author Anika Mittal
+#' 
 #'
 #' @family Data load functions
 #'
@@ -40,7 +40,6 @@ formatStats <- function(files) {
   DF$index_avg_strandRand             <- ( DF$index_strandRand_target          + DF$index_strandRand_query          ) /   2
   DF$index_avg_synteny                <- ( DF$index_synteny_target             + DF$index_synteny_query             ) /   2
   DF$avg_chr_num                      <- ( DF$guessed_target_length_N          + DF$guessed_query_length_N          ) /   2
-  DF$normalized_alignment_length      <- DF$TotalAlignmentLength / DF$guessed_target_length_Total
   if (is.null(DF$percent_identity_global)) {
     DF$percent_identity_global <- DF$PercentIdentity
     DF$percent_identity_local  <- DF$PercentIdentityNoGaps
