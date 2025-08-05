@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' 
-#' remove_outliers(results, "percent_identity_local", "normalized_alignment_length", 90, 10)
+#' remove_outliers(results, "percent_identity_local", "percent_aligned", 90, 10)
 #' @export
 remove_outliers <- function(df, percent_identity_col, alignment_length_col, percent_identity_threshold = NULL, alignment_length_threshold = NULL) {
   # If no threshold is provided for percent_identity_col, use quartile ranges to determine outliers
