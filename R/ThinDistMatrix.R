@@ -1,5 +1,9 @@
 #' Thin a matrix by a minimum pairwise distance
 #'
+#' @description
+#' Greedily select labels so that all pairwise distances among the kept labels
+#' are >= `min_dist`, returning the induced submatrix in the order labels were added.
+#'
 #'
 #' @param D A square distance matrix (numeric) with identical row/column names.
 #' @param min_dist Numeric scalar: minimum allowed pairwise distance.
@@ -21,11 +25,10 @@
 #'
 #' @export
 
-thin_by_min_distance_matrix <- function(D, min_dist, seed = 1) {
+thin_by_min <- function(D, min_dist, seed = 1) {
   set.seed(seed)
   
   D <- as.matrix(D)
-  stopifnot(nrow(D) == ncol(D))
   stopifnot(identical(rownames(D), colnames(D)))
   D <- (D + t(D)) / 2
   diag(D) <- 0
@@ -33,7 +36,6 @@ thin_by_min_distance_matrix <- function(D, min_dist, seed = 1) {
   
   labs <- rownames(D)
   remaining <- labs
-  keep <- character(0)
   
   ## seed with farthest pair
   F <- which(D == max(D), arr.ind = TRUE)[1, ]
