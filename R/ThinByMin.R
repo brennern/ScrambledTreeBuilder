@@ -1,8 +1,7 @@
 #' Thin a matrix by a minimum pairwise distance
 #'
-#' @description
 #' Greedily select labels so that all pairwise distances among the kept labels
-#' are >= `min_dist`, returning the induced submatrix in the order labels were added.
+#' are >= `min_dist`
 #'
 #'
 #' @param D A square distance matrix (numeric) with identical row/column names.
@@ -25,7 +24,7 @@
 #'
 #' @export
 
-thin_by_min <- function(D, min_dist, seed = 1) {
+ThinByMin <- function(D, min_dist, seed = 1) {
   set.seed(seed)
   
   D <- as.matrix(D)

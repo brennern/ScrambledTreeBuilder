@@ -45,7 +45,7 @@ Collate:
     'Haloarchaea.R'
     'MRCAs.R'
     'Remove_outliers.R'
-    'ThinDistMatrix.R'
+    'ThinByMin.R'
     'averageResults.R'
     'childSpecies.R'
     'ellipsePlot.R'
