@@ -9,7 +9,7 @@ thinByMin(D, min_dist)
 \arguments{
 \item{D}{A square distance matrix (numeric) with identical row/column names.}
 
-\item{min_dist}{Numeric scalar: minimum allowed pairwise distance.}
+\item{min_dist}{minimum allowed pairwise distance.}
 }
 \value{
 A symmetric numeric matrix: the \strong{thinned distance matrix} restricted
@@ -20,14 +20,7 @@ Greedily select labels so that all pairwise distances among the kept labels
 are >= \code{min_dist}
 }
 \examples{
-D <- matrix(c(
-  0, 3, 8, 6,
-  3, 0, 7, 4,
-  8, 7, 0, 5,
-  6, 4, 5, 0
-), nrow = 4, byrow = TRUE,
-dimnames = list(LETTERS[1:4], LETTERS[1:4]))
-thin_by_min_distance_matrix(D, min_dist = 6)
+thinByMin(Halo_PercentDiff, min_dist = 20)
 
 }
 \author{

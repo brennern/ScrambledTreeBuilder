@@ -3,28 +3,20 @@
 #' Greedily select labels so that all pairwise distances among the kept labels
 #' are >= `min_dist`
 #'
-#'
 #' @param D A square distance matrix (numeric) with identical row/column names.
-#' @param min_dist Numeric scalar: minimum allowed pairwise distance.
+#' @param min_dist minimum allowed pairwise distance.
 #'
 #' @return A symmetric numeric matrix: the **thinned distance matrix** restricted
 #'   to the kept labels (rows/columns in the order they were added).
 #'
 #' @author Anika Mittal
+#'
 #' @examples
-#' D <- matrix(c(
-#'   0, 3, 8, 6,
-#'   3, 0, 7, 4,
-#'   8, 7, 0, 5,
-#'   6, 4, 5, 0
-#' ), nrow = 4, byrow = TRUE,
-#' dimnames = list(LETTERS[1:4], LETTERS[1:4]))
-#' thin_by_min_distance_matrix(D, min_dist = 6)
+#' thinByMin(Halo_PercentDiff, min_dist = 20)
 #'
 #' @export
 
 thinByMin <- function(D, min_dist) {
-
   D <- as.matrix(D)
   stopifnot(identical(rownames(D), colnames(D)))
   D <- (D + t(D)) / 2
