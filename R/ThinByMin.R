@@ -24,23 +24,23 @@
 #'
 #' @export
 
-ThinByMin <- function(D, min_dist, seed = 1) {
+thinByMin <- function(D, min_dist, seed = 1) {
   set.seed(seed)
-  
+
   D <- as.matrix(D)
   stopifnot(identical(rownames(D), colnames(D)))
   D <- (D + t(D)) / 2
   diag(D) <- 0
   if (any(is.na(D))) stop("Distance matrix has NAs; impute first.")
-  
+
   labs <- rownames(D)
   remaining <- labs
-  
+
   ## seed with farthest pair
   F <- which(D == max(D), arr.ind = TRUE)[1, ]
   keep <- unique(labs[F])
   remaining <- setdiff(remaining, keep)
-  
+
   while (length(remaining)) {
     dmin <- apply(D[remaining, keep, drop = FALSE], 1, min)
     cand <- remaining[which.max(dmin)]
