@@ -6,7 +6,6 @@
 #'
 #' @param D A square distance matrix (numeric) with identical row/column names.
 #' @param min_dist Numeric scalar: minimum allowed pairwise distance.
-#' @param seed Integer for reproducibility (passed to \code{set.seed}).
 #'
 #' @return A symmetric numeric matrix: the **thinned distance matrix** restricted
 #'   to the kept labels (rows/columns in the order they were added).
@@ -24,8 +23,7 @@
 #'
 #' @export
 
-thinByMin <- function(D, min_dist, seed = 1) {
-  set.seed(seed)
+thinByMin <- function(D, min_dist) {
 
   D <- as.matrix(D)
   stopifnot(identical(rownames(D), colnames(D)))
@@ -36,7 +34,6 @@ thinByMin <- function(D, min_dist, seed = 1) {
   labs <- rownames(D)
   remaining <- labs
 
-  ## seed with farthest pair
   F <- which(D == max(D), arr.ind = TRUE)[1, ]
   keep <- unique(labs[F])
   remaining <- setdiff(remaining, keep)

@@ -4,14 +4,12 @@
 \alias{thinByMin}
 \title{Thin a matrix by a minimum pairwise distance}
 \usage{
-thinByMin(D, min_dist, seed = 1)
+thinByMin(D, min_dist)
 }
 \arguments{
 \item{D}{A square distance matrix (numeric) with identical row/column names.}
 
 \item{min_dist}{Numeric scalar: minimum allowed pairwise distance.}
-
-\item{seed}{Integer for reproducibility (passed to \code{set.seed}).}
 }
 \value{
 A symmetric numeric matrix: the \strong{thinned distance matrix} restricted
