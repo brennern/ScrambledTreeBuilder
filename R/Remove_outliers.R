@@ -11,10 +11,13 @@
 #' @return A new dataframe with the outliers removed.
 #' @author Anika Mittal
 #'
+#' @importFrom stats quantile
+#'
 #' @examples
-#' 
-#' remove_outliers(results, "percent_identity_local", "percent_aligned", 90, 10)
+#' remove_outliers(Halo_DF, "percent_identity_local", "percent_aligned", 72, 40)
+#'
 #' @export
+
 remove_outliers <- function(df, percent_identity_col, alignment_length_col, percent_identity_threshold = NULL, alignment_length_threshold = NULL) {
   # If no threshold is provided for percent_identity_col, use quartile ranges to determine outliers
   if (is.null(percent_identity_threshold)) {

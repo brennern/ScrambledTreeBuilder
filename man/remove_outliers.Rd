@@ -30,8 +30,8 @@ A new dataframe with the outliers removed.
 This function removes outliers (pairs with high identity but low total aligned genome) from the results dataframe based on the specified thresholds for percent identity and alignment length.
 }
 \examples{
+remove_outliers(Halo_DF, "percent_identity_local", "percent_aligned", 72, 40)
 
-remove_outliers(results, "percent_identity_local", "percent_aligned", 90, 10)
 }
 \author{
 Anika Mittal
