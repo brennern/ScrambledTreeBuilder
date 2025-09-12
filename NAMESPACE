@@ -3,6 +3,7 @@
 export(FocalCladeList)
 export(MRCA_2D_plot)
 export(MRCAs)
+export(ThinByMin)
 export(averageResults)
 export(childSpecies)
 export(ellipsePlot)
