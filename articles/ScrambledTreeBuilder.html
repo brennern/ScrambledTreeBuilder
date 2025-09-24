@@ -194,6 +194,27 @@ using the <code><a href="../reference/makeTidyTree.html">makeTidyTree()</a></cod
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Let's average the target-query and query-target replicate pairs.</span></span>
 <span><span class="op">(</span><span class="va">Tibble</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeTidyTree.html">makeTidyTree</a></span><span class="op">(</span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">/</span><span class="fl">2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: `aes_()` was deprecated in ggplot2 3.0.0.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use tidy evaluation idioms with `aes()`</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">ggtree</span> package.</span></span>
+<span><span class="co">#&gt;   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/YuLab-SMU/ggtree/issues&gt;</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
+<span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> as.Date = as.Date</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> yscale_mapping = yscale_mapping</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span>
+<span><span class="co">#&gt; Warning: `aes_string()` was deprecated in ggplot2 3.0.0.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use tidy evaluation idioms with `aes()`.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> See also `vignette("ggplot2-in-packages")` for more information.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">ggtree</span> package.</span></span>
+<span><span class="co">#&gt;   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/YuLab-SMU/ggtree/issues&gt;</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 6</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># which can be converted to treedata or phylo </span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # via as.treedata or as.phylo</span></span></span>
@@ -211,12 +232,24 @@ using the <code><a href="../reference/makeTidyTree.html">makeTidyTree()</a></cod
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>                      FALSE  4.75</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span>                      FALSE  5.5</span></span></code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">Tibble</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">Tibble</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> as.Date = as.Date</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> yscale_mapping = yscale_mapping</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/Tree_with_node_IDs-1.png" width="700"></p>
 <p>The node IDs can be used to manipulate the tree, for instance
 subsetting with the <code>subtree()</code> function.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">Tibble</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/subTree.html">subTree</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">Tibble</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/subTree.html">subTree</a></span><span class="op">(</span><span class="fl">9</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> as.Date = as.Date</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> yscale_mapping = yscale_mapping</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/subTree_with_node_IDs-1.png" width="700"></p>
 <p>Clades of interest can be tracked and highlighted by
 <code>FocalClade</code> objects. For robustness against changes in the
@@ -250,7 +283,13 @@ in the selected colors.</p>
 <span><span class="op">(</span><span class="va">clades</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/FocalCladeList.html">FocalCladeList</a></span><span class="op">(</span><span class="va">Halobacterium</span>, <span class="va">Haloferax</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Halobacterium genus, node ID: 10, number of genomes: 3</span></span>
 <span><span class="co">#&gt; Haloferax genus, node ID: 8, number of genomes: 2</span></span>
-<span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">Tibble</span><span class="op">)</span> <span class="op">+</span> <span class="va">clades</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Focal clade highlight"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">Tibble</span><span class="op">)</span> <span class="op">+</span> <span class="va">clades</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Focal clade highlight"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> as.Date = as.Date</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> yscale_mapping = yscale_mapping</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/focalCladeList-1.png" width="700"></p>
 <p>To plot more data on the tree, we add other statistics to the tree
 object, here the scrambling index and the percent nucleotide difference,
@@ -302,6 +341,12 @@ pipes.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/makeTidyTree.html">makeTidyTree</a></span><span class="op">(</span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">/</span><span class="fl">2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">valueMatrix</span>, colname <span class="op">=</span> <span class="st">"Scrambling_index"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">treeMatrix</span>,  colname <span class="op">=</span> <span class="st">"Percent_difference"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> as.Date = as.Date</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> yscale_mapping = yscale_mapping</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 8</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># which can be converted to treedata or phylo </span></span></span>
 <span><span class="co"><span style="color: #949494;">#&gt; # via as.treedata or as.phylo</span></span></span>
@@ -330,7 +375,13 @@ index for all the nodes. We can plot these values as labels on the
 tree.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="st">"Scrambling_index"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Tree built with Percent difference and labelled with Scrambling Index"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="va">clades</span></span></code></pre></div>
+<span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Tree built with Percent difference and labelled with Scrambling Index"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="va">clades</span></span>
+<span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> as.Date = as.Date</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> yscale_mapping = yscale_mapping</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/tree_with_SI-1.png" width="700"></p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="va">tibbleWithMultipleValues</span><span class="op">$</span><span class="va">Scrambling_index</span>, ynudge <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
@@ -338,17 +389,40 @@ tree.</p>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_color_viridis_c</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Scrambling index"</span>, option <span class="op">=</span> <span class="st">"cividis"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggnewscale</span><span class="fu">::</span><span class="fu"><a href="https://eliocamp.github.io/ggnewscale/reference/new_scale.html" class="external-link">new_scale_colour</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span><span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">Percent_difference</span><span class="op">)</span>, color <span class="op">=</span> <span class="va">Percent_difference</span><span class="op">)</span>, label.size <span class="op">=</span> <span class="fl">0.25</span>, size <span class="op">=</span> <span class="fl">3</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span>, label.padding <span class="op">=</span> <span class="fu">ggtree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/grid/unit.html" class="external-link">unit</a></span><span class="op">(</span><span class="fl">0.15</span>, <span class="st">"lines"</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="op">-</span><span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html" class="external-link">scale_color_viridis</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"magma"</span>, name <span class="op">=</span> <span class="st">"Percent Identity"</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu">viridis</span><span class="fu">::</span><span class="fu"><a href="https://sjmgarnier.github.io/viridis/reference/scale_viridis.html" class="external-link">scale_color_viridis</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"magma"</span>, name <span class="op">=</span> <span class="st">"Percent Identity"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> as.Date = as.Date</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> yscale_mapping = yscale_mapping</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span>
+<span><span class="co">#&gt; Warning: The `label.size` argument of `geom_label()` is deprecated as of ggplot2 3.5.0.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use the `linewidth` argument instead.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/two_value_plot-1.png" width="700"></p>
 <p>Of course, if you spotted an interesting sub-tree, you can plot the
 node IDs to easily extract it for further analysis.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> as.Date = as.Date</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> yscale_mapping = yscale_mapping</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/tree_with_node_IDs_again-1.png" width="700"></p>
 <p>The <code>subTree</code> function can conveniently be used with R’s
 pipe operator to cut a sub-tree at a chosen node.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/subTree.html">subTree</a></span><span class="op">(</span>node <span class="op">=</span> <span class="fl">9</span><span class="op">)</span>, <span class="st">"Percent_difference"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/subTree.html">subTree</a></span><span class="op">(</span>node <span class="op">=</span> <span class="fl">9</span><span class="op">)</span>, <span class="st">"Percent_difference"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
+<span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> as.Date = as.Date</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> yscale_mapping = yscale_mapping</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/subTree_node_9-1.png" width="700"></p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/subMatrix.html">subMatrix</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="va">valueMatrix</span>, <span class="fl">9</span>, simpl<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
