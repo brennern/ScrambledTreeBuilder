@@ -26,7 +26,7 @@
 #' @export
 
 resultFiles <- function (dir, remove = "removedAssemblies.txt") {
-    files <- list.files(dir, pattern = "*.yaml*", full.names = TRUE)
+    files <- list.files(dir, pattern = ".yaml$|.yaml.bz2$|.yaml.gz$|.yaml.gz$", full.names = TRUE)
     names <- basename(files) |>
       sub(pattern = ".gz|.bz2|.xz", replacement = "") |>
       sub(pattern = ".yaml",        replacement = "")
