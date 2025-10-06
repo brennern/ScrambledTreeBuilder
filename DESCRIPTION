@@ -51,6 +51,7 @@ Collate:
     'childSpecies.R'
     'ellipsePlot.R'
     'eog.R'
+    'esr.R'
     'extractValues.R'
     'formatStats.R'
     'getStats.R'
