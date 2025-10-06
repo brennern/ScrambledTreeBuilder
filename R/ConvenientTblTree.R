@@ -19,6 +19,13 @@ method(labelOrder, ConvenientTblTree) <- function (tree) {
   order(treeTips$y, decreasing = TRUE)
 }
 
+labelOrderedNames <- new_generic("labelOrderedNames", "tree")
+
+method(labelOrderedNames, ConvenientTblTree) <- function (tree) {
+  o <- labelOrder(tree)
+  tree$label[o]
+}
+
 #' Order a comparison matrix
 #'
 #' Re-order a comparison matrix according to the leaves of a plotted tree,
@@ -39,7 +46,7 @@ method(labelOrder, ConvenientTblTree) <- function (tree) {
 orderWithTree <- new_generic("orderWithTree", c("m", "tree"), function (m, tree) S7_dispatch()) # Needed so that `...` is not a parameter
 
 method(orderWithTree, list(class_any, ConvenientTblTree)) <- function (m, tree) {
-  o <- labelOrder(tree)
+  o <- labelOrderedNames(tree)
   m[o,o]
 }
 
