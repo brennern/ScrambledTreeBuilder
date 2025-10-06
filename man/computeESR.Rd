@@ -47,7 +47,7 @@ Fit a LOESS trend \code{y ~ x}, compute residuals \code{resid = y - y_hat}, and
 standardize them to unit-free z-like scores \code{ESRz}.
 }
 \examples{
-out <- MRCAs(Halo_DF, Halo_FocalClades) |> compute_esr_points()
+out <- MRCAs(Halo_DF, Halo_FocalClades) |> computeESR()
 head(out)
 
 }

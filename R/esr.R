@@ -22,7 +22,7 @@
 #' @author Anika Mittal
 #'
 #' @examples
-#' out <- MRCAs(Halo_DF, Halo_FocalClades) |> compute_esr_points()
+#' out <- MRCAs(Halo_DF, Halo_FocalClades) |> computeESR()
 #' head(out)
 #'
 #' @export
@@ -91,8 +91,8 @@ computeESR <- function(tb,
 #' @author Anika Mittal
 #'
 #' @examples
-#' tb_esr <- MRCAs(Halo_DF, Halo_FocalClades) |> compute_esr_points()
-#' esr_by_clade(tb_esr, z_cut = 1)
+#' tb_esr <- MRCAs(Halo_DF, Halo_FocalClades) |> computeESR()
+#' cladeESRtable(tb_esr, z_cut = 1)
 #'
 #' @export
 #' @importFrom dplyr filter group_by summarise mutate case_when arrange desc n

@@ -24,8 +24,8 @@ Summarise point-level ESR statistics at the clade level using weighted means
 sit on the lower-divergence side (x_mean <= median x_mean).
 }
 \examples{
-tb_esr <- MRCAs(Halo_DF, Halo_FocalClades) |> compute_esr_points()
-esr_by_clade(tb_esr, z_cut = 1)
+tb_esr <- MRCAs(Halo_DF, Halo_FocalClades) |> computeESR()
+cladeESRtable(tb_esr, z_cut = 1)
 
 }
 \author{
