@@ -2,6 +2,7 @@
 
 * Fix diagonal values in `Halo_PercentDiff`.
 * Fix detection of YAML files.
+* Make `formatStats()` robust to the presence of character values.
 
 # ScrambledTreeBuilder 1.1.0
 

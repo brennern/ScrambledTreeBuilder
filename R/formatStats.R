@@ -18,10 +18,10 @@
 #'
 #' @author Noah Brenner
 #' @author Charles Plessy
-#' 
 #'
 #' @family Data load functions
 #'
+#' @importFrom yaml read_yaml yaml.load
 #' @export
 #'
 #' @examples
@@ -31,7 +31,8 @@
 #' exDataFrame[1:10,1:6]
 
 formatStats <- function(files) {
-  DF <- do.call(rbind, lapply(files, getStats)) |> as.data.frame()
+  statLists <- lapply(files, \(file) yaml.load(read_yaml(file)))
+  DF <- do.call(rbind, lapply(statLists, as.data.frame))
   DF <- DF[,colSums(DF, na.rm = TRUE) !=0]
   rownames(DF) <- sub("_samplesheet", "", rownames(DF)) # legacy data support; to be removed later
   DF$species1 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[1]) |> unlist()

@@ -52,7 +52,6 @@ Collate:
     'eog.R'
     'extractValues.R'
     'formatStats.R'
-    'getStats.R'
     'makeMatrix.R'
     'makeTidyTree.R'
     'makeValueTibble.R'
