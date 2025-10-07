@@ -33,7 +33,6 @@
 formatStats <- function(files) {
   statLists <- lapply(files, \(file) yaml.load(read_yaml(file)))
   DF <- do.call(rbind, lapply(statLists, as.data.frame))
-  DF <- DF[,colSums(DF, na.rm = TRUE) !=0]
   rownames(DF) <- sub("_samplesheet", "", rownames(DF)) # legacy data support; to be removed later
   DF$species1 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[1]) |> unlist()
   DF$species2 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[2]) |> unlist()
