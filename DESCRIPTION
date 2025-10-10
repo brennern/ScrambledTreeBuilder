@@ -47,6 +47,7 @@ Collate:
     'Remove_outliers.R'
     'ThinByMin.R'
     'averageResults.R'
+    'bootstrapTree.R'
     'childSpecies.R'
     'ellipsePlot.R'
     'eog.R'
