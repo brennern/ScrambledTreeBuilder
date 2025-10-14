@@ -4,6 +4,7 @@
 * Fix detection of YAML files.
 * Make `formatStats()` robust to the presence of character values.
 * Stop dropping zero-valued columns in `formatStats()`.
+* New `residualBootstrapTree()` function.
 
 # ScrambledTreeBuilder 1.1.0
 
