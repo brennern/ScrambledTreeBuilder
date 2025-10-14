@@ -32,7 +32,7 @@ residualBootstrapTree <- function(
     clamp_zero = TRUE
 ) {
   # -- 1) Validate & normalise matrix
-  D <- if (inherits(D, "dist")) as.matrix(D) else as.matrix(D)
+  D <- as.matrix(D)
   if (is.null(rownames(D)) || is.null(colnames(D)))
     stop("Distance matrix must have row and column names.")
   if (!identical(rownames(D), colnames(D)))
