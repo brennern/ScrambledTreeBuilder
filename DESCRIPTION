@@ -27,7 +27,8 @@ Depends:
     R (>= 4.3.0),
     S7
 LazyData: true
-Imports: 
+Imports:
+    ape,
     dplyr,
     ggplot2,
     ggforce,
