@@ -14,12 +14,12 @@ residualBootstrapTree(D, n_bootstrap = 1000L, clamp_zero = TRUE)
 \item{clamp_zero}{Logical; clamp negative distances in resampled matrices to 0 (recommended).}
 }
 \value{
-A list with:
-\describe{
-\item{tree}{Reference tree (\code{phylo}) built from \code{D} with UPGMA. Node labels contain bootstrap \\%.}
-\item{bootstrap_trees}{List of replicate trees (\code{phylo}).}
-\item{support}{Numeric vector of bootstrap percentages per internal node (aligned to \code{tree$node.label}).}
-\item{call}{Matched call.}
+A \code{list} with:
+\itemize{
+\item \code{tree}: Reference tree (\code{phylo}) built from \code{D} with UPGMA. Node labels contain bootstrap \%.
+\item \code{bootstrap_trees}: List of replicate trees (\code{phylo}).
+\item \code{support}: Numeric vector of bootstrap percentages per internal node (aligned to \code{tree$node.label}).
+\item \code{call}: Matched call.
 }
 }
 \description{
@@ -30,7 +30,6 @@ support onto the reference.
 \examples{
 out <- residualBootstrapTree(Halo_PercentDiff, n_bootstrap = 200)
 plot(out$tree, show.node.label = TRUE)
-
 
 }
 \author{
