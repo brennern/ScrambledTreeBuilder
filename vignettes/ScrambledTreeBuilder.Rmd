@@ -115,7 +115,7 @@ the `subtree()` function.
 visualizeTree(Tibble |> subTree(9))
 ```
 
-Clades of interest can be tracked and highlighted by `FocalClade` objects.
+Clades of interest, which we call _focal clades_ (焦点系統群) can be tracked and highlighted by `FocalClade` objects.
 For robustness against changes in the input data or clustering approach, it
 is recommented to define a clade by the most recent common ancestor from a
 pair of species.  The `subTree()` function can take `FocalClade` objects

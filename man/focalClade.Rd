@@ -3,7 +3,7 @@
 \name{focalClade}
 \alias{focalClade}
 \alias{FocalClade}
-\title{Focal clades}
+\title{Focal clades (焦点系統群)}
 \usage{
 focalClade(Tibble, left, right, color, displayName)
 }
