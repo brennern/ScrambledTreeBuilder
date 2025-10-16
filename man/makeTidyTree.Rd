@@ -12,7 +12,8 @@ makeTidyTree(distMat, n_bootstrap = 0)
 \item{n_bootstrap}{Integer number of bootstrap replicates (default 0, no bootstrap).}
 }
 \value{
-A \code{tbl_tree} object
+A \code{tbl_tree} object.  Bootstrap values will be \code{NA} if no boostrap is
+done.
 }
 \description{
 Given a distance matrix, computes a cladogram with the \code{\link[stats:hclust]{stats::hclust}}
