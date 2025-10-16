@@ -29,6 +29,7 @@ Depends:
 LazyData: true
 Imports:
     ape,
+    data.table,
     dplyr,
     ggplot2,
     ggforce,
