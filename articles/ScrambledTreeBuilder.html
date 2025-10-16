@@ -251,12 +251,12 @@ subsetting with the <code>subtree()</code> function.</p>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/subTree_with_node_IDs-1.png" width="700"></p>
-<p>Clades of interest can be tracked and highlighted by
-<code>FocalClade</code> objects. For robustness against changes in the
-input data or clustering approach, it is recommented to define a clade
-by the most recent common ancestor from a pair of species. The
-<code><a href="../reference/subTree.html">subTree()</a></code> function can take <code>FocalClade</code> objects
-instead of node IDs as input.</p>
+<p>Clades of interest, which we call <em>focal clades</em> (焦点系統群)
+can be tracked and highlighted by <code>FocalClade</code> objects. For
+robustness against changes in the input data or clustering approach, it
+is recommented to define a clade by the most recent common ancestor from
+a pair of species. The <code><a href="../reference/subTree.html">subTree()</a></code> function can take
+<code>FocalClade</code> objects instead of node IDs as input.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">Halobacterium</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/focalClade.html">focalClade</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="st">"Halobacterium_noricense"</span>, <span class="st">"Halobacterium_salinarum"</span>, <span class="st">"blue"</span>, <span class="st">"Halobacterium genus"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Halobacterium genus, node ID: 10, number of genomes: 3</span></span>
