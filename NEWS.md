@@ -5,6 +5,7 @@
 * Make `formatStats()` robust to the presence of character values.
 * Stop dropping zero-valued columns in `formatStats()`.
 * New `residualBootstrapTree()` function.
+* `makeMatrix()` now warns and returns NULL if a column is not found.
 
 # ScrambledTreeBuilder 1.1.0
 
