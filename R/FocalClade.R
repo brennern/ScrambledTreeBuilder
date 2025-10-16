@@ -33,7 +33,7 @@ method(print, FocalCladeList) <- function(x, ...) {
     print(i)
 }
 
-#' Focal clades
+#' Focal clades (焦点系統群)
 #'
 #' Clades of interest to be plotted in color
 #'
