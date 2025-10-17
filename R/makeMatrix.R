@@ -31,7 +31,6 @@
 #'
 #' @examples
 #' df <- Halo_DF
-#' makeMatrix(df, "percent_difference_global", 0, 50)
 #'
 #' # Missing values get NA by default unless specified in the 4th argument.
 #' df["Salarchaeum_japonicum___Haloferax_volcanii", "percent_difference_global"] <- NA
@@ -45,8 +44,15 @@
 #' makeMatrix(df, "percent_difference_global", 0, impute =    "average")
 #' makeMatrix(df, "percent_difference_global", 0, impute = "missForest")
 #' makeMatrix(df, "percent_difference_global", 0, impute = "missForest2")
+#'
+#' # Warns and returns NULL if column not found
+#' makeMatrix(df, "you_will_never_find_this_column", 0, 50)
 
-makeMatrix <- function(DF, column, defaultDiagonal = 100, defaultValue = NA, impute = c("no", "average", "missForest", "missForest2"), ...) {
+makeMatrix <- function(DF, column="", defaultDiagonal = 100, defaultValue = NA, impute = c("no", "average", "missForest", "missForest2"), ...) {
+  if(is.null(DF[[column]])) {
+    warning("Column ", dQuote(column), " not found.")
+    return(NULL)
+  }
   impute <- match.arg(impute)
   all_species <- sort(unique(c(DF$species1, DF$species2)))
   m <- matrix(NA, nrow = length(all_species), ncol = length(all_species))

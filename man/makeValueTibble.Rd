@@ -2,25 +2,35 @@
 % Please edit documentation in R/makeValueTibble.R
 \name{makeValueTibble}
 \alias{makeValueTibble}
-\title{Make new tibble dataset with added value column from a matrix}
+\title{Project a matrix onto a tree}
 \usage{
-makeValueTibble(your_tibble, your_matrix, fun = mean, colname = "value")
+makeValueTibble(your_tibble, your_matrix = NULL, fun = mean, colname = "value")
 }
 \arguments{
-\item{your_tibble}{Original tibble dataset to add value column to.}
+\item{your_tibble}{A \code{\link{ConvenientTblTree}} object.}
 
-\item{your_matrix}{Matrix containing values to add to tibble.}
+\item{your_matrix}{Matrix containing values to summarise in the tibble.}
 
-\item{fun}{Default set to mean.}
+\item{fun}{function to apply to the values}
 
-\item{colname}{New column name for value being added to tibble (defaut set to "value").}
+\item{colname}{New column name for value being added to tibble.}
 }
 \value{
-New tibble with values added.
+The \code{your_tibble} object in which a new \code{colname} column was added
+where the \code{your_matrix} values summarised on the tree with the \code{fun}
+function, or the original \code{your_tibble} object if the \code{your_matrix} argument
+was NULL
 }
 \description{
-Make new tibble dataset with added value column from a matrix
+Adds a new node column data in a tree, summarising a square matrix
+representing all the pairs between that tree's leaves by applying a function
+to all the matrix values that relate pairs through the same node.
 }
 \examples{
 makeValueTibble(Halo_Tree, Halo_PercentDiff, colname = "Strand_Randomisation_Index")
+}
+\author{
+Noa Brenner
+
+Charles Plessy
 }

@@ -18,10 +18,10 @@
 #'
 #' @author Noah Brenner
 #' @author Charles Plessy
-#' 
 #'
 #' @family Data load functions
 #'
+#' @importFrom yaml read_yaml yaml.load
 #' @export
 #'
 #' @examples
@@ -31,8 +31,43 @@
 #' exDataFrame[1:10,1:6]
 
 formatStats <- function(files) {
-  DF <- do.call(rbind, lapply(files, getStats)) |> as.data.frame()
-  DF <- DF[,colSums(DF, na.rm = TRUE) !=0]
+  statLists <- lapply(files, \(file) yaml.load(read_yaml(file)))
+  DF <- do.call(rbind, lapply(statLists, as.data.frame))
+  rownames(DF) <- sub("_samplesheet", "", rownames(DF)) # legacy data support; to be removed later
+  DF$species1 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[1]) |> unlist()
+  DF$species2 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[2]) |> unlist()
+  DF <- DF[DF$species1 != DF$species2,]
+  DF$index_avg_strandRand             <- ( DF$index_strandRand_target          + DF$index_strandRand_query          ) /   2
+  DF$index_avg_synteny                <- ( DF$index_synteny_target             + DF$index_synteny_query             ) /   2
+  DF$avg_chr_num                      <- ( DF$guessed_target_length_N          + DF$guessed_query_length_N          ) /   2
+  if (is.null(DF$percent_identity_global)) {
+    DF$percent_identity_global <- DF$PercentIdentity
+    DF$percent_identity_local  <- DF$PercentIdentityNoGaps
+  }
+  if (is.null(DF$percent_identity_global)) {
+    DF$percent_identity_global <- DF$PercentSimilarity
+    DF$percent_identity_local  <- DF$PercentSimilarityNogaps
+  }
+  if (is.null(DF$percent_identity_global)) {
+    DF$percent_identity_local  <- DF$aligned_matches_Total / (DF$aligned_matches_Total + DF$aligned_mismatches_Total) * 100
+    DF$percent_identity_global <- DF$aligned_matches_Total / (DF$aligned_matches_Total + DF$aligned_gaps_target_Total + DF$aligned_gaps_query_Total + DF$aligned_mismatches_Total) * 100
+  }
+  DF$percent_difference_local  <- 100 - DF$percent_identity_local
+  DF$percent_difference_global <- 100 - DF$percent_identity_global
+  DF$index_avg_strandDiscord   <-   1 - DF$index_avg_strandRand
+
+  DF$percent_aligned <- 100* round(digits = 3, DF$aligned_width_target_Total / DF$guessed_target_length_Total)
+
+  DF$lab <- ifelse( DF$species1 > DF$species2,
+                    paste(DF$species1, DF$species2, sep = "\n"),
+                    paste(DF$species2, DF$species1, sep = "\n"))
+  DF
+}
+
+formatStats_ <- function(files) {
+  statLists <- lapply(files, \(file) yaml.load(read_yaml(file)))
+  DF <-   data.table::rbindlist(statLists, use.names = TRUE, fill = TRUE) |> as.data.frame()
+  rownames(DF) <- names(statLists)
   rownames(DF) <- sub("_samplesheet", "", rownames(DF)) # legacy data support; to be removed later
   DF$species1 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[1]) |> unlist()
   DF$species2 <- strsplit(rownames(DF), "___") |> lapply(\(.) .[2]) |> unlist()

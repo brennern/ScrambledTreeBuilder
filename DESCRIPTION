@@ -27,7 +27,9 @@ Depends:
     R (>= 4.3.0),
     S7
 LazyData: true
-Imports: 
+Imports:
+    ape,
+    data.table,
     dplyr,
     ggplot2,
     ggforce,
@@ -47,13 +49,13 @@ Collate:
     'Remove_outliers.R'
     'ThinByMin.R'
     'averageResults.R'
+    'bootstrapTree.R'
     'childSpecies.R'
     'ellipsePlot.R'
     'enr.R'
     'eog.R'
     'extractValues.R'
     'formatStats.R'
-    'getStats.R'
     'makeMatrix.R'
     'makeTidyTree.R'
     'makeValueTibble.R'

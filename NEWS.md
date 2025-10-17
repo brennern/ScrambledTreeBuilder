@@ -2,6 +2,12 @@
 
 * Fix diagonal values in `Halo_PercentDiff`.
 * Fix detection of YAML files.
+* Make `formatStats()` robust to the presence of character values.
+* Stop dropping zero-valued columns in `formatStats()`.
+* New `residualBootstrapTree()` function.
+* `makeMatrix()` now warns and returns `NULL` if a column is not found.
+* `makeValueTibble()` returns the original tree if `NULL` is passed instead of
+   a matrix.
 
 # ScrambledTreeBuilder 1.1.0
 
