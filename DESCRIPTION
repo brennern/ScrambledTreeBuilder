@@ -52,6 +52,7 @@ Collate:
     'bootstrapTree.R'
     'childSpecies.R'
     'ellipsePlot.R'
+    'enr.R'
     'eog.R'
     'extractValues.R'
     'formatStats.R'
