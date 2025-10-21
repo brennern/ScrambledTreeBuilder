@@ -1,6 +1,7 @@
 # ScrambledTreeBuilder 1.3.0
 
 * Expand `recordClades()` to work on taxon tables (one genome per line).
+* New `removeAssemblies()` function for on-the-fly filtering.
 
 # ScrambledTreeBuilder 1.2.0
 
