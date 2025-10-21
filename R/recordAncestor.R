@@ -40,14 +40,16 @@ recordAncestor <- function (df, tree) {
 
 #' Record clade metadata in results table
 #'
-#' Add new `focalClade` and `focalColor` columns to a results table, for use
-#' in some plots.
+#' Add clade information to tables, for quality checks and use in some plots.
 #'
 #' @note As MRCA information is needed; the function will run [`recordAncestor()`]
 #' when it did not find it.
 #'
 #' @param df A results data frame created with the `extractValues()` function.
 #' @param clades A [`FocalCladeList`] object.
+#'
+#' @return Returns the table, plus a `customClade` column if it was a taxon
+#' table, or a `focalClade` and `focalColor` columns if it was a results table.
 #'
 #' @family Focal clade functions
 #'
@@ -59,6 +61,15 @@ recordAncestor <- function (df, tree) {
 #' recordClades(Halo_DF, Halo_FocalClades)
 
 recordClades <- function(df, clades) {
+  # It is a taxon table (one genome per line) if it has a Binomial column.
+  if(! is.null(df$Binomial)) {
+    for (n in seq_along(clades)) {
+      df[clades[[n]]@genomeIDs, "customClade"]          <- clades[[n]]@displayName
+    }
+    return(df)
+  }
+
+  # Otherwise it is a results table (one pair per line)
   if (is.null(df$MRCA))
     df <- recordAncestor(df, clades)
   for (n in seq_along(clades)) {

@@ -1,3 +1,7 @@
+# ScrambledTreeBuilder 1.3.0
+
+* Expand `recordClades()` to work on taxon tables (one genome per line).
+
 # ScrambledTreeBuilder 1.2.0
 
 * Fix diagonal values in `Halo_PercentDiff`.

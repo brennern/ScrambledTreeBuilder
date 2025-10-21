@@ -11,9 +11,12 @@ recordClades(df, clades)
 
 \item{clades}{A \code{\link{FocalCladeList}} object.}
 }
+\value{
+Returns the table, plus a \code{customClade} column if it was a taxon
+table, or a \code{focalClade} and \code{focalColor} columns if it was a results table.
+}
 \description{
-Add new \code{focalClade} and \code{focalColor} columns to a results table, for use
-in some plots.
+Add clade information to tables, for quality checks and use in some plots.
 }
 \note{
 As MRCA information is needed; the function will run \code{\link[=recordAncestor]{recordAncestor()}}
