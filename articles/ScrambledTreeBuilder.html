@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ScrambledTreeBuilder</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -188,6 +188,10 @@ scrambling index.</p>
 <span><span class="co">#&gt; Salarchaeum_japonicum                 0.99                  0.00</span></span>
 <span><span class="co">#&gt; attr(,"builtWith")</span></span>
 <span><span class="co">#&gt; [1] "index_avg_strandRand"</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="tree-clustering">Tree clustering<a class="anchor" aria-label="anchor" href="#tree-clustering"></a>
+</h2>
 <p>We cluster the percent nucleotide difference matrix
 (<code>treeMatrix</code>) to produce a tree in <em>tibble</em> format,
 using the <code><a href="../reference/makeTidyTree.html">makeTidyTree()</a></code> function.</p>
@@ -251,6 +255,10 @@ subsetting with the <code>subtree()</code> function.</p>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/subTree_with_node_IDs-1.png" width="700"></p>
+</div>
+<div class="section level2">
+<h2 id="focal-clades">Focal clades<a class="anchor" aria-label="anchor" href="#focal-clades"></a>
+</h2>
 <p>Clades of interest, which we call <em>focal clades</em> (焦点系統群)
 can be tracked and highlighted by <code>FocalClade</code> objects. For
 robustness against changes in the input data or clustering approach, it
@@ -280,7 +288,7 @@ a pair of species. The <code><a href="../reference/subTree.html">subTree()</a></
 in the selected colors.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Haloferax</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/focalClade.html">focalClade</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="st">"Haloferax_mediterranei"</span>, <span class="st">"Haloferax_volcanii"</span>, <span class="st">"green3"</span>, <span class="st">"Haloferax genus"</span><span class="op">)</span></span>
-<span><span class="op">(</span><span class="va">clades</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/FocalCladeList.html">FocalCladeList</a></span><span class="op">(</span><span class="va">Halobacterium</span>, <span class="va">Haloferax</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">clades</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/FocalCladeList.html">FocalCladeList</a></span><span class="op">(</span>Halobacterium<span class="op">=</span><span class="va">Halobacterium</span>, Haloferax<span class="op">=</span><span class="va">Haloferax</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Halobacterium genus, node ID: 10, number of genomes: 3</span></span>
 <span><span class="co">#&gt; Haloferax genus, node ID: 8, number of genomes: 2</span></span>
 <span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">Tibble</span><span class="op">)</span> <span class="op">+</span> <span class="va">clades</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Focal clade highlight"</span><span class="op">)</span></span>
@@ -291,13 +299,31 @@ in the selected colors.</p>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/focalCladeList-1.png" width="700"></p>
+</div>
+<div class="section level2">
+<h2 id="heatmaps">Heatmaps<a class="anchor" aria-label="anchor" href="#heatmaps"></a>
+</h2>
+<p>To further quality control the tree and its genomes, it is possible
+to plot the values from the distance matrices as a heatmap in which rows
+and columns are in the same order as the branches of the tree. Focal
+clades can be highlighted too.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/treeHeatMap.html">treeHeatMap</a></span><span class="op">(</span><span class="va">treeMatrix</span>,  <span class="va">Tibble</span>, <span class="va">clades</span>, main <span class="op">=</span> <span class="st">"Percent difference"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ScrambledTreeBuilder_files/figure-html/heatmaps-1.png" width="700"></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/treeHeatMap.html">treeHeatMap</a></span><span class="op">(</span><span class="va">valueMatrix</span>, <span class="va">Tibble</span>, <span class="va">clades</span>, main <span class="op">=</span> <span class="st">"Scrambling index"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ScrambledTreeBuilder_files/figure-html/heatmaps-2.png" width="700"></p>
+</div>
+<div class="section level2">
+<h2 id="projecton-on-most-recent-common-ancestors">Projecton on most recent common ancestors<a class="anchor" aria-label="anchor" href="#projecton-on-most-recent-common-ancestors"></a>
+</h2>
 <p>To plot more data on the tree, we add other statistics to the tree
 object, here the scrambling index and the percent nucleotide difference,
 using the <code><a href="../reference/makeValueTibble.html">makeValueTibble()</a></code> function. This operation
 reduces a pairwise matrix to the tree, by averaging all the pairs
 sharing the same most recent common ancestor, represented by an internal
 node in the tree.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">tibbleWithValues</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="va">valueMatrix</span>, colname <span class="op">=</span> <span class="st">"Scrambling_index"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 8</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># which can be converted to treedata or phylo </span></span></span>
@@ -315,7 +341,7 @@ node in the tree.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      7     9          1.75 <span style="color: #BB0000;">NA</span>          FALSE  3.88        <span style="color: #BB0000;">NA</span>            0.869</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      9    10          1.57 <span style="color: #BB0000;">NA</span>          FALSE  4.75        <span style="color: #BB0000;">NA</span>            0.618</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">11</span>     10    11          1.70 <span style="color: #BB0000;">NA</span>          FALSE  5.5         <span style="color: #BB0000;">NA</span>            0.605</span></span></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">tibbleWithValues</span>, <span class="va">treeMatrix</span>, colname <span class="op">=</span> <span class="st">"Percent_difference"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tbl_tree abstraction: 11 × 9</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># which can be converted to treedata or phylo </span></span></span>
@@ -337,7 +363,7 @@ node in the tree.</p>
 <p>We made multiple tables to show the step-by-step process, but
 typically one would just keep the last table. This can be done with
 pipes.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/makeTidyTree.html">makeTidyTree</a></span><span class="op">(</span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">/</span><span class="fl">2</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/t.html" class="external-link">t</a></span><span class="op">(</span><span class="va">treeMatrix</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">valueMatrix</span>, colname <span class="op">=</span> <span class="st">"Scrambling_index"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/makeValueTibble.html">makeValueTibble</a></span><span class="op">(</span><span class="va">treeMatrix</span>,  colname <span class="op">=</span> <span class="st">"Percent_difference"</span><span class="op">)</span></span>
@@ -373,7 +399,7 @@ trees. In our case, we have generated a tree built based on nucleotide
 percent difference values as a distance, and computed average scrambling
 index for all the nodes. We can plot these values as labels on the
 tree.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="st">"Scrambling_index"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"Tree built with Percent difference and labelled with Scrambling Index"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="va">clades</span></span>
 <span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
@@ -383,7 +409,7 @@ tree.</p>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/tree_with_SI-1.png" width="700"></p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="va">tibbleWithMultipleValues</span><span class="op">$</span><span class="va">Scrambling_index</span>, ynudge <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ggtitle</a></span><span class="op">(</span><span class="st">"Tree labeled with Scrambling Index and Percent Difference"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html" class="external-link">scale_color_viridis_c</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Scrambling index"</span>, option <span class="op">=</span> <span class="st">"cividis"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -404,7 +430,7 @@ tree.</p>
 <p><img src="ScrambledTreeBuilder_files/figure-html/two_value_plot-1.png" width="700"></p>
 <p>Of course, if you spotted an interesting sub-tree, you can plot the
 node IDs to easily extract it for further analysis.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
 <span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
@@ -415,7 +441,7 @@ node IDs to easily extract it for further analysis.</p>
 <p><img src="ScrambledTreeBuilder_files/figure-html/tree_with_node_IDs_again-1.png" width="700"></p>
 <p>The <code>subTree</code> function can conveniently be used with R’s
 pipe operator to cut a sub-tree at a chosen node.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/visualizeTree.html">visualizeTree</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/subTree.html">subTree</a></span><span class="op">(</span>node <span class="op">=</span> <span class="fl">9</span><span class="op">)</span>, <span class="st">"Percent_difference"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in fortify(data, ...): Arguments in `...` must be used.</span></span>
 <span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> Problematic arguments:</span></span>
@@ -424,7 +450,7 @@ pipe operator to cut a sub-tree at a chosen node.</p>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> hang = hang</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Did you misspell an argument name?</span></span></code></pre></div>
 <p><img src="ScrambledTreeBuilder_files/figure-html/subTree_node_9-1.png" width="700"></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/subMatrix.html">subMatrix</a></span><span class="op">(</span><span class="va">Tibble</span>, <span class="va">valueMatrix</span>, <span class="fl">9</span>, simpl<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             H_litoreum H_noricense H_salinarum S_japonicum</span></span>
 <span><span class="co">#&gt; H_litoreum   0.0000000   0.6054199   0.4662469   0.8119173</span></span>
@@ -432,40 +458,40 @@ pipe operator to cut a sub-tree at a chosen node.</p>
 <span><span class="co">#&gt; H_salinarum  0.4677172   0.7676303   0.0000000   0.9210253</span></span>
 <span><span class="co">#&gt; S_japonicum  0.8192124   0.8669109   0.9218979   0.0000000</span></span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="plot-node-and-leaf-values">Plot node and leaf values<a class="anchor" aria-label="anchor" href="#plot-node-and-leaf-values"></a>
-</h3>
-<p>We can also plot leaf and node values in a standard scatterplot.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="fl">100</span> <span class="op">-</span> <span class="va">exDataFrame</span><span class="op">$</span><span class="va">percent_identity_global</span>, <span class="fl">1</span> <span class="op">-</span> <span class="va">exDataFrame</span><span class="op">$</span><span class="va">index_avg_strandRand</span>, col <span class="op">=</span> <span class="st">'grey'</span>, xlab <span class="op">=</span> <span class="st">"Percent difference"</span>, ylab<span class="op">=</span><span class="st">"Strand randomisation index"</span>, main <span class="op">=</span> <span class="st">"Leaf values are in grey and node values in red"</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/graphics/points.html" class="external-link">points</a></span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span><span class="op">$</span><span class="va">Percent_difference</span>, <span class="va">tibbleWithMultipleValues</span><span class="op">$</span><span class="va">Scrambling_index</span>, col <span class="op">=</span> <span class="st">'red'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">plotTwoBranches</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tree</span>, <span class="va">node</span>, <span class="va">X</span>, <span class="va">Y</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">children</span> <span class="op">&lt;-</span> <span class="fu">tidytree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tidytree/man/child.html" class="external-link">child</a></span>   <span class="op">(</span><span class="va">tree</span>, <span class="va">node</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">children</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">2</span><span class="op">)</span> <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="va">parent</span>   <span class="op">&lt;-</span> <span class="fu">tidytree</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/tidytree/man/parent.html" class="external-link">parent</a></span><span class="op">(</span><span class="va">tree</span>, <span class="va">children</span><span class="op">$</span><span class="va">node</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">parent</span><span class="op">[</span>, <span class="va">X</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span>, <span class="va">children</span><span class="op">[</span>, <span class="va">X</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">parent</span><span class="op">[</span>, <span class="va">Y</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span>, <span class="va">children</span><span class="op">[</span>, <span class="va">Y</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>    <span class="va">...</span></span>
-<span>  <span class="op">)</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/graphics/lines.html" class="external-link">lines</a></span><span class="op">(</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">parent</span><span class="op">[</span>, <span class="va">X</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span>, <span class="va">children</span><span class="op">[</span>, <span class="va">X</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">parent</span><span class="op">[</span>, <span class="va">Y</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span>, <span class="va">children</span><span class="op">[</span>, <span class="va">Y</span>, drop<span class="op">=</span><span class="cn">T</span><span class="op">]</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span>,</span>
-<span>    <span class="va">...</span></span>
-<span>  <span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="va">plotAllBranches</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">tree</span>, <span class="va">X</span>, <span class="va">Y</span>, <span class="va">...</span> <span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/base/unique.html" class="external-link">unique</a></span><span class="op">(</span><span class="va">tree</span><span class="op">$</span><span class="va">parent</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">sapply</a></span><span class="op">(</span>\<span class="op">(</span><span class="va">node</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu">plotTwoBranches</span><span class="op">(</span><span class="va">tree</span>, <span class="va">node</span>, <span class="va">X</span>, <span class="va">Y</span>, <span class="va">...</span><span class="op">)</span></span>
-<span>  <span class="op">}</span><span class="op">)</span></span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/invisible.html" class="external-link">invisible</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="op">}</span></span>
-<span></span>
-<span><span class="fu">plotAllBranches</span><span class="op">(</span><span class="va">tibbleWithMultipleValues</span>, <span class="st">"Percent_difference"</span>, <span class="st">"Scrambling_index"</span>, col <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="ScrambledTreeBuilder_files/figure-html/unnamed-chunk-2-1.png" width="700"></p>
 </div>
+<div class="section level2">
+<h2 id="pairwise-mrca-plots">Pairwise MRCA plots<a class="anchor" aria-label="anchor" href="#pairwise-mrca-plots"></a>
+</h2>
+<p>We can annotate all the pairs of values according to what is their
+most recent common ancestor (MRCA) in our phylogenetic tree. Once we
+have done that, we can plot statistics against each other. Most often we
+will chose the horizontal axis to be correlated with time, for instance
+with percent difference.</p>
+<p>In the MRCA 2D kind of plots, values are aggregated by common
+ancestor, and ploted with error bars (which we do not see here because
+there is not enough data). MRCAs are colored by their focal clade.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">exDataFrame</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recordAncestor.html">recordAncestor</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="va">Tibble</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/MRCAs.html">MRCAs</a></span><span class="op">(</span> <span class="va">exDataFrame</span>, <span class="va">clades</span></span>
+<span>     , dim1 <span class="op">=</span> <span class="st">"percent_difference_local"</span></span>
+<span>     , dim2 <span class="op">=</span> <span class="st">"index_avg_strandDiscord"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="../reference/MRCA_2D_plot.html">MRCA_2D_plot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ScrambledTreeBuilder_files/figure-html/MRCA_plot-1.png" width="700"></p>
+<p>In ellipse plots, all the pairs of species are displayed and grouped
+by MRCA. These groups are colored by focal clades. Remember that we have
+two values per pair of species (A vs B and B vs A). To simplify the
+plot, use the <code><a href="../reference/averageResults.html">averageResults()</a></code> function like below.</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">exDataFrame</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/recordClades.html">recordClades</a></span><span class="op">(</span><span class="va">exDataFrame</span>, <span class="va">clades</span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/ellipsePlot.html">ellipsePlot</a></span><span class="op">(</span> <span class="va">exDataFrame</span></span>
+<span>           , dim1 <span class="op">=</span> <span class="st">"percent_difference_local"</span></span>
+<span>           , dim2 <span class="op">=</span> <span class="st">"index_avg_strandDiscord"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ScrambledTreeBuilder_files/figure-html/ellipse_plot-1.png" width="700"></p>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/ellipsePlot.html">ellipsePlot</a></span><span class="op">(</span> <span class="va">exDataFrame</span> <span class="op">|&gt;</span> <span class="fu"><a href="../reference/averageResults.html">averageResults</a></span><span class="op">(</span><span class="op">)</span></span>
+<span>           , dim1 <span class="op">=</span> <span class="st">"percent_difference_local"</span></span>
+<span>           , dim2 <span class="op">=</span> <span class="st">"index_avg_strandDiscord"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="ScrambledTreeBuilder_files/figure-html/ellipse_plot-2.png" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>

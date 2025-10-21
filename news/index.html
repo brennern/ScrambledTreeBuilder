@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">ScrambledTreeBuilder</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,6 +33,19 @@
       <small>Source: <a href="https://github.com/brennern/ScrambledTreeBuilder/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.2.0" id="scrambledtreebuilder-120">ScrambledTreeBuilder 1.2.0<a class="anchor" aria-label="anchor" href="#scrambledtreebuilder-120"></a></h2>
+<ul><li>Fix diagonal values in <code>Halo_PercentDiff</code>.</li>
+<li>Fix detection of YAML files.</li>
+<li>Make <code><a href="../reference/formatStats.html">formatStats()</a></code> robust to the presence of character values.</li>
+<li>Stop dropping zero-valued columns in <code><a href="../reference/formatStats.html">formatStats()</a></code>.</li>
+<li>New <code><a href="../reference/residualBootstrapTree.html">residualBootstrapTree()</a></code> function.</li>
+<li>
+<code><a href="../reference/makeMatrix.html">makeMatrix()</a></code> now warns and returns <code>NULL</code> if a column is not found.</li>
+<li>
+<code><a href="../reference/makeValueTibble.html">makeValueTibble()</a></code> returns the original tree if <code>NULL</code> is passed instead of a matrix.</li>
+<li>Added <code><a href="../reference/treeHeatMap.html">treeHeatMap()</a></code> to visualise distance matrices with their values sorted like the branches of a phylogenetic tree, and optional focal clade highlighting.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="scrambledtreebuilder-110">ScrambledTreeBuilder 1.1.0<a class="anchor" aria-label="anchor" href="#scrambledtreebuilder-110"></a></h2>
 <ul><li>Add <code>oikData</code> <code>2025_02_25</code> that uses the experimental windowed scrambling index.</li>
