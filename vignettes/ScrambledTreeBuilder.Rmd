@@ -96,6 +96,8 @@ valueMatrix <- 1 - makeMatrix(exDataFrame, "index_avg_strandRand", 1, 0.5)
 round(valueMatrix, 2)
 ```
 
+# Tree clustering
+
 We cluster the percent nucleotide difference matrix (`treeMatrix`) to produce
 a tree in _tibble_ format, using the `makeTidyTree()` function.
 
@@ -115,6 +117,8 @@ the `subtree()` function.
 visualizeTree(Tibble |> subTree(9))
 ```
 
+# Focal clades
+
 Clades of interest, which we call _focal clades_ (焦点系統群) can be tracked and highlighted by `FocalClade` objects.
 For robustness against changes in the input data or clustering approach, it
 is recommented to define a clade by the most recent common ancestor from a
@@ -133,9 +137,23 @@ selected colors.
 
 ```{r focalCladeList}
 Haloferax <- focalClade(Tibble, "Haloferax_mediterranei", "Haloferax_volcanii", "green3", "Haloferax genus")
-(clades <- FocalCladeList(Halobacterium, Haloferax))
+(clades <- FocalCladeList(Halobacterium=Halobacterium, Haloferax=Haloferax))
 visualizeTree(Tibble) + clades + ggtitle("Focal clade highlight")
 ```
+
+# Heatmaps
+
+To further quality control the tree and its genomes, it is possible to plot
+the values from the distance matrices as a heatmap in which rows and columns
+are in the same order as the branches of the tree.  Focal clades can be
+highlighted too.
+
+```{r heatmaps}
+treeHeatMap(treeMatrix,  Tibble, clades, main = "Percent difference")
+treeHeatMap(valueMatrix, Tibble, clades, main = "Scrambling index")
+```
+
+# Projecton on most recent common ancestors
 
 To plot more data on the tree, we add other statistics to the tree object, here
 the scrambling index and the percent nucleotide difference, using the
@@ -200,37 +218,36 @@ visualizeTree(tibbleWithMultipleValues |> subTree(node = 9), "Percent_difference
 subMatrix(Tibble, valueMatrix, 9, simpl=TRUE)
 ```
 
+# Pairwise MRCA plots
 
-## Plot node and leaf values
+We can annotate all the pairs of values according to what is their most recent
+common ancestor (MRCA) in our phylogenetic tree.  Once we have done that, we can
+plot statistics against each other.  Most often we will chose the horizontal
+axis to be correlated with time, for instance with percent difference.
 
-We can also plot leaf and node values in a standard scatterplot.
+In the MRCA 2D kind of plots, values are aggregated by common ancestor, and
+ploted with error bars (which we do not see here because there is not enough
+data).  MRCAs are colored by their focal clade.
 
-```{r}
-plot(100 - exDataFrame$percent_identity_global, 1 - exDataFrame$index_avg_strandRand, col = 'grey', xlab = "Percent difference", ylab="Strand randomisation index", main = "Leaf values are in grey and node values in red")
-points(tibbleWithMultipleValues$Percent_difference, tibbleWithMultipleValues$Scrambling_index, col = 'red')
+```{r MRCA_plot}
+exDataFrame <- recordAncestor(exDataFrame, Tibble)
+MRCAs( exDataFrame, clades
+     , dim1 = "percent_difference_local"
+     , dim2 = "index_avg_strandDiscord") |>
+  MRCA_2D_plot()
+```
 
-plotTwoBranches <- function(tree, node, X, Y, ...) {
-  children <- tidytree::child   (tree, node)
-  if(nrow(children) != 2) return(invisible())
-  parent   <- tidytree::parent(tree, children$node[1])
-  lines(
-    c(parent[, X, drop=T], children[, X, drop=T][1]),
-    c(parent[, Y, drop=T], children[, Y, drop=T][1]),
-    ...
-  )
-  lines(
-    c(parent[, X, drop=T], children[, X, drop=T][2]),
-    c(parent[, Y, drop=T], children[, Y, drop=T][2]),
-    ...
-  )
-}
+In ellipse plots, all the pairs of species are displayed and grouped by MRCA.
+These groups are colored by focal clades.  Remember that we have two values
+per pair of species (A vs B and B vs A).  To simplify the plot, use the
+`averageResults()` function like below.
 
-plotAllBranches <- function(tree, X, Y, ... ) {
-  unique(tree$parent) |> sort() |> sapply(\(node) {
-    plotTwoBranches(tree, node, X, Y, ...)
-  })
-  return(invisible())
-}
-
-plotAllBranches(tibbleWithMultipleValues, "Percent_difference", "Scrambling_index", col = "red")
+```{r ellipse_plot}
+exDataFrame <- recordClades(exDataFrame, clades)
+ellipsePlot( exDataFrame
+           , dim1 = "percent_difference_local"
+           , dim2 = "index_avg_strandDiscord")
+ellipsePlot( exDataFrame |> averageResults()
+           , dim1 = "percent_difference_local"
+           , dim2 = "index_avg_strandDiscord")
 ```
