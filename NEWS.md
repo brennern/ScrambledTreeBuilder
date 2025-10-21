@@ -1,4 +1,4 @@
-# ScrambledTreeBuilder dev
+# ScrambledTreeBuilder 1.2.0
 
 * Fix diagonal values in `Halo_PercentDiff`.
 * Fix detection of YAML files.
