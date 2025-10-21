@@ -8,6 +8,9 @@
 * `makeMatrix()` now warns and returns `NULL` if a column is not found.
 * `makeValueTibble()` returns the original tree if `NULL` is passed instead of
    a matrix.
+* Added `treeHeatMap()` to visualise distance matrices with their values sorted
+  like the branches of a phylogenetic tree, and optional focal clade
+  highlighting.
 
 # ScrambledTreeBuilder 1.1.0
 

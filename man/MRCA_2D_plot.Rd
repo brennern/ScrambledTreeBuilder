@@ -28,6 +28,7 @@ p + ggplot2::geom_point(
 \seealso{
 Other Plotting functions: 
 \code{\link{ellipsePlot}()},
+\code{\link{treeHeatMap}()},
 \code{\link{visualizeTree}()}
 }
 \author{

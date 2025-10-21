@@ -52,7 +52,8 @@ Other Focal clade functions:
 
 Other Plotting functions: 
 \code{\link{MRCA_2D_plot}()},
-\code{\link{ellipsePlot}()}
+\code{\link{ellipsePlot}()},
+\code{\link{treeHeatMap}()}
 }
 \author{
 Noah Brenner

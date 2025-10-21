@@ -30,6 +30,7 @@ ellipsePlot(Halo_DF |> averageResults())
 \seealso{
 Other Plotting functions: 
 \code{\link{MRCA_2D_plot}()},
+\code{\link{treeHeatMap}()},
 \code{\link{visualizeTree}()}
 }
 \author{

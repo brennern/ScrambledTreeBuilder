@@ -34,6 +34,7 @@ Imports:
     ggplot2,
     ggforce,
     ggtree,
+    pheatmap,
     rlang,
     tidytree,
     treeio,
@@ -62,5 +63,6 @@ Collate:
     'recordAncestor.R'
     'resultFiles.R'
     'subMatrix.R'
+    'treeHeatMap.R'
     'visualizeTree.R'
     'zzz.R'
