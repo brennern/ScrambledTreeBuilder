@@ -30,6 +30,27 @@ makeTidyTree <- function(distMat, n_bootstrap = 0) {
     bt <- residualBootstrapTree(distMat, n_bootstrap = n_bootstrap)
     tree <- tidytree::as_tibble(tidytree::as.phylo(bt$tree))
   }
+  makeItConvenient(tree)
+}
+
+#' Add needed columns to be convenient
+#'
+#' The `ConvenientTblTree` S7 class is only a draft and lacks validation
+#' functions that ensure that an object provides everything expected from
+#' such a tree, in particular the `isTip` and `y` columns that can become
+#' invalid upon subsetting.
+#'
+#' This private function (re)computes `isTip` and `y`.
+#'
+#' @param tree A [`ConvenientTblTree`] object.
+#'
+#' @returns A [`ConvenientTblTree`] object with valid `isTip` and `y`
+#' information.
+#'
+#' @examples
+#' ScrambledTreeBuilder:::makeItConvenient(Halo_Tree)
+
+makeItConvenient <- function(tree) {
   plotted_tree <- visualizeTree(tree)$data # where tree gains isTip, x, y, branch and angle columns
   tree$isTip <- plotted_tree$isTip
   tree$y     <- plotted_tree$y

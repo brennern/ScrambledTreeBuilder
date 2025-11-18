@@ -1,3 +1,7 @@
+# ScrambledTreeBuilder dev
+
+* `subTree()` now outputs trees with proper `isTip` and `y` columns.
+
 # ScrambledTreeBuilder 1.3.0
 
 * Expand `recordClades()` to work on taxon tables (one genome per line).
