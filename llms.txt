@@ -66,6 +66,12 @@ visualizeTree(Halo_Tree, "Scrambling_index") +
 - [`childSpecies()`](https://brennern.github.io/ScrambledTreeBuilder/reference/childSpecies.md)
   : Children species of an ancestor
 
+- [`cladeENRtable()`](https://brennern.github.io/ScrambledTreeBuilder/reference/cladeENRtable.md)
+  : Aggregate ENR scores by clade
+
+- [`computeENR()`](https://brennern.github.io/ScrambledTreeBuilder/reference/computeENR.md)
+  : Compute ENR points (Excess Normalized Residuals over a LOESS trend)
+
 - [`ellipsePlot()`](https://brennern.github.io/ScrambledTreeBuilder/reference/ellipsePlot.md)
   : Ellipse plots
 
