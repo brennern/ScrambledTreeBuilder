@@ -1,6 +1,8 @@
 # ScrambledTreeBuilder dev
 
 * `subTree()` now outputs trees with proper `isTip` and `y` columns.
+* Fix `MRCAs()` so that it does not output averages values for species in the
+  results table but not in the input tree.
 
 # ScrambledTreeBuilder 1.3.0
 

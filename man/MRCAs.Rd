@@ -24,6 +24,9 @@ annotated with \code{\link[=recordAncestor]{recordAncestor()}}.}
 \item{center, dispersion}{Functions to compute a representation of the
 central tendency and the dispersion of the values for each MRCA.}
 }
+\value{
+A tibble (\link[tibble:tbl_df-class]{tibble::tbl_df}) ready for \code{\link{MRCA_2D_plot}}.
+}
 \description{
 Summarise statistics for MRCAs
 }

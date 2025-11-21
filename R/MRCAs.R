@@ -11,6 +11,8 @@
 #'
 #' @author Charles Plessy
 #'
+#' @returns A tibble ([tibble::tbl_df-class]) ready for [`MRCA_2D_plot`].
+#'
 #' @importFrom dplyr group_by summarize sym ungroup
 #' @export
 #'
@@ -36,7 +38,7 @@ MRCAs <- function(results, clades = NULL, dim1 = "percent_difference_local", dim
       tb$color[tb$MRCA %in% clade@nodeList] <- sub(" .*", "", clade@color)
     }
   }
-  tb
+  tb[tb$MRCA != 0,]  # There is not MRCA number zero.
 }
 
 #' 2D MRCA plot
