@@ -39,6 +39,13 @@ MRCAs(
   Functions to compute a representation of the central tendency and the
   dispersion of the values for each MRCA.
 
+## Value
+
+A tibble
+([tibble::tbl_df](https://tibble.tidyverse.org/reference/tbl_df-class.html))
+ready for
+[`MRCA_2D_plot`](https://brennern.github.io/ScrambledTreeBuilder/reference/MRCA_2D_plot.md).
+
 ## Author
 
 Charles Plessy
