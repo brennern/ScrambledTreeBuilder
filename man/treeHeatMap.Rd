@@ -4,10 +4,10 @@
 \alias{treeHeatMap}
 \title{Clustered heatmap}
 \usage{
-treeHeatMap(mat, tree = NULL, clades = NULL, ...)
+treeHeatMap(pairwise_matrix, tree = NULL, clades = NULL, ...)
 }
 \arguments{
-\item{mat}{a matrix with numerical values.}
+\item{pairwise_matrix}{a matrix with numerical values.}
 
 \item{tree}{A \code{\link{ConvenientTblTree}} object.}
 

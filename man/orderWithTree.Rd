@@ -4,15 +4,15 @@
 \alias{orderWithTree}
 \title{Order a comparison matrix}
 \usage{
-orderWithTree(m, tree)
+orderWithTree(pairwise_matrix, tree)
 }
 \arguments{
-\item{m}{A matrix produced with \code{\link[=makeMatrix]{makeMatrix()}}.}
+\item{pairwise_matrix}{A matrix produced with \code{\link[=makeMatrix]{makeMatrix()}}.}
 
 \item{tree}{A \code{\link{ConvenientTblTree}} object.}
 }
 \value{
-The \code{m} matrix, sorted like the leaves of \code{tree}.
+The \code{pairwise_matrix} matrix, sorted like the leaves of \code{tree}.
 }
 \description{
 Re-order a comparison matrix according to the leaves of a plotted tree,

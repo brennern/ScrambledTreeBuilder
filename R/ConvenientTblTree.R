@@ -34,7 +34,7 @@ method(labelOrderedNames, ConvenientTblTree) <- function (tree) {
 #' @param pairwise_matrix A matrix produced with [`makeMatrix()`].
 #' @param tree A [`ConvenientTblTree`] object.
 #'
-#' @returns The `m` matrix, sorted like the leaves of `tree`.
+#' @returns The `pairwise_matrix` matrix, sorted like the leaves of `tree`.
 #'
 #' @examples
 #' orderWithTree(Halo_PercentDiff, Halo_Tree)

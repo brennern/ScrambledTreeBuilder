@@ -4,10 +4,10 @@
 \alias{makeTidyTree}
 \title{Make a tidy tree}
 \usage{
-makeTidyTree(distMat, n_bootstrap = 0)
+makeTidyTree(pairwise_matrix, n_bootstrap = 0)
 }
 \arguments{
-\item{distMat}{a distance matrix}
+\item{pairwise_matrix}{a distance matrix}
 
 \item{n_bootstrap}{Integer number of bootstrap replicates (default 0, no bootstrap).}
 }

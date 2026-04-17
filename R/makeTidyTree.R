@@ -7,7 +7,7 @@ NULL
 #' function, and returns it as a [`tibble::tibble`] formatted for the `tidytree`
 #' package.
 #'
-#' @param distMat a distance matrix
+#' @param pairwise_matrix a distance matrix
 #' @param n_bootstrap Integer number of bootstrap replicates (default 0, no bootstrap).
 #'
 #' @return A `tbl_tree` object.  Bootstrap values will be `NA` if no boostrap is
@@ -20,14 +20,14 @@ NULL
 #'
 #' @export
 
-makeTidyTree <- function(distMat, n_bootstrap = 0) {
-  if (! all(distMat == t(distMat)))
+makeTidyTree <- function(pairwise_matrix, n_bootstrap = 0) {
+  if (! all(pairwise_matrix == t(pairwise_matrix)))
     warning("Input matrix is not symmetric!")
   if (n_bootstrap == 0) {
-    HClust <- hclust(as.dist(distMat), method = "average")
+    HClust <- hclust(as.dist(pairwise_matrix), method = "average")
     tree <- tidytree::as_tibble(tidytree::as.phylo(HClust))
   } else {
-    bt <- residualBootstrapTree(distMat, n_bootstrap = n_bootstrap)
+    bt <- residualBootstrapTree(pairwise_matrix, n_bootstrap = n_bootstrap)
     tree <- tidytree::as_tibble(tidytree::as.phylo(bt$tree))
   }
   makeItConvenient(tree)

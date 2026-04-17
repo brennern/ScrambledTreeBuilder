@@ -4,10 +4,10 @@
 \alias{thinByMin}
 \title{Thin a matrix by a minimum pairwise distance}
 \usage{
-thinByMin(D, min_dist)
+thinByMin(pairwise_matrix, min_dist)
 }
 \arguments{
-\item{D}{A square distance matrix (numeric) with identical row/column names.}
+\item{pairwise_matrix}{A square distance matrix (numeric) with identical row/column names.}
 
 \item{min_dist}{minimum allowed pairwise distance.}
 }

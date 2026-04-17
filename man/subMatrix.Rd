@@ -4,12 +4,12 @@
 \alias{subMatrix}
 \title{Subset a matrix with a subtree}
 \usage{
-subMatrix(tree, m, clade = NULL, simplify.names = FALSE)
+subMatrix(tree, pairwise_matrix, clade = NULL, simplify.names = FALSE)
 }
 \arguments{
 \item{tree}{A \code{\link{ConvenientTblTree}} object.}
 
-\item{m}{A matrix, typically the output of \code{\link[=makeMatrix]{makeMatrix()}}.}
+\item{pairwise_matrix}{A matrix, typically the output of \code{\link[=makeMatrix]{makeMatrix()}}.}
 
 \item{clade}{A \code{\link{FocalClade}} object or the ID number of the node to base the
 subtree.  The default is \code{NULL} in case the input tree is already a
@@ -18,7 +18,7 @@ subtree (see examples).}
 \item{simplify.names}{Reduce the genus name to a single letter.}
 }
 \value{
-A subset of the \code{m} matrix.
+A subset of the \code{pairwise_matrix} matrix.
 }
 \description{
 Given a matrix of values where the rows and column names are species names

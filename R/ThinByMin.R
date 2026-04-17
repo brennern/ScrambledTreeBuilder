@@ -3,7 +3,7 @@
 #' Greedily select labels so that all pairwise distances among the kept labels
 #' are >= `min_dist`
 #'
-#' @param D A square distance matrix (numeric) with identical row/column names.
+#' @param pairwise_matrix A square distance matrix (numeric) with identical row/column names.
 #' @param min_dist minimum allowed pairwise distance.
 #'
 #' @return A symmetric numeric matrix: the **thinned distance matrix** restricted
@@ -16,10 +16,10 @@
 #'
 #' @export
 
-thinByMin <- function(D, min_dist) {
-  D <- as.matrix(D)
-  stopifnot(identical(rownames(D), colnames(D)))
-  D <- (D + t(D)) / 2
+thinByMin <- function(pairwise_matrix, min_dist) {
+  pairwise_matrix <- as.matrix(pairwise_matrix)
+  stopifnot(identical(rownames(pairwise_matrix), colnames(pairwise_matrix)))
+  D <- (pairwise_matrix + t(pairwise_matrix)) / 2
   diag(D) <- 0
   if (any(is.na(D))) stop("Distance matrix has NAs; impute first.")
 
