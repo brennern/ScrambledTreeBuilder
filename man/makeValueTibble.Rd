@@ -4,12 +4,12 @@
 \alias{makeValueTibble}
 \title{Project a matrix onto a tree}
 \usage{
-makeValueTibble(your_tibble, your_matrix = NULL, fun = mean, colname = "value")
+makeValueTibble(your_tibble, pairwise_matrix = NULL, fun = mean, colname = "value")
 }
 \arguments{
 \item{your_tibble}{A \code{\link{ConvenientTblTree}} object.}
 
-\item{your_matrix}{Matrix containing values to summarise in the tibble.}
+\item{pairwise_matrix}{Matrix containing values to summarise in the tibble.}
 
 \item{fun}{function to apply to the values}
 
@@ -17,8 +17,8 @@ makeValueTibble(your_tibble, your_matrix = NULL, fun = mean, colname = "value")
 }
 \value{
 The \code{your_tibble} object in which a new \code{colname} column was added
-where the \code{your_matrix} values summarised on the tree with the \code{fun}
-function, or the original \code{your_tibble} object if the \code{your_matrix} argument
+where the \code{pairwise_matrix} values summarised on the tree with the \code{fun}
+function, or the original \code{your_tibble} object if the \code{pairwise_matrix} argument
 was NULL
 }
 \description{

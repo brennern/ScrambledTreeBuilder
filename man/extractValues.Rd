@@ -4,14 +4,14 @@
 \alias{extractValues}
 \title{Extract values from a matrix.}
 \usage{
-extractValues(node, your_tibble, your_matrix, fun = mean)
+extractValues(node, your_tibble, pairwise_matrix, fun = mean)
 }
 \arguments{
 \item{node}{Node}
 
 \item{your_tibble}{Tibble data developed from tree.}
 
-\item{your_matrix}{Matrix containing species data.}
+\item{pairwise_matrix}{Matrix containing species data.}
 
 \item{fun}{Calculates mean, median, etc. between node values to plot on the tree (default fun is mean)}
 }

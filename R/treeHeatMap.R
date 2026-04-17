@@ -4,7 +4,7 @@
 #' clustered with that tree. Obviously, the tree and the matrix need to be
 #' related.
 #'
-#' @param mat a matrix with numerical values.
+#' @param pairwise_matrix a matrix with numerical values.
 #' @param tree A [`ConvenientTblTree`] object.
 #' @param clades A [`FocalCladeList`] object.
 #'
@@ -25,13 +25,13 @@
 #'
 #' @export
 
-treeHeatMap <- function(mat, tree=NULL, clades=NULL, ...) {
+treeHeatMap <- function(pairwise_matrix, tree=NULL, clades=NULL, ...) {
 
-  if(!is.null(tree)) mat <- orderWithTree(mat, tree)
+  if(!is.null(tree)) pairwise_matrix <- orderWithTree(pairwise_matrix, tree)
 
   if(!is.null(clades)) {
     # Prepare an annotation data frame for pheatmap()
-    annot <- data.frame(row.names = rownames(mat))
+    annot <- data.frame(row.names = rownames(pairwise_matrix))
     for (clade in names(clades)) {
       annot[clades[[clade]]@genomeIDs, "clade"] <- clades[[clade]]@displayName
       annot[clades[[clade]]@genomeIDs, "color"] <- clades[[clade]]@color
@@ -44,7 +44,7 @@ treeHeatMap <- function(mat, tree=NULL, clades=NULL, ...) {
     names(color_list$clade) <- color_annot$clade
   } else {
     return(
-      pheatmap( mat,
+      pheatmap( pairwise_matrix,
         cluster_rows = FALSE,
         cluster_cols = FALSE,
         show_colnames = FALSE,
@@ -55,7 +55,7 @@ treeHeatMap <- function(mat, tree=NULL, clades=NULL, ...) {
 
   # Plot the heatmap
   pheatmap(
-    mat,
+    pairwise_matrix,
     cluster_rows = FALSE,
     cluster_cols = FALSE,
     annotation_row    = annot[,"clade", drop = FALSE],

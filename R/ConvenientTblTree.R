@@ -31,7 +31,7 @@ method(labelOrderedNames, ConvenientTblTree) <- function (tree) {
 #' Re-order a comparison matrix according to the leaves of a plotted tree,
 #' to ease figure production
 #'
-#' @param m A matrix produced with [`makeMatrix()`].
+#' @param pairwise_matrix A matrix produced with [`makeMatrix()`].
 #' @param tree A [`ConvenientTblTree`] object.
 #'
 #' @returns The `m` matrix, sorted like the leaves of `tree`.
@@ -43,10 +43,10 @@ method(labelOrderedNames, ConvenientTblTree) <- function (tree) {
 #'
 #' @export
 
-orderWithTree <- new_generic("orderWithTree", c("m", "tree"), function (m, tree) S7_dispatch()) # Needed so that `...` is not a parameter
+orderWithTree <- new_generic("orderWithTree", c("pairwise_matrix", "tree"), function (pairwise_matrix, tree) S7_dispatch()) # Needed so that `...` is not a parameter
 
-method(orderWithTree, list(class_any, ConvenientTblTree)) <- function (m, tree) {
+method(orderWithTree, list(class_any, ConvenientTblTree)) <- function (pairwise_matrix, tree) {
   o <- labelOrderedNames(tree)
-  m[o,o]
+  pairwise_matrix[o,o]
 }
 

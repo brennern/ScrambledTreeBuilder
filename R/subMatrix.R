@@ -5,13 +5,13 @@
 #' present in the subtree starting at a given node.
 #'
 #' @param tree A [`ConvenientTblTree`] object.
-#' @param m A matrix, typically the output of [`makeMatrix()`].
+#' @param pairwise_matrix A matrix, typically the output of [`makeMatrix()`].
 #' @param clade A [`FocalClade`] object or the ID number of the node to base the
 #'        subtree.  The default is `NULL` in case the input tree is already a
 #'        subtree (see examples).
 #' @param simplify.names Reduce the genus name to a single letter.
 #'
-#' @return A subset of the `m` matrix.
+#' @return A subset of the `pairwise_matrix` matrix.
 #'
 #' @author Charles Plessy
 #' @family Functions for trees
@@ -32,13 +32,13 @@
 #'
 #' @export
 
-subMatrix <- function(tree, m, clade = NULL, simplify.names = FALSE) {
+subMatrix <- function(tree, pairwise_matrix, clade = NULL, simplify.names = FALSE) {
   if (! is.null(clade)) tree <- subTree(tree, clade)
   specNames <- tree$label |> unique() |> purrr::discard(is.na)
-  m <- m[specNames,specNames]
+  pairwise_matrix <- pairwise_matrix[specNames,specNames]
   if (isTRUE(simplify.names)) {
-    rownames(m) <- sub(rownames(m), pattern = "(.).*?_", replacement = "\\1_")
-    colnames(m) <- sub(rownames(m), pattern = "(.).*?_", replacement = "\\1_")
+    rownames(pairwise_matrix) <- sub(rownames(pairwise_matrix), pattern = "(.).*?_", replacement = "\\1_")
+    colnames(pairwise_matrix) <- sub(rownames(pairwise_matrix), pattern = "(.).*?_", replacement = "\\1_")
   }
-  m
+  pairwise_matrix
 }
