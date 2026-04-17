@@ -3,10 +3,10 @@
 #' Given a tree and a results data frame, add a new `MRCA` column that records
 #' the node ID of the most recent common ancestor in that tree for each row.
 #'
-#' @param df A results data frame created with the `extractValues()` function
+#' @param pairwise_data A results data frame created with the `extractValues()` function
 #' @param tree A tree created with the `makeTidyTree()` function.
 #'
-#' @returns The `df` data frame with a new `MRCA` column.
+#' @returns The `pairwise_data` data frame with a new `MRCA` column.
 #'
 #' @family Functions for trees
 #' @family Focal clade functions
@@ -20,7 +20,7 @@
 #' @importFrom tidytree child offspring
 #' @export
 
-recordAncestor <- function (df, tree) {
+recordAncestor <- function (pairwise_data, tree) {
   # First, lets make a lookup table associating species pairs and MRCAs
   listSpeciesPairs <- function (node, tree) {
     children <- childSpecies(tree, node)
@@ -32,10 +32,10 @@ recordAncestor <- function (df, tree) {
   x <- lapply(parent_nodes,  listSpeciesPairs, tree) |> do.call(what=rbind)
   x$speciesPair <- paste(x$Var2, x$Var3, sep = '___')
   # Then, let's transfer node IDs from the lookup table to the results dataframe.
-  m <- match(rownames(df), x$speciesPair)
-  df$MRCA <- x$Var1[m]
-  df$MRCA[is.na(df$MRCA)] <- 0
-  df
+  m <- match(rownames(pairwise_data), x$speciesPair)
+  pairwise_data$MRCA <- x$Var1[m]
+  pairwise_data$MRCA[is.na(pairwise_data$MRCA)] <- 0
+  pairwise_data
 }
 
 #' Record clade metadata in results table
@@ -45,7 +45,7 @@ recordAncestor <- function (df, tree) {
 #' @note As MRCA information is needed; the function will run [`recordAncestor()`]
 #' when it did not find it.
 #'
-#' @param df A results data frame created with the `extractValues()` function.
+#' @param pairwise_data A results data frame created with the `extractValues()` function.
 #' @param clades A [`FocalCladeList`] object.
 #'
 #' @return Returns the table, plus a `customClade` column if it was a taxon
@@ -60,21 +60,21 @@ recordAncestor <- function (df, tree) {
 #' @examples
 #' recordClades(Halo_DF, Halo_FocalClades)
 
-recordClades <- function(df, clades) {
+recordClades <- function(pairwise_data, clades) {
   # It is a taxon table (one genome per line) if it has a Binomial column.
-  if(! is.null(df$Binomial)) {
+  if(! is.null(pairwise_data$Binomial)) {
     for (n in seq_along(clades)) {
-      df[clades[[n]]@genomeIDs, "customClade"]          <- clades[[n]]@displayName
+      pairwise_data[clades[[n]]@genomeIDs, "customClade"]          <- clades[[n]]@displayName
     }
-    return(df)
+    return(pairwise_data)
   }
 
   # Otherwise it is a results table (one pair per line)
-  if (is.null(df$MRCA))
-    df <- recordAncestor(df, clades)
+  if (is.null(pairwise_data$MRCA))
+    pairwise_data <- recordAncestor(pairwise_data, clades)
   for (n in seq_along(clades)) {
-    df[df$MRCA %in% clades[[n]]@nodeList, "focalClade"] <- clades[[n]]@displayName
-    df[df$MRCA %in% clades[[n]]@nodeList, "focalColor"] <- clades[[n]]@color
+    pairwise_data[pairwise_data$MRCA %in% clades[[n]]@nodeList, "focalClade"] <- clades[[n]]@displayName
+    pairwise_data[pairwise_data$MRCA %in% clades[[n]]@nodeList, "focalColor"] <- clades[[n]]@color
   }
-  df
+  pairwise_data
 }

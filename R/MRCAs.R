@@ -2,7 +2,7 @@
 #'
 #' Summarise statistics for MRCAs
 #'
-#' @param results A results data frame produed by [`formatStats()`], with MRCAs
+#' @param pairwise_data A results data frame produed by [`formatStats()`], with MRCAs
 #'        annotated with [`recordAncestor()`].
 #' @param clades A [`FocalCladeList`] object.
 #' @param dim1,dim2 the name of the pairwise statistics to summarise.
@@ -19,8 +19,8 @@
 #' @examples
 #' MRCAs(Halo_DF, Halo_FocalClades)
 
-MRCAs <- function(results, clades = NULL, dim1 = "percent_difference_local", dim2 = "index_avg_strandDiscord", center = mean, dispersion = sd) {
-  tb <- results |>
+MRCAs <- function(pairwise_data, clades = NULL, dim1 = "percent_difference_local", dim2 = "index_avg_strandDiscord", center = mean, dispersion = sd) {
+  tb <- pairwise_data |>
     group_by(.data$MRCA) |>
     summarize(
       x    = center(     !!sym(dim1), na.rm = TRUE),   # Central tendency for x

@@ -4,10 +4,10 @@
 \alias{averageResults}
 \title{Average results}
 \usage{
-averageResults(df)
+averageResults(pairwise_data)
 }
 \arguments{
-\item{df}{A results data frame produced by \code{\link[=formatStats]{formatStats()}} (therefore)
+\item{pairwise_data}{A results data frame produced by \code{\link[=formatStats]{formatStats()}} (therefore)
 having a proper \code{lab} column.}
 }
 \value{

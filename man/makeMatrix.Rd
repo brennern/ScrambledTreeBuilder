@@ -5,7 +5,7 @@
 \title{Pairwise comparison matrix}
 \usage{
 makeMatrix(
-  DF,
+  pairwise_data,
   column = "",
   defaultDiagonal = 100,
   defaultValue = NA,
@@ -14,7 +14,7 @@ makeMatrix(
 )
 }
 \arguments{
-\item{DF}{Data frame containing species information, produced with \code{\link[=formatStats]{formatStats()}}}
+\item{pairwise_data}{Data frame containing species information, produced with \code{\link[=formatStats]{formatStats()}}}
 
 \item{column}{The variable from the data frame to extract species data from.}
 

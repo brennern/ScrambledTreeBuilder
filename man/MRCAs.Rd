@@ -5,7 +5,7 @@
 \title{Most recent common ancestors}
 \usage{
 MRCAs(
-  results,
+  pairwise_data,
   clades = NULL,
   dim1 = "percent_difference_local",
   dim2 = "index_avg_strandDiscord",
@@ -14,7 +14,7 @@ MRCAs(
 )
 }
 \arguments{
-\item{results}{A results data frame produed by \code{\link[=formatStats]{formatStats()}}, with MRCAs
+\item{pairwise_data}{A results data frame produed by \code{\link[=formatStats]{formatStats()}}, with MRCAs
 annotated with \code{\link[=recordAncestor]{recordAncestor()}}.}
 
 \item{clades}{A \code{\link{FocalCladeList}} object.}

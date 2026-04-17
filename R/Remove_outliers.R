@@ -2,7 +2,7 @@
 #'
 #' This function removes outliers (pairs with high identity but low total aligned genome) from the results dataframe based on the specified thresholds for percent identity and alignment length.
 #'
-#' @param df A dataframe containing alignment results data.
+#' @param pairwise_data A dataframe containing alignment results data.
 #' @param percent_identity_col The column name for the percent identity values.
 #' @param alignment_length_col The column name for the normalized alignment length values.
 #' @param percent_identity_threshold The threshold for percent identity (optional).
@@ -18,20 +18,20 @@
 #'
 #' @export
 
-remove_outliers <- function(df, percent_identity_col, alignment_length_col, percent_identity_threshold = NULL, alignment_length_threshold = NULL) {
+remove_outliers <- function(pairwise_data, percent_identity_col, alignment_length_col, percent_identity_threshold = NULL, alignment_length_threshold = NULL) {
   # If no threshold is provided for percent_identity_col, use quartile ranges to determine outliers
   if (is.null(percent_identity_threshold)) {
-    percent_identity_threshold <- quantile(df[[percent_identity_col]], 0.9)  # 10th percentile as the lower bound
+    percent_identity_threshold <- quantile(pairwise_data[[percent_identity_col]], 0.9)  # 10th percentile as the lower bound
   }
   
   if (is.null(alignment_length_threshold)) {
-    alignment_length_threshold <- quantile(df[[alignment_length_col]], 0.1)  # 90th percentile as the upper bound
+    alignment_length_threshold <- quantile(pairwise_data[[alignment_length_col]], 0.1)  # 90th percentile as the upper bound
   }
   
   # Filter outliers based on the provided or calculated thresholds
-  outliers <- df[df[[percent_identity_col]] > percent_identity_threshold & df[[alignment_length_col]] < alignment_length_threshold, ]
+  outliers <- pairwise_data[pairwise_data[[percent_identity_col]] > percent_identity_threshold & pairwise_data[[alignment_length_col]] < alignment_length_threshold, ]
   
-  new_results <- df
+  new_results <- pairwise_data
   
   # Replace the values in percent_identity_local for both species1_species2 and species2_species1 pairs
   for (i in 1:nrow(outliers)) {

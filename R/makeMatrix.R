@@ -2,7 +2,7 @@
 #'
 #' Make a matrix from a data frame containing species data.
 #'
-#' @param DF Data frame containing species information, produced with [`formatStats()`]
+#' @param pairwise_data Data frame containing species information, produced with [`formatStats()`]
 #' @param column The variable from the data frame to extract species data from.
 #' @param defaultDiagonal Maximum possible value of variable.
 #' @param defaultValue Minimum possible value of variable.
@@ -48,17 +48,17 @@
 #' # Warns and returns NULL if column not found
 #' makeMatrix(df, "you_will_never_find_this_column", 0, 50)
 
-makeMatrix <- function(DF, column="", defaultDiagonal = 100, defaultValue = NA, impute = c("no", "average", "missForest", "missForest2"), ...) {
-  if(is.null(DF[[column]])) {
+makeMatrix <- function(pairwise_data, column="", defaultDiagonal = 100, defaultValue = NA, impute = c("no", "average", "missForest", "missForest2"), ...) {
+  if(is.null(pairwise_data[[column]])) {
     warning("Column ", dQuote(column), " not found.")
     return(NULL)
   }
   impute <- match.arg(impute)
-  all_species <- sort(unique(c(DF$species1, DF$species2)))
+  all_species <- sort(unique(c(pairwise_data$species1, pairwise_data$species2)))
   m <- matrix(NA, nrow = length(all_species), ncol = length(all_species))
   colnames(m) <- rownames(m) <- all_species
   diag(m) <- defaultDiagonal
-  m[cbind(DF$species1, DF$species2)] <- DF[[column]]
+  m[cbind(pairwise_data$species1, pairwise_data$species2)] <- pairwise_data[[column]]
 
   fillSymmetricNA <- function(mat) {
     na_pos <- which(is.na(mat) & !is.na(t(mat)), arr.ind = TRUE)

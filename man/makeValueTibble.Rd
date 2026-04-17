@@ -4,7 +4,12 @@
 \alias{makeValueTibble}
 \title{Project a matrix onto a tree}
 \usage{
-makeValueTibble(your_tibble, pairwise_matrix = NULL, fun = mean, colname = "value")
+makeValueTibble(
+  your_tibble,
+  pairwise_matrix = NULL,
+  fun = mean,
+  colname = "value"
+)
 }
 \arguments{
 \item{your_tibble}{A \code{\link{ConvenientTblTree}} object.}

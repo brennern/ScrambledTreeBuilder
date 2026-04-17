@@ -5,7 +5,7 @@
 \title{Remove outliers based on thresholds or quartiles}
 \usage{
 remove_outliers(
-  df,
+  pairwise_data,
   percent_identity_col,
   alignment_length_col,
   percent_identity_threshold = NULL,
@@ -13,7 +13,7 @@ remove_outliers(
 )
 }
 \arguments{
-\item{df}{A dataframe containing alignment results data.}
+\item{pairwise_data}{A dataframe containing alignment results data.}
 
 \item{percent_identity_col}{The column name for the percent identity values.}
 

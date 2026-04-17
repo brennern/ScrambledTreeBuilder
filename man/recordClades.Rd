@@ -4,10 +4,10 @@
 \alias{recordClades}
 \title{Record clade metadata in results table}
 \usage{
-recordClades(df, clades)
+recordClades(pairwise_data, clades)
 }
 \arguments{
-\item{df}{A results data frame created with the \code{extractValues()} function.}
+\item{pairwise_data}{A results data frame created with the \code{extractValues()} function.}
 
 \item{clades}{A \code{\link{FocalCladeList}} object.}
 }

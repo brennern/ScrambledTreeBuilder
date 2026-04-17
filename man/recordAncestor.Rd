@@ -4,15 +4,15 @@
 \alias{recordAncestor}
 \title{Record ancestor node ID of a pair}
 \usage{
-recordAncestor(df, tree)
+recordAncestor(pairwise_data, tree)
 }
 \arguments{
-\item{df}{A results data frame created with the \code{extractValues()} function}
+\item{pairwise_data}{A results data frame created with the \code{extractValues()} function}
 
 \item{tree}{A tree created with the \code{makeTidyTree()} function.}
 }
 \value{
-The \code{df} data frame with a new \code{MRCA} column.
+The \code{pairwise_data} data frame with a new \code{MRCA} column.
 }
 \description{
 Given a tree and a results data frame, add a new \code{MRCA} column that records

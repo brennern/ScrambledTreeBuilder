@@ -4,7 +4,7 @@
 #' genomes, where the _target_ and _query_ roles are exchanged.  Sometimes we
 #' want to plot only one point per pair.  This function produces the averages.
 #'
-#' @param df A results data frame produced by [`formatStats()`] (therefore)
+#' @param pairwise_data A results data frame produced by [`formatStats()`] (therefore)
 #'        having a proper `lab` column.
 #'
 #' @return A tibble, even when the input is a data frame, because we use
@@ -18,8 +18,8 @@
 #' @examples
 #' averageResults(Halo_DF)
 
-averageResults <- function(df)
-  df |>
+averageResults <- function(pairwise_data)
+  pairwise_data |>
     group_by(.data$lab) |>
     summarise(
       across(
