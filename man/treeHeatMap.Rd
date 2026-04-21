@@ -32,6 +32,7 @@ treeHeatMap(Halo_PercentDiff, Halo_Tree, Halo_FocalClades)
 \seealso{
 Other Plotting functions: 
 \code{\link{MRCA_2D_plot}()},
+\code{\link{MRCA_plotly}()},
 \code{\link{ellipsePlot}()},
 \code{\link{visualizeTree}()}
 }

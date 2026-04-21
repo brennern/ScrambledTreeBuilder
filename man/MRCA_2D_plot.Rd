@@ -4,17 +4,36 @@
 \alias{MRCA_2D_plot}
 \title{2D MRCA plot}
 \usage{
-MRCA_2D_plot(tb, errorbars = FALSE, xlim = 40, ylim = 1)
+MRCA_2D_plot(
+  tb,
+  clades = NULL,
+  dim1 = "percent_difference_local",
+  dim2 = "index_avg_strandDiscord",
+  mrca_label = NULL,
+  errorbars = FALSE,
+  xlim = 40,
+  ylim = 1
+)
 }
 \arguments{
-\item{tb}{A tibble produced by \code{\link{MRCAs}}.}
+\item{tb}{Either a tibble produced by \code{\link[=MRCAs]{MRCAs()}}, or a pairwise data
+frame (detected by checking for the \code{MRCA} column).}
+
+\item{clades}{A \code{\link{FocalCladeList}} object.  Required if \code{tb} is pairwise data.}
+
+\item{dim1, dim2}{Column names for the statistics to plot.  Only used if running MRCAs internally.}
+
+\item{mrca_label}{Label type to add (passed to \code{\link[=MRCAs]{MRCAs()}}).  Only used if running
+MRCAs internally.}
 
 \item{errorbars}{Plot the error bars?}
 
 \item{xlim, ylim}{Maximal X and Y value.}
 }
 \description{
-2D plot of the statistics extracted for each MRCA.
+2D plot of the statistics extracted for each MRCA.  Can accept either a
+tibble produced by \code{\link[=MRCAs]{MRCAs()}}, or pairwise data and clades to run MRCAs()
+internally.
 }
 \examples{
 (p <- MRCAs(Halo_DF, Halo_FocalClades) |> MRCA_2D_plot() +
@@ -24,9 +43,11 @@ p + ggplot2::geom_point(
   ggplot2::aes(x = percent_difference_local,
                y = index_avg_strandDiscord,
                color = focalClade))
+MRCA_2D_plot(Halo_DF, Halo_FocalClades, mrca_label = "representative_pair")
 }
 \seealso{
 Other Plotting functions: 
+\code{\link{MRCA_plotly}()},
 \code{\link{ellipsePlot}()},
 \code{\link{treeHeatMap}()},
 \code{\link{visualizeTree}()}

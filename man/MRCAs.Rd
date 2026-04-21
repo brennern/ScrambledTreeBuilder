@@ -10,11 +10,12 @@ MRCAs(
   dim1 = "percent_difference_local",
   dim2 = "index_avg_strandDiscord",
   center = mean,
-  dispersion = sd
+  dispersion = sd,
+  mrca_label = NULL
 )
 }
 \arguments{
-\item{pairwise_data}{A results data frame produed by \code{\link[=formatStats]{formatStats()}}, with MRCAs
+\item{pairwise_data}{A results data frame produced by \code{\link[=formatStats]{formatStats()}}, with MRCAs
 annotated with \code{\link[=recordAncestor]{recordAncestor()}}.}
 
 \item{clades}{A \code{\link{FocalCladeList}} object.}
@@ -23,15 +24,22 @@ annotated with \code{\link[=recordAncestor]{recordAncestor()}}.}
 
 \item{center, dispersion}{Functions to compute a representation of the
 central tendency and the dispersion of the values for each MRCA.}
+
+\item{mrca_label}{Label type to add to each MRCA row. Currently only
+\code{"representative_pair"} is supported, which adds a column
+showing the species pair with the highest value of \code{dim2} for
+each MRCA. Set to \code{NULL} to skip.}
 }
 \value{
 A tibble (\link[tibble:tbl_df-class]{tibble::tbl_df}) ready for \code{\link{MRCA_2D_plot}}.
+When \code{mrca_label} is set, includes a \code{mrca_label} column.
 }
 \description{
 Summarise statistics for MRCAs
 }
 \examples{
 MRCAs(Halo_DF, Halo_FocalClades)
+MRCAs(Halo_DF, Halo_FocalClades, mrca_label = "representative_pair")
 }
 \author{
 Charles Plessy
