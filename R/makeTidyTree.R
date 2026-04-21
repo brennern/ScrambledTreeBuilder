@@ -1,4 +1,4 @@
-#' @include ConvenientTblTree.R
+#' @include stbTree.R
 NULL
 
 #' Make a tidy tree
@@ -35,16 +35,16 @@ makeTidyTree <- function(pairwise_matrix, n_bootstrap = 0) {
 
 #' Add needed columns to be convenient
 #'
-#' The `ConvenientTblTree` S7 class is only a draft and lacks validation
+#' The `stbTree` S7 class is only a draft and lacks validation
 #' functions that ensure that an object provides everything expected from
 #' such a tree, in particular the `isTip` and `y` columns that can become
 #' invalid upon subsetting.
 #'
 #' This private function (re)computes `isTip` and `y`.
 #'
-#' @param tree A [`ConvenientTblTree`] object.
+#' @param tree A [`stbTree`] object.
 #'
-#' @returns A [`ConvenientTblTree`] object with valid `isTip` and `y`
+#' @returns A [`stbTree`] object with valid `isTip` and `y`
 #' information.
 #'
 #' @examples

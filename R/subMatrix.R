@@ -4,7 +4,7 @@
 #' that are labels in a tree, subset that matrix to the species that are
 #' present in the subtree starting at a given node.
 #'
-#' @param tree A [`ConvenientTblTree`] object.
+#' @param tree A [`stbTree`] object.
 #' @param pairwise_matrix A matrix, typically the output of [`makeMatrix()`].
 #' @param clade A [`FocalClade`] object or the ID number of the node to base the
 #'        subtree.  The default is `NULL` in case the input tree is already a

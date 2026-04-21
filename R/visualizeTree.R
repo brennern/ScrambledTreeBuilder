@@ -1,6 +1,6 @@
 #' Plot a phylogenetic tree and its node data
 #'
-#' @param your_tibble A [`ConvenientTblTree`] object.
+#' @param your_tibble A [`stbTree`] object.
 #' @param value Tibble value to label on internal nodes of the tree, or name
 #'        of a column in the tree object.
 #' @param valueround Number of integers to round value.

@@ -5,7 +5,7 @@
 #' related.
 #'
 #' @param pairwise_matrix a matrix with numerical values.
-#' @param tree A [`ConvenientTblTree`] object.
+#' @param tree A [`stbTree`] object.
 #' @param clades A [`FocalCladeList`] object.
 #'
 #' @param ... Extra arguments passed to [`pheatmap::pheatmap()`]

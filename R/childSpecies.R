@@ -1,6 +1,6 @@
 #' Children species of an ancestor
 #'
-#' @param tree A [`ConvenientTblTree`] object.
+#' @param tree A [`stbTree`] object.
 #' @param node An internal node in that tree.
 #'
 #' @returns A list of the label names on the left and right branch of the tree.

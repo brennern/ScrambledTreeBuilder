@@ -4,7 +4,7 @@
 #' representing all the pairs between that tree's leaves by applying a function
 #' to all the matrix values that relate pairs through the same node.
 #'
-#' @param your_tibble A [`ConvenientTblTree`] object.
+#' @param your_tibble A [`stbTree`] object.
 #' @param pairwise_matrix Matrix containing values to summarise in the tibble.
 #' @param fun function to apply to the values
 #' @param colname New column name for value being added to tibble.
