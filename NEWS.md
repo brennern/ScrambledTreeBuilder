@@ -3,6 +3,11 @@
 * Standardise function argument names: use `pairwise_data` for data frames,
   `pairwise_matrix` for matrices, and `species_tree` for trees.  The S7 class
   is named `stbTree` (avoiding conflict with `ape::speciesTree`).
+* New `MRCA_plotly()` function for interactive plots with plotly.
+* `MRCAs()` gains `mrca_label` parameter to add representative species pair
+  labels to the output.
+* `MRCA_2D_plot()` now accepts either a tibble from `MRCAs()` or pairwise data
+  directly (runs `MRCAs()` internally).
 * New `computeENR()` and `cladeENRtable()` functions for detecting outlier
   clades.
 * `subTree()` now outputs trees with proper `isTip` and `y` columns.
