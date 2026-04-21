@@ -7,7 +7,7 @@
 childSpecies(tree, node)
 }
 \arguments{
-\item{tree}{A \code{\link{ConvenientTblTree}} object.}
+\item{tree}{A \code{\link{stbTree}} object.}
 
 \item{node}{An internal node in that tree.}
 }

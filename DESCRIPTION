@@ -42,7 +42,7 @@ Imports:
     yaml
 VignetteBuilder: knitr
 Collate: 
-    'ConvenientTblTree.R'
+    'stbTree.R'
     'subTree.R'
     'FocalClade.R'
     'Haloarchaea.R'

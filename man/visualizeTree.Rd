@@ -15,7 +15,7 @@ visualizeTree(
 )
 }
 \arguments{
-\item{your_tibble}{A \code{\link{ConvenientTblTree}} object.}
+\item{your_tibble}{A \code{\link{stbTree}} object.}
 
 \item{value}{Tibble value to label on internal nodes of the tree, or name
 of a column in the tree object.}

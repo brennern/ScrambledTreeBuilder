@@ -9,7 +9,7 @@ treeHeatMap(pairwise_matrix, tree = NULL, clades = NULL, ...)
 \arguments{
 \item{pairwise_matrix}{a matrix with numerical values.}
 
-\item{tree}{A \code{\link{ConvenientTblTree}} object.}
+\item{tree}{A \code{\link{stbTree}} object.}
 
 \item{clades}{A \code{\link{FocalCladeList}} object.}
 

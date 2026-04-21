@@ -7,7 +7,7 @@
 subTree(tree_tibble, node, ...)
 }
 \arguments{
-\item{tree_tibble}{A \code{\link{ConvenientTblTree}} object.}
+\item{tree_tibble}{A \code{\link{stbTree}} object.}
 
 \item{node}{The ID number of the node to base the subtree, or a \code{FocalClade}
 object.}

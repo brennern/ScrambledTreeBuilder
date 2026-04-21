@@ -7,14 +7,14 @@
 makeItConvenient(tree)
 }
 \arguments{
-\item{tree}{A \code{\link{ConvenientTblTree}} object.}
+\item{tree}{A \code{\link{stbTree}} object.}
 }
 \value{
-A \code{\link{ConvenientTblTree}} object with valid \code{isTip} and \code{y}
+A \code{\link{stbTree}} object with valid \code{isTip} and \code{y}
 information.
 }
 \description{
-The \code{ConvenientTblTree} S7 class is only a draft and lacks validation
+The \code{stbTree} S7 class is only a draft and lacks validation
 functions that ensure that an object provides everything expected from
 such a tree, in particular the \code{isTip} and \code{y} columns that can become
 invalid upon subsetting.

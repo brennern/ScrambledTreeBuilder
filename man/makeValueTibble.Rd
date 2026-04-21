@@ -12,7 +12,7 @@ makeValueTibble(
 )
 }
 \arguments{
-\item{your_tibble}{A \code{\link{ConvenientTblTree}} object.}
+\item{your_tibble}{A \code{\link{stbTree}} object.}
 
 \item{pairwise_matrix}{Matrix containing values to summarise in the tibble.}
 

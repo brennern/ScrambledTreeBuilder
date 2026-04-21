@@ -7,7 +7,7 @@
 subMatrix(tree, pairwise_matrix, clade = NULL, simplify.names = FALSE)
 }
 \arguments{
-\item{tree}{A \code{\link{ConvenientTblTree}} object.}
+\item{tree}{A \code{\link{stbTree}} object.}
 
 \item{pairwise_matrix}{A matrix, typically the output of \code{\link[=makeMatrix]{makeMatrix()}}.}
 
