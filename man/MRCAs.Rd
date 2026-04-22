@@ -42,5 +42,5 @@ MRCAs(Halo_DF, Halo_FocalClades)
 MRCAs(Halo_DF, Halo_FocalClades, mrca_label = "representative_pair")
 }
 \author{
-Charles Plessy
+Charles Plessy, Takahiro Fujita
 }

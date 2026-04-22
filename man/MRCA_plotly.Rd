@@ -42,6 +42,6 @@ Other Plotting functions:
 \code{\link{visualizeTree}()}
 }
 \author{
-Charles Plessy
+Charles Plessy, Takahiro Fujita
 }
 \concept{Plotting functions}

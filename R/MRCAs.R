@@ -13,7 +13,7 @@
 #'        showing the species pair with the highest value of `dim2` for
 #'        each MRCA. Set to `NULL` to skip.
 #'
-#' @author Charles Plessy
+#' @author Charles Plessy, Takahiro Fujita
 #'
 #' @returns A tibble ([tibble::tbl_df-class]) ready for [`MRCA_2D_plot`].
 #'         When `mrca_label` is set, includes a `mrca_label` column.
@@ -91,7 +91,7 @@ MRCAs <- function(pairwise_data, clades = NULL, dim1 = "percent_difference_local
 #' @param errorbars Plot the error bars?
 #' @param xlim,ylim Maximal X and Y value.
 #'
-#' @author Charles Plessy
+#' @author Charles Plessy, Takahiro Fujita
 #'
 #' @family Plotting functions
 #'
@@ -161,7 +161,7 @@ MRCA_2D_plot <- function(tb, clades = NULL, dim1 = "percent_difference_local", d
 #'
 #' @return A `plotly` object.
 #'
-#' @author Charles Plessy
+#' @author Charles Plessy, Takahiro Fujita
 #'
 #' @family Plotting functions
 #'

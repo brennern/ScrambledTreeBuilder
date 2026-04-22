@@ -3,9 +3,22 @@ Title: Builds Phylogenetic Trees Showcasing Genome Scrambling in Species
 Version: 1.3.0
 Authors@R: 
     c(
-        person("Noa",     "Brenner", email = "brennern@hawaii.edu",    role = c("aut", "cre")),
-        person("Charles", "Plessy",  email = "charles.plessy@oist.jp", role = c("aut")      ),
-        person("Anika",   "Mittal",  email = "anika.mittal@oist.jp",   role = c("aut")      )
+        person("Noa",     "Brenner", 
+               email = "brennern@hawaii.edu",    
+               role = c("aut", "cre"),
+               comment = c(affiliation = "Okinawa Institute of Science and Technology Graduate University")),
+        person("Charles", "Plessy",  
+               email = "charles.plessy@oist.jp", 
+               role = c("aut"),
+               comment = c(affiliation = "Okinawa Institute of Science and Technology Graduate University")),
+        person("Anika",   "Mittal",  
+               email = "anika.mittal@oist.jp",   
+               role = c("aut"),
+               comment = c(affiliation = "Okinawa Institute of Science and Technology Graduate University")),
+        person("Takahiro", "Fujita",  
+               email = "takahiro-fujita@suntory.co.jp",
+               role = c("ctb"),
+               comment = c(affiliation = "Suntory Global Innovation Center Limited"))
     )
 Description: Formats data from .yaml files, calculates information for each internal tree node, and plots phylogenetic trees.
 License: MIT + file LICENSE
