@@ -7,8 +7,8 @@
 MRCAs(
   pairwise_data,
   clades = NULL,
-  dim1 = "percent_difference_local",
-  dim2 = "index_avg_strandDiscord",
+  x = "percent_difference_local",
+  y = "index_avg_strandDiscord",
   center = mean,
   dispersion = sd,
   mrca_label = NULL
@@ -20,14 +20,14 @@ annotated with \code{\link[=recordAncestor]{recordAncestor()}}.}
 
 \item{clades}{A \code{\link{FocalCladeList}} object.}
 
-\item{dim1, dim2}{the name of the pairwise statistics to summarise.}
+\item{x, y}{the name of the pairwise statistics to summarise.}
 
 \item{center, dispersion}{Functions to compute a representation of the
 central tendency and the dispersion of the values for each MRCA.}
 
 \item{mrca_label}{Label type to add to each MRCA row. Currently only
 \code{"representative_pair"} is supported, which adds a column
-showing the species pair with the highest value of \code{dim2} for
+showing the species pair with the highest value of \code{y} for
 each MRCA. Set to \code{NULL} to skip.}
 }
 \value{

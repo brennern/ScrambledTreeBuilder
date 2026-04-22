@@ -7,8 +7,8 @@
 MRCA_2D_plot(
   tb,
   clades = NULL,
-  dim1 = "percent_difference_local",
-  dim2 = "index_avg_strandDiscord",
+  x = "percent_difference_local",
+  y = "index_avg_strandDiscord",
   mrca_label = NULL,
   errorbars = FALSE,
   xlim = 40,
@@ -21,7 +21,7 @@ frame (detected by checking for the \code{MRCA} column).}
 
 \item{clades}{A \code{\link{FocalCladeList}} object.  Required if \code{tb} is pairwise data.}
 
-\item{dim1, dim2}{Column names for the statistics to plot.  Only used if running MRCAs internally.}
+\item{x, y}{Column names for the statistics to plot.  Only used if running MRCAs internally.}
 
 \item{mrca_label}{Label type to add (passed to \code{\link[=MRCAs]{MRCAs()}}).  Only used if running
 MRCAs internally.}

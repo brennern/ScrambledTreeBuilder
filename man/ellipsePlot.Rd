@@ -6,16 +6,16 @@
 \usage{
 ellipsePlot(
   df,
-  dim1 = "percent_difference_local",
-  dim2 = "index_avg_strandDiscord",
-  xlim = c(0, max(df[[dim1]])),
-  ylim = c(0, max(df[[dim2]]))
+  x = "percent_difference_local",
+  y = "index_avg_strandDiscord",
+  xlim = c(0, max(df[[x]])),
+  ylim = c(0, max(df[[y]]))
 )
 }
 \arguments{
 \item{df}{A data frame produced by \code{\link{MRCAs}}.}
 
-\item{dim1, dim2}{the name of the pairwise statistics to summarise.}
+\item{x, y}{the name of the pairwise statistics to summarise.}
 
 \item{xlim, ylim}{Minimal and maximal X and Y values.}
 }

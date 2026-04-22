@@ -5,7 +5,7 @@
 #' clade.
 #'
 #' @param df A data frame produced by [`MRCAs`].
-#' @param dim1,dim2 the name of the pairwise statistics to summarise.
+#' @param x,y the name of the pairwise statistics to summarise.
 #' @param xlim,ylim Minimal and maximal X and Y values.
 #'
 #' @author Charles Plessy
@@ -21,19 +21,19 @@
 #' @examples
 #' ellipsePlot(Halo_DF |> averageResults())
 
-ellipsePlot <- function(df, dim1="percent_difference_local", dim2="index_avg_strandDiscord", xlim = c(0, max(df[[dim1]])), ylim = c(0, max(df[[dim2]])))  {
+ellipsePlot <- function(df, x="percent_difference_local", y="index_avg_strandDiscord", xlim = c(0, max(df[[x]])), ylim = c(0, max(df[[y]])))  {
   focalColors <- df |>
     group_by(.data$focalClade) |>
     summarize(color = unique(.data$focalColor)) |>
     pull(.data$color, name = .data$focalClade)
   ggplot(df) +
     geom_point() +
-    aes( x     = .data[[dim1]]
-       , y     = .data[[dim2]]
+    aes( x     = .data[[x]]
+       , y     = .data[[y]]
        , group = as.factor(.data$MRCA)
        , col   = .data$focalClade) +
     geom_mark_ellipse(aes(fill = .data$focalClade)) +
-    labs(x = dim1, y = dim2) +
+    labs(x = x, y = y) +
     scale_color_manual(values=focalColors) +
     scale_fill_manual( values=focalColors) +
     scale_x_continuous(limits = xlim) +

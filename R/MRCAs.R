@@ -5,12 +5,12 @@
 #' @param pairwise_data A results data frame produced by [`formatStats()`], with MRCAs
 #'        annotated with [`recordAncestor()`].
 #' @param clades A [`FocalCladeList`] object.
-#' @param dim1,dim2 the name of the pairwise statistics to summarise.
+#' @param x,y the name of the pairwise statistics to summarise.
 #' @param center,dispersion Functions to compute a representation of the
 #'        central tendency and the dispersion of the values for each MRCA.
 #' @param mrca_label Label type to add to each MRCA row. Currently only
 #'        `"representative_pair"` is supported, which adds a column
-#'        showing the species pair with the highest value of `dim2` for
+#'        showing the species pair with the highest value of `y` for
 #'        each MRCA. Set to `NULL` to skip.
 #'
 #' @author Charles Plessy, Takahiro Fujita
@@ -26,7 +26,7 @@
 #' MRCAs(Halo_DF, Halo_FocalClades)
 #' MRCAs(Halo_DF, Halo_FocalClades, mrca_label = "representative_pair")
 
-MRCAs <- function(pairwise_data, clades = NULL, dim1 = "percent_difference_local", dim2 = "index_avg_strandDiscord", center = mean, dispersion = sd, mrca_label = NULL) {
+MRCAs <- function(pairwise_data, clades = NULL, x = "percent_difference_local", y = "index_avg_strandDiscord", center = mean, dispersion = sd, mrca_label = NULL) {
 
   # TODO: Use stbPairwiseData S7 class for validation (see issue #XXX)
   stopifnot("MRCA" %in% names(pairwise_data))
@@ -34,10 +34,10 @@ MRCAs <- function(pairwise_data, clades = NULL, dim1 = "percent_difference_local
   tb <- pairwise_data |>
     group_by(.data$MRCA) |>
     summarize(
-      x    = center(     !!sym(dim1), na.rm = TRUE),
-      y    = center(     !!sym(dim2), na.rm = TRUE),
-      xerr = dispersion( !!sym(dim1), na.rm = TRUE),
-      yerr = dispersion( !!sym(dim2), na.rm = TRUE),
+      x    = center(     !!sym(x), na.rm = TRUE),
+      y    = center(     !!sym(y), na.rm = TRUE),
+      xerr = dispersion( !!sym(x), na.rm = TRUE),
+      yerr = dispersion( !!sym(y), na.rm = TRUE),
       n = length(.data$MRCA)
     ) |>
     ungroup()
@@ -53,17 +53,17 @@ MRCAs <- function(pairwise_data, clades = NULL, dim1 = "percent_difference_local
 
   if (!is.null(mrca_label)) {
     stopifnot(mrca_label == "representative_pair")
-    stopifnot(dim2 %in% names(pairwise_data))
+    stopifnot(y %in% names(pairwise_data))
     stopifnot("species1" %in% names(pairwise_data))
     stopifnot("species2" %in% names(pairwise_data))
 
     rep_lut <- pairwise_data |>
       filter(!is.na(.data$MRCA),
-             !is.na(.data[[dim2]]),
+             !is.na(.data[[y]]),
              !is.na(.data$species1),
              !is.na(.data$species2)) |>
       group_by(.data$MRCA) |>
-      slice_max(order_by = .data[[dim2]], n = 1, with_ties = FALSE) |>
+      slice_max(order_by = .data[[y]], n = 1, with_ties = FALSE) |>
       ungroup() |>
       transmute(
         MRCA = .data$MRCA,
@@ -85,7 +85,7 @@ MRCAs <- function(pairwise_data, clades = NULL, dim1 = "percent_difference_local
 #' @param tb Either a tibble produced by [`MRCAs()`], or a pairwise data
 #'        frame (detected by checking for the `MRCA` column).
 #' @param clades A [`FocalCladeList`] object.  Required if `tb` is pairwise data.
-#' @param dim1,dim2 Column names for the statistics to plot.  Only used if running MRCAs internally.
+#' @param x,y Column names for the statistics to plot.  Only used if running MRCAs internally.
 #' @param mrca_label Label type to add (passed to [`MRCAs()`]).  Only used if running
 #'        MRCAs internally.
 #' @param errorbars Plot the error bars?
@@ -111,7 +111,7 @@ MRCAs <- function(pairwise_data, clades = NULL, dim1 = "percent_difference_local
 #'                color = focalClade))
 #' MRCA_2D_plot(Halo_DF, Halo_FocalClades, mrca_label = "representative_pair")
 
-MRCA_2D_plot <- function(tb, clades = NULL, dim1 = "percent_difference_local", dim2 = "index_avg_strandDiscord", mrca_label = NULL, errorbars = FALSE, xlim = 40, ylim = 1) {
+MRCA_2D_plot <- function(tb, clades = NULL, x = "percent_difference_local", y = "index_avg_strandDiscord", mrca_label = NULL, errorbars = FALSE, xlim = 40, ylim = 1) {
 
   # Detect whether tb is pairwise data (needs MRCAs) or output of MRCAs (has x, y columns)
   if ("x" %in% names(tb) && "y" %in% names(tb)) {
@@ -119,7 +119,7 @@ MRCA_2D_plot <- function(tb, clades = NULL, dim1 = "percent_difference_local", d
     plot_data <- tb
   } else if ("MRCA" %in% names(tb)) {
     # Pairwise data - run MRCAs internally
-    plot_data <- MRCAs(tb, clades = clades, dim1 = dim1, dim2 = dim2, mrca_label = mrca_label)
+    plot_data <- MRCAs(tb, clades = clades, x = x, y = y, mrca_label = mrca_label)
   } else {
     stop("tb must be either pairwise data (with MRCA column) or output of MRCAs (with x, y columns)")
   }
@@ -220,8 +220,7 @@ MRCA_plotly <- function(p, pairwise_data = NULL, tooltip = NULL, hovermode = "cl
 
   # Add overlay of pairwise data if provided
   if (!is.null(pairwise_data)) {
-    # Get dim1 and dim2 column names from the plot data (inferred from x and y)
-    # We need to find the original column names - check if dim1/dim2 were stored or guess
+    # Get x and y column names from the plot data (inferred from original column names)
     overlay_data <- pairwise_data |>
       mutate(
         hover_text = paste0(
