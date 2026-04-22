@@ -18,7 +18,7 @@
 #' @returns A tibble ([tibble::tbl_df-class]) ready for [`MRCA_2D_plot`].
 #'         When `mrca_label` is set, includes a `mrca_label` column.
 #'
-#' @importFrom dplyr group_by summarize sym ungroup filter transmute slice_max left_join
+#' @importFrom dplyr group_by summarize sym ungroup filter transmute slice_max left_join mutate
 #' @importFrom tidyselect all_of
 #' @export
 #'
@@ -151,6 +151,9 @@ MRCA_2D_plot <- function(tb, clades = NULL, dim1 = "percent_difference_local", d
 #' label for each MRCA point.
 #'
 #' @param p A ggplot produced by [`MRCA_2D_plot`].
+#' @param pairwise_data Optional pairwise data to overlay as individual points.
+#'        When provided, adds a second layer of points with hover text
+#'        showing the species pair.
 #' @param tooltip Which aesthetics to show in the hover tooltip.  Default shows
 #'        MRCA, clade, x, y, and n.  Set to `"all"` to also include
 #'        `mrca_label` if available.
@@ -170,13 +173,15 @@ MRCA_2D_plot <- function(tb, clades = NULL, dim1 = "percent_difference_local", d
 #' MRCA_2D_plot(Halo_DF, Halo_FocalClades) |> MRCA_plotly()
 #' MRCA_2D_plot(Halo_DF, Halo_FocalClades, mrca_label = "representative_pair") |>
 #'   MRCA_plotly(tooltip = "all")
+#' MRCA_2D_plot(Halo_DF, Halo_FocalClades) |>
+#'   MRCA_plotly(pairwise_data = Halo_DF)
 
-MRCA_plotly <- function(p, tooltip = NULL, hovermode = "closest") {
+MRCA_plotly <- function(p, pairwise_data = NULL, tooltip = NULL, hovermode = "closest") {
 
   # Extract data from the plot
   plot_data <- p$data
 
-  # Build hover text
+  # Build hover text for MRCA points
   if ("mrca_label" %in% names(plot_data) && (is.null(tooltip) || tooltip == "all")) {
     plot_data <- plot_data |>
       mutate(
@@ -212,6 +217,33 @@ MRCA_plotly <- function(p, tooltip = NULL, hovermode = "closest") {
     inherit.aes = FALSE,
     alpha = 0
   )
+
+  # Add overlay of pairwise data if provided
+  if (!is.null(pairwise_data)) {
+    # Get dim1 and dim2 column names from the plot data (inferred from x and y)
+    # We need to find the original column names - check if dim1/dim2 were stored or guess
+    overlay_data <- pairwise_data |>
+      mutate(
+        hover_text = paste0(
+          "Pair: ", .data$species1, " vs ", .data$species2,
+          "<br>x: ", round(.data$percent_difference_local, 3),
+          "<br>y: ", round(.data$index_avg_strandDiscord, 3),
+          if ("focalClade" %in% names(.data)) paste0("<br>Clade: ", .data$focalClade) else ""
+        ),
+        clade = if ("focalClade" %in% names(.data)) .data$focalClade else "Other"
+      )
+
+    p_hover <- p_hover + geom_point(
+      data = overlay_data,
+      aes(x = .data$percent_difference_local,
+          y = .data$index_avg_strandDiscord,
+          text = .data$hover_text,
+          color = .data$clade),
+      inherit.aes = FALSE,
+      alpha = 0.3,
+      size = 2
+    )
+  }
 
   plotly_obj <- ggplotly(p_hover, tooltip = "text") |>
     layout(hovermode = hovermode)
