@@ -5,45 +5,43 @@
 \title{2D MRCA plot}
 \usage{
 MRCA_2D_plot(
-  tb,
+  pairwise_data,
   clades = NULL,
   x = "percent_difference_local",
   y = "index_avg_strandDiscord",
-  mrca_label = NULL,
   errorbars = FALSE,
+  pairs = FALSE,
   xlim = 40,
   ylim = 1
 )
 }
 \arguments{
-\item{tb}{Either a tibble produced by \code{\link[=MRCAs]{MRCAs()}}, or a pairwise data
-frame (detected by checking for the \code{MRCA} column).}
+\item{pairwise_data}{A results data frame produced by \code{\link[=formatStats]{formatStats()}}, with MRCAs
+annotated with \code{\link[=recordAncestor]{recordAncestor()}}.}
 
-\item{clades}{A \code{\link{FocalCladeList}} object.  Required if \code{tb} is pairwise data.}
+\item{clades}{A \code{\link{FocalCladeList}} object.}
 
-\item{x, y}{Column names for the statistics to plot.  Only used if running MRCAs internally.}
-
-\item{mrca_label}{Label type to add (passed to \code{\link[=MRCAs]{MRCAs()}}).  Only used if running
-MRCAs internally.}
+\item{x, y}{Column names for the statistics to plot.}
 
 \item{errorbars}{Plot the error bars?}
 
+\item{pairs}{Plot the pairs?}
+
 \item{xlim, ylim}{Maximal X and Y value.}
 }
+\value{
+A \code{\link[ggplot2:ggplot2-package]{ggplot2::ggplot2}} object in which some information was added
+for the \code{\link[=MRCA_plotly]{MRCA_plotly()}} function to generate hover information.
+}
 \description{
-2D plot of the statistics extracted for each MRCA.  Can accept either a
-tibble produced by \code{\link[=MRCAs]{MRCAs()}}, or pairwise data and clades to run MRCAs()
-internally.
+2D plot of the statistics extracted for each MRCA.  Optionally plots error
+bars and the pair data in addition to its aggregated statistics.
 }
 \examples{
-(p <- MRCAs(Halo_DF, Halo_FocalClades) |> MRCA_2D_plot() +
-  ggplot2::labs(x="nucl. diff", y="scrambling"))
-p + ggplot2::geom_point(
-  data=Halo_DF,
-  ggplot2::aes(x = percent_difference_local,
-               y = index_avg_strandDiscord,
-               color = focalClade))
-MRCA_2D_plot(Halo_DF, Halo_FocalClades, mrca_label = "representative_pair")
+MRCA_2D_plot(Halo_DF, Halo_FocalClades) +
+  ggplot2::labs(x="nucl. diff", y="scrambling")
+MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE)
+MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE)
 }
 \seealso{
 Other Plotting functions: 

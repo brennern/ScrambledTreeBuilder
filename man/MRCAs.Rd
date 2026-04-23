@@ -10,8 +10,7 @@ MRCAs(
   x = "percent_difference_local",
   y = "index_avg_strandDiscord",
   center = mean,
-  dispersion = sd,
-  mrca_label = NULL
+  dispersion = sd
 )
 }
 \arguments{
@@ -24,11 +23,6 @@ annotated with \code{\link[=recordAncestor]{recordAncestor()}}.}
 
 \item{center, dispersion}{Functions to compute a representation of the
 central tendency and the dispersion of the values for each MRCA.}
-
-\item{mrca_label}{Label type to add to each MRCA row. Currently only
-\code{"representative_pair"} is supported, which adds a column
-showing the species pair with the highest value of \code{y} for
-each MRCA. Set to \code{NULL} to skip.}
 }
 \value{
 A tibble (\link[tibble:tbl_df-class]{tibble::tbl_df}) ready for \code{\link{MRCA_2D_plot}}.
@@ -39,7 +33,6 @@ Summarise statistics for MRCAs
 }
 \examples{
 MRCAs(Halo_DF, Halo_FocalClades)
-MRCAs(Halo_DF, Halo_FocalClades, mrca_label = "representative_pair")
 }
 \author{
 Charles Plessy, Takahiro Fujita

@@ -4,14 +4,10 @@
 \alias{MRCA_plotly}
 \title{Interactive MRCA plot with plotly}
 \usage{
-MRCA_plotly(p, pairwise_data = NULL, tooltip = NULL, hovermode = "closest")
+MRCA_plotly(p, tooltip = NULL, hovermode = "closest")
 }
 \arguments{
-\item{p}{A ggplot produced by \code{\link{MRCA_2D_plot}}.}
-
-\item{pairwise_data}{Optional pairwise data to overlay as individual points.
-When provided, adds a second layer of points with hover text
-showing the species pair.}
+\item{p}{A \code{\link[ggplot2:ggplot2-package]{ggplot2::ggplot2}} produced by \code{\link{MRCA_2D_plot}}.}
 
 \item{tooltip}{Which aesthetics to show in the hover tooltip.  Default shows
 MRCA, clade, x, y, and n.  Set to \code{"all"} to also include
@@ -23,16 +19,11 @@ MRCA, clade, x, y, and n.  Set to \code{"all"} to also include
 A \code{plotly} object.
 }
 \description{
-Convert an MRCA plot to an interactive plotly object.  If the plot was
-created with \code{mrca_label} information, adds hover tooltips showing the
-label for each MRCA point.
+Convert an MRCA plot to an interactive plotly object with hover tooltips
+showing the label for each point.
 }
 \examples{
-MRCA_2D_plot(Halo_DF, Halo_FocalClades) |> MRCA_plotly()
-MRCA_2D_plot(Halo_DF, Halo_FocalClades, mrca_label = "representative_pair") |>
-  MRCA_plotly(tooltip = "all")
-MRCA_2D_plot(Halo_DF, Halo_FocalClades) |>
-  MRCA_plotly(pairwise_data = Halo_DF)
+MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE) |> MRCA_plotly()
 }
 \seealso{
 Other Plotting functions: 

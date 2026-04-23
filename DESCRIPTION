@@ -50,6 +50,7 @@ Imports:
     pheatmap,
     plotly,
     rlang,
+    tibble,
     tidyselect,
     tidytree,
     treeio,

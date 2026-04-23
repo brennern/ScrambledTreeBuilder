@@ -231,10 +231,12 @@ data).  MRCAs are colored by their focal clade.
 
 ```{r MRCA_plot}
 exDataFrame <- recordAncestor(exDataFrame, Tibble)
-MRCAs( exDataFrame, clades
+exDataFrame <- recordClades(exDataFrame, clades)
+MRCA_2D_plot( exDataFrame, clades
      , x = "percent_difference_local"
-     , y = "index_avg_strandDiscord") |>
-  MRCA_2D_plot()
+     , y = "index_avg_strandDiscord"
+     , errorbars = TRUE,
+     , pairs = TRUE)
 ```
 
 In ellipse plots, all the pairs of species are displayed and grouped by MRCA.
@@ -243,7 +245,6 @@ per pair of species (A vs B and B vs A).  To simplify the plot, use the
 `averageResults()` function like below.
 
 ```{r ellipse_plot}
-exDataFrame <- recordClades(exDataFrame, clades)
 ellipsePlot( exDataFrame
            , x = "percent_difference_local"
            , y = "index_avg_strandDiscord")
