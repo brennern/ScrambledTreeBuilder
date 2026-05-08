@@ -126,7 +126,7 @@ pair of species.  The `subTree()` function can take `FocalClade` objects
 instead of node IDs as input.
 
 ```{r focalClade}
-(Halobacterium <- focalClade(Tibble, "Halobacterium_noricense", "Halobacterium_salinarum", "blue", "Halobacterium genus"))
+(Halobacterium <- focalClade(Tibble, "Halobacterium_noricense", "Halobacterium_salinarum", "blue", "Halobacterium"))
 Halobacterium@genomeIDs
 Halobacterium@nodeID
 subTree(Tibble, Halobacterium)
@@ -136,7 +136,7 @@ The focal clade objects can be added to plots to highlight the clades in the
 selected colors.
 
 ```{r focalCladeList}
-Haloferax <- focalClade(Tibble, "Haloferax_mediterranei", "Haloferax_volcanii", "green3", "Haloferax genus")
+Haloferax <- focalClade(Tibble, "Haloferax_mediterranei", "Haloferax_volcanii", "green3", "Haloferax")
 (clades <- FocalCladeList(Halobacterium=Halobacterium, Haloferax=Haloferax))
 visualizeTree(Tibble) + clades + ggtitle("Focal clade highlight")
 ```
@@ -233,10 +233,10 @@ data).  MRCAs are colored by their focal clade.
 exDataFrame <- recordAncestor(exDataFrame, Tibble)
 exDataFrame <- recordClades(exDataFrame, clades)
 MRCA_2D_plot( exDataFrame, clades
-     , x = "percent_difference_local"
-     , y = "index_avg_strandDiscord"
-     , errorbars = TRUE,
-     , pairs = TRUE)
+            , x = "percent_difference_local"
+            , y = "index_avg_strandDiscord"
+            , errorbars = TRUE
+            , pairs = TRUE)
 ```
 
 In ellipse plots, all the pairs of species are displayed and grouped by MRCA.
