@@ -13,7 +13,8 @@ ellipsePlot(
 )
 }
 \arguments{
-\item{df}{A data frame produced by \code{\link{MRCAs}}.}
+\item{df}{A data frame containing the \code{MRCA}, \code{focalClade} and \code{focalColor}
+information.}
 
 \item{x, y}{the name of the pairwise statistics to summarise.}
 

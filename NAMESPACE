@@ -3,7 +3,6 @@
 export(FocalCladeList)
 export(MRCA_2D_plot)
 export(MRCA_plotly)
-export(MRCAs)
 export(averageResults)
 export(childSpecies)
 export(cladeENRtable)

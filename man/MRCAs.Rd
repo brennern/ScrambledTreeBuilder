@@ -25,8 +25,11 @@ annotated with \code{\link[=recordAncestor]{recordAncestor()}}.}
 central tendency and the dispersion of the values for each MRCA.}
 }
 \value{
-A tibble (\link[tibble:tbl_df-class]{tibble::tbl_df}) ready for \code{\link{MRCA_2D_plot}}.
-When \code{mrca_label} is set, includes a \code{mrca_label} column.
+A tibble (\link[tibble:tbl_df-class]{tibble::tbl_df}), the raw and aggregated
+information provided as one pair of \code{x} and \code{y} coordinates per line.
+
+This function is run directly by \code{\link{MRCA_2D_plot}}, therefore it is not
+exported anymore.
 }
 \description{
 Summarise statistics for MRCAs

@@ -11,13 +11,15 @@
 #'
 #' @author Charles Plessy, Takahiro Fujita
 #'
-#' @returns A tibble ([tibble::tbl_df-class]) ready for [`MRCA_2D_plot`].
-#'         When `mrca_label` is set, includes a `mrca_label` column.
+#' @returns A tibble ([tibble::tbl_df-class]), the raw and aggregated
+#' information provided as one pair of `x` and `y` coordinates per line.
+#'
+#' This function is run directly by [`MRCA_2D_plot`], therefore it is not
+#' exported anymore.
 #'
 #' @importFrom dplyr group_by summarize sym ungroup filter transmute slice_max left_join mutate
 #' @importFrom tidyselect all_of
 #' @importFrom tibble tibble
-#' @export
 #'
 #' @examples
 #' MRCAs(Halo_DF, Halo_FocalClades)

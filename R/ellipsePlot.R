@@ -4,7 +4,8 @@
 #' the same most recent common ancestor, color points and ellipses by focal
 #' clade.
 #'
-#' @param df A data frame produced by [`MRCAs`].
+#' @param df A data frame containing the `MRCA`, `focalClade` and `focalColor`
+#'        information.
 #' @param x,y the name of the pairwise statistics to summarise.
 #' @param xlim,ylim Minimal and maximal X and Y values.
 #'
