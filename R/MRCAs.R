@@ -22,7 +22,7 @@
 #' @importFrom tibble tibble
 #'
 #' @examples
-#' MRCAs(Halo_DF, Halo_FocalClades)
+#' ScrambledTreeBuilder:::MRCAs(Halo_DF, Halo_FocalClades)
 
 MRCAs <- function(pairwise_data, clades = NULL, x = "percent_difference_local", y = "index_avg_strandDiscord", center = mean, dispersion = sd) {
 
@@ -117,7 +117,7 @@ MRCAs <- function(pairwise_data, clades = NULL, x = "percent_difference_local", 
 #' @param xlim,ylim Maximal X and Y value.
 #'
 #' @returns A [`ggplot2::ggplot2`] object in which some information was added
-#' for the [`MRCA_plotly()`] function to generate hover information.
+#' for the [`plotly::ggplotly`] function to generate hover information.
 #'
 #' @author Charles Plessy, Takahiro Fujita
 #'
@@ -126,6 +126,7 @@ MRCAs <- function(pairwise_data, clades = NULL, x = "percent_difference_local", 
 #' @importFrom ggplot2 aes ggplot geom_errorbar geom_errorbarh geom_point labs
 #' @importFrom ggplot2 scale_color_manual scale_x_continuous scale_y_continuous theme_minimal
 #' @importFrom ggplot2 scale_size_identity scale_alpha_identity
+#' @importFrom plotly ggplotly
 #' @importFrom rlang .data
 #' @importFrom stats na.omit sd
 #' @export
@@ -135,6 +136,8 @@ MRCAs <- function(pairwise_data, clades = NULL, x = "percent_difference_local", 
 #'   ggplot2::labs(x="nucl. diff", y="scrambling")
 #' MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE)
 #' MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE)
+#' MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE)|>
+#'   plotly::ggplotly(tooltip ="text")
 
 MRCA_2D_plot <- function(pairwise_data, clades = NULL, x = "percent_difference_local", y = "index_avg_strandDiscord", errorbars = FALSE, pairs = FALSE, xlim = 40, ylim = 1) {
   plot_data       <- MRCAs(pairwise_data, clades)
@@ -144,9 +147,10 @@ MRCA_2D_plot <- function(pairwise_data, clades = NULL, x = "percent_difference_l
   if (! isTRUE(pairs)) plot_data <- plot_data[plot_data$type == "MRCA",]
 
   p <- ggplot(plot_data,
-              aes(x   = .data$x,
-                  y   = .data$y,
-                  col = .data$clade)) +
+              aes(x    = .data$x,
+                  y    = .data$y,
+                  col  = .data$clade,
+                  text = .data$hover_text)) +
          geom_point(aes(size=.data$size, alpha = .data$alpha)) +
          scale_size_identity() +
          scale_alpha_identity() +
@@ -188,43 +192,4 @@ MRCA_2D_plot <- function(pairwise_data, clades = NULL, x = "percent_difference_l
   }
 
   p
-}
-
-#' Interactive MRCA plot with plotly
-#'
-#' Convert an MRCA plot to an interactive plotly object with hover tooltips
-#' showing the label for each point.
-#'
-#' @param p A [`ggplot2::ggplot2`] produced by [`MRCA_2D_plot`].
-#' @param tooltip Which aesthetics to show in the hover tooltip.  Default shows
-#'        MRCA, clade, x, y, and n.  Set to `"all"` to also include
-#'        `mrca_label` if available.
-#' @param hovermode Hover mode passed to `plotly::layout()`.
-#'
-#' @return A `plotly` object.
-#'
-#' @author Charles Plessy, Takahiro Fujita
-#'
-#' @family Plotting functions
-#'
-#' @importFrom plotly ggplotly layout
-#' @importFrom rlang .data
-#' @export
-#'
-#' @examples
-#' MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE) |> MRCA_plotly()
-
-MRCA_plotly <- function(p, tooltip = NULL, hovermode = "closest") {
-
-  # Extract data from the plot
-  plot_data <- p$data
-
-  p_hover <- p + geom_point(
-    data = plot_data,
-    aes(x = .data$x, y = .data$y, text = .data$hover_text),
-    inherit.aes = FALSE,
-    alpha = 0
-  )
-
-  ggplotly(p_hover, tooltip = "text") |> layout(hovermode = hovermode)
 }

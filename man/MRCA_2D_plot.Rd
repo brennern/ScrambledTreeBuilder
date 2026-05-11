@@ -31,7 +31,7 @@ annotated with \code{\link[=recordAncestor]{recordAncestor()}}.}
 }
 \value{
 A \code{\link[ggplot2:ggplot2-package]{ggplot2::ggplot2}} object in which some information was added
-for the \code{\link[=MRCA_plotly]{MRCA_plotly()}} function to generate hover information.
+for the \code{\link[plotly:ggplotly]{plotly::ggplotly}} function to generate hover information.
 }
 \description{
 2D plot of the statistics extracted for each MRCA.  Optionally plots error
@@ -42,10 +42,11 @@ MRCA_2D_plot(Halo_DF, Halo_FocalClades) +
   ggplot2::labs(x="nucl. diff", y="scrambling")
 MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE)
 MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE)
+MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE)|>
+  plotly::ggplotly(tooltip ="text")
 }
 \seealso{
 Other Plotting functions: 
-\code{\link{MRCA_plotly}()},
 \code{\link{ellipsePlot}()},
 \code{\link{treeHeatMap}()},
 \code{\link{visualizeTree}()}

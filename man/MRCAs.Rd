@@ -35,7 +35,7 @@ exported anymore.
 Summarise statistics for MRCAs
 }
 \examples{
-MRCAs(Halo_DF, Halo_FocalClades)
+ScrambledTreeBuilder:::MRCAs(Halo_DF, Halo_FocalClades)
 }
 \author{
 Charles Plessy, Takahiro Fujita
