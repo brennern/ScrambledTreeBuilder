@@ -9,8 +9,8 @@ MRCA_2D_plot(
   clades = NULL,
   x = "percent_difference_local",
   y = "index_avg_strandDiscord",
-  errorbars = FALSE,
-  pairs = FALSE,
+  errorbars = TRUE,
+  pairs = TRUE,
   xlim = 40,
   ylim = 1
 )
@@ -38,14 +38,15 @@ for the \code{\link[plotly:ggplotly]{plotly::ggplotly}} function to generate hov
 bars and the pair data in addition to its aggregated statistics.
 }
 \examples{
-MRCA_2D_plot(Halo_DF, Halo_FocalClades) +
-  ggplot2::labs(x="nucl. diff", y="scrambling")
-MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE)
-MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE)
-MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE)|>
-  plotly::ggplotly(tooltip ="text")
+MRCA_2D_plot(Halo_DF, Halo_FocalClades) + ggplot2::labs(x="nucl. diff", y="scrambling")
+MRCA_2D_plot(averageResults(Halo_DF), Halo_FocalClades)
+MRCA_2D_plot(Halo_DF, Halo_FocalClades, errorbars = FALSE)
+MRCA_2D_plot(Halo_DF, Halo_FocalClades, pairs     = FALSE)
+MRCA_2D_plot(Halo_DF, Halo_FocalClades) |> plotly::ggplotly(tooltip ="text")
 }
 \seealso{
+\code{\link[=averageResults]{averageResults()}}
+
 Other Plotting functions: 
 \code{\link{ellipsePlot}()},
 \code{\link{treeHeatMap}()},

@@ -10,6 +10,8 @@
 #' @return A tibble, even when the input is a data frame, because we use
 #' _dplyr_…
 #'
+#' @seealso [MRCA_2D_plot()]
+#'
 #' @author Charles Plessy
 #'
 #' @importFrom dplyr across group_by summarise where

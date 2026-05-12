@@ -234,21 +234,24 @@ exDataFrame <- recordAncestor(exDataFrame, Tibble)
 exDataFrame <- recordClades(exDataFrame, clades)
 MRCA_2D_plot( exDataFrame, clades
             , x = "percent_difference_local"
-            , y = "index_avg_strandDiscord"
-            , errorbars = TRUE
-            , pairs = TRUE)
+            , y = "index_avg_strandDiscord")
+```
+
+In this example, the plots are not dense but in real datasets they can contain
+tens of thousands of points.  Remember that we have two values per pair of
+species (A vs B and B vs A).  To simplify the plot by averaging the two
+alignment replicates, use `averageResults()` like below.
+
+```{r MRCA_plot_sym}
+exDataFrameSym <- averageResults(exDataFrame)
+MRCA_2D_plot(exDataFrameSym, clades)
 ```
 
 In ellipse plots, all the pairs of species are displayed and grouped by MRCA.
-These groups are colored by focal clades.  Remember that we have two values
-per pair of species (A vs B and B vs A).  To simplify the plot, use the
-`averageResults()` function like below.
+These groups are colored by focal clades.
 
 ```{r ellipse_plot}
-ellipsePlot( exDataFrame
-           , x = "percent_difference_local"
-           , y = "index_avg_strandDiscord")
-ellipsePlot( exDataFrame |> averageResults()
+ellipsePlot( exDataFrameSym
            , x = "percent_difference_local"
            , y = "index_avg_strandDiscord")
 ```

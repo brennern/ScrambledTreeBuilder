@@ -22,6 +22,9 @@ want to plot only one point per pair.  This function produces the averages.
 \examples{
 averageResults(Halo_DF)
 }
+\seealso{
+\code{\link[=MRCA_2D_plot]{MRCA_2D_plot()}}
+}
 \author{
 Charles Plessy
 }

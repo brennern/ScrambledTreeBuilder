@@ -122,24 +122,24 @@ MRCAs <- function(pairwise_data, clades = NULL, x = "percent_difference_local", 
 #' @author Charles Plessy, Takahiro Fujita
 #'
 #' @family Plotting functions
+#' @seealso [averageResults()]
 #'
 #' @importFrom ggplot2 aes ggplot geom_errorbar geom_errorbarh geom_point labs
 #' @importFrom ggplot2 scale_color_manual scale_x_continuous scale_y_continuous theme_minimal
 #' @importFrom ggplot2 scale_size_identity scale_alpha_identity
 #' @importFrom plotly ggplotly
-#' @importFrom rlang .data
+#' @importFrom rlang .data .env
 #' @importFrom stats na.omit sd
 #' @export
 #'
 #' @examples
-#' MRCA_2D_plot(Halo_DF, Halo_FocalClades) +
-#'   ggplot2::labs(x="nucl. diff", y="scrambling")
-#' MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE)
-#' MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE)
-#' MRCA_2D_plot(Halo_DF, Halo_FocalClades, err=TRUE, pairs=TRUE)|>
-#'   plotly::ggplotly(tooltip ="text")
+#' MRCA_2D_plot(Halo_DF, Halo_FocalClades) + ggplot2::labs(x="nucl. diff", y="scrambling")
+#' MRCA_2D_plot(averageResults(Halo_DF), Halo_FocalClades)
+#' MRCA_2D_plot(Halo_DF, Halo_FocalClades, errorbars = FALSE)
+#' MRCA_2D_plot(Halo_DF, Halo_FocalClades, pairs     = FALSE)
+#' MRCA_2D_plot(Halo_DF, Halo_FocalClades) |> plotly::ggplotly(tooltip ="text")
 
-MRCA_2D_plot <- function(pairwise_data, clades = NULL, x = "percent_difference_local", y = "index_avg_strandDiscord", errorbars = FALSE, pairs = FALSE, xlim = 40, ylim = 1) {
+MRCA_2D_plot <- function(pairwise_data, clades = NULL, x = "percent_difference_local", y = "index_avg_strandDiscord", errorbars = TRUE, pairs = TRUE, xlim = 40, ylim = 1) {
   plot_data       <- MRCAs(pairwise_data, clades)
   plot_data$size  <- ifelse(plot_data$type == "MRCA", 4, 2.0)
   plot_data$alpha <- ifelse(plot_data$type == "MRCA", 1, 0.7)
