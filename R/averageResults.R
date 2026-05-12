@@ -26,8 +26,7 @@ averageResults <- function(pairwise_data) {
     summarise(
       across(
         where(is.numeric),
-        mean,
-        na.rm = TRUE
+        \(x) mean(x, na.rm = TRUE)
       ),
       MRCA       = unique(.data$MRCA),
       focalClade = unique(.data$focalClade),
