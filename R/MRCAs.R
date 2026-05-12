@@ -54,7 +54,7 @@ MRCAs <- function(pairwise_data, clades = NULL, x = "percent_difference_local", 
     "<br>Clade: ", tb$clade,
     "<br>x: ", round(tb$x, 2),
     "<br>y: ", round(tb$y, 2),
-    "<br>n: ", pairwise_data$n
+    "<br>n: ", tb$n
   )
   tb$type <- "MRCA"
 
@@ -93,8 +93,8 @@ MRCAs <- function(pairwise_data, clades = NULL, x = "percent_difference_local", 
     color = pairwise_data$focalColor,
     hover_text = paste0(
       "Pair: ", pairwise_data$species1, " vs ", pairwise_data$species2,
-      "<br>x: ", round(pairwise_data$percent_difference_local, 2),
-      "<br>y: ", round(pairwise_data$index_avg_strandDiscord, 2),
+      "<br>x: ", round(pairwise_data[[.env$x]], 2),
+      "<br>y: ", round(pairwise_data[[.env$y]], 2),
       "<br>Clade: ", pairwise_data$focalClade),
     type  = "Pair"
   )

@@ -18,8 +18,8 @@
 #' @examples
 #' averageResults(Halo_DF)
 
-averageResults <- function(pairwise_data)
-  pairwise_data |>
+averageResults <- function(pairwise_data) {
+  p <- pairwise_data |>
     group_by(.data$lab) |>
     summarise(
       across(
@@ -32,3 +32,7 @@ averageResults <- function(pairwise_data)
       focalColor = unique(.data$focalColor),
       .groups = "drop"
   )
+  p$species1 <-  sub('\n.*','', p$lab)
+  p$species2 <-  sub('.*\n','', p$lab)
+  p
+}
