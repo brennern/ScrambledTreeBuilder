@@ -122,17 +122,18 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Noa Brenner \email{brennern@hawaii.edu} (Okinawa Institute of Science and Technology Graduate University)
+\strong{Maintainer}: Noa Brenner \email{brennern@hawaii.edu} (affiliation: Okinawa Institute of Science and Technology Graduate University)
 
 Authors:
 \itemize{
-  \item Charles Plessy \email{charles.plessy@oist.jp} (Okinawa Institute of Science and Technology Graduate University)
-  \item Anika Mittal \email{anika.mittal@oist.jp} (Okinawa Institute of Science and Technology Graduate University)
+  \item Noa Brenner \email{brennern@hawaii.edu} (affiliation: Okinawa Institute of Science and Technology Graduate University)
+  \item Charles Plessy \email{charles.plessy@oist.jp} (affiliation: Okinawa Institute of Science and Technology Graduate University)
+  \item Anika Mittal \email{anika.mittal@oist.jp} (affiliation: Okinawa Institute of Science and Technology Graduate University)
 }
 
 Other contributors:
 \itemize{
-  \item Takahiro Fujita \email{takahiro-fujita@suntory.co.jp} (Suntory Global Innovation Center Limited) [contributor]
+  \item Takahiro Fujita \email{takahiro-fujita@suntory.co.jp} (affiliation: Suntory Global Innovation Center Limited) [contributor]
 }
 
 }

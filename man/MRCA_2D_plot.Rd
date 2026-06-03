@@ -30,7 +30,7 @@ annotated with \code{\link[=recordAncestor]{recordAncestor()}}.}
 \item{xlim, ylim}{Maximal X and Y value.}
 }
 \value{
-A \code{\link[ggplot2:ggplot2-package]{ggplot2::ggplot2}} object in which some information was added
+A \code{\link[ggplot2:ggplot2]{ggplot2::ggplot2}} object in which some information was added
 for the \code{\link[plotly:ggplotly]{plotly::ggplotly}} function to generate hover information.
 }
 \description{
@@ -47,10 +47,10 @@ MRCA_2D_plot(Halo_DF, Halo_FocalClades) |> plotly::ggplotly(tooltip ="text")
 \seealso{
 \code{\link[=averageResults]{averageResults()}}
 
-Other Plotting functions: 
-\code{\link{ellipsePlot}()},
-\code{\link{treeHeatMap}()},
-\code{\link{visualizeTree}()}
+Other Plotting functions:
+\code{\link[=ellipsePlot]{ellipsePlot()}},
+\code{\link[=treeHeatMap]{treeHeatMap()}},
+\code{\link[=visualizeTree]{visualizeTree()}}
 }
 \author{
 Charles Plessy, Takahiro Fujita
