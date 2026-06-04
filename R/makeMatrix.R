@@ -27,6 +27,8 @@
 #' @author Charles Plessy
 #' @author Anika Mittal
 #'
+#' @importFrom matrixStats colAlls rowAlls
+#'
 #' @export
 #'
 #' @examples
@@ -54,11 +56,26 @@ makeMatrix <- function(pairwise_data, column="", defaultDiagonal = 100, defaultV
     return(NULL)
   }
   impute <- match.arg(impute)
+  m <- .makeMatrix(pairwise_data, column)
+  problRow <- names(which(rowAlls(m == 0, na.rm = TRUE)))
+  problCol <- names(which(colAlls(m == 0, na.rm = TRUE)))
+  if (length(c(problRow, problCol)) !=0 )
+    stop ("Problematic species: ", paste(unique(c(problRow, problCol)), collapse=", "))
+  diag(m) <- defaultDiagonal
+  m <- .imputeMatrix(m, defaultValue, impute, ...)
+  attr(m, "builtWith") <- column
+  m
+}
+
+.makeMatrix <- function(pairwise_data, column="") {
   all_species <- sort(unique(c(pairwise_data$species1, pairwise_data$species2)))
   m <- matrix(NA, nrow = length(all_species), ncol = length(all_species))
   colnames(m) <- rownames(m) <- all_species
-  diag(m) <- defaultDiagonal
   m[cbind(pairwise_data$species1, pairwise_data$species2)] <- pairwise_data[[column]]
+  m
+}
+
+.imputeMatrix <- function(m, defaultValue, impute, ...) {
 
   fillSymmetricNA <- function(mat) {
     na_pos <- which(is.na(mat) & !is.na(t(mat)), arr.ind = TRUE)
@@ -97,8 +114,5 @@ makeMatrix <- function(pairwise_data, column="", defaultDiagonal = 100, defaultV
                            missForest  = imputeForest,
                            missForest2 = imputeForest2)
 
-  m <- imputeFunction(m, defaultValue)
-
-  attr(m, "builtWith") <- column
-  return(m)
+  imputeFunction(m, defaultValue)
 }

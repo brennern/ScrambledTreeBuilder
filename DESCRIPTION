@@ -46,6 +46,7 @@ Imports:
     ggplot2,
     ggforce,
     ggtree,
+    matrixStats,
     pheatmap,
     plotly,
     rlang,
