@@ -19,6 +19,8 @@
 #'
 #' @family Data load functions
 #'
+#' @importFrom tools file_path_sans_ext
+#'
 #' @examples
 #' system.file("extdata/yaml", package = "ScrambledTreeBuilder") |> resultFiles()
 #'
@@ -27,9 +29,7 @@
 
 resultFiles <- function (dir, remove = "removedAssemblies.txt") {
     files <- list.files(dir, pattern = ".yaml$|.yaml.bz2$|.yaml.gz$|.yaml.gz$", full.names = TRUE)
-    names <- basename(files) |>
-      sub(pattern = ".gz|.bz2|.xz", replacement = "") |>
-      sub(pattern = ".yaml",        replacement = "")
+    names <- basename(files) |> tools::file_path_sans_ext(compression = TRUE)
     names(files) <- names
     if(file.exists(remove)) {
       toRemove <- read.delim(remove, header = FALSE, col.names = c("pattern", "reason"))
