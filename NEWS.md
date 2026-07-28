@@ -12,6 +12,7 @@
 * Fix `MRCAs()` so that it does not output averages values for species in the
   results table but not in the input tree.
 * Fix again accidental discarding of YAML files with `gz` in their name.
+* Speed up `formatStats()` roughly 8 times by using `sapply` instead of `do.call`.
 
 # ScrambledTreeBuilder 1.3.0
 
