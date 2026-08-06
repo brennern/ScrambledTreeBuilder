@@ -140,7 +140,7 @@ MRCAs <- function(pairwise_data, clades = NULL, x = "percent_difference_local", 
 #' MRCA_2D_plot(Halo_DF, Halo_FocalClades) |> plotly::ggplotly(tooltip ="text")
 
 MRCA_2D_plot <- function(pairwise_data, clades = NULL, x = "percent_difference_local", y = "index_avg_strandDiscord", errorbars = TRUE, pairs = TRUE, xlim = 40, ylim = 1) {
-  plot_data       <- MRCAs(pairwise_data, clades)
+  plot_data       <- MRCAs(pairwise_data, clades, x = x, y = y)
   plot_data$size  <- ifelse(plot_data$type == "MRCA", 4, 2.0)
   plot_data$alpha <- ifelse(plot_data$type == "MRCA", 1, 0.7)
 
